@@ -2,13 +2,18 @@ package org.adorsys.xlseasy.annotation;
 
 import java.util.List;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-
+/**
+ * Replacing HSSFWorkbook with object. Implementation will cast to correct value.
+ * @author francis
+ *
+ * @param <WT>
+ * @param <RT>
+ */
 public interface ISheetSession<WT, RT> {
 
 	public abstract List<?> getSheetRecords(String name);
 
-	public abstract HSSFWorkbook getWorkbook();
+	public abstract Object getWorkbook();
 	
 	public <T> void setObjectByKey(Class<T> recordClass, Object key, T object);
 	

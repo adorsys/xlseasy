@@ -9,7 +9,8 @@ public abstract class NumberColumnConverter extends CellConverter {
 		super();
 	}
 
-	public void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+		HSSFCell cell = (HSSFCell) cellObject;
 		cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
 		if (value != null) {
 			cell.setCellValue(((Number)value).doubleValue());

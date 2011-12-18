@@ -12,7 +12,8 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  */
 public class IntegerCellConverter extends NumberColumnConverter {
 
-	public Integer getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+	public Integer getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+		HSSFCell cell = (HSSFCell) cellObject;
 		Double value = getDoubleCellValue(cell);
 		return value != null ? value.intValue() : null;
 	}

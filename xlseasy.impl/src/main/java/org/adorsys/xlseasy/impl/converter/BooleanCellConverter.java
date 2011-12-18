@@ -13,7 +13,8 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  */
 public class BooleanCellConverter extends CellConverter {
 
-	public Boolean getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+	public Boolean getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+		HSSFCell cell = (HSSFCell) cellObject;
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_BOOLEAN) {
 			return cell.getBooleanCellValue();
 		} else {
@@ -21,7 +22,8 @@ public class BooleanCellConverter extends CellConverter {
 		}
 	}
 
-	public void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+		HSSFCell cell = (HSSFCell) cellObject;
 		cell.setCellType(HSSFCell.CELL_TYPE_BOOLEAN);
 		if (value != null) {
 			cell.setCellValue((Boolean)value);
@@ -32,5 +34,5 @@ public class BooleanCellConverter extends CellConverter {
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] {Boolean.class, boolean.class}; 
 	}
-	
+
 }

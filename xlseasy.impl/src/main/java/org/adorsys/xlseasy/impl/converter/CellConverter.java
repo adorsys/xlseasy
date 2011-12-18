@@ -41,12 +41,12 @@ public abstract class CellConverter implements ICellConverter {
 	/* (non-Javadoc)
 	 * @see org.adorsys.xlseasy.impl.converter.ICellConverter#setHSSFCell(org.apache.poi.hssf.usermodel.HSSFCell, java.lang.Object, java.lang.Class)
 	 */
-	public abstract void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session);
+	public abstract void setHSSFCell(Object cell, Object value, Class<?> objectType, ISheetSession<?, ?> session);
 	
 	/* (non-Javadoc)
 	 * @see org.adorsys.xlseasy.impl.converter.ICellConverter#getDataCell(org.apache.poi.hssf.usermodel.HSSFCell, java.lang.Class)
 	 */
-	public abstract Object getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException;
+	public abstract Object getDataCell(Object cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException;
 	
 	/* (non-Javadoc)
 	 * @see org.adorsys.xlseasy.impl.converter.ICellConverter#getConveterTypes()

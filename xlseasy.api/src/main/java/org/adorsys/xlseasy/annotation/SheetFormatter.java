@@ -1,15 +1,20 @@
 package org.adorsys.xlseasy.annotation;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-
+/**
+ * HSSFSheet replaced with Object. Implementation will cast to HSSFSheet.
+ * 
+ * @author sandro
+ * @author francis
+ *
+ */
 public interface SheetFormatter {
 	
 	public class NoneSheetFormatter implements SheetFormatter {
 
-		public void format(HSSFSheet sheet) {
+		public void format(Object sheet) {
 		}
 	}
 	
-	void format(HSSFSheet sheet);
+	void format(Object sheet);
 
 }

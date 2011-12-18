@@ -14,13 +14,16 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  */
 public class DateCellConverter extends CellConverter {
 
-	public Date getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+	public Date getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+		HSSFCell cell = (HSSFCell) cellObject;
 		return cell.getDateCellValue();
 	}
 
-	public void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
-		if (value != null)
+	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+		if (value != null){
+			HSSFCell cell = (HSSFCell) cellObject;
 			cell.setCellValue((Date) value);
+		}
 	}
 	
 	@Override

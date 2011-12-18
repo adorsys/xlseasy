@@ -13,8 +13,9 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
  * @author sso
  */
 public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
-	public Object getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session)
+	public Object getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session)
 			throws SpreadsheetConverterException {
+		HSSFCell cell = (HSSFCell) cellObject;
 		String s = getStringCellValue(cell);
 		if (s == null) {
 			return null;
@@ -29,7 +30,8 @@ public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
 		}
 	}
 
-	public void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+		HSSFCell cell = (HSSFCell) cellObject;
 		cell.setCellType(HSSFCell.CELL_TYPE_STRING);
 		Enum<?> e = (Enum<?>) value;
 		HSSFRichTextString stringValue = new HSSFRichTextString(

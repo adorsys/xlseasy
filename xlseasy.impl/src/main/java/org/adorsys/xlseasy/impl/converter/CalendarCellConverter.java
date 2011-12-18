@@ -8,13 +8,15 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 
 public class CalendarCellConverter extends CellConverter {
 
-	public Calendar getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+	public Calendar getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+		HSSFCell cell = (HSSFCell) cellObject;
 		Calendar instance = Calendar.getInstance();
 		instance.setTime(cell.getDateCellValue());
 		return instance;
 	}
 
-	public void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+		HSSFCell cell = (HSSFCell) cellObject;
 		cell.setCellValue((Calendar)value);
 	}
 	

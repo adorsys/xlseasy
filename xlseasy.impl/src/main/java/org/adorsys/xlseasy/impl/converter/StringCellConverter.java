@@ -15,11 +15,13 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
  */
 public class StringCellConverter extends CellConverter {
 
-	public String getDataCell(HSSFCell cell, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+	public String getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
+		HSSFCell cell = (HSSFCell) cellObject;
 		return getStringCellValue(cell);
 	}
 
-	public void setHSSFCell(HSSFCell cell, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
+		HSSFCell cell = (HSSFCell) cellObject;
 		cell.setCellType(HSSFCell.CELL_TYPE_STRING);
 		HSSFRichTextString stringValue = new HSSFRichTextString(value != null ? String.valueOf(value) : "");
 		cell.setCellValue(stringValue);

@@ -9,11 +9,4 @@
 	<artifactId>xlseasy.api</artifactId>
 	<version>1.2-SNAPSHOT</version>
 	<name>xlseasy api</name>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.6</version>
-		</dependency>
-	</dependencies>
 </project>
