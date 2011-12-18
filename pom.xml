@@ -70,7 +70,7 @@
 	<distributionManagement>
 	    <repository>
 	        <id>xls.easy.repo</id>
-	        <url>svn:https://xlseasy.googlecode.com/svn/maven2repo</url>
+	        <url>scm:git:https://sandro.sonntag@code.google.com/p/xlseasy.mavenrepo/</url>
 	    </repository>
 	</distributionManagement>
 </project>
