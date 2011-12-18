@@ -4,7 +4,6 @@
 	<version>1.2-SNAPSHOT</version>
 	<artifactId>xlseasy</artifactId>
 	<packaging>pom</packaging>
-	<name>xlseasyxlseasy</name>
 	<modules>
 		<module>xlseasy.api</module>
 		<module>xlseasy.impl</module>
@@ -25,8 +24,8 @@
 
 	<url>http://code.google.com</url>
 	<scm>
-		<developerConnection>scm:svn:https://xlseasy.googlecode.com/svn/trunk</developerConnection>
-		<connection>scm:svn:https://xlseasy.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:git:https://sandro.sonntag@code.google.com/p/xlseasy</developerConnection>
+		<connection>scm:git:https://sandro.sonntag@code.google.com/p/xlseasy</connection>
 	</scm>
 	<build>
 		<plugins>
