@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.Key;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
-import org.adorsys.xlseasy.impl.proc.AnnotationUtil;
+import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
 public class KeyGenerator {
 	private final Class<?> rowClass;
@@ -22,6 +22,12 @@ public class KeyGenerator {
 		} else {
 			field = null;
 		}
+	}
+	public KeyGenerator(Class<?> rowClass, Field keyField) {
+		super();
+		this.rowClass = rowClass;
+		this.field = keyField;
+		field.setAccessible(true);
 	}
 	
 	public String getKey(Object object) {

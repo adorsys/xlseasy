@@ -1,7 +1,6 @@
-package org.adorsys.xlseasy.impl.proc;
+package org.adorsys.xlseasy.cbe;
 
 import java.beans.PropertyDescriptor;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -11,20 +10,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.FreezePaneObject;
 import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.adorsys.xlseasy.annotation.Sheet;
-import org.adorsys.xlseasy.annotation.SheetColumn;
+import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.annotation.SheetFormatter;
 import org.adorsys.xlseasy.annotation.SheetObject;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 import org.adorsys.xlseasy.impl.converter.KeyGenerator;
+import org.adorsys.xlseasy.impl.proc.SheetDescIF;
+import org.adorsys.xlseasy.impl.proc.SheetSession;
+import org.adorsys.xlseasy.utils.ReflectionUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.DVConstraint;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDataValidation;
@@ -33,107 +33,83 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
-public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
+public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 
-    private static final long serialVersionUID = 1L;
-
-    private final Map<String, ColumnDesc> xlsColumnName2desc = new HashMap<String, ColumnDesc>();
-    private final Map<String, ColumnDesc> propertyName2desc = new HashMap<String, ColumnDesc>();
-    private final List<ColumnDesc> columnOrder = new ArrayList<ColumnDesc>();
+	private static final long serialVersionUID = 6166184265312522317L;
+	private final Map<String, ColumnDescCbe> xlsColumnName2desc = new HashMap<String, ColumnDescCbe>();
+    private final Map<String, ColumnDescCbe> propertyName2desc = new HashMap<String, ColumnDescCbe>();
+    private final List<ColumnDescCbe> columnOrder = new ArrayList<ColumnDescCbe>();
 
     private final Class<T> recordClass;
     private final String label;
     private final String workbookProperty;
     private final SheetObject sheet;
-    private final WorkbookDesc<WT> workbook;
+    private final WorkbookDescCbe<WT> workbook;
     private final KeyGenerator keyGenerator;
     private final int sheetIndex;
+	private final Collection<String> excludedFields;
+	private final Map<String, String> fieldDateStyles;
 
     /**
      * @param recordClass
      */
-    public SheetDesc(WorkbookDesc<WT> workbook, Class<T> recordClass, String label, String workbookProperty, int sheetIndex) {
+    public SheetDescCbe(WorkbookDescCbe<WT> workbook, Class<T> recordClass, 
+    		String label, String workbookProperty, int sheetIndex,
+    		Collection<String> excludedFields, Map<String, String> fieldDateStyles,
+    		Map<Class<?>, String> keyFieldNameMap) {
         super();
         this.recordClass = recordClass;
         this.workbook = workbook;
         this.sheetIndex = sheetIndex;
 
-        Collection<Annotation> sheet = AnnotationUtil.findClassAnnotations(recordClass, true, Sheet.class);
+        this.sheet = new SheetObject(label);
 
-        //Ordered columns
-        if (sheet.size() > 0) {
-            this.sheet = new SheetObject((Sheet) sheet.iterator().next());
-
-            if (label == null) {
-                label = StringUtils.trimToNull(this.sheet.name());
-            }
-        } else {
-            throw new SheetSystemException(ErrorCodeSheet.CLASS_HAS_NO_SHEET_ANNOTATION).addValue("class", recordClass);
-        }
         this.workbookProperty = workbookProperty;
-        if (label != null) {
-            this.label = label;
-        } else if (workbookProperty != null) {
-            this.label = workbookProperty;
+        this.label = label;
+        
+        String keyFieldName = keyFieldNameMap.get(recordClass);
+        if(keyFieldName!=null){
+        	Field keyField = ReflectionUtils.findField(recordClass, keyFieldName);
+        	this.keyGenerator = new KeyGenerator(recordClass, keyField);
         } else {
-            this.label = recordClass.getCanonicalName();
+        	this.keyGenerator = new KeyGenerator(recordClass);
         }
-        this.keyGenerator = new KeyGenerator(recordClass);
-        initColumnDescs();
+        
+        this.fieldDateStyles = fieldDateStyles!=null?fieldDateStyles:new HashMap<String, String>();
+        this.excludedFields = excludedFields!=null?excludedFields:new ArrayList<String>();
+        initColumnDescs(keyFieldNameMap);
     }
 
-    public List<ColumnDesc> getColumnDescs() {
+    public List<ColumnDescCbe> getColumnDescs(){
         return Collections.unmodifiableList(columnOrder);
     }
 
-    private void initColumnDescs() {
-        Map<PropertyDescriptor, Map<Class<?>, Annotation>> propertyDescriptorAnnotations = AnnotationUtil
-                .findBeanPropertyDescriptorAnnotations(recordClass, true, SheetColumn.class);
-        Map<String, PropertyDescriptor> key2PropertyDescriptor = AnnotationUtil.extractPropertyKey2PropertyDescriptor(propertyDescriptorAnnotations.keySet());
-
-        //Ordered columns
-        if (sheet.columnOrder().length > 0) {
-            String[] value = sheet.columnOrder();
-            for (int i = 0; i < value.length; i++) {
-                String prop = value[i];
-                if (!key2PropertyDescriptor.containsKey(prop)) {
-                    throw new SheetSystemException(ErrorCodeSheet.COLUMN_DEFINITION_FROM_COLUMN_ORDER_NOT_FOUND)
-                            .addValue("property", prop).addValue("recordClass", recordClass);
-                }
-                addColumn(propertyDescriptorAnnotations,
-                        key2PropertyDescriptor, prop, i);
-            }
-        } else {
-            //alpha sort
-            TreeSet<String> sortedProps = new TreeSet<String>(key2PropertyDescriptor.keySet());
-            int columnIndex = 0;
-            for (String prop : sortedProps) {
-                addColumn(propertyDescriptorAnnotations,
-                        key2PropertyDescriptor, prop, columnIndex);
-                columnIndex++;
-            }
-        }
+    private void initColumnDescs(Map<Class<?>, String> keyFieldNameMap) {
+    	List<SheetColumDeclaration> sheetColumDeclarations = SheetProcessor.processSheet(
+    			recordClass, excludedFields, fieldDateStyles, workbook);
+    	int columnIndex = 0;
+    	for (SheetColumDeclaration sheetColumDeclaration : sheetColumDeclarations) {
+    		addColumn(sheetColumDeclaration, columnIndex, keyFieldNameMap);
+    		columnIndex++;
+		}
     }
-
-    private void addColumn(
-            Map<PropertyDescriptor, Map<Class<?>, Annotation>> propertyDescriptorAnnotations,
-            Map<String, PropertyDescriptor> key2PropertyDescriptor, String prop, int columnIndex) {
-        PropertyDescriptor pd = key2PropertyDescriptor.get(prop);
-        
-        Map<Class<?>, Annotation> map = propertyDescriptorAnnotations.get(pd);
+    
+    private void addColumn(SheetColumDeclaration sheetColumDeclaration,int columnIndex, Map<Class<?>, String> keyFieldNameMap) {
+        PropertyDescriptor pd = sheetColumDeclaration.getPropertyDescriptor();
+        SheetColumnObject sheetColumn = sheetColumDeclaration.getSheetColumn();
         Field field = AnnotationUtil.findField(recordClass, pd.getName());
         if(field==null) throw new SheetSystemException(ErrorCodeSheet.FIELD_WITH_NAME_NOT_FOUND).addValue("fieldName", pd.getName());
-        ColumnDesc columnDesc = new ColumnDesc(pd, (SheetColumn) map.get(SheetColumn.class), columnIndex, field);
+        ColumnDescCbe columnDesc = new ColumnDescCbe(pd, sheetColumn, columnIndex,field, keyFieldNameMap);
         columnOrder.add(columnDesc);
         xlsColumnName2desc.put(columnDesc.getXlsColumnLabel(), columnDesc);
         propertyName2desc.put(columnDesc.getPropertyName(), columnDesc);
     }
 
-    public ColumnDesc getColumnDescForXlsColumnName(String xlsColumnName) {
+    public ColumnDescCbe getColumnDescForXlsColumnName(String xlsColumnName) {
         return xlsColumnName2desc.get(xlsColumnName);
     }
 
-    public ColumnDesc getColumnDescForPropertyName(String propertyName) {
+    public ColumnDescCbe getColumnDescForPropertyName(String propertyName) {
         return propertyName2desc.get(propertyName);
     }
 
@@ -144,7 +120,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
     @SuppressWarnings("unchecked")
     public List<T> getSheetData(Object workbookObj) {
         try {
-            return (List<T>) PropertyUtils.getProperty(workbookObj, workbookProperty);
+            return new ArrayList<T>((Collection<T>) PropertyUtils.getProperty(workbookObj, workbookProperty));
         } catch (IllegalAccessException e) {
             throw new SheetSystemException(ErrorCodeSheet.READ_BEAN_DATA_ERROR, e);
         } catch (InvocationTargetException e) {
@@ -172,14 +148,14 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
      * @param sheet
      * @return
      */
-    private List<ColumnDesc> loadXlsHeader(HSSFSheet sheet) {
-        List<ColumnDesc> columnDescs = new ArrayList<ColumnDesc>();
+    private List<ColumnDescCbe> loadXlsHeader(HSSFSheet sheet) {
+        List<ColumnDescCbe> columnDescs = new ArrayList<ColumnDescCbe>();
         HSSFRow row = sheet.getRow(0);
         Iterator<?> cellIterator = row.cellIterator();
         while (cellIterator.hasNext()) {
             HSSFCell cell = (HSSFCell) cellIterator.next();
             String headerValue = cell.getRichStringCellValue().getString();
-            ColumnDesc columnDesc = xlsColumnName2desc.get(headerValue);
+            ColumnDescCbe columnDesc = xlsColumnName2desc.get(headerValue);
             columnDescs.add(columnDesc);
         }
         return columnDescs;
@@ -194,7 +170,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     public List<T> loadBeanRecords(HSSFSheet sheet, ISheetSession<?, ?> session) {
         List<T> records = new ArrayList<T>();
-        List<ColumnDesc> loadXlsHeader = loadXlsHeader(sheet);
+        List<ColumnDescCbe> loadXlsHeader = loadXlsHeader(sheet);
         int loadXlsHeaderSize = loadXlsHeader.size();
         Iterator<?> rowIterator = sheet.rowIterator();
         if (rowIterator.hasNext())
@@ -205,22 +181,14 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             HSSFRow row = (HSSFRow) rowIterator.next();
             T record = newRecordInstance();
             Iterator<?> cellIterator = row.cellIterator();
-//			for (ColumnDesc columnDesc : loadXlsHeader) {
-//				if (!cellIterator.hasNext()) {
-//					break;
-//				}
-//				HSSFCell cell = (HSSFCell) cellIterator.next();
-//				if (columnDesc != null) {
-//					columnDesc.copyCellValueToBean(record, cell);
-//				}
-//			}
+
             while (cellIterator.hasNext()) {
                 HSSFCell cell = (HSSFCell) cellIterator.next();
                 int index = cell.getColumnIndex();
                 if (loadXlsHeaderSize <= index) {
                     break;// No additional column descriptor, so no need to continue.
                 }
-                ColumnDesc columnDesc = loadXlsHeader.get(index);
+                ColumnDescCbe columnDesc = loadXlsHeader.get(index);
                 if (columnDesc != null) {
                     //if no columndesc for index then skip this column
                     columnDesc.copyCellValueToBean(record, cell, session);
@@ -273,10 +241,10 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     protected void createHeader(SheetSession<?, ?> session, HSSFSheet sheet) {
         HSSFRow row = sheet.createRow(0);
-        List<ColumnDesc> columnDescs = getColumnDescs();
+        List<ColumnDescCbe> columnDescs = getColumnDescs();
         for (int i = 0; i < columnDescs.size(); i++) {
             HSSFCell cell = row.createCell(i);
-            ColumnDesc columnDesc = columnDescs.get(i);
+            ColumnDescCbe columnDesc = columnDescs.get(i);
             columnDesc.setHeaderLabel(cell, session);
             columnDesc.formatHeaderCell(session, cell);
             if (getSheet() != null && getSheet().autoSizeColumns()) {
@@ -306,13 +274,13 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     protected void addConstraints(HSSFSheet sheet) {
         int index = 0;
-        for (ColumnDesc c : columnOrder) {
+        for (ColumnDescCbe c : columnOrder) {
             Sheet sheetAnnotation = c.getType().getAnnotation(Sheet.class);
             if (sheetAnnotation != null) {
-                SheetDesc<?, WT> sheetDesc = (SheetDesc<?, WT>) workbook.getSheet(c.getType());
+                SheetDescCbe<?, WT> sheetDesc = workbook.getSheet(c.getType());
                 String keyColumnName = sheetDesc.keyGenerator.getKeyColumnName();
                 if (keyColumnName != null) {
-                    ColumnDesc refrerencedKeyColumn = sheetDesc.getColumnDescForPropertyName(keyColumnName);
+                    ColumnDescCbe refrerencedKeyColumn = sheetDesc.getColumnDescForPropertyName(keyColumnName);
                     String from = new CellReference(sheetDesc.getLabel(), 1, refrerencedKeyColumn.getColumnIndex(), true, true).formatAsString();
                     String to = new CellReference(65000, refrerencedKeyColumn.getColumnIndex()).formatAsString();
                     String validationRange = from + ":" + to;
@@ -331,11 +299,10 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     private void fillRow(SheetSession<?, ?> session, HSSFRow row, Object bean) {
         for (int i = 0; i < columnOrder.size(); i++) {
-            ColumnDesc columnDesc = columnOrder.get(i);
+            ColumnDescCbe columnDesc = columnOrder.get(i);
             HSSFCell cell = row.createCell(i);
             columnDesc.copyBeanPropertyValueToCell(bean, cell, session);
             columnDesc.formatDataCell(session, cell);
         }
     }
-
 }

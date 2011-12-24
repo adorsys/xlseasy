@@ -2,8 +2,9 @@ package org.adorsys.xlseasy.impl.proc;
 
 import org.adorsys.xlseasy.annotation.CellAlign;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
-import org.adorsys.xlseasy.annotation.SheetCellStyle;
+import org.adorsys.xlseasy.annotation.SheetCellStyleObject;
 import org.adorsys.xlseasy.annotation.SheetColumn;
+import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -11,7 +12,7 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-class WorkbookStyle {
+public class WorkbookStyle {
 	private final HSSFCellStyle style;
 
 	/**
@@ -19,7 +20,7 @@ class WorkbookStyle {
 	 * @param format
 	 * @param font
 	 */
-	public WorkbookStyle(HSSFWorkbook workbook, SheetColumn column, SheetCellStyle style) {
+	public WorkbookStyle(HSSFWorkbook workbook, SheetColumnObject column, SheetCellStyleObject style) {
 		super();
 		HSSFCellStyle cellStyle = workbook.createCellStyle();
 

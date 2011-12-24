@@ -35,7 +35,8 @@ public abstract class CellConverter implements ICellConverter {
 		registerDefaultType(DoubleCellConverter.class);
 		registerDefaultType(StringCellConverter.class);
 		registerDefaultType(EnumCellConverter.class);
-		registerDefaultType(SheetConverter.class);
+//		registerDefaultType(SheetConverter.class);
+//		registerDefaultType(CollectionCellConverter.class);
 	}
 
 	/* (non-Javadoc)
@@ -110,11 +111,18 @@ public abstract class CellConverter implements ICellConverter {
 		ICellConverter conv = TYPE2CONVERTER.get(clazz);
 		if (conv == null) {
 			Class<?> superclass = clazz.getSuperclass();
-			if (superclass != Object.class) {
+			if(superclass==null){
+				Class<?>[] interfaces = clazz.getInterfaces();
+				for (int i = 0; i < interfaces.length; i++) {
+					superclass=interfaces[i];
+					ICellConverter cellConverter = getConverterForType(superclass);
+					if(cellConverter!=null) return cellConverter;
+				}	
+			} if (superclass != Object.class) {
 				return getConverterForType(superclass);
-			} else {
-				throw new SheetSystemException(ErrorCodeSheet.NO_CONVERTER_FOR_TYPE).addValue("class", clazz.getName());
-			}
+			} 
+			throw new SheetSystemException(ErrorCodeSheet.NO_CONVERTER_FOR_TYPE).addValue("class", clazz.getName());
+			
 		}
 		return conv;
 	}

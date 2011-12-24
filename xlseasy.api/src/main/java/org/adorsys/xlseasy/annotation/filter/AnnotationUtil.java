@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.adorsys.xlseasy.impl.proc;
+package org.adorsys.xlseasy.annotation.filter;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -290,4 +290,15 @@ public class AnnotationUtil {
 		return findClassAnnotations.size() > 0;
 	}
 
+	public static Field findField(Class<?> clazz, String name) {
+		Class<?> searchType = clazz;
+		while (!Object.class.equals(searchType) && searchType != null) {
+			Field[] fields = searchType.getDeclaredFields();
+			for (Field field : fields) {
+				if(field.getName().equals(name)) return field;
+			}
+			searchType = searchType.getSuperclass();
+		}
+		return null;
+	}
 }

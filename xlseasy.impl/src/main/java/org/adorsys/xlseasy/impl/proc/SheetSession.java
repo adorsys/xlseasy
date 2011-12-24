@@ -6,14 +6,13 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.ISheetSession;
-import org.adorsys.xlseasy.annotation.SheetCellStyle;
-import org.adorsys.xlseasy.annotation.SheetColumn;
+import org.adorsys.xlseasy.annotation.SheetCellStyleObject;
+import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -28,29 +27,35 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 
 	private HSSFWorkbook workbook;
 
-	private final Map<SheetCellStyle, WorkbookStyle> cellStyleCache = new HashMap<SheetCellStyle, WorkbookStyle>();
+	private final Map<SheetCellStyleObject, WorkbookStyle> cellStyleCache = new HashMap<SheetCellStyleObject, WorkbookStyle>();
 
-	private static final Map<Class<?>, WorkbookDesc<?>> WORKBOOKDESC_CACHE = new HashMap<Class<?>, WorkbookDesc<?>>();
+	private static final Map<Class<?>, WorkbookDescIF<?>> WORKBOOKDESC_CACHE = new HashMap<Class<?>, WorkbookDescIF<?>>();
 
 	private final Class<?> beanType;
 	private final boolean workbookType;
-	private final WorkbookDesc<WT> workbookDesc;
+	private final WorkbookDescIF<WT> workbookDesc;
 	private final WT workbookBean;
 	
 	private final HashMap<List<?>, Object> key2objectCache = new HashMap<List<?>, Object>();
 
+	private WorkbookDescFactory workbookDescFactory;
+	
 	/**
 	 * @param workbook
 	 */
 	public SheetSession(Class<?> beanType) {
-		super();
+		this(beanType, new WorkbookDescFactory());
+	}
+	public SheetSession(Class<?> beanType, WorkbookDescFactory workbookDescFactory) {
+		this.workbookDescFactory = workbookDescFactory;
 		this.beanType = beanType;
-		this.workbookType = WorkbookDesc.isWorkbook(beanType);
+		this.workbookType = workbookDescFactory.checkIfWorkbook(beanType);
 		workbookDesc = getOrCreateWorkbookDesc(beanType);
 		workbookBean = workbookDesc.createWorkbookInstance();
 		reset();
 	}
 
+	
 	public void reset() {
 		this.workbook = new HSSFWorkbook();
 		cellStyleCache.clear();
@@ -64,8 +69,8 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		}
 	}
 
-	WorkbookStyle getWorkbookStyle(SheetColumn column,
-			SheetCellStyle style) {
+	public WorkbookStyle getWorkbookStyle(SheetColumnObject column,
+			SheetCellStyleObject style) {
 		WorkbookStyle cachedStyle = cellStyleCache.get(style);
 		if (cachedStyle == null) {
 			cachedStyle = new WorkbookStyle(workbook, column, style);
@@ -75,8 +80,8 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 	}
 
 	public void load(WT data) {
-		List<SheetDesc<?,WT>> orderedSheets = workbookDesc.getOrderedSheets();
-		for (SheetDesc<?,WT> sheetDesc : orderedSheets) {
+		List<? extends SheetDescIF<?,WT>> orderedSheets = workbookDesc.getOrderedSheets();
+		for (SheetDescIF<?,WT> sheetDesc : orderedSheets) {
 			Collection<?> sheetData = null;
 			if (data != null) {
 				sheetData = sheetDesc.getSheetData(data);
@@ -86,29 +91,31 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 	}
 
 	public void load(Collection<?> data) {
-		List<SheetDesc<?, WT>> orderedSheets = workbookDesc.getOrderedSheets();
-		for (SheetDesc<?, WT> sheetDesc : orderedSheets) {
+		List<? extends SheetDescIF<?, WT>> orderedSheets = workbookDesc.getOrderedSheets();
+		for (SheetDescIF<?, WT> sheetDesc : orderedSheets) {
 			loadSheetData(sheetDesc, data);
 		}
 	}
 
-	private void loadSheetData(SheetDesc<?, WT> sheetDesc, Collection<?> sheetData) {
+	private void loadSheetData(SheetDescIF<?, WT> sheetDesc, Collection<?> sheetData) {
 		sheetDesc.createSheet(sheetData, this);
 	}
 
 	@SuppressWarnings("unchecked")
-	private WorkbookDesc<WT> getOrCreateWorkbookDesc(Class<?> clazz) {
-		WorkbookDesc<WT> workbookDesc = (WorkbookDesc<WT>) WORKBOOKDESC_CACHE.get(clazz);
+	private WorkbookDescIF<WT> getOrCreateWorkbookDesc(Class<?> clazz) {
+		WorkbookDescIF<WT> workbookDesc = (WorkbookDescIF<WT>) WORKBOOKDESC_CACHE.get(clazz);
 		if (workbookDesc == null) {
 			synchronized (WORKBOOKDESC_CACHE) {
-				workbookDesc = (WorkbookDesc<WT>) WORKBOOKDESC_CACHE.get(clazz);
+				workbookDesc = (WorkbookDescIF<WT>) WORKBOOKDESC_CACHE.get(clazz);
 				if (workbookDesc == null) {
-					if (WorkbookDesc.isWorkbook(clazz)) {
+					if (workbookDescFactory.checkIfWorkbook(clazz)) {
 						// is workbook
-						workbookDesc = new WorkbookDesc<WT>((Class<WT>) clazz);
+//						workbookDesc = new WorkbookDesc<WT>((Class<WT>) clazz);
+						workbookDesc = workbookDescFactory.createWorkbookDesc((Class<WT>)clazz);
 					} else {
 						// is sheet
-						workbookDesc = new WorkbookDesc<WT>();
+//						workbookDesc = new WorkbookDesc<WT>();
+						workbookDesc = workbookDescFactory.emptyWorkbookDesc((Class<WT>) clazz);
 						workbookDesc.addSheet(clazz, null, null, 0);
 					}
 					WORKBOOKDESC_CACHE.put(clazz, workbookDesc);

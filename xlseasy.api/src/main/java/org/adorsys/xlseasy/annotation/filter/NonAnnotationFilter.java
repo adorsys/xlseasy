@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.adorsys.xlseasy.impl.proc;
+package org.adorsys.xlseasy.annotation.filter;
 
 import java.lang.annotation.Annotation;
 
@@ -34,7 +34,7 @@ public class NonAnnotationFilter implements AnnotationFilter {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.adorsys.saturn.lang.annotation.AnnotationFilter#accept(java.lang.annotation.Annotation)
+	 * @see org.adorsys.xlseasy.annotation.filter.lang.annotation.AnnotationFilter#accept(java.lang.annotation.Annotation)
 	 */
 	public boolean accept(Annotation annotation) {
 		return true;

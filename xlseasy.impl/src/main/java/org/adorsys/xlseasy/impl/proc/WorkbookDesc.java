@@ -1,7 +1,6 @@
 package org.adorsys.xlseasy.impl.proc;
 
 import java.beans.PropertyDescriptor;
-import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +15,7 @@ import org.adorsys.xlseasy.annotation.HorizontalRecordSheet;
 import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.adorsys.xlseasy.annotation.Workbook;
+import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -26,7 +26,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * @version $Id: $
  * @author sso
  */
-public class WorkbookDesc<T> implements Serializable {
+public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 
 	/**
 	 * 
@@ -96,15 +96,16 @@ public class WorkbookDesc<T> implements Serializable {
 		orderedSheets.add(sheetDesc);
 	}
 	
-	public SheetDesc<?, T> getSheet(String sheetLabel) {
+	public SheetDesc<?, T> getSheet(String sheetLabel){
 		return label2sheetDesc.get(sheetLabel);
 	}
 	
-	public <R> SheetDesc<R, T> getSheet(Class<R> rowType) {
+	@SuppressWarnings("unchecked")
+	public <R> SheetDescIF<R, T> getSheet(Class<R> rowType){
 		Collection<SheetDesc<?,T>> values = label2sheetDesc.values();
 		for (SheetDesc<?, T> sheetDesc : values) {
 			if (sheetDesc.getRecordClass().equals(rowType)) {
-				return (SheetDesc<R, T>) sheetDesc;
+				return (SheetDescIF<R, T>) sheetDesc;
 			}
 		}
 		return null;
@@ -114,7 +115,7 @@ public class WorkbookDesc<T> implements Serializable {
 		return AnnotationUtil.findClassAnnotations(workbookClass, true, Workbook.class).size() > 0;
 	}
 
-	public List<SheetDesc<?, T>> getOrderedSheets() {
+	public List<? extends SheetDescIF<?, T>> getOrderedSheets(){
 		return orderedSheets;
 	}
 	
@@ -146,5 +147,4 @@ public class WorkbookDesc<T> implements Serializable {
 					workbookClass.getClass().getName());
 		}
 	}
-	
 }

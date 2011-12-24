@@ -7,6 +7,7 @@
 	<modules>
 		<module>xlseasy.api</module>
 		<module>xlseasy.impl</module>
+		<module>xlseasy.cbe</module>
 	</modules>
 	<organization>
 		<name>adorsys GmbH Co. KG</name>
@@ -58,6 +59,11 @@
 			<id>sso</id>
 			<name>Sandro Sonntag</name>
 			<email>sso@adorsys.com</email>
+		</developer>
+		<developer>
+			<id>fpo</id>
+			<name>Francis Pouatcha</name>
+			<email>francis.pouatcha@afrotools.com</email>
 		</developer>
 	</developers>
 	<repositories>

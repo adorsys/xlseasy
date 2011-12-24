@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.adorsys.xlseasy.impl.proc;
+package org.adorsys.xlseasy.annotation.filter;
 
 import java.lang.annotation.Annotation;
 

@@ -23,5 +23,5 @@ public @interface SheetCellStyle {
 	short fontColor() default -1;
 	short backgroundColor() default -1;
 	CellAlign align() default CellAlign.GENERAL;
-	boolean wrapText() default false;	
+	boolean wrapText() default false;
 }

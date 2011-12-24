@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.impl.proc;
+package org.adorsys.xlseasy.annotation.filter;
 
 import java.util.Map;
 
