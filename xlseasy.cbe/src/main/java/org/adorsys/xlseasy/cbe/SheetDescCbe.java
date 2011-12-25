@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.FreezePaneObject;
@@ -22,6 +24,7 @@ import org.adorsys.xlseasy.boot.WorkBookSheet;
 import org.adorsys.xlseasy.impl.converter.KeyGenerator;
 import org.adorsys.xlseasy.impl.proc.SheetDescIF;
 import org.adorsys.xlseasy.impl.proc.SheetSession;
+import org.adorsys.xlseasy.utils.ReflectionUtils;
 import org.adorsys.xlseasy.utils.XlseasyUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.poi.hssf.usermodel.DVConstraint;
@@ -117,7 +120,25 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 
     public void setSheetData(Object workbookObj, List<T> records) {
         try {
-            PropertyUtils.setProperty(workbookObj, workBookSheet.getField().getName(), records);
+        	// if the collection property is not null, we can add ellement to the collection
+        	// without having to infer the type of the collection. 
+        	Collection<T> data = (Collection<T>)PropertyUtils.getProperty(workbookObj, workBookSheet.getField().getName());
+        	if (data!=null){
+        		data.clear();
+        		data.addAll(records);
+        	} else {
+        		Field field = ReflectionUtils.findField(workbookObj.getClass(), workBookSheet.getField().getName());
+        		Class<?> extractRawType = XlseasyUtils.extractRawType(field);
+        		if(extractRawType.equals(Collection.class) || extractRawType.equals(List.class)){
+            		PropertyUtils.setProperty(workbookObj, workBookSheet.getField().getName(), records);        			
+        		} else if(extractRawType.equals(Set.class)){
+            		PropertyUtils.setProperty(workbookObj, workBookSheet.getField().getName(), new HashSet<T>(records));        			
+        		} else {
+        			throw new SheetSystemException(ErrorCodeSheet.READ_BEAN_DATA_ERROR).addValue(
+        					"detail", "Property " +workBookSheet.getField().getName()+ 
+        					" must be preinstantiated or from type, Set, List or Collection but not from a concrete type." );
+        		}        		
+        	}
         } catch (IllegalAccessException e) {
             throw new SheetSystemException(ErrorCodeSheet.READ_BEAN_DATA_ERROR, e);
         } catch (InvocationTargetException e) {
