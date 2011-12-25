@@ -1,10 +1,15 @@
 package org.adorsys.xlseasy.utils;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
+
+import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
+import org.adorsys.xlseasy.annotation.SheetSystemException;
 
 public abstract class XlseasyUtils {
 
@@ -50,4 +55,49 @@ public abstract class XlseasyUtils {
 		return collectingFieldCallback.getFields();
 	}	
 
+	public static List<Field> readSheetFields(Class<?> clazz, Collection<String> excludedFields) {
+		CollectionFieldCallback collectingFieldCallback = new CollectionFieldCallback();
+		ReflectionUtils.doWithFields(clazz, collectingFieldCallback,
+				new CompositeFieldFilter(
+						new ExcludeByFieldNameFilter(excludedFields), 
+						new ExcludeStaticFieldFilter()));
+		
+		return collectingFieldCallback.getFields();
+	}	
+	
+	public static <T> Constructor<T> getConstructor(Class<T> klass, Class<?>... paramTypes){
+		try {
+			return klass.getConstructor(paramTypes);
+		} catch (NoSuchMethodException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		} catch (SecurityException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		}
+	}
+	
+	public static <T> T newInstance(Constructor<T> constructor, Object...objects){
+		try {
+			return constructor.newInstance(objects);
+		} catch (InstantiationException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		} catch (IllegalAccessException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		} catch (IllegalArgumentException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		} catch (InvocationTargetException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		}
+	}
+
+	public static <T> T newInstance(Class<T> klass){
+		try {
+			return klass.newInstance();
+		} catch (InstantiationException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		} catch (IllegalAccessException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		} catch (IllegalArgumentException e) {
+			throw new SheetSystemException(ErrorCodeSheet.BEAN_INTROSPECTION_EXCEPTION,e);
+		}
+	}
 }

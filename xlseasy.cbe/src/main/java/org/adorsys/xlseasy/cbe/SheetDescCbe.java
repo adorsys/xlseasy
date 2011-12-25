@@ -14,16 +14,15 @@ import java.util.Map;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.FreezePaneObject;
 import org.adorsys.xlseasy.annotation.ISheetSession;
-import org.adorsys.xlseasy.annotation.Sheet;
 import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.annotation.SheetFormatter;
 import org.adorsys.xlseasy.annotation.SheetObject;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
-import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
+import org.adorsys.xlseasy.boot.WorkBookSheet;
 import org.adorsys.xlseasy.impl.converter.KeyGenerator;
 import org.adorsys.xlseasy.impl.proc.SheetDescIF;
 import org.adorsys.xlseasy.impl.proc.SheetSession;
-import org.adorsys.xlseasy.utils.ReflectionUtils;
+import org.adorsys.xlseasy.utils.XlseasyUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.poi.hssf.usermodel.DVConstraint;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -40,66 +39,52 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
     private final Map<String, ColumnDescCbe> propertyName2desc = new HashMap<String, ColumnDescCbe>();
     private final List<ColumnDescCbe> columnOrder = new ArrayList<ColumnDescCbe>();
 
-    private final Class<T> recordClass;
-    private final String label;
-    private final String workbookProperty;
     private final SheetObject sheet;
     private final WorkbookDescCbe<WT> workbook;
     private final KeyGenerator keyGenerator;
-    private final int sheetIndex;
-	private final Collection<String> excludedFields;
-	private final Map<String, String> fieldDateStyles;
+    @SuppressWarnings("unused")
+	private final int sheetIndex;
+    private WorkBookSheet<T> workBookSheet;
 
     /**
      * @param recordClass
      */
-    public SheetDescCbe(WorkbookDescCbe<WT> workbook, Class<T> recordClass, 
-    		String label, String workbookProperty, int sheetIndex,
-    		Collection<String> excludedFields, Map<String, String> fieldDateStyles,
-    		Map<Class<?>, String> keyFieldNameMap) {
+    public SheetDescCbe(WorkbookDescCbe<WT> workbook, WorkBookSheet<T> workBookSheet, String workbookProperty, int sheetIndex) {
         super();
-        this.recordClass = recordClass;
         this.workbook = workbook;
         this.sheetIndex = sheetIndex;
+        this.workBookSheet = workBookSheet;
 
-        this.sheet = new SheetObject(label);
-
-        this.workbookProperty = workbookProperty;
-        this.label = label;
-        
-        String keyFieldName = keyFieldNameMap.get(recordClass);
-        if(keyFieldName!=null){
-        	Field keyField = ReflectionUtils.findField(recordClass, keyFieldName);
-        	this.keyGenerator = new KeyGenerator(recordClass, keyField);
+        this.sheet = new SheetObject(workBookSheet.getField().getName());
+        if(workBookSheet.getKeyField()!=null){
+        	this.keyGenerator = new KeyGenerator(workBookSheet.getSheetKlass(), workBookSheet.getKeyField());
         } else {
-        	this.keyGenerator = new KeyGenerator(recordClass);
+        	this.keyGenerator = new KeyGenerator(workBookSheet.getSheetKlass());
         }
         
-        this.fieldDateStyles = fieldDateStyles!=null?fieldDateStyles:new HashMap<String, String>();
-        this.excludedFields = excludedFields!=null?excludedFields:new ArrayList<String>();
-        initColumnDescs(keyFieldNameMap);
+        initColumnDescs();
     }
 
     public List<ColumnDescCbe> getColumnDescs(){
         return Collections.unmodifiableList(columnOrder);
     }
 
-    private void initColumnDescs(Map<Class<?>, String> keyFieldNameMap) {
-    	List<SheetColumDeclaration> sheetColumDeclarations = SheetProcessor.processSheet(
-    			recordClass, excludedFields, fieldDateStyles, workbook);
+    private void initColumnDescs() {
+    	List<SheetColumDeclaration> sheetColumDeclarations = SheetProcessor.processSheet(workBookSheet, workbook);
     	int columnIndex = 0;
     	for (SheetColumDeclaration sheetColumDeclaration : sheetColumDeclarations) {
-    		addColumn(sheetColumDeclaration, columnIndex, keyFieldNameMap);
+    		addColumn(sheetColumDeclaration, columnIndex, workBookSheet);
     		columnIndex++;
 		}
     }
     
-    private void addColumn(SheetColumDeclaration sheetColumDeclaration,int columnIndex, Map<Class<?>, String> keyFieldNameMap) {
+    private void addColumn(SheetColumDeclaration sheetColumDeclaration,
+    		int columnIndex, WorkBookSheet<T> workBookSheet) {
         PropertyDescriptor pd = sheetColumDeclaration.getPropertyDescriptor();
         SheetColumnObject sheetColumn = sheetColumDeclaration.getSheetColumn();
-        Field field = AnnotationUtil.findField(recordClass, pd.getName());
+        Field field = workBookSheet.getField(pd.getName());
         if(field==null) throw new SheetSystemException(ErrorCodeSheet.FIELD_WITH_NAME_NOT_FOUND).addValue("fieldName", pd.getName());
-        ColumnDescCbe columnDesc = new ColumnDescCbe(pd, sheetColumn, columnIndex,field, keyFieldNameMap);
+        ColumnDescCbe columnDesc = new ColumnDescCbe(pd, sheetColumn, columnIndex,field, workBookSheet);
         columnOrder.add(columnDesc);
         xlsColumnName2desc.put(columnDesc.getXlsColumnLabel(), columnDesc);
         propertyName2desc.put(columnDesc.getPropertyName(), columnDesc);
@@ -114,13 +99,13 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
     }
 
     public String getLabel() {
-        return label;
+        return workBookSheet.getField().getName();
     }
 
     @SuppressWarnings("unchecked")
     public List<T> getSheetData(Object workbookObj) {
         try {
-            return new ArrayList<T>((Collection<T>) PropertyUtils.getProperty(workbookObj, workbookProperty));
+            return new ArrayList<T>((Collection<T>) PropertyUtils.getProperty(workbookObj, workBookSheet.getField().getName()));
         } catch (IllegalAccessException e) {
             throw new SheetSystemException(ErrorCodeSheet.READ_BEAN_DATA_ERROR, e);
         } catch (InvocationTargetException e) {
@@ -132,7 +117,7 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 
     public void setSheetData(Object workbookObj, List<T> records) {
         try {
-            PropertyUtils.setProperty(workbookObj, workbookProperty, records);
+            PropertyUtils.setProperty(workbookObj, workBookSheet.getField().getName(), records);
         } catch (IllegalAccessException e) {
             throw new SheetSystemException(ErrorCodeSheet.READ_BEAN_DATA_ERROR, e);
         } catch (InvocationTargetException e) {
@@ -195,21 +180,13 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
                 }
             }
             records.add(record);
-            session.setObjectByKey(recordClass, keyGenerator.getKey(record), record);
+            session.setObjectByKey(workBookSheet.getSheetKlass(), keyGenerator.getKey(record), record);
         }
         return records;
     }
 
     public T newRecordInstance() {
-        try {
-            return recordClass.newInstance();
-        } catch (InstantiationException e) {
-            throw new SheetSystemException(ErrorCodeSheet.INSTANCIATE_RECORD_BEAN_FAILED, e).addValue("class",
-                    recordClass.getClass().getName());
-        } catch (IllegalAccessException e) {
-            throw new SheetSystemException(ErrorCodeSheet.INSTANCIATE_RECORD_BEAN_FAILED, e).addValue("class",
-                    recordClass.getClass().getName());
-        }
+    	return XlseasyUtils.newInstance(workBookSheet.getSheetKlass());
     }
 
     public SheetObject getSheet() {
@@ -269,14 +246,15 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
     }
 
     public Class<T> getRecordClass() {
-        return recordClass;
+        return workBookSheet.getSheetKlass();
     }
 
     protected void addConstraints(HSSFSheet sheet) {
         int index = 0;
         for (ColumnDescCbe c : columnOrder) {
-            Sheet sheetAnnotation = c.getType().getAnnotation(Sheet.class);
-            if (sheetAnnotation != null) {
+//            Sheet sheetAnnotation = c.getType().getAnnotation(Sheet.class);
+            WorkBookSheet referencedSheet = workBookSheet.getWorkbookCbe().getWorkBookSheet(c.getType());//.getKeyField()
+            if (referencedSheet != null) {
                 SheetDescCbe<?, WT> sheetDesc = workbook.getSheet(c.getType());
                 String keyColumnName = sheetDesc.keyGenerator.getKeyColumnName();
                 if (keyColumnName != null) {

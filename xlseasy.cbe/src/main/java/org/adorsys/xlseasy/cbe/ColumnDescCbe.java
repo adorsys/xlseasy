@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.cbe;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.ICellConverter;
@@ -12,6 +11,7 @@ import org.adorsys.xlseasy.annotation.SheetCellStyleObject;
 import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
+import org.adorsys.xlseasy.boot.WorkBookSheet;
 import org.adorsys.xlseasy.impl.converter.CellConverter;
 import org.adorsys.xlseasy.impl.converter.CollectionTypeConverter;
 import org.adorsys.xlseasy.impl.converter.GenericCollectionElementConverter;
@@ -19,7 +19,6 @@ import org.adorsys.xlseasy.impl.converter.SheetConverter;
 import org.adorsys.xlseasy.impl.proc.ColumnDescIF;
 import org.adorsys.xlseasy.impl.proc.SheetSession;
 import org.adorsys.xlseasy.impl.proc.WorkbookStyle;
-import org.adorsys.xlseasy.utils.ReflectionUtils;
 import org.adorsys.xlseasy.utils.XlseasyUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
@@ -47,6 +46,8 @@ public class ColumnDescCbe implements ColumnDescIF {
 	private final ICellConverter converter;
 	
 	private final int columnIndex;
+	
+	private final WorkBookSheet workBookSheet;
 
 	/**
 	 * @param annoSheetColumn
@@ -60,13 +61,14 @@ public class ColumnDescCbe implements ColumnDescIF {
 	 */
 	@SuppressWarnings("unchecked")
 	public ColumnDescCbe(PropertyDescriptor pd, SheetColumnObject sc, 
-			int columnIndex, Field field, Map<Class<?>, String> keyFieldNameMap) {
+			int columnIndex, Field field, WorkBookSheet workBookSheet) {
 		super();
 		this.columnIndex = columnIndex;
 		this.annoSheetColumn = sc;
 		this.annoSheetColumnStyle = annoSheetColumn != null ? annoSheetColumn.columnStyle() : null;
 		this.annoSheetHeaderStyle = annoSheetColumn != null ? annoSheetColumn.headerStyle() : null;
 		this.propertyName = pd.getName();
+		this.workBookSheet = workBookSheet;
 		
 		this.xlsColumnLabel = annoSheetColumn.columnName();
 
@@ -76,50 +78,36 @@ public class ColumnDescCbe implements ColumnDescIF {
 			if (CellConverter.class.isAssignableFrom(annoSheetColumn.converter())) {
 				this.converter = CellConverter.getConverter((Class<CellConverter>)annoSheetColumn.converter());
 			} else if (SheetConverter.class.isAssignableFrom(annoSheetColumn.converter())){
-				this.converter = initSheetConverter(keyFieldNameMap);
+				this.converter = SheetConverter.getConverter(type, workBookSheet.getWorkbookCbe().getWorkBookSheet(type).getKeyField());
 			} else if (CollectionTypeConverter.class.isAssignableFrom(annoSheetColumn.converter())){
 				if(!XlseasyUtils.isCollectionType(field)){
 					throw new SheetSystemException(ErrorCodeSheet.WRONG_CONVERTER_CLASS_TYPE).addValue("type", annoSheetColumn.converter());
 				}
 				Class<?> rawType = XlseasyUtils.extractRawType(field);
 				Class<?> elementType = XlseasyUtils.extractElementType(field);
-				this.converter = getCollectionTypeConverter(rawType, elementType, keyFieldNameMap);
+				this.converter = getCollectionTypeConverter(rawType, elementType, workBookSheet);
 			} else {
 				throw new SheetSystemException(ErrorCodeSheet.WRONG_CONVERTER_CLASS_TYPE).addValue("type", annoSheetColumn.converter());
 			}
-		} else if (keyFieldNameMap.containsKey(type)) {
-			this.converter = initSheetConverter(keyFieldNameMap);
+		} else if (workBookSheet.getWorkbookCbe().getWorkBookSheet(type)!=null &&  
+				workBookSheet.getWorkbookCbe().getWorkBookSheet(type).getKeyField()!=null) 
+		{
+			this.converter = SheetConverter.getConverter(type, workBookSheet.getWorkbookCbe().getWorkBookSheet(type).getKeyField());
 		} else if (XlseasyUtils.isCollectionType(field)){
 			XlseasyUtils.extractRawType(field);
 			Class<?> rawType = XlseasyUtils.extractRawType(field);
 			Class<?> elementType = XlseasyUtils.extractElementType(field);
-			this.converter = getCollectionTypeConverter(rawType, elementType, keyFieldNameMap);
+			this.converter = getCollectionTypeConverter(rawType, elementType, workBookSheet);
 		} else {
 			this.converter = CellConverter.getConverterForType(type);
 		} 
 	}
-
-	private SheetConverter initSheetConverter(Map<Class<?>, String> keyFieldNameMap){
-		Field keyField = null;
-		String keyFieldName = keyFieldNameMap.get(type);
-		if(keyFieldName!=null){
-			keyField = ReflectionUtils.findField(type, keyFieldName);
-		}
-		if(keyField==null){
-			throw new SheetSystemException(ErrorCodeSheet.REFERENCED_SHEET_DOES_NOT_PROVIDE_KEY_ANNOTATION);
-		}
-		return SheetConverter.getConverter(type, keyField);
-	}
 	
 	private CollectionTypeConverter getCollectionTypeConverter(Class<?> rawType, 
-			Class<?> elementType, Map<Class<?>, String> keyFieldNameMap){
-		Field keyField = null;
-		String keyFieldName = keyFieldNameMap.get(elementType);
-		if(keyFieldName!=null){
-			keyField = ReflectionUtils.findField(elementType, keyFieldName);
-		}
-		if(keyField!=null){
-			SheetConverter sheetConverter = SheetConverter.getConverter(elementType, keyField);
+			Class<?> elementType, WorkBookSheet workBookSheet){
+		WorkBookSheet referencedBookSheet = workBookSheet.getWorkbookCbe().getWorkBookSheet(elementType);
+		if(referencedBookSheet!=null && referencedBookSheet.getKeyField()!=null){
+			SheetConverter sheetConverter = SheetConverter.getConverter(elementType, referencedBookSheet.getKeyField());
 			return CollectionTypeConverter.getConverter(type, elementType,sheetConverter);
 		} else {
 			return CollectionTypeConverter.getConverter(type, elementType,

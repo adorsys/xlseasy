@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.impl.proc;
 import org.adorsys.xlseasy.annotation.CellAlign;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.SheetCellStyleObject;
-import org.adorsys.xlseasy.annotation.SheetColumn;
 import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.apache.commons.lang.StringUtils;

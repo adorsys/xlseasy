@@ -7,25 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adorsys.xlseasy.annotation.HorizontalRecordSheetObject;
-import org.adorsys.xlseasy.utils.CollectionFieldCallback;
-import org.adorsys.xlseasy.utils.CollectionFieldFilter;
-import org.adorsys.xlseasy.utils.CompositeFieldFilter;
-import org.adorsys.xlseasy.utils.ExcludeStaticFieldFilter;
-import org.adorsys.xlseasy.utils.ReflectionUtils;
-import org.adorsys.xlseasy.utils.XlseasyUtils;
+import org.adorsys.xlseasy.boot.WorkBookSheet;
+import org.adorsys.xlseasy.boot.WorkbookCbe;
 
 public class WorkbookProcessor {
 
 	public static List<HorizontalRecordSheetDeclaration> processWorkbook(
-			Class<?> clazz) 
+			Class<?> clazz, WorkbookCbe workbookCbe) 
 	{
 
-		List<Field> fields = XlseasyUtils.readWorkbookFields(clazz);
-		List<HorizontalRecordSheetDeclaration> result = new ArrayList<HorizontalRecordSheetDeclaration>();
+		List<WorkBookSheet> workBookSheets = workbookCbe.getWorkBookSheets();			
+		List<HorizontalRecordSheetDeclaration> result = new ArrayList<HorizontalRecordSheetDeclaration>(workBookSheets.size());
 
-		for (Field field : fields) {
-			Class<?> sheetKlass = XlseasyUtils.extractElementType(field);
-			if(sheetKlass==null) continue;
+		for (WorkBookSheet workBookSheet : workBookSheets) {
+			Field field = workBookSheet.getField();
+			Class<?> sheetKlass = workBookSheet.getSheetKlass();
 
 			String propertyName = field.getName();
 			HorizontalRecordSheetObject horizontalRecordSheet = 
@@ -38,7 +34,7 @@ public class WorkbookProcessor {
 				throw new IllegalStateException(e);
 			}
 			HorizontalRecordSheetDeclaration dekl = new HorizontalRecordSheetDeclaration(
-					propertyDescriptor, horizontalRecordSheet, sheetKlass);
+					propertyDescriptor, horizontalRecordSheet, workBookSheet);
 			result.add(dekl);
 		}
 

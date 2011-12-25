@@ -9,16 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.adorsys.xlseasy.cbe.WorkbookDescFactoryCbe;
-import org.adorsys.xlseasy.impl.proc.SpreadsheetServiceImpl;
-import org.adorsys.xlseasy.impl.proc.WorkbookDescFactory;
+import org.adorsys.xlseasy.annotation.SpreadsheetService;
+import org.adorsys.xlseasy.boot.SpreadSheetServiceBootStrap;
 import org.apache.commons.lang.BooleanUtils;
 import org.junit.Test;
 
@@ -27,20 +22,16 @@ public class SpreadsheetServiceImplTest {
 	@Test
 	public void testLoadSpreadsheet() {
 
-		
-		Collection<String> excludedFields = new ArrayList<String>();
-		Map<Class<?>,Map<String, String>> fieldDateStyles = new HashMap<Class<?>,Map<String, String>>();
-		Map<Class<?>,String> bkFields = new HashMap<Class<?>,String>();
-		
-		WorkbookDescFactory workbookDescFactory = new WorkbookDescFactoryCbe(excludedFields, fieldDateStyles,bkFields);
-		SpreadsheetServiceImpl spreadSheetImpl = new SpreadsheetServiceImpl(workbookDescFactory);
+		SpreadSheetServiceBootStrap bootStrap = new SpreadSheetServiceBootStrap();
+		bootStrap.setWorkbookKlass(ShopManagement.class);
+		SpreadsheetService spreadService = bootStrap.createSpreadService();
 
 		String managementFile = "management.xls";
 
 		InputStream managementStream = SpreadsheetServiceImplTest.class
 				.getResourceAsStream(managementFile);
 
-		ShopManagement shopManagement = spreadSheetImpl.loadSpreadsheet(
+		ShopManagement shopManagement = spreadService.loadSpreadsheet(
 				managementStream, ShopManagement.class);
 		// Verify if all spreadsheets have been read and objects created
 		assertEquals(3, shopManagement.getProducts().size());
@@ -87,14 +78,10 @@ public class SpreadsheetServiceImplTest {
 
 	@Test
 	public void testSaveSpreadsheet() throws FileNotFoundException {
-		Collection<String> excludedFields = new ArrayList<String>();
-		Map<Class<?>,Map<String, String>> fieldDateStyles = new HashMap<Class<?>,Map<String, String>>();
-		Map<Class<?>,String> bkFields = new HashMap<Class<?>,String>();
-		
-		WorkbookDescFactory workbookDescFactory = new WorkbookDescFactoryCbe(excludedFields, fieldDateStyles,bkFields);
-		SpreadsheetServiceImpl service = new SpreadsheetServiceImpl(workbookDescFactory);
+		SpreadSheetServiceBootStrap bootStrap = new SpreadSheetServiceBootStrap();
+		bootStrap.setWorkbookKlass(ShopManagement.class);
+		SpreadsheetService spreadService = bootStrap.createSpreadService();
 
-		//
 		ShopManagement shopManagement = new ShopManagement();
 
 		Supplier supplier1 = new Supplier("Amzon", "Friedriech", "44524", "Hagen", true);
@@ -115,12 +102,12 @@ public class SpreadsheetServiceImplTest {
 
 		outputStream = new FileOutputStream(workbookFile);
 
-		service.saveSpreadsheet(ShopManagement.class, shopManagement,
+		spreadService.saveSpreadsheet(ShopManagement.class, shopManagement,
 				outputStream);
 
 		InputStream managementStream = new FileInputStream(workbookFile);
 
-		shopManagement = service.loadSpreadsheet(
+		shopManagement = spreadService.loadSpreadsheet(
 				managementStream, ShopManagement.class);
 		// Verify if all spreadsheets have been read and objects created
 		assertTrue(shopManagement.getProducts().size() == 3);

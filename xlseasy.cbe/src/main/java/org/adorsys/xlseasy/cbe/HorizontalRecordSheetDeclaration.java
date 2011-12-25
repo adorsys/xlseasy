@@ -3,45 +3,35 @@ package org.adorsys.xlseasy.cbe;
 import java.beans.PropertyDescriptor;
 
 import org.adorsys.xlseasy.annotation.HorizontalRecordSheetObject;
+import org.adorsys.xlseasy.boot.WorkBookSheet;
 
 public class HorizontalRecordSheetDeclaration {
 
-	private PropertyDescriptor propertyDescriptor;
+	private final PropertyDescriptor propertyDescriptor;
 	
-	private HorizontalRecordSheetObject horizontalRecordSheet;
+	private final HorizontalRecordSheetObject horizontalRecordSheet;
 	
-	private Class<?> recordKlass;
+	private final WorkBookSheet workBookSheet;
 
 	public HorizontalRecordSheetDeclaration(
 			PropertyDescriptor propertyDescriptor,
-			HorizontalRecordSheetObject horizontalRecordSheet, Class<?> recordKlass) {
+			HorizontalRecordSheetObject horizontalRecordSheet, WorkBookSheet workBookSheet) {
 		super();
 		this.propertyDescriptor = propertyDescriptor;
 		this.horizontalRecordSheet = horizontalRecordSheet;
-		this.recordKlass = recordKlass;
+		this.workBookSheet = workBookSheet;
 	}
 
 	public PropertyDescriptor getPropertyDescriptor() {
 		return propertyDescriptor;
 	}
 
-	public void setPropertyDescriptor(PropertyDescriptor propertyDescriptor) {
-		this.propertyDescriptor = propertyDescriptor;
-	}
-
 	public HorizontalRecordSheetObject getHorizontalRecordSheet() {
 		return horizontalRecordSheet;
 	}
 
-	public void setHorizontalRecordSheet(HorizontalRecordSheetObject horizontalRecordSheet) {
-		this.horizontalRecordSheet = horizontalRecordSheet;
+	public WorkBookSheet getWorkBookSheet() {
+		return workBookSheet;
 	}
 
-	public Class<?> getRecordKlass() {
-		return recordKlass;
-	}
-
-	public void setRecordKlass(Class<?> recordKlass) {
-		this.recordKlass = recordKlass;
-	}
 }
