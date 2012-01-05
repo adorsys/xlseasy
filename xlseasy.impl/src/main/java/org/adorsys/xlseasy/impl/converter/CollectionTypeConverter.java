@@ -78,7 +78,8 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 					concatenated += collectionElementSeparator+keyValue;
 				}
 			}
-			CellConverter.getConverterForType(String.class).setHSSFCell(cell, concatenated, objectType, session);
+			if(StringUtils.isNotBlank(concatenated))
+				CellConverter.getConverterForType(String.class).setHSSFCell(cell, concatenated, objectType, session);
 		}
 	}
 
@@ -86,13 +87,20 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 			ISheetSession<?, ?> session) throws SpreadsheetConverterException {
 		HSSFCell cell = (HSSFCell) cellObject;
 		String  keys = (String) CellConverter.getConverterForType(String.class).getDataCell(cell, objectType, session);
-		
+		if(keys==null) keys="";
 		String[] split = keys.split(collectionElementSeparator);
 		Collection<Object> col = newCollectionInstance();
 		Class<?> tp = getTypeParameter();
 		for (String keyValue : split) {
 			Object valueFromCollection = collectionElementConverter.getValueFromCollection(cellObject, keyValue, tp, session);
-			col.add(valueFromCollection);
+			if(valueFromCollection!=null){
+				if(valueFromCollection instanceof String){
+					if(StringUtils.isNotBlank((String) valueFromCollection))
+						col.add(valueFromCollection);
+				} else {
+					col.add(valueFromCollection);
+				}
+			}
 		}
 		return col;
 	}
