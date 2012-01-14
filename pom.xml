@@ -35,8 +35,8 @@
 		<connection>scm:git:https://sandro.sonntag@code.google.com/p/xlseasy</connection> 
 		</scm> -->
 	<scm>
-		<connection>scm:git:https://code.google.com/p/xlseasy/</connection>
-		<developerConnection>scm:git:https://code.google.com/p/xlseasy/</developerConnection>
+		<connection>scm:git:origin</connection>
+		<developerConnection>scm:git:origin</developerConnection>
 		<url>http://code.google.com/p/xlseasy/</url>
 	</scm>
 
