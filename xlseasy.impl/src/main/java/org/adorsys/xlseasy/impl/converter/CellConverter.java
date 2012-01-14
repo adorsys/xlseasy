@@ -35,8 +35,7 @@ public abstract class CellConverter implements ICellConverter {
 		registerDefaultType(DoubleCellConverter.class);
 		registerDefaultType(StringCellConverter.class);
 		registerDefaultType(EnumCellConverter.class);
-//		registerDefaultType(SheetConverter.class);
-//		registerDefaultType(CollectionCellConverter.class);
+		registerDefaultType(BigDecimaCellConverter.class);
 	}
 
 	/* (non-Javadoc)
