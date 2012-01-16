@@ -48,6 +48,14 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>org.apache.maven.plugins</artifactId>
+				<groupId>maven-release-plugin</groupId>
+				<version>2.2.2</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
 		</plugins>
 		<!-- <extensions> <extension> <groupId>org.jvnet.wagon-svn</groupId> <artifactId>wagon-svn</artifactId> 
 			<version>1.12</version> </extension> </extensions> -->
@@ -73,19 +81,6 @@
 			<email>francis.pouatcha@adorsys.com</email>
 		</developer>
 	</developers>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>org.apache.maven.plugins</artifactId>
-				<groupId>maven-release-plugin</groupId>
-				<version>2.2.2</version>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 		
 	<!-- <repositories> <repository> <id>xls.easy.repo</id> <url>https://xlseasy.googlecode.com/svn/maven2repo</url> 
 		</repository> </repositories> -->
