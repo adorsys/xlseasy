@@ -35,8 +35,8 @@
 		<connection>scm:git:https://sandro.sonntag@code.google.com/p/xlseasy</connection> 
 		</scm> -->
 	<scm>
-		<connection>scm:git:origin</connection>
-		<developerConnection>scm:git:origin</developerConnection>
+		<connection>scm:git:https://code.google.com/p/xlseasy</connection>
+		<developerConnection>scm:git:https://code.google.com/p/xlseasy</developerConnection>
 		<url>http://code.google.com/p/xlseasy/</url>
 	</scm>
 
@@ -74,6 +74,20 @@
 			<email>francis.pouatcha@adorsys.com</email>
 		</developer>
 	</developers>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>org.apache.maven.plugins</artifactId>
+				<groupId>maven-release-plugin</groupId>
+				<version>2.2.2</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+		
 	<!-- <repositories> <repository> <id>xls.easy.repo</id> <url>https://xlseasy.googlecode.com/svn/maven2repo</url> 
 		</repository> </repositories> -->
 	<!-- <distributionManagement> <repository> <id>xls.easy.repo</id> <url>scm:git:https://sandro.sonntag@code.google.com/p/xlseasy.mavenrepo/</url> 
