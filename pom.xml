@@ -49,7 +49,8 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
+				<artifactId>org.apache.maven.plugins</artifactId>
+				<groupId>maven-release-plugin</groupId>
 				<version>2.2.2</version>
 				<configuration>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
@@ -80,19 +81,6 @@
 			<email>francis.pouatcha@adorsys.com</email>
 		</developer>
 	</developers>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>org.apache.maven.plugins</artifactId>
-				<groupId>maven-release-plugin</groupId>
-				<version>2.2.2</version>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 		
 	<!-- <repositories> <repository> <id>xls.easy.repo</id> <url>https://xlseasy.googlecode.com/svn/maven2repo</url> 
 		</repository> </repositories> -->
