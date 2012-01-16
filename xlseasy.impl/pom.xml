@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>xlseasy</artifactId>
 		<groupId>org.adorsys.xlseasy</groupId>
-		<version>1.3-CR1</version>
+		<version>1.3-CR2-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>xlseasy.impl</artifactId>
@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>org.adorsys.xlseasy</groupId>
 			<artifactId>xlseasy.api</artifactId>
-			<version>1.3-CR1</version>
+			<version>1.3-CR2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
