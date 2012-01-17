@@ -3,7 +3,7 @@
   <parent>
     <artifactId>xlseasy</artifactId>
     <groupId>org.adorsys.xlseasy</groupId>
-    <version>1.3-CR3</version>
+    <version>1.3-CR4-SNAPSHOT</version>
   </parent>
   <artifactId>xlseasy.cbe</artifactId>
   <name>xlseasy cbe</name>
@@ -19,12 +19,12 @@
 		<dependency>
 			<groupId>org.adorsys.xlseasy</groupId>
 			<artifactId>xlseasy.api</artifactId>
-			<version>1.3-CR3</version>
+			<version>1.3-CR4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.adorsys.xlseasy</groupId>
 			<artifactId>xlseasy.impl</artifactId>
-			<version>1.3-CR3</version>
+			<version>1.3-CR4-SNAPSHOT</version>
 		</dependency>
 		
 		<!-- 
