@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Creates a split (freezepane).
  * <p/>
- * Michal Hájek, <a href="mailto:michalhajek@centrum.cz">michalhajek@centrum.cz</a>
+ * Michal Hajek, <a href="mailto:michalhajek@centrum.cz">michalhajek@centrum.cz</a>
  *
  * @since 22.5.11
  */
