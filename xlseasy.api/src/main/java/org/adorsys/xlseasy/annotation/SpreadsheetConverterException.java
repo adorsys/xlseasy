@@ -1,5 +1,6 @@
 package org.adorsys.xlseasy.annotation;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -10,18 +11,23 @@ import java.util.Map;
  */
 public class SpreadsheetConverterException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
+	private ErrorCodeSheet errorCode;
+
+	private Throwable cause;
+	
+	private Map<String, Object> values;
+	
 	/**
 	 * @param code
 	 * @param cause
 	 * @param values
 	 */
-	public SpreadsheetConverterException(ErrorCodeSheet code, Throwable cause,
-			Map<String, Object> values) {
+	public SpreadsheetConverterException(ErrorCodeSheet code, Throwable cause, Map<String, Object> values) {
+		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
+		this.cause = cause;
+		this.values = values == null ? new HashMap<String, Object>() : values;
 	}
 
 	/**
@@ -29,23 +35,32 @@ public class SpreadsheetConverterException extends Exception {
 	 * @param cause
 	 */
 	public SpreadsheetConverterException(ErrorCodeSheet code, Throwable cause) {
+		this(code, cause, null);
 	}
 
 	/**
 	 * @param code
 	 */
 	public SpreadsheetConverterException(ErrorCodeSheet code) {
+		this(code, null, null);
 	}
 
-	public SpreadsheetConverterException addValue(String string,
-			Class<?> objectType) {
-		// TODO Auto-generated method stub
-		return null;
+	public SpreadsheetConverterException addValue(String descriptor, Object value) {
+		values.put(descriptor, value);
+		return this;
 	}
 
 	public ErrorCodeSheet getErrorCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return errorCode;
 	}
 
+	@Override
+	public Throwable getCause() {
+		return this.cause;
+	}
+
+	public String dump() {
+		return values.toString();
+	}
+	
 }

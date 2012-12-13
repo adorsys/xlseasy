@@ -7,6 +7,7 @@ package org.adorsys.xlseasy.annotation;
  * @author sso
  */
 public enum ErrorCodeSheet {
+	UNKNOWN,
 	CONVERTER_INIT_ERROR,
 	WRONG_CONVERTER_CLASS_TYPE,
 	UNKNOWN_CELL_FORMAT,
