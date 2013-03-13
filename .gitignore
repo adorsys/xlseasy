@@ -5,5 +5,12 @@
 *.war
 *.ear
 
+# Hidden Files #
+.DS_Store
+.classpath
+.project
+.settings
+
 # Directories #
 RemoteSystemsTempFiles/
+bin/
