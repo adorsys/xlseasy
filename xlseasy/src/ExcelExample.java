@@ -149,16 +149,14 @@ public class ExcelExample extends MyExcelFunction {
 			// setup header and footer margins
 			sheet1.setMargin(Sheet.HeaderMargin, 0.25);
 			sheet1.setMargin(Sheet.FooterMargin, 0.25);
-			
-			
-			
+
 			/**
 			 * Write now on Sheet 2
 			 * */
-			
+
 			// We create a style to apply on some cell
 			HSSFCellStyle style = book.createCellStyle();
-			
+
 			// 2nd row
 			cellIndex++;
 			row = sheet2.createRow(1);
@@ -167,40 +165,37 @@ public class ExcelExample extends MyExcelFunction {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue((i + 1) + ".");
 				cellIndex++;
-			}			
+			}
 			cellIndex = 1;
 
-			
 			// 3rd row
 			row = sheet2.createRow(2);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Client's name");
 			cell.setCellStyle(getStyle(book));
 			cellIndex++;
-			
+
 			for (int i = 0; i < getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(name[i]);
 				cellIndex++;
-			}			
+			}
 			cellIndex = 1;
 
-			
 			// 4th row
 			row = sheet2.createRow(3);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue(new HSSFRichTextString("Price / article"));
 			cell.setCellStyle(getStyle(book));
 			cellIndex++;
-			
+
 			for (int i = 0; i < getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue("2.5 EUR");
 				cellIndex++;
-			}			
+			}
 			cellIndex = 1;
-			
-			
+
 			// 5th row
 			row = sheet2.createRow(4);
 			cell = row.createCell(cellIndex);
@@ -210,44 +205,102 @@ public class ExcelExample extends MyExcelFunction {
 
 			// creates an array to save generated random numbers
 			int[] myArray = new int[getArrayLength()];
-			
+
 			// get random index to compute total price
-			int rdm;		
+			int rdm;
 			for (int i = 0; i < getArrayLength(); i++) {
 				rdm = getRandomIndex();
-				
+
 				// save the random number into our new array
 				myArray[i] = rdm;
-				
+
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(rdm);
 				style.setAlignment((short) 0x2);
 				cell.setCellStyle(style);
 				cellIndex++;
-			}			
+			}
 			cellIndex = 1;
 
-			
 			// 6th row
 			row = sheet2.createRow(5);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Total");
 			cell.setCellStyle(getStyle(book));
 			cellIndex++;
-			
+
 			for (int i = 0; i < getArrayLength(); i++) {
-				
+
 				cell = row.createCell(cellIndex);
+
+				/**
+				 * TODO
+				 * 
+				 * Die idee ist es hier statt die Daten im Array zu
+				 * speichern, um sie wieder aufzurufen, direkt auf die Daten der
+				 * oberen Reihe zuzugreifen.
+				 * 
+				 * ***
+				 * 
+				 * Zum Beispiel, ich bin in der Zelle B11 und brauche Daten von B10. Wie schaffe ich es?
+				 */
+
 				cell.setCellFormula("" + myArray[i] + "*2.5");
 				style.setAlignment((short) 0x2);
 				cell.setCellStyle(style);
 				cellIndex++;
-			}			
-			cellIndex = 2;
+			}
+			cellIndex = 1;				
+
+			
+			// 7th row / just to test the function getCellByName()
+			row = sheet2.createRow(6);
+			cell = row.createCell(cellIndex);
+			cell.setCellValue("getCellByName()");
+			cellIndex++;
+			
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue(getCellByName(cell.getRowIndex(), cell.getColumnIndex()));
+				cell.setCellStyle(getStyle(book));
+				cellIndex++;
+			}
+			cellIndex = 1;
+
+			
+			// 8th row / just to test the function getCellByNumber()
+			row = sheet2.createRow(7);
+			cell = row.createCell(cellIndex);
+			cell.setCellValue("getCellByNumber()");
+			cellIndex++;
+			
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue(getCellByNumber(cell.getRowIndex(), cell.getColumnIndex()));
+				cell.setCellStyle(getStyle(book));
+				cellIndex++;
+			}
+			cellIndex = 1;
+
+			
+			// 9th row / just to test the function getCellByReference()
+			row = sheet2.createRow(8);
+			cell = row.createCell(cellIndex);
+			cell.setCellValue("getCellByReference()");
+			cellIndex++;
+			
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue(getCellByReference(cell.getRowIndex(), cell.getColumnIndex()));
+				cell.setCellStyle(getStyle(book));
+				cellIndex++;
+			}
+			cellIndex = 1;
+			
 
 			// setup B-column's width
-			sheet2.setColumnWidth(1, 4000);
-			
+			sheet2.setColumnWidth(1, 5000);
+
 			// setup other column's width iteratively
 			for (int i = 2; i < getArrayLength() + 2; i++) {
 				sheet2.setColumnWidth(i, 3000);
@@ -262,7 +315,6 @@ public class ExcelExample extends MyExcelFunction {
 			// setup header and footer margins
 			sheet2.setMargin(Sheet.HeaderMargin, 0.25);
 			sheet2.setMargin(Sheet.FooterMargin, 0.25);
-			
 
 			// Now it's time to record the data in a file making sure we close
 			// the file

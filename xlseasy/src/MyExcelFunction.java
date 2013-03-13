@@ -49,7 +49,7 @@ public class MyExcelFunction {
 	 * */
 
 	// returns the excel cell number (eg. C11, E4, AD1305 etc.) for this cell.
-	public String getCellRefString(int row, int col) {
+	public String getCellByReference(int row, int col) {
 		StringBuffer retval = new StringBuffer();
 		int tempcellnum = col;
 		do {
@@ -63,16 +63,27 @@ public class MyExcelFunction {
 
 	// returns the excel cell name (eg. C, E, AB, ABC etc.) for this cell.
 	public String getCellByName(int row, int col) {
-		String cellName = getCellRefString(row, col);
+		String cellName = getCellByReference(row, col);
 		String result = new String();
-		char tmp;
 
 		for (int i = 0; i < cellName.length(); i++) {
-			tmp = cellName.charAt(i);
-			if (isInAlphabet(tmp)) {
+			if (isInAlphabet(cellName.charAt(i))) {
 				result += cellName.charAt(i);
 			} else {
 				break;
+			}
+		}
+		return result;
+	}
+
+	// returns the excel cell name (eg. C, E, AB, ABC etc.) for this cell.
+	public String getCellByNumber(int row, int col) {
+		String cellName = getCellByReference(row, col);
+		String result = new String();
+
+		for (int i = 0; i < cellName.length(); i++) {
+			if (!isInAlphabet(cellName.charAt(i))) {
+				result += cellName.charAt(i);
 			}
 		}
 		return result;
