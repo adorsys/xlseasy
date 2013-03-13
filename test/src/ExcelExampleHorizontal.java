@@ -11,13 +11,13 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Sheet;
 
-public class ExcelExample extends Name {
+public class ExcelExampleHorizontal extends Name {
 
 	private static final char[] A2Z = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
 			'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
 			'V', 'W', 'X', 'Y', 'Z' };
-	private static final String FILE_NAME = "helloworld.xls";
-	private int rowIndex = 0;
+	private static final String FILE_NAME = "excelHorizontal.xls";
+	private int cellIndex = 1;
 
 	/**
 	 * 
@@ -68,77 +68,102 @@ public class ExcelExample extends Name {
 			HSSFRow row;
 			HSSFCell cell;
 
-			// 1st row
-			rowIndex++;
-			row = sheet.createRow(rowIndex);
-			cell = row.createCell(1);
+			// We create a style to apply on some cell
+			HSSFCellStyle style = book.createCellStyle();
+			
+			// 2nd row
+			cellIndex++;
+			row = sheet.createRow(1);
+			cell = row.createCell(cellIndex);
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue((i + 1) + ".");
+				cellIndex++;
+			}			
+			cellIndex = 1;
+
+			
+			// 3rd row
+			row = sheet.createRow(2);
+			cell = row.createCell(cellIndex);
 			cell.setCellValue("Client's name");
 			cell.setCellStyle(getStyle(book));
+			cellIndex++;
+			
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue(name[i]);
+				cellIndex++;
+			}			
+			cellIndex = 1;
 
-			cell = row.createCell(2);
+			
+			// 4th row
+			row = sheet.createRow(3);
+			cell = row.createCell(cellIndex);
 			cell.setCellValue(new HSSFRichTextString("Price / article"));
 			cell.setCellStyle(getStyle(book));
-
-			cell = row.createCell(3);
+			cellIndex++;
+			
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue("2.5 EUR");
+				cellIndex++;
+			}			
+			cellIndex = 1;
+			
+			
+			// 5th row
+			row = sheet.createRow(4);
+			cell = row.createCell(cellIndex);
 			cell.setCellValue("Qty");
 			cell.setCellStyle(getStyle(book));
+			cellIndex++;
 
-			cell = row.createCell(5);
-			cell.setCellValue("Total");
-			cell.setCellStyle(getStyle(book));
-
-			// other rows
+			// creates an array to save generated random numbers
+			int[] myArray = new int[getArrayLength()];
+			
+			// get random index to compute total price
+			int rdm;		
 			for (int i = 0; i < getArrayLength(); i++) {
-				HSSFCellStyle style = book.createCellStyle();
-
-				rowIndex++;
-				row = sheet.createRow(rowIndex);
-				cell = row.createCell(0);
-				cell.setCellValue((i + 1) + ".");
-				style.setAlignment((short) 0x2);
-				cell.setCellStyle(style);
-
-				cell = row.createCell(1);
-				cell.setCellValue(name[i]);
-				style.setAlignment((short) 0x1);
-				cell.setCellStyle(style);
-
-				cell = row.createCell(2);
-				cell.setCellValue("2.5 EUR");
-				style.setAlignment((short) 0x3);
-				cell.setCellStyle(style);
-
-				// get random index to compute total price
-				int rdm = getRandomIndex();
-
-				cell = row.createCell(3);
+				rdm = getRandomIndex();
+				
+				// save the random number into our new array
+				myArray[i] = rdm;
+				
+				cell = row.createCell(cellIndex);
 				cell.setCellValue(rdm);
 				style.setAlignment((short) 0x2);
 				cell.setCellStyle(style);
+				cellIndex++;
+			}			
+			cellIndex = 1;
 
-				cell = row.createCell(5);
-				cell.setCellValue(rdm * 2.5);
+			
+			// 6th row
+			row = sheet.createRow(5);
+			cell = row.createCell(cellIndex);
+			cell.setCellValue("Total");
+			cell.setCellStyle(getStyle(book));
+			cellIndex++;
+			
+			for (int i = 0; i < getArrayLength(); i++) {
+				
+				cell = row.createCell(cellIndex);
+				cell.setCellFormula("" + myArray[i] + "*2.5");
 				style.setAlignment((short) 0x2);
 				cell.setCellStyle(style);
-			}
-			rowIndex++;
-			row = sheet.createRow(rowIndex);
-			cell = row.createCell(5);
+				cellIndex++;
+			}			
+			cellIndex = 2;
 
-			// get column reference
-			String ref = getCellByName(cell.getRowIndex(),
-					cell.getColumnIndex());
-
-			cell.setCellFormula("SUM(" + ref + "3:" + ref + "37)");
-			cell.setCellStyle(getStyle(book));
-
-			// setup column's width
-			sheet.setColumnWidth(0, 1500);
+			// setup B-column's width
 			sheet.setColumnWidth(1, 4000);
-			sheet.setColumnWidth(2, 4000);
-			sheet.setColumnWidth(3, 1500);
-			sheet.setColumnWidth(4, 700);
-			sheet.setColumnWidth(5, 2000);
+			
+			// setup other column's width iteratively
+			for (int i = 2; i < getArrayLength() + 2; i++) {
+				sheet.setColumnWidth(i, 3000);
+			}
 
 			// setup page's margin (top, right, bottom, left)
 			sheet.setMargin(Sheet.TopMargin, 0.75);
@@ -156,7 +181,8 @@ public class ExcelExample extends Name {
 			try {
 				output = new FileOutputStream(FILE_NAME);
 				book.write(output);
-				output.close();
+				output.close();				
+				System.out.println("Excel's file written successfully!");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -170,9 +196,7 @@ public class ExcelExample extends Name {
 		}
 	}
 
-	/**
-	 * returns the excel cell number (eg. C11, E4, AD1305 etc.) for this cell.
-	 */
+	// returns the excel cell number (eg. C11, E4, AD1305 etc.) for this cell.
 	public String getCellRefString(int row, int col) {
 		StringBuffer retval = new StringBuffer();
 		int tempcellnum = col;
@@ -185,9 +209,7 @@ public class ExcelExample extends Name {
 		return retval.toString().toUpperCase();
 	}
 
-	/**
-	 * returns the excel cell name (eg. C, E, AB, ABC etc.) for this cell.
-	 */
+	// returns the excel cell name (eg. C, E, AB, ABC etc.) for this cell.
 	public String getCellByName(int row, int col) {
 		String cellName = getCellRefString(row, col);
 		String result = new String();
@@ -223,7 +245,7 @@ public class ExcelExample extends Name {
 	 * 
 	 */
 	public static void main(String args[]) {
-		ExcelExample excel = new ExcelExample();
+		ExcelExampleHorizontal excel = new ExcelExampleHorizontal();
 		excel.createExcel();
 	}
 }
