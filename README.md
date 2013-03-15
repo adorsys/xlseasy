@@ -4,8 +4,8 @@ xlseasy
 We use Apache POI to generate Excel Spreadsheets with some Java implementations.
 
 
-Simplifies mapping between xls files and java bean based on annotations
-=======================================================================
+=== Simplifies mapping between xls files and java bean based on annotations ===
+source: https://code.google.com/p/xlseasy/
 
 	@Sheet(autoSizeColumns=true,
                 freezeColumnHeader=true,
@@ -35,3 +35,30 @@ Simplifies mapping between xls files and java bean based on annotations
 	Product p = spreadSheetImpl.loadSpreadsheet(stream, Product.class);
 
 	spreadSheetImpl.saveSpreadsheet(Product.class, p, outputStream);
+
+===
+
+A released and downloadable version comes soon.
+
+=== Installation ===
+
+The library is avalible as maven artifact. Put this dependencies in your maven POM:
+
+	<project>
+		..
+		<dependency>
+      		<groupId>org.adorsys.xlseasy</groupId>
+     		<artifactId>xlseasy.api</artifactId>
+			<version>1.3-CR5</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.adorsys.xlseasy</groupId>
+   			<artifactId>xlseasy.impl</artifactId>
+    		<version>1.3-CR5</version>
+		</dependency>
+		<dependency>
+    	  	<groupId>org.adorsys.xlseasy</groupId>
+    	  	<artifactId>xlseasy.cbe</artifactId>
+    	  	<version>1.3-CR5</version>
+		</dependency>
+	</project>
