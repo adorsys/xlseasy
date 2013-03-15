@@ -9,43 +9,15 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Sheet;
 
 public class ExcelExample extends MyExcelFunction {
 
-	private static final String FILE_NAME = "excelExample.xls";
 	private int rowIndex = 0;
 	private int cellIndex = 1;
-
-	/**
-	 * 
-	 * This function creates a new style for a book
-	 * 
-	 * @param book
-	 *            This is the book where we are going to create the style
-	 * @return We return the style created for the book
-	 * @throws Exception
-	 * 
-	 */
-	public HSSFCellStyle getStyle(HSSFWorkbook book) throws Exception {
-		// First of all we have to create the style for this book
-		HSSFCellStyle style = book.createCellStyle();
-
-		// We establish the background color
-		style.setFillForegroundColor(HSSFColor.LIME.index);
-		style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-		style.setAlignment((short) 0x2);
-
-		// We establish a new font for this book
-		HSSFFont font = book.createFont();
-		font.setColor(HSSFColor.GREEN.index);
-		font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-		font.setFontHeightInPoints((short) 12);
-		style.setFont(font);
-
-		return style;
-	}
+	private short defaultAlignment = 0x2;
+	private short defaultFontHeightInPoints = 12;
+	private static final String FILE_NAME = "excelExample.xls";
 
 	/**
 	 * 
@@ -74,53 +46,48 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet1.createRow(rowIndex);
 			cell = row.createCell(1);
 			cell.setCellValue("Client's name");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 
 			cell = row.createCell(2);
 			cell.setCellValue(new HSSFRichTextString("Price / article"));
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 
 			cell = row.createCell(3);
 			cell.setCellValue("Qty");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 
 			cell = row.createCell(5);
 			cell.setCellValue("Total");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 
 			// other rows
 			for (int i = 0; i < getArrayLength(); i++) {
-				HSSFCellStyle style = book.createCellStyle();
-
 				rowIndex++;
 				row = sheet1.createRow(rowIndex);
 				cell = row.createCell(0);
 				cell.setCellValue((i + 1) + ".");
-				style.setAlignment((short) 0x2);
-				cell.setCellStyle(style);
+				setMyCellAlignment(book, cell, defaultAlignment);
+				setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD,
+						defaultFontHeightInPoints);
 
 				cell = row.createCell(1);
 				cell.setCellValue(name[i]);
-				style.setAlignment((short) 0x1);
-				cell.setCellStyle(style);
+				setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(2);
 				cell.setCellValue("2.5 EUR");
-				style.setAlignment((short) 0x3);
-				cell.setCellStyle(style);
+				setMyCellAlignment(book, cell, defaultAlignment);
 
 				// get random index to compute total price
 				int rdm = getRandomIndex();
 
 				cell = row.createCell(3);
 				cell.setCellValue(rdm);
-				style.setAlignment((short) 0x2);
-				cell.setCellStyle(style);
+				setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(5);
 				cell.setCellValue(rdm * 2.5);
-				style.setAlignment((short) 0x2);
-				cell.setCellStyle(style);
+				setMyCellAlignment(book, cell, defaultAlignment);
 			}
 			rowIndex++;
 			row = sheet1.createRow(rowIndex);
@@ -129,12 +96,13 @@ public class ExcelExample extends MyExcelFunction {
 			// get column reference
 			String ref = getCellByName(cell.getRowIndex(),
 					cell.getColumnIndex());
-			
+
 			// get row's index of the last inserted value
 			int indexLastInsertedValue = getArrayLength() + 2;
 
-			cell.setCellFormula("SUM(" + ref + "3:" + ref + "" + indexLastInsertedValue + ")");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellFormula("SUM(" + ref + "3:" + ref + ""
+					+ indexLastInsertedValue + ")");
+			cell.setCellStyle(getMyDefaultStyle(book));
 
 			// setup column's width
 			sheet1.setColumnWidth(0, 1500);
@@ -176,7 +144,7 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(2);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Client's name");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 			cellIndex++;
 
 			for (int i = 0; i < getArrayLength(); i++) {
@@ -190,7 +158,7 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(3);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue(new HSSFRichTextString("Price / article"));
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 			cellIndex++;
 
 			for (int i = 0; i < getArrayLength(); i++) {
@@ -204,7 +172,7 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(4);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Qty");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 			cellIndex++;
 
 			// get random index to compute total price
@@ -223,15 +191,17 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(5);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Total");
-			cell.setCellStyle(getStyle(book));
+			cell.setCellStyle(getMyDefaultStyle(book));
 			cellIndex++;
 
 			for (int i = 0; i < getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellFormula(""
-						+ getCellByReference(sheet2.getRow(cell.getRowIndex() - 1)
-								.getRowNum(), sheet2.getRow(cell.getRowIndex() - 1)
-								.getCell(cellIndex).getColumnIndex())
+						+ getCellByReference(
+								sheet2.getRow(cell.getRowIndex() - 1)
+										.getRowNum(),
+								sheet2.getRow(cell.getRowIndex() - 1)
+										.getCell(cellIndex).getColumnIndex())
 						+ "*2.5");
 				style.setAlignment((short) 0x2);
 				cell.setCellStyle(style);
@@ -249,7 +219,7 @@ public class ExcelExample extends MyExcelFunction {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(getCellByName(cell.getRowIndex(),
 						cell.getColumnIndex()));
-				cell.setCellStyle(getStyle(book));
+				cell.setCellStyle(getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -264,7 +234,7 @@ public class ExcelExample extends MyExcelFunction {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(getCellByNumber(cell.getRowIndex(),
 						cell.getColumnIndex()));
-				cell.setCellStyle(getStyle(book));
+				cell.setCellStyle(getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -279,7 +249,7 @@ public class ExcelExample extends MyExcelFunction {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(getCellByReference(cell.getRowIndex(),
 						cell.getColumnIndex()));
-				cell.setCellStyle(getStyle(book));
+				cell.setCellStyle(getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -294,7 +264,7 @@ public class ExcelExample extends MyExcelFunction {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(sheet2.getRow(cell.getRowIndex() - 1)
 						.getCell(cellIndex).getRichStringCellValue());
-				cell.setCellStyle(getStyle(book));
+				cell.setCellStyle(getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -325,7 +295,8 @@ public class ExcelExample extends MyExcelFunction {
 				book.write(output);
 				output.close();
 
-				 System.out.println("The excel's file has been successfull created.");
+				System.out
+						.println("The excel's file has been successfull created.");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
