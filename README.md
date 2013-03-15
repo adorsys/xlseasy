@@ -4,8 +4,9 @@ xlseasy
 We use Apache POI to generate Excel Spreadsheets with some Java implementations.
 
 
-=== Simplifies mapping between xls files and java bean based on annotations ===
-source: https://code.google.com/p/xlseasy/
+Simplifies mapping between xls files and java bean based on annotations
+=======================================================================
+[i]source: https://code.google.com/p/xlseasy/[/i]
 
 	@Sheet(autoSizeColumns=true,
                 freezeColumnHeader=true,
@@ -40,7 +41,8 @@ source: https://code.google.com/p/xlseasy/
 
 A released and downloadable version comes soon.
 
-=== Installation ===
+Installation
+============
 
 The library is avalible as maven artifact. Put this dependencies in your maven POM:
 
