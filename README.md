@@ -6,7 +6,7 @@ We use Apache POI to generate Excel Spreadsheets with some Java implementations.
 
 Simplifies mapping between xls files and java bean based on annotations
 =======================================================================
-[i]source: https://code.google.com/p/xlseasy/[/i]
+https://code.google.com/p/xlseasy/
 
 	@Sheet(autoSizeColumns=true,
                 freezeColumnHeader=true,
