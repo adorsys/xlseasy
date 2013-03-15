@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -128,8 +129,11 @@ public class ExcelExample extends MyExcelFunction {
 			// get column reference
 			String ref = getCellByName(cell.getRowIndex(),
 					cell.getColumnIndex());
+			
+			// get row's index of the last inserted value
+			int indexLastInsertedValue = getArrayLength() + 2;
 
-			cell.setCellFormula("SUM(" + ref + "3:" + ref + "37)");
+			cell.setCellFormula("SUM(" + ref + "3:" + ref + "" + indexLastInsertedValue + ")");
 			cell.setCellStyle(getStyle(book));
 
 			// setup column's width
@@ -203,17 +207,10 @@ public class ExcelExample extends MyExcelFunction {
 			cell.setCellStyle(getStyle(book));
 			cellIndex++;
 
-			// creates an array to save generated random numbers
-			int[] myArray = new int[getArrayLength()];
-
 			// get random index to compute total price
 			int rdm;
 			for (int i = 0; i < getArrayLength(); i++) {
 				rdm = getRandomIndex();
-
-				// save the random number into our new array
-				myArray[i] = rdm;
-
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(rdm);
 				style.setAlignment((short) 0x2);
@@ -230,73 +227,77 @@ public class ExcelExample extends MyExcelFunction {
 			cellIndex++;
 
 			for (int i = 0; i < getArrayLength(); i++) {
-
 				cell = row.createCell(cellIndex);
-
-				/**
-				 * TODO
-				 * 
-				 * Die idee ist es hier statt die Daten im Array zu
-				 * speichern, um sie wieder aufzurufen, direkt auf die Daten der
-				 * oberen Reihe zuzugreifen.
-				 * 
-				 * ***
-				 * 
-				 * Zum Beispiel, ich bin in der Zelle B11 und brauche Daten von B10. Wie schaffe ich es?
-				 */
-
-				cell.setCellFormula("" + myArray[i] + "*2.5");
+				cell.setCellFormula(""
+						+ getCellByReference(sheet2.getRow(cell.getRowIndex() - 1)
+								.getRowNum(), sheet2.getRow(cell.getRowIndex() - 1)
+								.getCell(cellIndex).getColumnIndex())
+						+ "*2.5");
 				style.setAlignment((short) 0x2);
 				cell.setCellStyle(style);
 				cellIndex++;
 			}
-			cellIndex = 1;				
+			cellIndex = 1;
 
-			
 			// 7th row / just to test the function getCellByName()
 			row = sheet2.createRow(6);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("getCellByName()");
 			cellIndex++;
-			
+
 			for (int i = 0; i < getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(getCellByName(cell.getRowIndex(), cell.getColumnIndex()));
+				cell.setCellValue(getCellByName(cell.getRowIndex(),
+						cell.getColumnIndex()));
 				cell.setCellStyle(getStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
 
-			
 			// 8th row / just to test the function getCellByNumber()
 			row = sheet2.createRow(7);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("getCellByNumber()");
 			cellIndex++;
-			
+
 			for (int i = 0; i < getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(getCellByNumber(cell.getRowIndex(), cell.getColumnIndex()));
+				cell.setCellValue(getCellByNumber(cell.getRowIndex(),
+						cell.getColumnIndex()));
 				cell.setCellStyle(getStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
 
-			
 			// 9th row / just to test the function getCellByReference()
 			row = sheet2.createRow(8);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("getCellByReference()");
 			cellIndex++;
-			
+
 			for (int i = 0; i < getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(getCellByReference(cell.getRowIndex(), cell.getColumnIndex()));
+				cell.setCellValue(getCellByReference(cell.getRowIndex(),
+						cell.getColumnIndex()));
 				cell.setCellStyle(getStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
-			
+
+			// 10th row / just to test the function getCellByReference()
+			row = sheet2.createRow(9);
+			cell = row.createCell(cellIndex);
+			cell.setCellValue("getPreviousCellValue()");
+			cellIndex++;
+
+			for (int i = 0; i < getArrayLength(); i++) {
+				cell = row.createCell(cellIndex);
+				cell.setCellValue(sheet2.getRow(cell.getRowIndex() - 1)
+						.getCell(cellIndex).getRichStringCellValue());
+				cell.setCellStyle(getStyle(book));
+				cellIndex++;
+			}
+			cellIndex = 1;
 
 			// setup B-column's width
 			sheet2.setColumnWidth(1, 5000);
@@ -323,6 +324,8 @@ public class ExcelExample extends MyExcelFunction {
 				output = new FileOutputStream(FILE_NAME);
 				book.write(output);
 				output.close();
+
+				 System.out.println("The excel's file has been successfull created.");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -349,4 +352,5 @@ public class ExcelExample extends MyExcelFunction {
 		ExcelExample excel = new ExcelExample();
 		excel.createExcel();
 	}
+
 }

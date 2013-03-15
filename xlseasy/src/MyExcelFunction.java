@@ -5,13 +5,16 @@ public class MyExcelFunction {
 			'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
 	protected static final String[] name = { "Abbey", "Abigail", "Agnes", "Allyson",
-			"Alisa", "Audrey", "Avril", "Bailey", "Barbara", "Belinda",
+			"Sanchez", "Anthony", "Stefan", "Martina", "Jana", "Sarah",
+			"Nicole" };
+
+	/**
+	 * 			"Alisa", "Audrey", "Avril", "Bailey", "Barbara", "Belinda",
 			"Benita", "Bernard", "Bertha", "Cadence", "Cathy", "Clara",
 			" Ciel", "Claudia", "Corra", "Cindy", "Daniela", "Daphne",
 			"Desiree", "Gerald", "Emile", "Bernd", "Thomas", "James",
-			"Sanchez", "Anthony", "Stefan", "Martina", "Jana", "Sarah",
-			"Nicole" };
-	
+
+	 * */
 	
 	/**
 	 * Following functions should be used to manages the attribut *name*.
