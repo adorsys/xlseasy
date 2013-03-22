@@ -14,7 +14,11 @@ import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
  *
  */
 public class WorkbookDescFactory {
-	
+	/**
+	 * kdskdjskds
+	 * @param clazz
+	 * @return
+	 */
 	public <WT> WorkbookDescIF<WT> createWorkbookDesc(Class<WT> clazz){
 		return new WorkbookDesc<WT>(clazz);
 	}
