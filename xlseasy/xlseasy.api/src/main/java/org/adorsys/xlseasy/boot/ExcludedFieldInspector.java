@@ -2,7 +2,6 @@ package org.adorsys.xlseasy.boot;
 
 import java.util.Collection;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface ExcludedFieldInspector.
  */
