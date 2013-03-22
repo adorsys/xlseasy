@@ -7,18 +7,47 @@ import java.lang.annotation.Target;
 
 import org.adorsys.xlseasy.annotation.SheetFormatter.NoneSheetFormatter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface Sheet.
+ */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Sheet {
 
+    /**
+     * Name.
+     *
+     * @return the string
+     */
     String name() default "";
 
+    /**
+     * Column order.
+     *
+     * @return the string[]
+     */
     String[] columnOrder() default {};
 
+    /**
+     * Freeze pane.
+     *
+     * @return the freeze pane
+     */
     FreezePane freezePane() default @FreezePane;
 
+    /**
+     * Auto size columns.
+     *
+     * @return true, if successful
+     */
     boolean autoSizeColumns() default false;
 
+    /**
+     * Formatter.
+     *
+     * @return the class<? extends sheet formatter>
+     */
     Class<? extends SheetFormatter> formatter() default NoneSheetFormatter.class;
 
 }

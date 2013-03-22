@@ -6,8 +6,18 @@ import java.util.Collection;
 import org.adorsys.xlseasy.annotation.Key;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KeyAnnotationUtils.
+ */
 public abstract class KeyAnnotationUtils {
 
+	/**
+	 * Extract key field.
+	 *
+	 * @param clazz the clazz
+	 * @return the field
+	 */
 	public static Field extractKeyField(Class<?> clazz){
 		Collection<Field> keys = AnnotationUtil.findFieldsByAnnotation(clazz, true, Key.class);
 		if(keys.isEmpty()) return null;

@@ -6,11 +6,20 @@ import java.util.HashSet;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ExcludeByFieldNameFilter.
+ */
 public class ExcludeByFieldNameFilter implements FieldFilter {
 
+	/** The discriminated field names. */
 	private final Collection<String> discriminatedFieldNames;
 	
+	/**
+	 * Instantiates a new exclude by field name filter.
+	 *
+	 * @param discriminatedFieldNames the discriminated field names
+	 */
 	public ExcludeByFieldNameFilter(
 			Collection<String> discriminatedFieldNames) {
 		if(discriminatedFieldNames==null){
@@ -20,6 +29,9 @@ public class ExcludeByFieldNameFilter implements FieldFilter {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter#matches(java.lang.reflect.Field)
+	 */
 	public boolean matches(Field field) {
 		if(discriminatedFieldNames.contains(field.getName())) return false;
 		return true;

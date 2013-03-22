@@ -20,16 +20,19 @@ import java.lang.annotation.Annotation;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The filter interface enabales the filtering of annotations.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 public interface AnnotationFilter {
+	
 	/**
-	 * 
-	 * @param annotation
-	 * @return true if the annotaion shold included.
+	 * Accept.
+	 *
+	 * @param annotation the annotation
+	 * @return true if the annotation should included.
 	 */
 	public boolean accept(Annotation annotation);
 }

@@ -11,13 +11,21 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WorkbookStyle.
+ */
 public class WorkbookStyle {
+	
+	/** The style. */
 	private final HSSFCellStyle style;
 
 	/**
-	 * @param style
-	 * @param format
-	 * @param font
+	 * Instantiates a new workbook style.
+	 *
+	 * @param workbook the workbook
+	 * @param column the column
+	 * @param style the style
 	 */
 	public WorkbookStyle(HSSFWorkbook workbook, SheetColumnObject column, SheetCellStyleObject style) {
 		super();
@@ -84,10 +92,12 @@ public class WorkbookStyle {
 		this.style = cellStyle;
 	}
 
+	/**
+	 * Apply format.
+	 *
+	 * @param cell the cell
+	 */
 	public void applyFormat(HSSFCell cell) {
 		cell.setCellStyle(style);
 	}
-	
-	
-
 }

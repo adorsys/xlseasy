@@ -32,26 +32,40 @@ import java.util.Set;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 
+// TODO: Auto-generated Javadoc
 /**
  * Common Annotation Util.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 public class AnnotationUtil {
 	
+	/**
+	 * Instantiates a new annotation util.
+	 */
 	private AnnotationUtil(){
 	}
 	
+	/**
+	 * The Interface ClassVisitor.
+	 */
 	private interface ClassVisitor {
+		
+		/**
+		 * Visit.
+		 *
+		 * @param clazz the clazz
+		 */
 		public void visit(Class<?> clazz);
 	}
 	
 	/**
 	 * Finds class annotations  with a custom filter.
-	 * @param clazz
-	 * @param inherited
-	 * @param filter
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param filter the filter
+	 * @return the collection
 	 */
 	public static Collection<Annotation> findClassAnnotations(Class<?> clazz, boolean inherited, final AnnotationFilter filter) {
 		final ArrayList<Annotation> annotations = new ArrayList<Annotation>();
@@ -66,10 +80,11 @@ public class AnnotationUtil {
 	
 	/**
 	 * Find class anotations by list of annotation types.
-	 * @param clazz
-	 * @param inherited
-	 * @param annotationsToFind
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param annotationsToFind the annotations to find
+	 * @return the collection
 	 */
 	public static Collection<Annotation> findClassAnnotations(Class<?> clazz, boolean inherited, Class<?>... annotationsToFind) {
 		return findClassAnnotations(clazz, inherited, new EnumerationAnnotationFilter(annotationsToFind));
@@ -77,21 +92,23 @@ public class AnnotationUtil {
 	
 	/**
 	 * Find fields by a custom annotation filter.
-	 * @param clazz
-	 * @param inherited
-	 * @param annotationsToFind
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param annotationsToFind the annotations to find
+	 * @return the collection
 	 */
 	public static Collection<Field> findFieldsByAnnotation(Class<?> clazz, boolean inherited, Class<?>... annotationsToFind) {
 		return findFieldsByAnnotation(clazz, inherited, new EnumerationAnnotationFilter(annotationsToFind));
 	}
 	
 	/**
-	 * Finds java bean property releated annotations. It considers the getters, setters and field annotations. 
-	 * @param clazz
-	 * @param inherited
-	 * @param annotationsToFind
-	 * @return
+	 * Finds java bean property releated annotations. It considers the getters, setters and field annotations.
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param annotationsToFind the annotations to find
+	 * @return the map
 	 */
 	public static Map<PropertyDescriptor, Map<Class<?>, Annotation>> findBeanPropertyDescriptorAnnotations(Class<?> clazz, boolean inherited, Class<?>... annotationsToFind) {
 		BeanInfo beanInfo;
@@ -146,6 +163,12 @@ public class AnnotationUtil {
 		return result;
 	}
 
+	/**
+	 * To annotation map.
+	 *
+	 * @param map the map
+	 * @param annotations the annotations
+	 */
 	private static void toAnnotationMap(Map<Class<?>, Annotation> map,
 			Annotation[] annotations) {
 		for (Annotation annotation : annotations) {
@@ -155,10 +178,11 @@ public class AnnotationUtil {
 	
 	/**
 	 * Find fields by a list of annotation types.
-	 * @param clazz
-	 * @param inherited
-	 * @param filter
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param filter the filter
+	 * @return the collection
 	 */
 	public static Collection<Field> findFieldsByAnnotation(Class<?> clazz, boolean inherited, final AnnotationFilter filter) {
 		final ArrayList<Field> fields = new ArrayList<Field>();
@@ -182,10 +206,11 @@ public class AnnotationUtil {
 	
 	/**
 	 * Find methodes by a list of annotation types.
-	 * @param clazz
-	 * @param inherited
-	 * @param annotationsToFind
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param annotationsToFind the annotations to find
+	 * @return the collection
 	 */
 	public static Collection<Method> findMethodsByAnnotation(Class<?> clazz, boolean inherited, Class<?>... annotationsToFind) {
 		return findMethodsByAnnotation(clazz, inherited, new EnumerationAnnotationFilter(annotationsToFind));
@@ -193,10 +218,11 @@ public class AnnotationUtil {
 	
 	/**
 	 * Find methodes by a custom annotation filter.
-	 * @param clazz
-	 * @param inherited
-	 * @param annotationsToFind
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param filter the filter
+	 * @return the collection
 	 */
 	public static Collection<Method> findMethodsByAnnotation(Class<?> clazz, boolean inherited, final AnnotationFilter filter) {
 		final ArrayList<Method> methods = new ArrayList<Method>();
@@ -218,6 +244,13 @@ public class AnnotationUtil {
 		return methods;
 	}
 	
+	/**
+	 * Filter annotations.
+	 *
+	 * @param annotations the annotations
+	 * @param filter the filter
+	 * @return the collection
+	 */
 	private static final Collection<Annotation> filterAnnotations(Annotation[] annotations, AnnotationFilter filter) {
 		ArrayList<Annotation> filteredAnno = new ArrayList<Annotation>(annotations.length);
 		for (Annotation annotation : annotations) {
@@ -228,6 +261,13 @@ public class AnnotationUtil {
 		return filteredAnno;
 	}
 	
+	/**
+	 * Visit class.
+	 *
+	 * @param clazz the clazz
+	 * @param visitor the visitor
+	 * @param inherited the inherited
+	 */
 	private static void visitClass(Class<?> clazz, ClassVisitor visitor, boolean inherited) {
 		if (inherited) {
 			visitClassTree(clazz, visitor, true);
@@ -236,6 +276,13 @@ public class AnnotationUtil {
 		}
 	}
 	
+	/**
+	 * Visit class tree.
+	 *
+	 * @param clazz the clazz
+	 * @param visitor the visitor
+	 * @param includeInterfaces the include interfaces
+	 */
 	private static void visitClassTree(Class<?> clazz, ClassVisitor visitor, boolean includeInterfaces) {
 		if (clazz != null && clazz != Object.class) {
 			visitor.visit(clazz);
@@ -254,7 +301,8 @@ public class AnnotationUtil {
 	
 	/**
 	 * Extracts all annotation types from a collection of annotations.
-	 * @param annotation
+	 *
+	 * @param annotation the annotation
 	 * @return extracted types.
 	 */
 	public static Set<Class<? extends Annotation>> extractAnnotationTypes(Collection<Annotation> annotation) {
@@ -266,9 +314,10 @@ public class AnnotationUtil {
 	}
 	
 	/**
-	 * extracts the propertyDrescriptor names for a easy access to findBeanPropertyDescriptorAnnotations;
-	 * @param pd
-	 * @return
+	 * extracts the propertyDrescriptor names for a easy access to findBeanPropertyDescriptorAnnotations;.
+	 *
+	 * @param pd the pd
+	 * @return the map
 	 */
 	public static Map<String, PropertyDescriptor> extractPropertyKey2PropertyDescriptor(Collection<PropertyDescriptor> pd) {
 		Map<String, PropertyDescriptor> propertyKey2PropertyDescriptor = new HashMap<String, PropertyDescriptor>(pd.size());
@@ -280,16 +329,24 @@ public class AnnotationUtil {
 	
 	/**
 	 * Checks a class for the spezified annotation type.
-	 * @param classToExplore
-	 * @param a
-	 * @param inherit
-	 * @return
+	 *
+	 * @param classToExplore the class to explore
+	 * @param a the a
+	 * @param inherit the inherit
+	 * @return true, if successful
 	 */
 	public static boolean containsClassAnnotationType(Class<?> classToExplore, Class<? extends Annotation> a, boolean inherit){
 		Collection<Annotation> findClassAnnotations = findClassAnnotations(classToExplore, inherit, a);
 		return findClassAnnotations.size() > 0;
 	}
 
+	/**
+	 * Find field.
+	 *
+	 * @param clazz the clazz
+	 * @param name the name
+	 * @return the field
+	 */
 	public static Field findField(Class<?> clazz, String name) {
 		Class<?> searchType = clazz;
 		while (!Object.class.equals(searchType) && searchType != null) {

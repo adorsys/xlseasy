@@ -14,6 +14,7 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
+// TODO: Auto-generated Javadoc
 /**
  * A parameterized converter is one that can convert classes with 
  * type parameters. This is the case of the SheetConverter, that is used 
@@ -22,7 +23,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  * A SheetConverter must always now the type of the key class. And shaa not always 
  * assume the presence of the @Key annotation.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public abstract class CollectionTypeConverter implements ICellConverter {
@@ -32,10 +33,18 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 	 */
 	private final CollectionElementConverter collectionElementConverter;
 	
+	/** The type parameter. */
 	private final Class<?> typeParameter;
 	
+	/** The collection element separator. */
 	private final String collectionElementSeparator;
 
+	/**
+	 * Instantiates a new collection type converter.
+	 *
+	 * @param typeParameter the type parameter
+	 * @param collectionElementConverter the collection element converter
+	 */
 	public CollectionTypeConverter(Class<?> typeParameter, CollectionElementConverter collectionElementConverter) {
 		super();
 		this.typeParameter = typeParameter;
@@ -43,16 +52,31 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 		this.collectionElementSeparator = collectionElementConverter.getElementSeparator();
 	}
 
+	/**
+	 * Gets the type parameter.
+	 *
+	 * @return the type parameter
+	 */
 	public Class<?> getTypeParameter() {
 		return typeParameter;
 	}
 
+	/**
+	 * Gets the used to convert elements of this collection.
+	 *
+	 * @return the used to convert elements of this collection
+	 */
 	public CollectionElementConverter getCollectionElementConverter() {
 		return collectionElementConverter;
 	}
 
 	/**
 	 * Generally in this context a set is a collection of an object of type parameter type.
+	 *
+	 * @param cellObject the cell object
+	 * @param value the value
+	 * @param objectType the object type
+	 * @param session the session
 	 */
 	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType,
 			ISheetSession<?, ?> session) {
@@ -83,6 +107,9 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.annotation.ICellConverter#getDataCell(java.lang.Object, java.lang.Class, org.adorsys.xlseasy.annotation.ISheetSession)
+	 */
 	public Object getDataCell(Object cellObject, Class<?> objectType,
 			ISheetSession<?, ?> session) throws SpreadsheetConverterException {
 		HSSFCell cell = (HSSFCell) cellObject;
@@ -105,8 +132,21 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 		return col;
 	}
 	
+	/**
+	 * New collection instance.
+	 *
+	 * @return the collection
+	 */
 	protected abstract Collection<Object> newCollectionInstance();
 
+	/**
+	 * Gets the converter.
+	 *
+	 * @param rawType the raw type
+	 * @param elementType the element type
+	 * @param elementConverter the element converter
+	 * @return the converter
+	 */
 	public static CollectionTypeConverter getConverter(Class<?> rawType,
 			Class<?> elementType, CollectionElementConverter elementConverter) {
 		
@@ -147,6 +187,7 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 		}
 	}
 	
+	/** The converter map. */
 	private static Map<CollectionTypeConverterKey, CollectionTypeConverter> converterMap = 
 			new HashMap<CollectionTypeConverterKey, CollectionTypeConverter>();
 

@@ -3,31 +3,47 @@ package org.adorsys.xlseasy.impl.proc;
 import org.adorsys.xlseasy.annotation.Workbook;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
-
-
+// TODO: Auto-generated Javadoc
 /**
- * Will be used to create workbook descriptors. This will provide the 
- * opportunity to inject other way of parsing class. In particular
- * the default interpretation of resources.
+ * Will be used to create workbook descriptors. This will provide the
+ * opportunity to inject other way of parsing class. In particular the default
+ * interpretation of resources.
  * 
- * @author francis
- *
+ * @author Francis Pouatcha
+ * 
  */
 public class WorkbookDescFactory {
+	
 	/**
-	 * kdskdjskds
-	 * @param clazz
-	 * @return
+	 * Creates a new WorkbookDesc object.
+	 *
+	 * @param <WT> the generic type
+	 * @param clazz the clazz
+	 * @return the workbook desc i f< w t>
 	 */
-	public <WT> WorkbookDescIF<WT> createWorkbookDesc(Class<WT> clazz){
+	public <WT> WorkbookDescIF<WT> createWorkbookDesc(Class<WT> clazz) {
 		return new WorkbookDesc<WT>(clazz);
 	}
 
-	public <WT> WorkbookDescIF<WT> emptyWorkbookDesc(Class<WT> clazz){
+	/**
+	 * Empty workbook desc.
+	 *
+	 * @param <WT> the generic type
+	 * @param clazz the clazz
+	 * @return the workbook desc if
+	 */
+	public <WT> WorkbookDescIF<WT> emptyWorkbookDesc(Class<WT> clazz) {
 		return new WorkbookDesc<WT>();
 	}
 
+	/**
+	 * Check if workbook.
+	 *
+	 * @param workbookClass the workbook class
+	 * @return true, if successful
+	 */
 	public boolean checkIfWorkbook(Class<?> workbookClass) {
-		return AnnotationUtil.findClassAnnotations(workbookClass, true, Workbook.class).size() > 0;
+		return AnnotationUtil.findClassAnnotations(workbookClass, true,
+				Workbook.class).size() > 0;
 	}
 }

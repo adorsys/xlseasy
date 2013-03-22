@@ -1,77 +1,139 @@
 package org.adorsys.xlseasy.cbe;
 
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Supplier.
+ */
 public class Supplier {
 
-    public Supplier() {
-        super();
-    }
+	/** The name. */
+	private String name;
+	
+	/** The strasse. */
+	private String strasse;
+	
+	/** The postleit zahl. */
+	private String postleitZahl;
+	
+	/** The stadt. */
+	private String stadt;
+	
+	/** The vip. */
+	private boolean vip;
 
-    /**
-     * @param name
-     * @param strasse
-     * @param postleitZahl
-     * @param stadt
-     * @param vip
-     */
-    public Supplier(String name, String strasse, String postleitZahl,
-                    String stadt, boolean vip) {
-        super();
-        this.name = name;
-        this.strasse = strasse;
-        this.postleitZahl = postleitZahl;
-        this.stadt = stadt;
-        this.vip = vip;
-    }
+	/**
+	 * Instantiates a new supplier.
+	 */
+	public Supplier() {
+		super();
+	}
 
-    private String name;
+	/**
+	 * Instantiates a new supplier.
+	 *
+	 * @param name the name
+	 * @param strasse the strasse
+	 * @param postleitZahl the postleit zahl
+	 * @param stadt the stadt
+	 * @param vip the vip
+	 */
+	public Supplier(String name, String strasse, String postleitZahl,
+			String stadt, boolean vip) {
+		super();
+		this.name = name;
+		this.strasse = strasse;
+		this.postleitZahl = postleitZahl;
+		this.stadt = stadt;
+		this.vip = vip;
+	}
 
-    private String strasse;
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    private String postleitZahl;
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    private String stadt;
+	/**
+	 * Gets the strasse.
+	 *
+	 * @return the strasse
+	 */
+	public String getStrasse() {
+		return strasse;
+	}
 
-    private boolean vip;
+	/**
+	 * Sets the strasse.
+	 *
+	 * @param strasse the new strasse
+	 */
+	public void setStrasse(String strasse) {
+		this.strasse = strasse;
+	}
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the postleit zahl.
+	 *
+	 * @return the postleit zahl
+	 */
+	public String getPostleitZahl() {
+		return postleitZahl;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets the postleit zahl.
+	 *
+	 * @param postleitZahl the new postleit zahl
+	 */
+	public void setPostleitZahl(String postleitZahl) {
+		this.postleitZahl = postleitZahl;
+	}
 
-    public String getStrasse() {
-        return strasse;
-    }
+	/**
+	 * Gets the stadt.
+	 *
+	 * @return the stadt
+	 */
+	public String getStadt() {
+		return stadt;
+	}
 
-    public void setStrasse(String strasse) {
-        this.strasse = strasse;
-    }
+	/**
+	 * Sets the stadt.
+	 *
+	 * @param stadt the new stadt
+	 */
+	public void setStadt(String stadt) {
+		this.stadt = stadt;
+	}
 
-    public String getPostleitZahl() {
-        return postleitZahl;
-    }
+	/**
+	 * Checks if is vip.
+	 *
+	 * @return true, if is vip
+	 */
+	public boolean isVip() {
+		return vip;
+	}
 
-    public void setPostleitZahl(String postleitZahl) {
-        this.postleitZahl = postleitZahl;
-    }
-
-    public String getStadt() {
-        return stadt;
-    }
-
-    public void setStadt(String stadt) {
-        this.stadt = stadt;
-    }
-
-    public boolean isVip() {
-        return vip;
-    }
-
-    public void setVip(boolean vip) {
-        this.vip = vip;
-    }
-
+	/**
+	 * Sets the vip.
+	 *
+	 * @param vip the new vip
+	 */
+	public void setVip(boolean vip) {
+		this.vip = vip;
+	}
 }

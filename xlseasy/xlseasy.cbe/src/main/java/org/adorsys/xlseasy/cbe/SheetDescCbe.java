@@ -35,22 +35,50 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SheetDescCbe.
+ *
+ * @param <T> the generic type
+ * @param <WT> the generic type
+ */
 public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6166184265312522317L;
+	
+	/** The xls column name2desc. */
 	private final Map<String, ColumnDescCbe> xlsColumnName2desc = new HashMap<String, ColumnDescCbe>();
+    
+    /** The property name2desc. */
     private final Map<String, ColumnDescCbe> propertyName2desc = new HashMap<String, ColumnDescCbe>();
+    
+    /** The column order. */
     private final List<ColumnDescCbe> columnOrder = new ArrayList<ColumnDescCbe>();
 
+    /** The sheet. */
     private final SheetObject sheet;
+    
+    /** The workbook. */
     private final WorkbookDescCbe<WT> workbook;
+    
+    /** The key generator. */
     private final KeyGenerator keyGenerator;
+    
+    /** The sheet index. */
     @SuppressWarnings("unused")
 	private final int sheetIndex;
+    
+    /** The work book sheet. */
     private WorkBookSheet<T> workBookSheet;
 
     /**
-     * @param recordClass
+     * Instantiates a new sheet desc cbe.
+     *
+     * @param workbook the workbook
+     * @param workBookSheet the work book sheet
+     * @param workbookProperty the workbook property
+     * @param sheetIndex the sheet index
      */
     public SheetDescCbe(WorkbookDescCbe<WT> workbook, WorkBookSheet<T> workBookSheet, String workbookProperty, int sheetIndex) {
         super();
@@ -68,10 +96,16 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         initColumnDescs();
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getColumnDescs()
+     */
     public List<ColumnDescCbe> getColumnDescs(){
         return Collections.unmodifiableList(columnOrder);
     }
 
+    /**
+     * Inits the column descs.
+     */
     private void initColumnDescs() {
     	List<SheetColumDeclaration> sheetColumDeclarations = SheetProcessor.processSheet(workBookSheet, workbook);
     	int columnIndex = 0;
@@ -81,6 +115,13 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 		}
     }
     
+    /**
+     * Adds the column.
+     *
+     * @param sheetColumDeclaration the sheet colum declaration
+     * @param columnIndex the column index
+     * @param workBookSheet the work book sheet
+     */
     private void addColumn(SheetColumDeclaration sheetColumDeclaration,
     		int columnIndex, WorkBookSheet<T> workBookSheet) {
         PropertyDescriptor pd = sheetColumDeclaration.getPropertyDescriptor();
@@ -93,18 +134,30 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         propertyName2desc.put(columnDesc.getPropertyName(), columnDesc);
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getColumnDescForXlsColumnName(java.lang.String)
+     */
     public ColumnDescCbe getColumnDescForXlsColumnName(String xlsColumnName) {
         return xlsColumnName2desc.get(xlsColumnName);
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getColumnDescForPropertyName(java.lang.String)
+     */
     public ColumnDescCbe getColumnDescForPropertyName(String propertyName) {
         return propertyName2desc.get(propertyName);
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getLabel()
+     */
     public String getLabel() {
         return workBookSheet.getField().getName();
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getSheetData(java.lang.Object)
+     */
     @SuppressWarnings("unchecked")
     public List<T> getSheetData(Object workbookObj) {
         try {
@@ -118,6 +171,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         }
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#setSheetData(java.lang.Object, java.util.List)
+     */
     public void setSheetData(Object workbookObj, List<T> records) {
         try {
         	// if the collection property is not null, we can add ellement to the collection
@@ -151,8 +207,8 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
     /**
      * load the headers found in the sheet.
      *
-     * @param sheet
-     * @return
+     * @param sheet the sheet
+     * @return the list
      */
     private List<ColumnDescCbe> loadXlsHeader(HSSFSheet sheet) {
         List<ColumnDescCbe> columnDescs = new ArrayList<ColumnDescCbe>();
@@ -167,6 +223,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         return columnDescs;
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#loadAndSetBeanRecords(org.apache.poi.hssf.usermodel.HSSFSheet, java.lang.Object, org.adorsys.xlseasy.annotation.ISheetSession)
+     */
     public List<T> loadAndSetBeanRecords(HSSFSheet sheet, Object workbook, ISheetSession<?, ?> session) {
         //if not loaded, load it!
         List<T> sheetData = loadBeanRecords(sheet, session);
@@ -174,6 +233,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         return sheetData;
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#loadBeanRecords(org.apache.poi.hssf.usermodel.HSSFSheet, org.adorsys.xlseasy.annotation.ISheetSession)
+     */
     public List<T> loadBeanRecords(HSSFSheet sheet, ISheetSession<?, ?> session) {
         List<T> records = new ArrayList<T>();
         List<ColumnDescCbe> loadXlsHeader = loadXlsHeader(sheet);
@@ -206,14 +268,23 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         return records;
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#newRecordInstance()
+     */
     public T newRecordInstance() {
     	return XlseasyUtils.newInstance(workBookSheet.getSheetKlass());
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getSheet()
+     */
     public SheetObject getSheet() {
         return sheet;
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#createSheet(java.util.Collection, org.adorsys.xlseasy.impl.proc.SheetSession)
+     */
     public void createSheet(Collection<?> sheetData, SheetSession<?, ?> session) {
         HSSFSheet sheet = session.getWorkbook().createSheet(getLabel());
         createData(session, sheet, sheetData);
@@ -222,6 +293,11 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         addConstraints(sheet);
     }
 
+    /**
+     * Format sheet.
+     *
+     * @param hssfSheet the hssf sheet
+     */
     private void formatSheet(HSSFSheet hssfSheet) {
         if (sheet != null) {
             Class<? extends SheetFormatter> formatter = sheet.formatter();
@@ -237,6 +313,12 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 
     }
 
+    /**
+     * Creates the header.
+     *
+     * @param session the session
+     * @param sheet the sheet
+     */
     protected void createHeader(SheetSession<?, ?> session, HSSFSheet sheet) {
         HSSFRow row = sheet.createRow(0);
         List<ColumnDescCbe> columnDescs = getColumnDescs();
@@ -254,6 +336,13 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
                 freezePane.topRow());
     }
 
+    /**
+     * Creates the data.
+     *
+     * @param session the session
+     * @param sheet the sheet
+     * @param sheetData the sheet data
+     */
     protected void createData(SheetSession<?, ?> session, HSSFSheet sheet,
                               Collection<?> sheetData) {
         if (sheetData != null) {
@@ -266,10 +355,18 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         }
     }
 
+    /* (non-Javadoc)
+     * @see org.adorsys.xlseasy.impl.proc.SheetDescIF#getRecordClass()
+     */
     public Class<T> getRecordClass() {
         return workBookSheet.getSheetKlass();
     }
 
+    /**
+     * Adds the constraints.
+     *
+     * @param sheet the sheet
+     */
     protected void addConstraints(HSSFSheet sheet) {
         int index = 0;
         for (ColumnDescCbe c : columnOrder) {
@@ -296,6 +393,13 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
         }
     }
 
+    /**
+     * Fill row.
+     *
+     * @param session the session
+     * @param row the row
+     * @param bean the bean
+     */
     private void fillRow(SheetSession<?, ?> session, HSSFRow row, Object bean) {
         for (int i = 0; i < columnOrder.size(); i++) {
             ColumnDescCbe columnDesc = columnOrder.get(i);

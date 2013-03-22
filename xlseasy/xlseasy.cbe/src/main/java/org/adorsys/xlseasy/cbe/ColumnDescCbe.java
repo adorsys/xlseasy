@@ -24,11 +24,20 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ColumnDescCbe.
+ */
 public class ColumnDescCbe implements ColumnDescIF {
 
 
+	/** The anno sheet column. */
 	private final SheetColumnObject annoSheetColumn;
+	
+	/** The anno sheet column style. */
 	private final SheetCellStyleObject annoSheetColumnStyle;
+	
+	/** The anno sheet header style. */
 	private final SheetCellStyleObject annoSheetHeaderStyle;
 
 	/**
@@ -41,23 +50,26 @@ public class ColumnDescCbe implements ColumnDescIF {
 	 */
 	private final String xlsColumnLabel;
 
+	/** The type. */
 	private final Class<?> type;
 
+	/** The converter. */
 	private final ICellConverter converter;
 	
+	/** The column index. */
 	private final int columnIndex;
 	
+	/** The work book sheet. */
 	private final WorkBookSheet workBookSheet;
 
 	/**
-	 * @param annoSheetColumn
-	 * @param annoSheetHeaderStyle
-	 * @param propertyName
-	 * @param xlsColumnLabel
-	 * @param columnIndex
-	 * @param keyFieldNameMap 
-	 * @param type
-	 * @param converter
+	 * Instantiates a new column desc cbe.
+	 *
+	 * @param pd the pd
+	 * @param sc the sc
+	 * @param columnIndex the column index
+	 * @param field the field
+	 * @param workBookSheet the work book sheet
 	 */
 	@SuppressWarnings("unchecked")
 	public ColumnDescCbe(PropertyDescriptor pd, SheetColumnObject sc, 
@@ -103,6 +115,14 @@ public class ColumnDescCbe implements ColumnDescIF {
 		} 
 	}
 	
+	/**
+	 * Gets the collection type converter.
+	 *
+	 * @param rawType the raw type
+	 * @param elementType the element type
+	 * @param workBookSheet the work book sheet
+	 * @return the collection type converter
+	 */
 	private CollectionTypeConverter getCollectionTypeConverter(Class<?> rawType, 
 			Class<?> elementType, WorkBookSheet workBookSheet){
 		WorkBookSheet referencedBookSheet = workBookSheet.getWorkbookCbe().getWorkBookSheet(elementType);
@@ -115,38 +135,65 @@ public class ColumnDescCbe implements ColumnDescIF {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getPropertyName()
+	 */
 	public String getPropertyName() {
 		return propertyName;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getXlsColumnLabel()
+	 */
 	public String getXlsColumnLabel() {
 		return xlsColumnLabel;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getConverter()
+	 */
 	public ICellConverter getConverter() {
 		return converter;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getAnnoSheetColumn()
+	 */
 	public SheetColumnObject getAnnoSheetColumn() {
 		return annoSheetColumn;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getAnnoSheetColumnStyle()
+	 */
 	public SheetCellStyleObject getAnnoSheetColumnStyle() {
 		return annoSheetColumnStyle;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getAnnoSheetHeaderStyle()
+	 */
 	public SheetCellStyleObject getAnnoSheetHeaderStyle() {
 		return annoSheetHeaderStyle;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getColumnIndex()
+	 */
 	public int getColumnIndex() {
 		return columnIndex;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#getType()
+	 */
 	public Class<?> getType() {
 		return type;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#copyCellValueToBean(java.lang.Object, org.apache.poi.hssf.usermodel.HSSFCell, org.adorsys.xlseasy.annotation.ISheetSession)
+	 */
 	public void copyCellValueToBean(Object bean, HSSFCell cell, ISheetSession<?, ?> session) {
 		try {
 			PropertyUtils.setProperty(bean, propertyName, converter.getDataCell(cell, type, session));
@@ -165,6 +212,9 @@ public class ColumnDescCbe implements ColumnDescIF {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#copyBeanPropertyValueToCell(java.lang.Object, org.apache.poi.hssf.usermodel.HSSFCell, org.adorsys.xlseasy.annotation.ISheetSession)
+	 */
 	public void copyBeanPropertyValueToCell(Object bean, HSSFCell cell, ISheetSession<?, ?> session) {
 		try {
 			converter.setHSSFCell(cell, PropertyUtils.getProperty(bean, propertyName), type, session);
@@ -180,11 +230,17 @@ public class ColumnDescCbe implements ColumnDescIF {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#setHeaderLabel(org.apache.poi.hssf.usermodel.HSSFCell, org.adorsys.xlseasy.annotation.ISheetSession)
+	 */
 	public void setHeaderLabel(HSSFCell cell, ISheetSession<?, ?> session) {
 		ICellConverter c = CellConverter.getConverterForType(String.class);
 		c.setHSSFCell(cell, xlsColumnLabel, String.class, session);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#formatDataCell(org.adorsys.xlseasy.impl.proc.SheetSession, org.apache.poi.hssf.usermodel.HSSFCell)
+	 */
 	public void formatDataCell(SheetSession<?, ?> session, HSSFCell cell) {
 		if (annoSheetColumn.columnStyle() != null) {
 			WorkbookStyle cachedStyle = session.getWorkbookStyle(annoSheetColumn, annoSheetColumn.columnStyle());
@@ -193,6 +249,9 @@ public class ColumnDescCbe implements ColumnDescIF {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.ColumnDescIF#formatHeaderCell(org.adorsys.xlseasy.impl.proc.SheetSession, org.apache.poi.hssf.usermodel.HSSFCell)
+	 */
 	public void formatHeaderCell(SheetSession<?, ?> session, HSSFCell cell) {
 		if (annoSheetColumn.hidden()) {
 			cell.getSheet().setColumnHidden(cell.getColumnIndex(), true);

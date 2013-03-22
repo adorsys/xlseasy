@@ -22,25 +22,78 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author sso
+ * The Interface SheetColumn.
+ *
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface SheetColumn {
 	
+	/**
+	 * Column name.
+	 *
+	 * @return the string
+	 */
 	String columnName() default "";
+	
+	/**
+	 * Merged.
+	 *
+	 * @return true, if successful
+	 */
 	boolean merged() default false;
+	
+	/**
+	 * Header merged.
+	 *
+	 * @return the int
+	 */
 	int headerMerged() default 0;
+	
+	/**
+	 * Optional.
+	 *
+	 * @return true, if successful
+	 */
 	boolean optional() default false;
 	
+	/**
+	 * Converter.
+	 *
+	 * @return the class
+	 */
 	Class<?> converter() default Object.class;
+	
+	/**
+	 * Hidden.
+	 *
+	 * @return true, if successful
+	 */
 	boolean hidden() default false;
+	
+	/**
+	 * Header comment.
+	 *
+	 * @return the string
+	 */
 	String headerComment() default "";
 	
+	/**
+	 * Header style.
+	 *
+	 * @return the sheet cell style
+	 */
 	SheetCellStyle headerStyle() default @SheetCellStyle;
+	
+	/**
+	 * Column style.
+	 *
+	 * @return the sheet cell style
+	 */
 	SheetCellStyle columnStyle() default @SheetCellStyle;
 	
 }

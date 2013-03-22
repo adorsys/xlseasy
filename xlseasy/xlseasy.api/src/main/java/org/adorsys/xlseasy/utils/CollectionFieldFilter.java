@@ -8,14 +8,18 @@ import java.util.Collection;
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Match all fields that ar collection types.
  * 
- * @author francis
+ * @author Francis Pouatcha <info@adorsys.de>
  *
  */
 public class CollectionFieldFilter implements FieldFilter {
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter#matches(java.lang.reflect.Field)
+	 */
 	public boolean matches(Field field) {
 		Type genericType = field.getGenericType();
 		if (genericType instanceof ParameterizedType) {  

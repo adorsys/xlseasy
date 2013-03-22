@@ -11,8 +11,18 @@ import java.util.List;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class XlseasyUtils.
+ */
 public abstract class XlseasyUtils {
 
+	/**
+	 * Extract element type.
+	 *
+	 * @param field the field
+	 * @return the class
+	 */
 	public static Class<?> extractElementType(Field field){
 		Type genericType = field.getGenericType();
 		if (!(genericType instanceof ParameterizedType)) {
@@ -26,6 +36,12 @@ public abstract class XlseasyUtils {
 		return (Class<?>) actualTypeArguments[0];
 	}
 	
+	/**
+	 * Extract raw type.
+	 *
+	 * @param field the field
+	 * @return the class
+	 */
 	public static Class<?> extractRawType(Field field){
 		Type genericType = field.getGenericType();
 		if (!(genericType instanceof ParameterizedType)) {
@@ -36,12 +52,24 @@ public abstract class XlseasyUtils {
 		return (Class<?>) pt.getRawType();
 	}
 	
+	/**
+	 * Checks if is collection type.
+	 *
+	 * @param field the field
+	 * @return true, if is collection type
+	 */
 	public static final boolean isCollectionType(Field field){
 		Class<?> rawType = extractRawType(field);
 		if(rawType==null) return false;
 		return Collection.class.isAssignableFrom(rawType);
 	}
 	
+	/**
+	 * Read workbook fields.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<Field> readWorkbookFields(Class<?> clazz) {
 
 		CompositeFieldFilter compositeFieldFilter = new CompositeFieldFilter(
@@ -55,6 +83,13 @@ public abstract class XlseasyUtils {
 		return collectingFieldCallback.getFields();
 	}	
 
+	/**
+	 * Read sheet fields.
+	 *
+	 * @param clazz the clazz
+	 * @param excludedFields the excluded fields
+	 * @return the list
+	 */
 	public static List<Field> readSheetFields(Class<?> clazz, Collection<String> excludedFields) {
 		CollectionFieldCallback collectingFieldCallback = new CollectionFieldCallback();
 		ReflectionUtils.doWithFields(clazz, collectingFieldCallback,
@@ -65,6 +100,14 @@ public abstract class XlseasyUtils {
 		return collectingFieldCallback.getFields();
 	}	
 	
+	/**
+	 * Gets the constructor.
+	 *
+	 * @param <T> the generic type
+	 * @param klass the klass
+	 * @param paramTypes the param types
+	 * @return the constructor
+	 */
 	public static <T> Constructor<T> getConstructor(Class<T> klass, Class<?>... paramTypes){
 		try {
 			return klass.getConstructor(paramTypes);
@@ -75,6 +118,14 @@ public abstract class XlseasyUtils {
 		}
 	}
 	
+	/**
+	 * New instance.
+	 *
+	 * @param <T> the generic type
+	 * @param constructor the constructor
+	 * @param objects the objects
+	 * @return the t
+	 */
 	public static <T> T newInstance(Constructor<T> constructor, Object...objects){
 		try {
 			return constructor.newInstance(objects);
@@ -89,6 +140,13 @@ public abstract class XlseasyUtils {
 		}
 	}
 
+	/**
+	 * New instance.
+	 *
+	 * @param <T> the generic type
+	 * @param klass the klass
+	 * @return the t
+	 */
 	public static <T> T newInstance(Class<T> klass){
 		try {
 			return klass.newInstance();

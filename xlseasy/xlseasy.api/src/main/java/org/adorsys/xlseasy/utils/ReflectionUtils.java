@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+// TODO: Auto-generated Javadoc
 /**
  * Simple utility class for working with the reflection API and handling
  * reflection exceptions.
@@ -28,6 +29,7 @@ import java.util.regex.Pattern;
  */
 public abstract class ReflectionUtils {
 
+	/** The Constant CGLIB_RENAMED_METHOD_PATTERN. */
 	private static final Pattern CGLIB_RENAMED_METHOD_PATTERN = Pattern.compile("CGLIB\\$(.+)\\$\\d+");
 
 	/**
@@ -260,10 +262,10 @@ public abstract class ReflectionUtils {
 	 * only be called if no checked exception is expected to be thrown by the
 	 * target method.
 	 * <p>Rethrows the underlying exception cast to an {@link RuntimeException} or
+	 *
+	 * @param ex the exception to rethrow
 	 * {@link Error} if appropriate; otherwise, throws an
 	 * {@link IllegalStateException}.
-	 * @param ex the exception to rethrow
-	 * @throws RuntimeException the rethrown exception
 	 */
 	public static void rethrowRuntimeException(Throwable ex) {
 		if (ex instanceof RuntimeException) {
@@ -281,10 +283,11 @@ public abstract class ReflectionUtils {
 	 * only be called if no checked exception is expected to be thrown by the
 	 * target method.
 	 * <p>Rethrows the underlying exception cast to an {@link Exception} or
-	 * {@link Error} if appropriate; otherwise, throws an
-	 * {@link IllegalStateException}.
+	 *
 	 * @param ex the exception to rethrow
 	 * @throws Exception the rethrown exception (in case of a checked exception)
+	 * {@link Error} if appropriate; otherwise, throws an
+	 * {@link IllegalStateException}.
 	 */
 	public static void rethrowException(Throwable ex) throws Exception {
 		if (ex instanceof Exception) {
@@ -318,7 +321,9 @@ public abstract class ReflectionUtils {
 
 	/**
 	 * Determine whether the given field is a "public static final" constant.
+	 *
 	 * @param field the field to check
+	 * @return true, if is public static final
 	 */
 	public static boolean isPublicStaticFinal(Field field) {
 		int modifiers = field.getModifiers();
@@ -327,6 +332,9 @@ public abstract class ReflectionUtils {
 
 	/**
 	 * Determine whether the given method is an "equals" method.
+	 *
+	 * @param method the method
+	 * @return true, if is equals method
 	 * @see java.lang.Object#equals(Object)
 	 */
 	public static boolean isEqualsMethod(Method method) {
@@ -339,6 +347,9 @@ public abstract class ReflectionUtils {
 
 	/**
 	 * Determine whether the given method is a "hashCode" method.
+	 *
+	 * @param method the method
+	 * @return true, if is hash code method
 	 * @see java.lang.Object#hashCode()
 	 */
 	public static boolean isHashCodeMethod(Method method) {
@@ -347,6 +358,9 @@ public abstract class ReflectionUtils {
 
 	/**
 	 * Determine whether the given method is a "toString" method.
+	 *
+	 * @param method the method
+	 * @return true, if is to string method
 	 * @see java.lang.Object#toString()
 	 */
 	public static boolean isToStringMethod(Method method) {
@@ -355,6 +369,9 @@ public abstract class ReflectionUtils {
 
 	/**
 	 * Determine whether the given method is originally declared by {@link java.lang.Object}.
+	 *
+	 * @param method the method
+	 * @return true, if is object method
 	 */
 	public static boolean isObjectMethod(Method method) {
 		try {
@@ -370,7 +387,9 @@ public abstract class ReflectionUtils {
 	/**
 	 * Determine whether the given method is a CGLIB 'renamed' method, following
 	 * the pattern "CGLIB$methodName$0".
+	 *
 	 * @param renamedMethod the method to check
+	 * @return true, if is cglib renamed method
 	 * @see net.sf.cglib.proxy.Enhancer#rename
 	 */
 	public static boolean isCglibRenamedMethod(Method renamedMethod) {
@@ -427,8 +446,10 @@ public abstract class ReflectionUtils {
 	 * class and superclasses.
 	 * <p>The same named method occurring on subclass and superclass will appear
 	 * twice, unless excluded by a {@link MethodFilter}.
+	 *
 	 * @param clazz class to start looking at
 	 * @param mc the callback to invoke for each method
+	 * @throws IllegalArgumentException the illegal argument exception
 	 * @see #doWithMethods(Class, MethodCallback, MethodFilter)
 	 */
 	public static void doWithMethods(Class<?> clazz, MethodCallback mc) throws IllegalArgumentException {
@@ -440,9 +461,11 @@ public abstract class ReflectionUtils {
 	 * class and superclasses (or given interface and super-interfaces).
 	 * <p>The same named method occurring on subclass and superclass will appear
 	 * twice, unless excluded by the specified {@link MethodFilter}.
+	 *
 	 * @param clazz class to start looking at
 	 * @param mc the callback to invoke for each method
 	 * @param mf the filter that determines the methods to apply the callback to
+	 * @throws IllegalArgumentException the illegal argument exception
 	 */
 	public static void doWithMethods(Class<?> clazz, MethodCallback mc, MethodFilter mf)
 			throws IllegalArgumentException {
@@ -474,6 +497,10 @@ public abstract class ReflectionUtils {
 	/**
 	 * Get all declared methods on the leaf class and all superclasses. Leaf
 	 * class methods are included first.
+	 *
+	 * @param leafClass the leaf class
+	 * @return the all declared methods
+	 * @throws IllegalArgumentException the illegal argument exception
 	 */
 	public static Method[] getAllDeclaredMethods(Class<?> leafClass) throws IllegalArgumentException {
 		final List<Method> methods = new ArrayList<Method>(32);
@@ -489,6 +516,10 @@ public abstract class ReflectionUtils {
 	 * Get the unique set of declared methods on the leaf class and all superclasses. Leaf
 	 * class methods are included first and while traversing the superclass hierarchy any methods found
 	 * with signatures matching a method already included are filtered out.
+	 *
+	 * @param leafClass the leaf class
+	 * @return the unique declared methods
+	 * @throws IllegalArgumentException the illegal argument exception
 	 */
 	public static Method[] getUniqueDeclaredMethods(Class<?> leafClass) throws IllegalArgumentException {
 		final List<Method> methods = new ArrayList<Method>(32);
@@ -524,8 +555,10 @@ public abstract class ReflectionUtils {
 	/**
 	 * Invoke the given callback on all fields in the target class, going up the
 	 * class hierarchy to get all declared fields.
+	 *
 	 * @param clazz the target class to analyze
 	 * @param fc the callback to invoke for each field
+	 * @throws IllegalArgumentException the illegal argument exception
 	 */
 	public static void doWithFields(Class<?> clazz, FieldCallback fc) throws IllegalArgumentException {
 		doWithFields(clazz, fc, null);
@@ -534,9 +567,11 @@ public abstract class ReflectionUtils {
 	/**
 	 * Invoke the given callback on all fields in the target class, going up the
 	 * class hierarchy to get all declared fields.
+	 *
 	 * @param clazz the target class to analyze
 	 * @param fc the callback to invoke for each field
 	 * @param ff the filter that determines the fields to apply the callback to
+	 * @throws IllegalArgumentException the illegal argument exception
 	 */
 	public static void doWithFields(Class<?> clazz, FieldCallback fc, FieldFilter ff)
 			throws IllegalArgumentException {
@@ -567,6 +602,9 @@ public abstract class ReflectionUtils {
 	 * Given the source object and the destination, which must be the same class
 	 * or a subclass, copy all fields, including inherited fields. Designed to
 	 * work on objects with public no-arg constructors.
+	 *
+	 * @param src the src
+	 * @param dest the dest
 	 * @throws IllegalArgumentException if the arguments are incompatible
 	 */
 	public static void shallowCopyFieldState(final Object src, final Object dest) throws IllegalArgumentException {
@@ -597,7 +635,10 @@ public abstract class ReflectionUtils {
 
 		/**
 		 * Perform an operation using the given method.
+		 *
 		 * @param method the method to operate on
+		 * @throws IllegalArgumentException the illegal argument exception
+		 * @throws IllegalAccessException the illegal access exception
 		 */
 		void doWith(Method method) throws IllegalArgumentException, IllegalAccessException;
 	}
@@ -610,7 +651,9 @@ public abstract class ReflectionUtils {
 
 		/**
 		 * Determine whether the given method matches.
+		 *
 		 * @param method the method to check
+		 * @return true, if successful
 		 */
 		boolean matches(Method method);
 	}
@@ -623,7 +666,10 @@ public abstract class ReflectionUtils {
 
 		/**
 		 * Perform an operation using the given field.
+		 *
 		 * @param field the field to operate on
+		 * @throws IllegalArgumentException the illegal argument exception
+		 * @throws IllegalAccessException the illegal access exception
 		 */
 		void doWith(Field field) throws IllegalArgumentException, IllegalAccessException;
 	}
@@ -636,7 +682,9 @@ public abstract class ReflectionUtils {
 
 		/**
 		 * Determine whether the given field matches.
+		 *
 		 * @param field the field to check
+		 * @return true, if successful
 		 */
 		boolean matches(Field field);
 	}

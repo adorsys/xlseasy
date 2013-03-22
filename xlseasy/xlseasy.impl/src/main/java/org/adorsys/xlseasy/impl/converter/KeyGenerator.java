@@ -8,10 +8,23 @@ import org.adorsys.xlseasy.annotation.Key;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KeyGenerator.
+ */
 public class KeyGenerator {
+	
+	/** The row class. */
 	private final Class<?> rowClass;
+	
+	/** The field. */
 	private final Field field;
 
+	/**
+	 * Instantiates a new key generator.
+	 *
+	 * @param rowClass the row class
+	 */
 	public KeyGenerator(Class<?> rowClass) {
 		super();
 		this.rowClass = rowClass;
@@ -23,6 +36,13 @@ public class KeyGenerator {
 			field = null;
 		}
 	}
+	
+	/**
+	 * Instantiates a new key generator.
+	 *
+	 * @param rowClass the row class
+	 * @param keyField the key field
+	 */
 	public KeyGenerator(Class<?> rowClass, Field keyField) {
 		super();
 		this.rowClass = rowClass;
@@ -30,6 +50,12 @@ public class KeyGenerator {
 		field.setAccessible(true);
 	}
 	
+	/**
+	 * Gets the key.
+	 *
+	 * @param object the object
+	 * @return the key
+	 */
 	public String getKey(Object object) {
 		if (field == null) {
 			return null;
@@ -43,6 +69,11 @@ public class KeyGenerator {
 		} 
 	}
 	
+	/**
+	 * Gets the key column name.
+	 *
+	 * @return the key column name
+	 */
 	public String getKeyColumnName() {
 		return  field != null ? field.getName() : null;
 	}

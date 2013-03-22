@@ -22,6 +22,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * An annotation for the property which is mapped to the horizontal table records.
  * 
@@ -31,6 +32,18 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface HorizontalRecords {
+	
+	/**
+	 * Table label.
+	 *
+	 * @return the string
+	 */
 	String tableLabel() default "";
+	
+	/**
+	 * Record class.
+	 *
+	 * @return the class
+	 */
 	Class<?> recordClass();
 }

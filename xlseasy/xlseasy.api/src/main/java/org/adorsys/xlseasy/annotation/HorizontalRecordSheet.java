@@ -6,15 +6,22 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
  * An annotation for the property which is mapped to the horizontal table records.
  * 
- * @author sso
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface HorizontalRecordSheet {
+	
+	/**
+	 * Record class.
+	 *
+	 * @return the class
+	 */
 	Class<?> recordClass();
 	
 	/**

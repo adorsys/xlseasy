@@ -17,35 +17,59 @@ import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+// TODO: Auto-generated Javadoc
 /**
- * TODO set Javadoc for Class
- * 
+ * TODO set Javadoc for Class.
+ *
+ * @param <WT> the generic type
+ * @param <RT> the generic type
  * @version $Id: $
  * @author sso
  */
 public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 
+	/** The workbook. */
 	private HSSFWorkbook workbook;
 
+	/** The cell style cache. */
 	private final Map<SheetCellStyleObject, WorkbookStyle> cellStyleCache = new HashMap<SheetCellStyleObject, WorkbookStyle>();
 
+	/** The Constant WORKBOOKDESC_CACHE. */
 	private static final Map<Class<?>, WorkbookDescIF<?>> WORKBOOKDESC_CACHE = new HashMap<Class<?>, WorkbookDescIF<?>>();
 
+	/** The bean type. */
 	private final Class<?> beanType;
+	
+	/** The workbook type. */
 	private final boolean workbookType;
+	
+	/** The workbook desc. */
 	private final WorkbookDescIF<WT> workbookDesc;
+	
+	/** The workbook bean. */
 	private final WT workbookBean;
 	
+	/** The key2object cache. */
 	private final HashMap<List<?>, Object> key2objectCache = new HashMap<List<?>, Object>();
 
+	/** The workbook desc factory. */
 	private WorkbookDescFactory workbookDescFactory;
 	
 	/**
-	 * @param workbook
+	 * Instantiates a new sheet session.
+	 *
+	 * @param beanType the bean type
 	 */
 	public SheetSession(Class<?> beanType) {
 		this(beanType, new WorkbookDescFactory());
 	}
+	
+	/**
+	 * Instantiates a new sheet session.
+	 *
+	 * @param beanType the bean type
+	 * @param workbookDescFactory the workbook desc factory
+	 */
 	public SheetSession(Class<?> beanType, WorkbookDescFactory workbookDescFactory) {
 		this.workbookDescFactory = workbookDescFactory;
 		this.beanType = beanType;
@@ -56,11 +80,19 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 	}
 
 	
+	/**
+	 * Reset.
+	 */
 	public void reset() {
 		this.workbook = new HSSFWorkbook();
 		cellStyleCache.clear();
 	}
 
+	/**
+	 * Load.
+	 *
+	 * @param is the is
+	 */
 	public void load(InputStream is) {
 		try {
 			this.workbook = new HSSFWorkbook(is);
@@ -69,6 +101,13 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		}
 	}
 
+	/**
+	 * Gets the workbook style.
+	 *
+	 * @param column the column
+	 * @param style the style
+	 * @return the workbook style
+	 */
 	public WorkbookStyle getWorkbookStyle(SheetColumnObject column,
 			SheetCellStyleObject style) {
 		WorkbookStyle cachedStyle = cellStyleCache.get(style);
@@ -79,6 +118,11 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		return cachedStyle;
 	}
 
+	/**
+	 * Load.
+	 *
+	 * @param data the data
+	 */
 	public void load(WT data) {
 		List<? extends SheetDescIF<?,WT>> orderedSheets = workbookDesc.getOrderedSheets();
 		for (SheetDescIF<?,WT> sheetDesc : orderedSheets) {
@@ -90,6 +134,11 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		}
 	}
 
+	/**
+	 * Load.
+	 *
+	 * @param data the data
+	 */
 	public void load(Collection<?> data) {
 		List<? extends SheetDescIF<?, WT>> orderedSheets = workbookDesc.getOrderedSheets();
 		for (SheetDescIF<?, WT> sheetDesc : orderedSheets) {
@@ -97,10 +146,22 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		}
 	}
 
+	/**
+	 * Load sheet data.
+	 *
+	 * @param sheetDesc the sheet desc
+	 * @param sheetData the sheet data
+	 */
 	private void loadSheetData(SheetDescIF<?, WT> sheetDesc, Collection<?> sheetData) {
 		sheetDesc.createSheet(sheetData, this);
 	}
 
+	/**
+	 * Gets the or create workbook desc.
+	 *
+	 * @param clazz the clazz
+	 * @return the or create workbook desc
+	 */
 	@SuppressWarnings("unchecked")
 	private WorkbookDescIF<WT> getOrCreateWorkbookDesc(Class<?> clazz) {
 		WorkbookDescIF<WT> workbookDesc = (WorkbookDescIF<WT>) WORKBOOKDESC_CACHE.get(clazz);
@@ -125,6 +186,11 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		return workbookDesc;
 	}
 
+	/**
+	 * Save.
+	 *
+	 * @param os the os
+	 */
 	public void save(OutputStream os) {
 		try {
 			workbook.write(os);
@@ -133,6 +199,11 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		}
 	}
 	
+	/**
+	 * To record list.
+	 *
+	 * @return the list
+	 */
 	public List<RT> toRecordList() {
 		if (!workbookType) {
 			@SuppressWarnings("unchecked")
@@ -148,6 +219,11 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		throw new SheetSystemException(ErrorCodeSheet.NOT_A_SHEETTYPE_SESSION);
 	}
 
+	/**
+	 * To workbook bean.
+	 *
+	 * @return the wt
+	 */
 	public WT toWorkbookBean() {
 		if (workbookType) {
 			return workbookDesc.loadWorkbookBean(workbook, workbookBean, this);
@@ -173,10 +249,16 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		return workbook;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.annotation.ISheetSession#getObjectByKey(java.lang.Class, java.lang.Object)
+	 */
 	public <T> T getObjectByKey(Class<T> recordClass, Object key) {
 		return (T) key2objectCache.get(Arrays.asList(recordClass, key));
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.annotation.ISheetSession#setObjectByKey(java.lang.Class, java.lang.Object, java.lang.Object)
+	 */
 	public <T> void setObjectByKey(Class<T> recordClass, Object key, T object) {
 		if (key != null) {
 			key2objectCache.put(Arrays.asList(recordClass, key), object);

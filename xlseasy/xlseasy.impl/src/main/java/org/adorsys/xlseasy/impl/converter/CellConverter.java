@@ -12,16 +12,20 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
+// TODO: Auto-generated Javadoc
 /**
- * TODO set Javadoc for Class
+ * The Class CellConverter.
+ *
  * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 public abstract class CellConverter implements ICellConverter {
 	
 	
+	/** The Constant REG. */
 	private static final Map<Class<?>, ICellConverter> REG = new HashMap<Class<?>, ICellConverter>();
 
+	/** The Constant TYPE2CONVERTER. */
 	private static final Map<Class<?>, ICellConverter> TYPE2CONVERTER = new HashMap<Class<?>, ICellConverter>();
 	
 	static {
@@ -53,6 +57,11 @@ public abstract class CellConverter implements ICellConverter {
 	 */
 	public abstract Class<?>[] getConveterTypes();
 	
+	/**
+	 * Register default type.
+	 *
+	 * @param converterClazz the converter clazz
+	 */
 	private static void registerDefaultType(Class<? extends ICellConverter> converterClazz) {
 		ICellConverter converter = getConverter(converterClazz);
 		Class<?>[] conveterTypes = converter.getConveterTypes();
@@ -61,6 +70,13 @@ public abstract class CellConverter implements ICellConverter {
 		}
 	}
 	
+	/**
+	 * Gets the converter.
+	 *
+	 * @param <C> the generic type
+	 * @param clazz the clazz
+	 * @return the converter
+	 */
 	@SuppressWarnings("unchecked")
 	public static <C extends ICellConverter> C getConverter(Class<C> clazz) {
 		C converter = (C) REG.get(clazz);
@@ -82,6 +98,12 @@ public abstract class CellConverter implements ICellConverter {
 		return converter;
 	}
 	
+	/**
+	 * Gets the string cell value.
+	 *
+	 * @param cell the cell
+	 * @return the string cell value
+	 */
 	protected String getStringCellValue(HSSFCell cell) {
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
 			//converting numbers top string results typicly in a decimal format so special handling for non floating numbers
@@ -93,6 +115,12 @@ public abstract class CellConverter implements ICellConverter {
 		}
 	}
 	
+	/**
+	 * Gets the double cell value.
+	 *
+	 * @param cell the cell
+	 * @return the double cell value
+	 */
 	protected Double getDoubleCellValue(HSSFCell cell) {
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
 			return cell.getNumericCellValue();
@@ -106,6 +134,12 @@ public abstract class CellConverter implements ICellConverter {
 		}
 	}
 	
+	/**
+	 * Gets the converter for type.
+	 *
+	 * @param clazz the clazz
+	 * @return the converter for type
+	 */
 	public static ICellConverter getConverterForType(Class<?> clazz) {
 		ICellConverter conv = TYPE2CONVERTER.get(clazz);
 		if (conv == null) {

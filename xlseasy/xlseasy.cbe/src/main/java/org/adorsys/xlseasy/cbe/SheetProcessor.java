@@ -12,8 +12,20 @@ import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 import org.adorsys.xlseasy.impl.converter.SheetConverter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SheetProcessor.
+ */
 public class SheetProcessor {
 
+	/**
+	 * Process sheet.
+	 *
+	 * @param <T> the generic type
+	 * @param workBookSheet the work book sheet
+	 * @param workbookDescJpa the workbook desc jpa
+	 * @return the list
+	 */
 	public static <T> List<SheetColumDeclaration> 
 		processSheet(WorkBookSheet<T> workBookSheet, WorkbookDescCbe<?> workbookDescJpa) 
 	{

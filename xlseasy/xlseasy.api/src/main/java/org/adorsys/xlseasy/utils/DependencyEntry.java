@@ -11,19 +11,50 @@ import java.util.Set;
 
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DependencyEntry.
+ */
 public 	class DependencyEntry implements Comparable<DependencyEntry> {
+	
+	/** The klass. */
 	private final Class<?> klass;
+	
+	/** The key field. */
 	private final Field keyField;
+	
+	/** The dependents. */
 	private final Set<DependencyEntry> dependents = new HashSet<DependencyEntry>();
+	
+	/** The extent. */
 	private final Map<Class<?>, DependencyEntry> extent;
+	
+	/** The fields. */
 	private final List<Field> fields = new ArrayList<Field>();
+	
+	/** The excluded fields. */
 	private final Collection<String> excludedFields = new ArrayList<String>();
+	
+	/** The level. */
 	private int level;
+	
+	/** The field date styles. */
 	private final Map<String, String> fieldDateStyles;
 	
+	/** The field order. */
 	List<Field> fieldOrder;
 	
 	
+	/**
+	 * Instantiates a new dependency entry.
+	 *
+	 * @param field the field
+	 * @param klass the klass
+	 * @param extent the extent
+	 * @param excludedFields the excluded fields
+	 * @param keyField the key field
+	 * @param fieldDateStyles the field date styles
+	 */
 	public DependencyEntry(final Field field,
 			final Class<?> klass, 
 			final Map<Class<?>, DependencyEntry> extent,
@@ -38,14 +69,30 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		fieldOrder = XlseasyUtils.readSheetFields(klass, excludedFields);
 	}
 	
+	/**
+	 * Adds the field.
+	 *
+	 * @param field the field
+	 */
 	public void addField(Field field){
 		fields.add(field);
 	}
 	
+	/**
+	 * Gets the fields.
+	 *
+	 * @return the fields
+	 */
 	public List<Field> getFields(){
 		return Collections.unmodifiableList(fields);
 	}
 
+	/**
+	 * Checks if is dependent.
+	 *
+	 * @param e the e
+	 * @return true, if is dependent
+	 */
 	public boolean isDependent(DependencyEntry e){
 		if (dependents.contains(e)) return true;
 		for (DependencyEntry dependencyEntry : dependents) {
@@ -53,6 +100,13 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		}
 		return false;
 	}
+	
+	/**
+	 * Adds the dependent.
+	 *
+	 * @param d the d
+	 * @param fieldName the field name
+	 */
 	private void addDependent(DependencyEntry d, String fieldName) {
 		if(d.isDependent(this))// exclude circular relationship
 			excludedFields.add(fieldName);
@@ -61,6 +115,9 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		dependents.add(d);
 	}
 	
+	/**
+	 * Increase level.
+	 */
 	public void increaseLevel(){
 		level+=1;
 		for (DependencyEntry dependencyEntry : dependents) {
@@ -68,6 +125,9 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		}
 	}
 	
+	/**
+	 * Process dependencies.
+	 */
 	public void processDependencies(){
 		for (Field field : fieldOrder) {
 			DependencyEntry dependencyEntry = extent.get(field.getType());
@@ -85,10 +145,18 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	public int compareTo(DependencyEntry other) {
 		return new Integer(level).compareTo(new Integer(other.level));
 	}
 	
+	/**
+	 * Gets the work book sheets.
+	 *
+	 * @return the work book sheets
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<WorkBookSheet> getWorkBookSheets(){
 		List<WorkBookSheet> result = new ArrayList<WorkBookSheet>(fields.size());
@@ -104,11 +172,17 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "DependencyEntry [klass=" + klass + ", level=" + level + "]";
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -117,6 +191,9 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

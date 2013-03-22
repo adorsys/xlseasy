@@ -20,23 +20,33 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+// TODO: Auto-generated Javadoc
 /**
- * TODO set Javadoc for Class
- * 
+ * TODO set Javadoc for Class.
+ *
+ * @param <T> the generic type
  * @version $Id: $
- * @author sso
+ * @author Sso
  */
 public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The label2sheet desc. */
 	private final Map<String, SheetDesc<?, T>> label2sheetDesc = new HashMap<String, SheetDesc<?, T>>();
+	
+	/** The ordered sheets. */
 	private final List<SheetDesc<?, T>> orderedSheets = new ArrayList<SheetDesc<?, T>>();
+	
+	/** The workbook class. */
 	private Class<T> workbookClass;
 
+	/**
+	 * Instantiates a new workbook desc.
+	 *
+	 * @param workbookClass the workbook class
+	 */
 	public WorkbookDesc(Class<T> workbookClass) {
 		this.workbookClass = workbookClass;
 		Map<PropertyDescriptor, Map<Class<?>, Annotation>> findBeanPropertyDescriptorAnnotations = AnnotationUtil
@@ -69,9 +79,20 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		}
 	}
 	
+	/**
+	 * Instantiates a new workbook desc.
+	 */
 	public WorkbookDesc() {
 	}
 
+	/**
+	 * Adds the sheet.
+	 *
+	 * @param findBeanPropertyDescriptorAnnotations the find bean property descriptor annotations
+	 * @param propertyKey2PropertyDescriptor the property key2 property descriptor
+	 * @param propertyKey the property key
+	 * @param sheetIndex the sheet index
+	 */
 	private void addSheet(
 			Map<PropertyDescriptor, Map<Class<?>, Annotation>> findBeanPropertyDescriptorAnnotations,
 			Map<String, PropertyDescriptor> propertyKey2PropertyDescriptor,
@@ -90,16 +111,25 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#addSheet(java.lang.Class, java.lang.String, java.lang.String, int)
+	 */
 	public <R> void addSheet(Class<R> recordClass, String label, String beanProperty, int sheetIndex) {
 		SheetDesc<R, T> sheetDesc = new SheetDesc<R, T>(this, recordClass, label, beanProperty, sheetIndex);
 		label2sheetDesc.put(sheetDesc.getLabel(), sheetDesc);
 		orderedSheets.add(sheetDesc);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#getSheet(java.lang.String)
+	 */
 	public SheetDesc<?, T> getSheet(String sheetLabel){
 		return label2sheetDesc.get(sheetLabel);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#getSheet(java.lang.Class)
+	 */
 	@SuppressWarnings("unchecked")
 	public <R> SheetDescIF<R, T> getSheet(Class<R> rowType){
 		Collection<SheetDesc<?,T>> values = label2sheetDesc.values();
@@ -111,14 +141,26 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		return null;
 	}
 	
+	/**
+	 * Checks if is workbook.
+	 *
+	 * @param workbookClass the workbook class
+	 * @return true, if is workbook
+	 */
 	public static boolean isWorkbook(Class<?> workbookClass) {
 		return AnnotationUtil.findClassAnnotations(workbookClass, true, Workbook.class).size() > 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#getOrderedSheets()
+	 */
 	public List<? extends SheetDescIF<?, T>> getOrderedSheets(){
 		return orderedSheets;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#loadWorkbookBean(org.apache.poi.hssf.usermodel.HSSFWorkbook, java.lang.Object, org.adorsys.xlseasy.annotation.ISheetSession)
+	 */
 	public T loadWorkbookBean(HSSFWorkbook wb, T workBookInstance, ISheetSession<?, ?> session) {
 		for (SheetDesc<?, T> sheet : orderedSheets) {
 			loadSheet(wb, workBookInstance, sheet.getLabel(), session);
@@ -126,6 +168,9 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		return workBookInstance;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#loadSheet(org.apache.poi.hssf.usermodel.HSSFWorkbook, java.lang.Object, java.lang.String, org.adorsys.xlseasy.annotation.ISheetSession)
+	 */
 	public List<?> loadSheet(HSSFWorkbook wb, T workBookInstance, String
 			sheetName,  ISheetSession<?, ?> session) {
 		SheetDesc<?, T> sheetDesc = label2sheetDesc.get(sheetName);
@@ -136,6 +181,9 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.adorsys.xlseasy.impl.proc.WorkbookDescIF#createWorkbookInstance()
+	 */
 	public T createWorkbookInstance() {
 		try {
 			return workbookClass != null ? workbookClass.newInstance() : null;

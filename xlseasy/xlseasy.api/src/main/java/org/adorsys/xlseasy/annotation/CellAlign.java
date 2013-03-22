@@ -1,10 +1,21 @@
 package org.adorsys.xlseasy.annotation;
 
+// TODO: Auto-generated Javadoc
 /**
- * TODO set Javadoc for Class
- * @version $Id: $
- * @author sso
+ * The Enum CellAlign.
+ *
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 public enum CellAlign {
-	LEFT, RIGHT, JUSTIFY, CENTER, GENERAL
+	
+	/** The left. */
+	LEFT, 
+ /** The right. */
+ RIGHT, 
+ /** The justify. */
+ JUSTIFY, 
+ /** The center. */
+ CENTER, 
+ /** The general. */
+ GENERAL
 }

@@ -21,28 +21,26 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+// TODO: Auto-generated Javadoc
 /**
  * Filter checkes for the given annotations.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag <info@adorsys.de>
  */
 public class EnumerationAnnotationFilter implements AnnotationFilter {
 	
+	/** The annotation types. */
 	private final Set<Class<?>> annotationTypes;
-	
-	
-	
 
 	/**
-	 * @param annotationTypes
+	 * Instantiates a new enumeration annotation filter.
+	 *
+	 * @param annotationTypes the annotation types
 	 */
 	public EnumerationAnnotationFilter(Class<?>... annotationTypes) {
 		super();
 		this.annotationTypes = new HashSet<Class<?>>(Arrays.asList(annotationTypes));
 	}
-
-
-
 
 	/**
 	 * {@inheritDoc}

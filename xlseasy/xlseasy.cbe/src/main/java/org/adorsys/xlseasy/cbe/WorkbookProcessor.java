@@ -10,8 +10,19 @@ import org.adorsys.xlseasy.annotation.HorizontalRecordSheetObject;
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 import org.adorsys.xlseasy.boot.WorkbookCbe;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WorkbookProcessor.
+ */
 public class WorkbookProcessor {
 
+	/**
+	 * Process workbook.
+	 *
+	 * @param clazz the clazz
+	 * @param workbookCbe the workbook cbe
+	 * @return the list
+	 */
 	public static List<HorizontalRecordSheetDeclaration> processWorkbook(
 			Class<?> clazz, WorkbookCbe workbookCbe) 
 	{

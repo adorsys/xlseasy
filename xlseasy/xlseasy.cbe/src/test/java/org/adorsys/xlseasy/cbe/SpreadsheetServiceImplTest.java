@@ -17,8 +17,15 @@ import org.adorsys.xlseasy.boot.SpreadSheetServiceBootStrap;
 import org.apache.commons.lang.BooleanUtils;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SpreadsheetServiceImplTest.
+ */
 public class SpreadsheetServiceImplTest {
 
+	/**
+	 * Test load spreadsheet.
+	 */
 	@Test
 	public void testLoadSpreadsheet() {
 
@@ -76,6 +83,11 @@ public class SpreadsheetServiceImplTest {
 		assertEquals(24.0, products.get(2).getAmount(), 0);
 	}
 
+	/**
+	 * Test save spreadsheet.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	@Test
 	public void testSaveSpreadsheet() throws FileNotFoundException {
 		SpreadSheetServiceBootStrap bootStrap = new SpreadSheetServiceBootStrap();
@@ -137,6 +149,12 @@ public class SpreadsheetServiceImplTest {
 		checkProduct(product3, products.get(2));
 	}
 
+	/**
+	 * Check product.
+	 *
+	 * @param expected the expected
+	 * @param is the is
+	 */
 	private void checkProduct(Product expected, Product is) {
 		assertEquals(expected.getName(), is.getName());
 		assertEquals(expected.getDescription(), is.getDescription());

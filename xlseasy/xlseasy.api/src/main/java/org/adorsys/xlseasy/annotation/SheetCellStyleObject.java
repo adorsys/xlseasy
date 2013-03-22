@@ -4,29 +4,46 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
- * Object implementing the same interface like a sheet cell stype
- * 
- * @author francis
+ * Object implementing the same interface like a sheet cell stype.
  *
+ * @author Francis Pouatcha <info@adorsys.de>
  */
 public class SheetCellStyleObject implements Serializable {
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2771798134138583609L;
 
+	/** The default instance. */
 	private static SheetCellStyleObject defaultInstance = new SheetCellStyleObject();
+	
+	/** The singletons. */
 	private static Map<SheetCellStyleObject, SheetCellStyleObject> singletons = new HashMap<SheetCellStyleObject, SheetCellStyleObject>();
 	
 	static{
 		singletons.put(defaultInstance, defaultInstance);
 	}
 	
+	/**
+	 * New instance.
+	 *
+	 * @param sheetCellStyle the sheet cell style
+	 * @return the sheet cell style object
+	 */
 	public static SheetCellStyleObject newInstance(SheetCellStyle sheetCellStyle){
 		if(sheetCellStyle==null) return defaultInstance;
 		SheetCellStyleObject trans = new SheetCellStyleObject(sheetCellStyle);
 		return resolveSingleton(trans);
 	}
 	
+	/**
+	 * New instance.
+	 *
+	 * @param dataFormat the data format
+	 * @param fontStyleBold the font style bold
+	 * @return the sheet cell style object
+	 */
 	public static SheetCellStyleObject newInstance(String dataFormat, boolean fontStyleBold){
 		SheetCellStyleObject sheetCellStyleObject = new SheetCellStyleObject();
 		sheetCellStyleObject.fontStyleBold = fontStyleBold;
@@ -34,6 +51,12 @@ public class SheetCellStyleObject implements Serializable {
 		return resolveSingleton(sheetCellStyleObject);
 	}	
 	
+	/**
+	 * Resolve singleton.
+	 *
+	 * @param trans the trans
+	 * @return the sheet cell style object
+	 */
 	private static SheetCellStyleObject resolveSingleton(SheetCellStyleObject trans){
 		if(singletons.containsKey(trans)) {
 			return singletons.get(trans);
@@ -43,10 +66,18 @@ public class SheetCellStyleObject implements Serializable {
 		}
 	}
 	
+	/**
+	 * Instantiates a new sheet cell style object.
+	 */
 	private SheetCellStyleObject() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new sheet cell style object.
+	 *
+	 * @param sheetCellStyle the sheet cell style
+	 */
 	private SheetCellStyleObject(SheetCellStyle sheetCellStyle) {
 		dataFormat = sheetCellStyle.dataFormat();
 		fontName = sheetCellStyle.fontName();
@@ -61,60 +92,141 @@ public class SheetCellStyleObject implements Serializable {
 		wrapText = sheetCellStyle.wrapText();
 	}
 
+	/** The data format. */
 	private String dataFormat = "";
+	
+	/**
+	 * Data format.
+	 *
+	 * @return the string
+	 */
 	public String dataFormat(){
 		return dataFormat;
 	}
 
+	/** The font name. */
 	String fontName = "";
+	
+	/**
+	 * Font name.
+	 *
+	 * @return the string
+	 */
 	public String fontName() {
 		return fontName;
 	}
+	
+	/** The font size. */
 	int fontSize = -1;
+	
+	/**
+	 * Font size.
+	 *
+	 * @return the int
+	 */
 	public int fontSize() {
 		return fontSize;
 	}
 	
+	/** The font style bold. */
 	boolean fontStyleBold = false;
+	
+	/**
+	 * Font style bold.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean fontStyleBold(){
 		return fontStyleBold;
 	}
 	
+	/** The font style italic. */
 	boolean fontStyleItalic = false;
+	
+	/**
+	 * Font style italic.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean fontStyleItalic(){
 		return fontStyleItalic;
 	}
 	
+	/** The font style strikeout. */
 	boolean fontStyleStrikeout = false;
+	
+	/**
+	 * Font style strikeout.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean fontStyleStrikeout() {
 		return fontStyleStrikeout;
 	}
 	
+	/** The font style underline. */
 	boolean fontStyleUnderline = false;
+	
+	/**
+	 * Font style underline.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean fontStyleUnderline() {
 		return fontStyleUnderline;
 	}
 	
+	/** The font color. */
 	short fontColor = -1;
+	
+	/**
+	 * Font color.
+	 *
+	 * @return the short
+	 */
 	public short fontColor() {
 		return fontColor;
 	}
 	
+	/** The background color. */
 	short backgroundColor = -1;
+	
+	/**
+	 * Background color.
+	 *
+	 * @return the short
+	 */
 	public short backgroundColor(){
 		return backgroundColor;
 	}
 	
+	/** The align. */
 	CellAlign align = CellAlign.GENERAL;
+	
+	/**
+	 * Align.
+	 *
+	 * @return the cell align
+	 */
 	public CellAlign align() {
 		return align;
 	}
 	
+	/** The wrap text. */
 	boolean wrapText = false;
+	
+	/**
+	 * Wrap text.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean wrapText() {
 		return wrapText;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -135,6 +247,9 @@ public class SheetCellStyleObject implements Serializable {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
