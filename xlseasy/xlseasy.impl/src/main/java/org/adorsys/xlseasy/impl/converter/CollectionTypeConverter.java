@@ -14,7 +14,6 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-// TODO: Auto-generated Javadoc
 /**
  * A parameterized converter is one that can convert classes with 
  * type parameters. This is the case of the SheetConverter, that is used 
@@ -24,7 +23,6 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  * assume the presence of the @Key annotation.
  * 
  * @author Francis Pouatcha
- *
  */
 public abstract class CollectionTypeConverter implements ICellConverter {
 

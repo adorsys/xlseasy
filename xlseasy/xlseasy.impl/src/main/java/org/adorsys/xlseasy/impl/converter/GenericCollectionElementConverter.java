@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.impl.converter;
 import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.apache.commons.beanutils.ConvertUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * Converter that can instantiate an element from a String value. Also
  * provides a toStringValue that returns the string representation and 

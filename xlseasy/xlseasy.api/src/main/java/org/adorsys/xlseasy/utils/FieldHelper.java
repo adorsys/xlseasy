@@ -4,18 +4,17 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FieldHelper.
  */
 public class FieldHelper {
 
 	/**
-	 * Gets the ter method.
+	 * Getter method.
 	 *
 	 * @param field the field
-	 * @param klass the klass
-	 * @return the ter method
+	 * @param klass the class
+	 * @return the method
 	 */
 	public static Method getterMethod(Field field, Class<?> klass){
 		String getter = getterMethodName(field.getName());
@@ -26,7 +25,7 @@ public class FieldHelper {
 	 * Setter method.
 	 *
 	 * @param field the field
-	 * @param klass the klass
+	 * @param klass the class
 	 * @return the method
 	 */
 	public static Method setterMethod(Field field, Class<?> klass){
@@ -35,19 +34,19 @@ public class FieldHelper {
 	}
 
 	/**
-	 * Gets the ter method name.
+	 * Creates a setter method from name.
 	 *
-	 * @param name the name
-	 * @return the ter method name
+	 * @param name the name of the get-method to create
+	 * @return the method's name
 	 */
 	public static String getterMethodName(String name) {
 	    return "get" + name.substring(0, 1).toUpperCase() + name.substring(1);
 	}
 	
 	/**
-	 * Setter method name.
+	 * Creates a setter method from name.
 	 *
-	 * @param name the name
+	 * @param name the name of the set-method to create
 	 * @return the string
 	 */
 	public static String setterMethodName(String name) {

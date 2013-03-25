@@ -5,7 +5,6 @@ import java.io.OutputStream;
 import java.util.Collection;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface SpreadsheetService.
  */
@@ -16,7 +15,7 @@ public interface SpreadsheetService {
 	 *
 	 * @param <WT> the generic type
 	 * @param xlsStream the xls stream
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @return the wt
 	 */
 	public <WT> WT loadSpreadsheet(InputStream xlsStream, Class<WT> clazz);
@@ -26,7 +25,7 @@ public interface SpreadsheetService {
 	 *
 	 * @param <RT> the generic type
 	 * @param xlsStream the xls stream
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @return the list
 	 */
 	public <RT> List<RT> loadSpreadsheetRecords(InputStream xlsStream, Class<RT> clazz);

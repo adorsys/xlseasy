@@ -2,7 +2,6 @@ package org.adorsys.xlseasy.cbe;
 
 import java.util.Date;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Product.
  */
@@ -104,7 +103,7 @@ public class Product {
     }
 
     /**
-     * Gets the top seller.
+     * Checks if product is a topseller.
      *
      * @return the top seller
      */

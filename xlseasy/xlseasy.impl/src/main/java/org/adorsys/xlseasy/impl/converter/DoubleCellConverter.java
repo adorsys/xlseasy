@@ -5,11 +5,9 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DoubleCellConverter.
  *
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public class DoubleCellConverter extends NumberColumnConverter {

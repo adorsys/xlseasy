@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SetCellConverter.
  */

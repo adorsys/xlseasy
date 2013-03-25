@@ -33,7 +33,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetDesc.
  *
@@ -446,5 +445,4 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             columnDesc.formatDataCell(session, cell);
         }
     }
-
 }

@@ -5,17 +5,13 @@ import org.adorsys.xlseasy.impl.proc.WorkbookDescFactory;
 import org.adorsys.xlseasy.impl.proc.WorkbookDescIF;
 import org.adorsys.xlseasy.utils.XlseasyUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WorkbookDescFactoryCbe.
  */
 public class WorkbookDescFactoryCbe extends WorkbookDescFactory {
-//	private final Collection<String> excludedFields;
-//	private final Map<Class<?>, String> businessKeyFields;
-//	private final Map<Class<?>, Map<String, String>> fieldDateStyles;
 	
 	/** The workbook cbe. */
-private final WorkbookCbe workbookCbe;
+	private final WorkbookCbe workbookCbe;
 	
 	/**
 	 * Instantiates a new workbook desc factory cbe.
@@ -25,8 +21,6 @@ private final WorkbookCbe workbookCbe;
 	public WorkbookDescFactoryCbe(WorkbookCbe workbookCbe) {
 		super();
 		this.workbookCbe = workbookCbe;
-//		this.fieldDateStyles = fieldDateStyles;
-//		this.businessKeyFields = businessKeyFields;
 	}
 
 	/* (non-Javadoc)

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import org.adorsys.xlseasy.annotation.SheetFormatter.NoneSheetFormatter;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetObject.
  */

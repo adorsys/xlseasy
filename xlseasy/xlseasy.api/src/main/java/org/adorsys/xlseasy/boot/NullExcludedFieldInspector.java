@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.boot;
 import java.util.Collection;
 import java.util.Collections;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class NullExcludedFieldInspector.
  */

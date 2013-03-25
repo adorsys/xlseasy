@@ -4,12 +4,9 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class IntegerCellConverter.
  *
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public class IntegerCellConverter extends NumberColumnConverter {

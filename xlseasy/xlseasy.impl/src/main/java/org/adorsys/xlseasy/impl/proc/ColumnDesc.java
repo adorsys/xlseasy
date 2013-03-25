@@ -26,7 +26,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ColumnDesc.
  */

@@ -6,11 +6,9 @@ import org.apache.commons.lang.BooleanUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BooleanCellConverter.
  *
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public class BooleanCellConverter extends CellConverter {

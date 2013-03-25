@@ -11,19 +11,18 @@ import java.util.Set;
 
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DependencyEntry.
  */
 public 	class DependencyEntry implements Comparable<DependencyEntry> {
 	
-	/** The klass. */
+	/** The class. */
 	private final Class<?> klass;
 	
 	/** The key field. */
 	private final Field keyField;
 	
-	/** The dependents. */
+	/** The dependencies. */
 	private final Set<DependencyEntry> dependents = new HashSet<DependencyEntry>();
 	
 	/** The extent. */
@@ -49,7 +48,7 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 	 * Instantiates a new dependency entry.
 	 *
 	 * @param field the field
-	 * @param klass the klass
+	 * @param klass the class
 	 * @param extent the extent
 	 * @param excludedFields the excluded fields
 	 * @param keyField the key field

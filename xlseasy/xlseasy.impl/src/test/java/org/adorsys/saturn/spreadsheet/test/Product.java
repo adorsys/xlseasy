@@ -7,7 +7,6 @@ import org.adorsys.xlseasy.annotation.Sheet;
 import org.adorsys.xlseasy.annotation.SheetCellStyle;
 import org.adorsys.xlseasy.annotation.SheetColumn;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Product.
  */

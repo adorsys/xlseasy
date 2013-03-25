@@ -6,7 +6,6 @@ import java.lang.reflect.Modifier;
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ExcludeStaticFieldFilter.
  */

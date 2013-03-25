@@ -1,7 +1,6 @@
 package org.adorsys.xlseasy.annotation;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Enum ErrorCodeSheet.
  *

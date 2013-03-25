@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.cbe;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * This is the mapping of an excel file. Each collection field 
  * is an excel-sheet. Non collection fields are ignored.
@@ -16,7 +15,6 @@ import java.util.List;
  * 
  * In any case, the Processing Interface allow the speci
  * 
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  * @author Francis Pouatcha <info@adorsys.de>
  */

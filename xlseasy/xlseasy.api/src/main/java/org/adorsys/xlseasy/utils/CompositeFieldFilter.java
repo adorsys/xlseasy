@@ -7,7 +7,6 @@ import java.util.List;
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CompositeFieldFilter.
  */

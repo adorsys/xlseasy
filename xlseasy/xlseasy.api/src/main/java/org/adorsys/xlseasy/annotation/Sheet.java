@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 import org.adorsys.xlseasy.annotation.SheetFormatter.NoneSheetFormatter;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface Sheet.
  */

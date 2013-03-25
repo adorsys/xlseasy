@@ -1,6 +1,5 @@
 package org.adorsys.xlseasy.impl.converter;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CollectionTypeConverterKey.
  */

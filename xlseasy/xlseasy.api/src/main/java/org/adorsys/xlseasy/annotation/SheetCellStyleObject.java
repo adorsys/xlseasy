@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
- * Object implementing the same interface like a sheet cell stype.
+ * Object implementing the same interface like a sheet cell style.
  *
  * @author Francis Pouatcha <info@adorsys.de>
  */

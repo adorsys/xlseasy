@@ -8,7 +8,6 @@ import org.adorsys.xlseasy.annotation.Key;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class KeyGenerator.
  */

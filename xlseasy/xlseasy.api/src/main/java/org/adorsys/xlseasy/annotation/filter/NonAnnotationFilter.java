@@ -18,7 +18,6 @@ package org.adorsys.xlseasy.annotation.filter;
 
 import java.lang.annotation.Annotation;
 
-// TODO: Auto-generated Javadoc
 /**
  * Filters noting and return true.
  * 

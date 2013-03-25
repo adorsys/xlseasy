@@ -19,8 +19,6 @@ package org.adorsys.xlseasy.annotation.filter;
 import java.lang.annotation.Annotation;
 
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The filter interface enabales the filtering of annotations.
  * 

@@ -15,7 +15,6 @@ import org.adorsys.xlseasy.annotation.SpreadsheetService;
 import org.adorsys.xlseasy.utils.DependencyEntry;
 import org.adorsys.xlseasy.utils.XlseasyUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SpreadSheetServiceBootStrap.
  */
@@ -120,8 +119,7 @@ public class SpreadSheetServiceBootStrap {
 	 * @return the spreadsheet service
 	 */
 	@SuppressWarnings("unchecked")
-	public SpreadsheetService createSpreadService()
-	{
+	public SpreadsheetService createSpreadService() {
 		WorkbookCbe workbookCbe = buildWorkbookCbe();
 		Class<? extends SpreadsheetService> loadedClass;
 		try {

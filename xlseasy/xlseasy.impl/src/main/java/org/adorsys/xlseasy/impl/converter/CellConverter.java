@@ -12,11 +12,9 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CellConverter.
  *
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public abstract class CellConverter implements ICellConverter {
@@ -74,7 +72,7 @@ public abstract class CellConverter implements ICellConverter {
 	 * Gets the converter.
 	 *
 	 * @param <C> the generic type
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @return the converter
 	 */
 	@SuppressWarnings("unchecked")
@@ -137,7 +135,7 @@ public abstract class CellConverter implements ICellConverter {
 	/**
 	 * Gets the converter for type.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @return the converter for type
 	 */
 	public static ICellConverter getConverterForType(Class<?> clazz) {

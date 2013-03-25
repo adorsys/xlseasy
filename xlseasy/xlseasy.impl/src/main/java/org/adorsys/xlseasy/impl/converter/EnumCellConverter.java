@@ -6,12 +6,10 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class EnumCellConverter.
  *
  * @param <E> the element type
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
