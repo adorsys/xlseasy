@@ -4,6 +4,9 @@ import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
+/**
+ * Implements some of Excel functions to handle elements
+ * */
 public class MyExcelFunction {
 
 	protected static final char[] ALPHABET = { 'A', 'B', 'C', 'D', 'E', 'F',
@@ -22,22 +25,34 @@ public class MyExcelFunction {
 	 * Following functions should be used to manages the attribut *name*.
 	 * */ 
 
-	// returns the number of elements in the array
+	/**
+	 * returns the number of elements in the array
+	 * @return
+	 */
 	public int getArrayLength() {
 		return name.length;
 	}
 
-	// returns a random name form the array
+	/**
+	 * returns a random name form the array
+	 * @return
+	 */
 	public String getRandomName() {
 		return name[getRandomIndex()];
 	}
 
-	// returns a random index within the range of array
+	/**
+	 * returns a random index within the range of array
+	 * @return
+	 */
 	public int getRandomIndex() {
 		return (int) (Math.random() * (getArrayLength()));
 	}
 
-	// returns the longest word saved in the array
+	/**
+	 * returns the longest word saved in the array
+	 * @return
+	 */
 	public String getLongestWord() {
 		String tmp = name[0];
 		for (int i = 1; i < name.length; i++) {
@@ -52,8 +67,14 @@ public class MyExcelFunction {
 	 * Following functions should be used to setup cell/rows properties.
 	 * */
 
-	// returns the reference (eg. C11, E4, AD1305 etc.) for the cell to the
-	// targeted coordinates (row, col).
+	/**
+	 * returns the reference (eg. C11, E4, AD1305 etc.) for the cell to the
+	 * targeted coordinates (row, col).
+	 * 
+	 * @param row the targeted cell line
+	 * @param col the targeted cell column
+	 * @return
+	*/
 	public String getCellByReference(int row, int col) {
 		StringBuffer retval = new StringBuffer();
 		int tempcellnum = col;
@@ -66,9 +87,15 @@ public class MyExcelFunction {
 		return retval.toString().toUpperCase();
 	}
 
-	// returns the name (eg. E for E4, AK for AK32, etc...) for the cell to the
-	// targeted coordinates (row, col).
-	// @using: getCellByReference(int row, int col)
+	/**
+	 * returns the name (eg. E for E4, AK for AK32, etc...) for the cell to the
+	 * targeted coordinates (row, col).
+	 * 
+	 * @using: getCellByReference(int row, int col)	 
+	 * @param row the targeted cell line
+	 * @param col the targeted cell column
+	 * @return
+	 */
 	public String getCellByName(int row, int col) {
 		String cellName = getCellByReference(row, col);
 		String result = new String();
@@ -83,9 +110,14 @@ public class MyExcelFunction {
 		return result;
 	}
 
-	// returns the row's number (eg. 4 for E4, 32 for AK32, etc...) for the cell
-	// to the targeted coordinates (row, col).
-	// @using: getCellByReference(int row, int col)
+	/** returns the row's number (eg. 4 for E4, 32 for AK32, etc...) for the cell
+	 * to the targeted coordinates (row, col).
+	 * 
+	 * @using: getCellByReference(int row, int col)
+	 * @param row the targeted cell line
+	 * @param col the targeted cell column
+	 * @return
+	 */
 	public String getCellByNumber(int row, int col) {
 		String cellName = getCellByReference(row, col);
 		String result = new String();
@@ -98,7 +130,12 @@ public class MyExcelFunction {
 		return result;
 	}
 
-	// checks if the parameter is an alphabet
+	/**
+	 * checks if the parameter is an alphabet
+	 * 
+	 * @param search the character to find in the alphabet
+	 * @return
+	 */
 	public boolean isInAlphabet(char search) {
 		for (int i = 0; i < ALPHABET.length; i++) {
 			if (search == ALPHABET[i])
@@ -112,7 +149,13 @@ public class MyExcelFunction {
 	 * (Workbook, Sheet, Row, Cell, ...): org.apache.poi.hssf
 	 * */
 
-	// sets and returns the default style to the targeted workbook
+	/**
+	 * sets and returns the default style to the targeted workbook
+	 * 
+	 * @param book the targeted workbook
+	 * @return
+	 * @throws Exception
+	 */
 	public HSSFCellStyle getMyDefaultStyle(HSSFWorkbook book) throws Exception {
 		// First of all we have to create the style for this book
 		HSSFCellStyle style = book.createCellStyle();
@@ -132,7 +175,14 @@ public class MyExcelFunction {
 		return style;
 	}
 
-	// sets the color of the targeted cell
+	/**
+	 * sets the color of the targeted cell
+	 * 
+	 * @param book the targeted workbook
+	 * @param cell the targeted cell
+	 * @param color the color's value to set
+	 * @throws Exception
+	 */
 	public void setMyCellColor(HSSFWorkbook book, HSSFCell cell, short color)
 			throws Exception {
 
@@ -145,7 +195,15 @@ public class MyExcelFunction {
 		cell.setCellStyle(style);
 	}
 
-	// sets font's properties of the targeted cell
+	/**
+	 * sets font's properties of the targeted cell
+	 * 
+	 * @param book the targeted workbook
+	 * @param cell the targeted cell
+	 * @param boldWeight the bold weight's value to set
+	 * @param fontHeightInPoints the font height's value to set
+	 * @throws Exception
+	 */
 	public void setMyCellFont(HSSFWorkbook book, HSSFCell cell,
 			short boldWeight, short fontHeightInPoints) throws Exception {
 
@@ -160,7 +218,14 @@ public class MyExcelFunction {
 		cell.setCellStyle(style);
 	}
 
-	// set the alignment of the targeted cell
+	/**
+	 * sets the alignment of the targeted cell
+	 * 
+	 * @param book the targeted workbook
+	 * @param cell the targeted cell
+	 * @param alignment the alignment's value to set
+	 * @throws Exception
+	 */
 	public void setMyCellAlignment(HSSFWorkbook book, HSSFCell cell,
 			short alignment) throws Exception {
 
