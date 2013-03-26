@@ -6,7 +6,7 @@ $(document).ready(function() {
 	});
 	
 	// event: click on a.btn from example.html
-	$('a.btn[href="#"]').click(function() {
+	$('a.btn[href="#example-details"]').click(function() {
 		// get id of clicked element
 		var id = $(this).attr('id');
 		

@@ -6791,7 +6791,19 @@ img.adorsys-logo {
 
 div.example-details {
 	display: none;
-	margin-top: 20px;
+	margin: 20px 0px 20px 0px;
+	
+	padding: 20px;
+	/*
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	*/
+	color: inherit;
+	background-color: #eeeeee;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
 }
 
 div.example-details h4 {
