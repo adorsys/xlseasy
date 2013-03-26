@@ -6731,7 +6731,9 @@ button.close {
 	}
 }
 
+
 /**-- xlseasy code --*/
+
 div.info {
 	text-align: justify;
 }
@@ -6783,5 +6785,17 @@ img.adorsys-logo {
 	width: 100px;
 	height: 40px;
 	border: none;
+	cursor: pointer;
 	padding-left: 10px;
+}
+
+div.example-details {
+	display: none;
+	margin-top: 20px;
+}
+
+div.example-details h4 {
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e3e3e3;
 }
