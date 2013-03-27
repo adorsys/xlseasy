@@ -18,7 +18,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 /**
  * Generates a multi-line report for any client and saves it into an Excel (.xls) file.
  * 
- *  @author Marius Guede <mariusguede@urframes.net>
  */
 public class ExcelGenerateReport {
 
