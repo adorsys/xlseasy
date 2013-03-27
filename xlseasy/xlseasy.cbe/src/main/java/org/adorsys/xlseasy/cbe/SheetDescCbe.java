@@ -43,11 +43,11 @@ import org.apache.poi.ss.util.CellRangeAddressList;
  */
 public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT>{
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 6166184265312522317L;
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 6166184265312522317L;
 	
-	/** The xls column name2desc. */
-	private final Map<String, ColumnDescCbe> xlsColumnName2desc = new HashMap<String, ColumnDescCbe>();
+    /** The xls column name2desc. */
+    private final Map<String, ColumnDescCbe> xlsColumnName2desc = new HashMap<String, ColumnDescCbe>();
     
     /** The property name2desc. */
     private final Map<String, ColumnDescCbe> propertyName2desc = new HashMap<String, ColumnDescCbe>();
