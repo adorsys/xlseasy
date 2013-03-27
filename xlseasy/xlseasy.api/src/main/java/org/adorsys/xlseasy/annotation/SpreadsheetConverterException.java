@@ -7,7 +7,6 @@ import java.util.Map;
 /**
  * The Class SpreadsheetConverterException.
  *
- * @version $Id: $
  * @author Sandro Sonntag
  */
 public class SpreadsheetConverterException extends Exception {
