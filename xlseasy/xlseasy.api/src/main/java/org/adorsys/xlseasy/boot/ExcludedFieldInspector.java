@@ -10,7 +10,7 @@ public interface ExcludedFieldInspector {
 	/**
 	 * Gets the excluded field names.
 	 *
-	 * @param klass the klass
+	 * @param klass the class
 	 * @return the excluded field names
 	 */
 	public Collection<String> getExcludedFieldNames(Class<?> klass);
