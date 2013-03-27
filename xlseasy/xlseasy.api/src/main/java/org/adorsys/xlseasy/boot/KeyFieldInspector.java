@@ -12,7 +12,7 @@ public interface KeyFieldInspector {
 	/**
 	 * Find key field.
 	 *
-	 * @param sheetKlass the sheet klass
+	 * @param sheetKlass the sheet class
 	 * @return the field
 	 */
 	public Field findKeyField(Class<?> sheetKlass);

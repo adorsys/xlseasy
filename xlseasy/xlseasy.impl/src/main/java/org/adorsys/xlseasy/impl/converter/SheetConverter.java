@@ -9,7 +9,6 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-// TODO: Auto-generated Javadoc
 /**
  * Extending this converter with a key field, because converter shall 
  * not automatically discover key field using @Key annotation. This, there will

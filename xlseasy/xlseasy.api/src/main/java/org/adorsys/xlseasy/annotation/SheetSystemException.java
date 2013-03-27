@@ -3,11 +3,9 @@ package org.adorsys.xlseasy.annotation;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetSystemException.
  *
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public class SheetSystemException extends RuntimeException {

@@ -2,7 +2,6 @@ package org.adorsys.xlseasy.impl.converter;
 
 import java.io.Serializable;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetConverterKey.
  */

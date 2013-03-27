@@ -6,12 +6,10 @@ import java.util.List;
 import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-// TODO: Auto-generated Javadoc
 /**
  * TODO set Javadoc for Class.
  *
  * @param <T> the generic type
- * @version $Id: $
  * @author Sandro Sonntag
  */
 public interface WorkbookDescIF<T> extends Serializable {

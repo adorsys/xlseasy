@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.impl.converter;
 import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class NumberColumnConverter.
  */

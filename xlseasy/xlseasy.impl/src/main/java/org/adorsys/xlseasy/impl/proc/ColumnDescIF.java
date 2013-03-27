@@ -6,7 +6,6 @@ import org.adorsys.xlseasy.annotation.SheetCellStyleObject;
 import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface ColumnDescIF.
  */

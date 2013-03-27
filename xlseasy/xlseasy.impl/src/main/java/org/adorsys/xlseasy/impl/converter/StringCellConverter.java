@@ -7,12 +7,9 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class StringCellConverter.
  *
- * @version $Id: $
  * @author Sandro Sonntag <info@adorsys.de>
  */
 public class StringCellConverter extends CellConverter {

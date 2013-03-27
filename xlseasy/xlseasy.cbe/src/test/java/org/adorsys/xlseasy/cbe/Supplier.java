@@ -1,24 +1,23 @@
 package org.adorsys.xlseasy.cbe;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Supplier.
  */
 public class Supplier {
 
-	/** The name. */
+	/** Supplier name. */
 	private String name;
 	
-	/** The strasse. */
+	/** Supplier street. */
 	private String strasse;
 	
-	/** The postleit zahl. */
+	/** Supplier zipcode. */
 	private String postleitZahl;
 	
-	/** The stadt. */
+	/** Supplier city. */
 	private String stadt;
 	
-	/** The vip. */
+	/** Supplier VIP status. */
 	private boolean vip;
 
 	/**
@@ -32,10 +31,10 @@ public class Supplier {
 	 * Instantiates a new supplier.
 	 *
 	 * @param name the name
-	 * @param strasse the strasse
-	 * @param postleitZahl the postleit zahl
-	 * @param stadt the stadt
-	 * @param vip the vip
+	 * @param strasse the street
+	 * @param postleitZahl the zipcode
+	 * @param stadt the city
+	 * @param vip the VIP status
 	 */
 	public Supplier(String name, String strasse, String postleitZahl,
 			String stadt, boolean vip) {
@@ -66,54 +65,54 @@ public class Supplier {
 	}
 
 	/**
-	 * Gets the strasse.
+	 * Gets the street.
 	 *
-	 * @return the strasse
+	 * @return the street
 	 */
 	public String getStrasse() {
 		return strasse;
 	}
 
 	/**
-	 * Sets the strasse.
+	 * Sets the street.
 	 *
-	 * @param strasse the new strasse
+	 * @param strasse the new street
 	 */
 	public void setStrasse(String strasse) {
 		this.strasse = strasse;
 	}
 
 	/**
-	 * Gets the postleit zahl.
+	 * Gets the zipcode.
 	 *
-	 * @return the postleit zahl
+	 * @return the zipcode
 	 */
 	public String getPostleitZahl() {
 		return postleitZahl;
 	}
 
 	/**
-	 * Sets the postleit zahl.
+	 * Sets the zipcode.
 	 *
-	 * @param postleitZahl the new postleit zahl
+	 * @param postleitZahl the new zipcode
 	 */
 	public void setPostleitZahl(String postleitZahl) {
 		this.postleitZahl = postleitZahl;
 	}
 
 	/**
-	 * Gets the stadt.
+	 * Gets the city.
 	 *
-	 * @return the stadt
+	 * @return the city
 	 */
 	public String getStadt() {
 		return stadt;
 	}
 
 	/**
-	 * Sets the stadt.
+	 * Sets the city.
 	 *
-	 * @param stadt the new stadt
+	 * @param stadt the new city
 	 */
 	public void setStadt(String stadt) {
 		this.stadt = stadt;
@@ -129,9 +128,9 @@ public class Supplier {
 	}
 
 	/**
-	 * Sets the vip.
+	 * Sets the supplier VIP status.
 	 *
-	 * @param vip the new vip
+	 * @param vip the new VIP status
 	 */
 	public void setVip(boolean vip) {
 		this.vip = vip;

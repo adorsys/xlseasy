@@ -12,7 +12,6 @@ import org.adorsys.xlseasy.annotation.SheetColumnObject;
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 import org.adorsys.xlseasy.impl.converter.SheetConverter;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetProcessor.
  */

@@ -19,7 +19,6 @@ import org.adorsys.xlseasy.impl.proc.WorkbookDescIF;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WorkbookDescCbe.
  *

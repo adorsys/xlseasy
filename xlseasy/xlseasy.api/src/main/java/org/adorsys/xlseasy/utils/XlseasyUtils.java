@@ -11,7 +11,6 @@ import java.util.List;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 import org.adorsys.xlseasy.annotation.SheetSystemException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class XlseasyUtils.
  */
@@ -55,7 +54,7 @@ public abstract class XlseasyUtils {
 	/**
 	 * Checks if is collection type.
 	 *
-	 * @param field the field
+	 * @param field the field to check
 	 * @return true, if is collection type
 	 */
 	public static final boolean isCollectionType(Field field){
@@ -67,7 +66,7 @@ public abstract class XlseasyUtils {
 	/**
 	 * Read workbook fields.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz
 	 * @return the list
 	 */
 	public static List<Field> readWorkbookFields(Class<?> clazz) {
@@ -86,7 +85,7 @@ public abstract class XlseasyUtils {
 	/**
 	 * Read sheet fields.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz
 	 * @param excludedFields the excluded fields
 	 * @return the list
 	 */

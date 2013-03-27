@@ -4,11 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SpreadsheetConverterException.
  *
- * @version $Id: $
  * @author Sandro Sonntag
  */
 public class SpreadsheetConverterException extends Exception {

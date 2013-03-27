@@ -20,13 +20,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-// TODO: Auto-generated Javadoc
 /**
- * TODO set Javadoc for Class.
  *
  * @param <T> the generic type
- * @version $Id: $
- * @author Sso
+ * @author Sandro Sonntag
  */
 public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 

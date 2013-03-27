@@ -32,7 +32,6 @@ import java.util.Set;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 
-// TODO: Auto-generated Javadoc
 /**
  * Common Annotation Util.
  * 
@@ -54,7 +53,7 @@ public class AnnotationUtil {
 		/**
 		 * Visit.
 		 *
-		 * @param clazz the clazz
+		 * @param clazz the class
 		 */
 		public void visit(Class<?> clazz);
 	}
@@ -62,7 +61,7 @@ public class AnnotationUtil {
 	/**
 	 * Finds class annotations  with a custom filter.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param filter the filter
 	 * @return the collection
@@ -81,7 +80,7 @@ public class AnnotationUtil {
 	/**
 	 * Find class anotations by list of annotation types.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param annotationsToFind the annotations to find
 	 * @return the collection
@@ -93,7 +92,7 @@ public class AnnotationUtil {
 	/**
 	 * Find fields by a custom annotation filter.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param annotationsToFind the annotations to find
 	 * @return the collection
@@ -105,7 +104,7 @@ public class AnnotationUtil {
 	/**
 	 * Finds java bean property releated annotations. It considers the getters, setters and field annotations.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param annotationsToFind the annotations to find
 	 * @return the map
@@ -179,7 +178,7 @@ public class AnnotationUtil {
 	/**
 	 * Find fields by a list of annotation types.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param filter the filter
 	 * @return the collection
@@ -207,7 +206,7 @@ public class AnnotationUtil {
 	/**
 	 * Find methodes by a list of annotation types.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param annotationsToFind the annotations to find
 	 * @return the collection
@@ -219,7 +218,7 @@ public class AnnotationUtil {
 	/**
 	 * Find methodes by a custom annotation filter.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param inherited the inherited
 	 * @param filter the filter
 	 * @return the collection
@@ -264,7 +263,7 @@ public class AnnotationUtil {
 	/**
 	 * Visit class.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param visitor the visitor
 	 * @param inherited the inherited
 	 */
@@ -279,7 +278,7 @@ public class AnnotationUtil {
 	/**
 	 * Visit class tree.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param visitor the visitor
 	 * @param includeInterfaces the include interfaces
 	 */
@@ -343,7 +342,7 @@ public class AnnotationUtil {
 	/**
 	 * Find field.
 	 *
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @param name the name
 	 * @return the field
 	 */

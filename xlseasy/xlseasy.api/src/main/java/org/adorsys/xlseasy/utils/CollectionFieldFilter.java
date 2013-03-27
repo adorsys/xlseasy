@@ -8,7 +8,6 @@ import java.util.Collection;
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * Match all fields that ar collection types.
  * 
@@ -28,5 +27,4 @@ public class CollectionFieldFilter implements FieldFilter {
         }
 		return false;
 	}
-
 }

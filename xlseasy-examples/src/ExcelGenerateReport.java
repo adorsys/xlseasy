@@ -80,7 +80,6 @@ public class ExcelGenerateReport {
 	}
 
 	public void setCellStyles(HSSFWorkbook wb) {
-
 		// font size 12
 		HSSFFont f = wb.createFont();
 		f.setFontHeightInPoints((short) 12);
@@ -158,7 +157,6 @@ public class ExcelGenerateReport {
 	}
 	
 	public int insertHeaderInfo(HSSFSheet sheet, int index) {
-
 		int rowIndex = index;
 		HSSFRow row = null;
 		HSSFCell c = null;
@@ -256,7 +254,6 @@ public class ExcelGenerateReport {
 	}
 
 	public int insertDetailInfo(HSSFSheet sheet, int index) {
-
 		int rowIndex = 0;
 		HSSFRow row = null;
 		HSSFCell c = null;
@@ -280,7 +277,6 @@ public class ExcelGenerateReport {
 			c.setCellValue(1.11 * i);
 			c.setCellStyle(cs);
 		}
-
 		return rowIndex;
 	}
 

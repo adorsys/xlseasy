@@ -26,7 +26,7 @@ public class WorkBookSheet<T> {
 	/** The excluded fields. */
 	private final Collection<String> excludedFields = new ArrayList<String>();
 	
-	/** The sheet klass. */
+	/** The sheet's class. */
 	private final Class<T> sheetKlass;
 	
 	/** The field. */
@@ -41,16 +41,16 @@ public class WorkBookSheet<T> {
 	 * @param field the field
 	 * @param fieldOrder the field order
 	 * @param excludedFields the excluded fields
-	 * @param sheeKlass the shee klass
+	 * @param sheetKlass the sheet's class
 	 * @param keyField the key field
 	 * @param fieldDateStyles the field date styles
 	 */
 	public WorkBookSheet(Field field, List<Field> fieldOrder, 
-			Collection<String> excludedFields, Class<T> sheeKlass, 
+			Collection<String> excludedFields, Class<T> sheetKlass, 
 			Field keyField, Map<String, String> fieldDateStyles) {
 		super();
 		this.field = field;
-		this.sheetKlass = sheeKlass;
+		this.sheetKlass = sheetKlass;
 		this.keyField = keyField;
 		this.fieldOrder.addAll(fieldOrder);
 		excludedFields.addAll(excludedFields);
@@ -58,9 +58,9 @@ public class WorkBookSheet<T> {
 	}
 
 	/**
-	 * Gets the sheet klass.
+	 * Gets the sheet's class.
 	 *
-	 * @return the sheet klass
+	 * @return the sheet's class
 	 */
 	public Class<T> getSheetKlass() {
 		return sheetKlass;

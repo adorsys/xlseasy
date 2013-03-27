@@ -1,142 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>xlseasy, from adorsys</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<title>xlseasy, from adorsys</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
+<!-- Le styles -->
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
 
-      @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      }
-    </style>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+.sidebar-nav {
+	padding: 9px 0;
+}
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+@media ( max-width : 980px) {
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+		float: none;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+</style>
+<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="bootstrap/js/html5shiv.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="bootstrap/img/xlseasy-logo.png">
-  </head>
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="bootstrap/img/xlseasy-logo.png">
+</head>
 
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>         
-          <a class="brand" href="index.html">xlseasy</a>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-            	The annotation based XLS to Java Bean Mapper
-            </p>
-            <ul class="nav">
-              <li><a href="index.html">Home</a></li>
-              <li class="active"><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="brand" href="index.html">xlseasy</a>
+				<div class="nav-collapse collapse">
+					<p class="navbar-text pull-right">
+						The annotation based XLS to Java Bean Mapper <img
+							class="adorsys-logo" alt="adorsys-logo"
+							src="bootstrap/img/adorsys.jpeg">
+					</p>
+					<ul class="nav">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Modules</li>
-              <li><a href="docu/xlseasy.api/">xlseasy api</a></li>
-              <li><a href="docu/xlseasy.cbe/">xlseasy cbe</a></li>
-              <li><a href="docu/xlseasy.impl/">xlseasy impl</a></li>
-              
-              <li class="nav-header">Documentation</li>
-              <!--
-              <li><a href="docu/source.html">Code source</a></li>
-              -->
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">          
-          <h3>About</h3>
-          
-          <div class="info">
-          	<p>xlseasy is an open source component for file manipulation allowing the programmer to read, write and edit Excel files from Java. </p>
-          	<p>xlseasy makes creating highly formatted Excel File Reports simple, with library routines to import data that supports a number of import mechanisms such as Datagrid to Excel, CSV import, XML import all without requiring Microsoft Excel to be installed and without using Excel Automation. </p>	
-          	
-          	<h3>Quick start</h3>
-          	<p>Get a local copy of the xlseasy repository with following commands:</p>
-          	<ul>
-          		<li>GitHub: git clone git://github.com/adorsys/xlseasy.git</li>
-          		<li>Google Code: git clone https://code.google.com/p/xlseasy/</li>
-          	</ul>
-          	
-          	<h3>Authors</h3>
-          	<p>Marco kn&uuml;ttel</p>
-          	<p>Francis Pouatcha</p>
-          	<p>Sandro Sonntag</p>
-          	<p>Marius Guede</p>
-          	
-          	<h3>Copyright and license</h3>
-          	<p>&copy; adorsys GmbH & Co. KG 2013</p>
-          	<p>Licensed under the Apache License, Version2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:</p>
-          	<p><a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-          	<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License</p>
-          </div>
-                    
-        </div><!--/span-->
-      </div><!--/row-->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Modules</li>
+						<li><a href="docu/xlseasy.api/">xlseasy api</a></li>
+						<li><a href="docu/xlseasy.cbe/">xlseasy cbe</a></li>
+						<li><a href="docu/xlseasy.impl/">xlseasy impl</a></li>
 
-      <hr>
+						<li class="nav-header">Documentation</li>
+              			<li><a href="module.html">Modules</a></li>
+              			<li><a href="example.html">Examples</a></li>
+					</ul>
+				</div>
+				<!--/.well -->
+			</div>
+			<!--/span-->
+			<div class="span9">
+				<h3>About</h3>
 
-      <footer>
-        <p>&copy; adorsys GmbH & Co. KG 2013</p>
-      </footer>
+				<div class="info">
+					<p>xlseasy is an open source component for file manipulation
+						allowing the programmer to read, write and edit Excel files from
+						Java.</p>
+					<p>xlseasy makes creating highly formatted Excel File Reports
+						simple, with library routines to import data that supports a
+						number of import mechanisms such as Datagrid to Excel, CSV import,
+						XML import all without requiring Microsoft Excel to be installed
+						and without using Excel Automation.</p>
 
-    </div><!--/.fluid-container-->
+					<h3>Quick start</h3>
+					<p>Get a local copy of the xlseasy repository with following
+						commands:</p>
+					<ul>
+						<li>GitHub: git clone git://github.com/adorsys/xlseasy.git</li>
+						<li>Google Code: git clone https://code.google.com/p/xlseasy/</li>
+					</ul>
 
-    <!-- Le javascript
+					<h3>Authors</h3>
+					<p>Marco kn&uuml;ttel</p>
+					<p>Francis Pouatcha</p>
+					<p>Sandro Sonntag</p>
+					<p>Marius Guede</p>
+
+					<h3>Copyright and license</h3>
+					<p>&copy; adorsys GmbH & Co. KG 2013</p>
+					<p>Licensed under the Apache License, Version2.0 (the
+						"License"); you may not use this work except in compliance with
+						the License. You may obtain a copy of the License in the LICENSE
+						file, or at:</p>
+					<p>
+						<a href="http://www.apache.org/licenses/LICENSE-2.0"
+							target="_blank">http://www.apache.org/licenses/LICENSE-2.0</a>
+					</p>
+					<p>Unless required by applicable law or agreed to in writing,
+						software distributed under the License is distributed on an "AS
+						IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+						express or implied. See the License for the specific language
+						governing permissions and limitations under the License</p>
+				</div>
+
+			</div>
+			<!--/span-->
+		</div>
+		<!--/row-->
+
+		<hr>
+
+		<footer>
+			<p>&copy; adorsys GmbH & Co. KG 2013</p>
+		</footer>
+
+	</div>
+	<!--/.fluid-container-->
+
+	<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap-transition.js"></script>
-    <script src="bootstrap/js/bootstrap-alert.js"></script>
-    <script src="bootstrap/js/bootstrap-modal.js"></script>
-    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="bootstrap/js/bootstrap-tab.js"></script>
-    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="bootstrap/js/bootstrap-popover.js"></script>
-    <script src="bootstrap/js/bootstrap-button.js"></script>
-    <script src="bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/xlseasy.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<script src="bootstrap/js/bootstrap-transition.js"></script>
+	<script src="bootstrap/js/bootstrap-alert.js"></script>
+	<script src="bootstrap/js/bootstrap-modal.js"></script>
+	<script src="bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="bootstrap/js/bootstrap-tab.js"></script>
+	<script src="bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="bootstrap/js/bootstrap-popover.js"></script>
+	<script src="bootstrap/js/bootstrap-button.js"></script>
+	<script src="bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="bootstrap/js/bootstrap-typeahead.js"></script>
 
-  </body>
+</body>
 </html>

@@ -6,7 +6,6 @@ import java.util.HashSet;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ExcludeByFieldNameFilter.
  */
@@ -16,7 +15,7 @@ public class ExcludeByFieldNameFilter implements FieldFilter {
 	private final Collection<String> discriminatedFieldNames;
 	
 	/**
-	 * Instantiates a new exclude by field name filter.
+	 * Instantiates a new object of type ExcludeByFieldNameFilter.
 	 *
 	 * @param discriminatedFieldNames the discriminated field names
 	 */

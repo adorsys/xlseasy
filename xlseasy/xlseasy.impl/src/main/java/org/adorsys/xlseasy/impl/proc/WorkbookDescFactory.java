@@ -3,7 +3,6 @@ package org.adorsys.xlseasy.impl.proc;
 import org.adorsys.xlseasy.annotation.Workbook;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
-// TODO: Auto-generated Javadoc
 /**
  * Will be used to create workbook descriptors. This will provide the
  * opportunity to inject other way of parsing class. In particular the default
@@ -18,7 +17,7 @@ public class WorkbookDescFactory {
 	 * Creates a new WorkbookDesc object.
 	 *
 	 * @param <WT> the generic type
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @return the workbook desc i f< w t>
 	 */
 	public <WT> WorkbookDescIF<WT> createWorkbookDesc(Class<WT> clazz) {
@@ -29,7 +28,7 @@ public class WorkbookDescFactory {
 	 * Empty workbook desc.
 	 *
 	 * @param <WT> the generic type
-	 * @param clazz the clazz
+	 * @param clazz the class
 	 * @return the workbook desc if
 	 */
 	public <WT> WorkbookDescIF<WT> emptyWorkbookDesc(Class<WT> clazz) {

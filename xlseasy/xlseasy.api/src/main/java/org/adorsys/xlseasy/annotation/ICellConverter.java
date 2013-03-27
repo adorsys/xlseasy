@@ -1,6 +1,5 @@
 package org.adorsys.xlseasy.annotation;
 
-// TODO: Auto-generated Javadoc
 /**
  * Replacing HSSFCell with Object.
  *

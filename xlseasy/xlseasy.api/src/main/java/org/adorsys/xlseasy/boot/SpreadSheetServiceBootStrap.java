@@ -15,7 +15,6 @@ import org.adorsys.xlseasy.annotation.SpreadsheetService;
 import org.adorsys.xlseasy.utils.DependencyEntry;
 import org.adorsys.xlseasy.utils.XlseasyUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SpreadSheetServiceBootStrap.
  */
@@ -30,7 +29,7 @@ public class SpreadSheetServiceBootStrap {
 	/** The excluded field inspector. */
 	private ExcludedFieldInspector excludedFieldInspector = new NullExcludedFieldInspector();
 	
-	/** The workbook klass. */
+	/** The workbook class. */
 	private Class<?> workbookKlass;
 	
 	/**
@@ -95,9 +94,9 @@ public class SpreadSheetServiceBootStrap {
 
 
 	/**
-	 * Gets the workbook klass.
+	 * Gets the workbook class.
 	 *
-	 * @return the workbook klass
+	 * @return the workbook class
 	 */
 	public Class<?> getWorkbookKlass() {
 		return workbookKlass;
@@ -105,9 +104,9 @@ public class SpreadSheetServiceBootStrap {
 
 
 	/**
-	 * Sets the workbook klass.
+	 * Sets the workbook class.
 	 *
-	 * @param workbookKlass the new workbook klass
+	 * @param workbookKlass the new workbook class
 	 */
 	public void setWorkbookKlass(Class<?> workbookKlass) {
 		this.workbookKlass = workbookKlass;
@@ -120,8 +119,7 @@ public class SpreadSheetServiceBootStrap {
 	 * @return the spreadsheet service
 	 */
 	@SuppressWarnings("unchecked")
-	public SpreadsheetService createSpreadService()
-	{
+	public SpreadsheetService createSpreadService() {
 		WorkbookCbe workbookCbe = buildWorkbookCbe();
 		Class<? extends SpreadsheetService> loadedClass;
 		try {

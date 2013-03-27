@@ -2,7 +2,6 @@ package org.adorsys.xlseasy.annotation;
 
 import java.io.Serializable;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetColumnObject.
  */

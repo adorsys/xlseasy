@@ -5,7 +5,6 @@ import org.adorsys.xlseasy.annotation.Sheet;
 import org.adorsys.xlseasy.annotation.SheetCellStyle;
 import org.adorsys.xlseasy.annotation.SheetColumn;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Supplier.
  */
@@ -25,10 +24,10 @@ public class Supplier {
      * Instantiates a new supplier.
      *
      * @param name the name
-     * @param strasse the strasse
-     * @param postleitZahl the postleit zahl
-     * @param stadt the stadt
-     * @param vip the vip
+     * @param strasse the city
+     * @param postleitZahl the zipcode
+     * @param stadt the city
+     * @param vip the VIP status
      */
     public Supplier(String name, String strasse, String postleitZahl,
                     String stadt, boolean vip) {
@@ -46,24 +45,24 @@ public class Supplier {
     )
     private String name;
 
-    /** The strasse. */
+    /** The street. */
     @SheetColumn
     private String strasse;
 
 
-    /** The postleit zahl. */
+    /** The zipcode. */
     @SheetColumn(columnName = "PLZ",
             headerStyle = @SheetCellStyle(fontStyleBold = true)
     )
     private String postleitZahl;
 
-    /** The stadt. */
+    /** The city. */
     @SheetColumn(columnName = "Stadt",
             headerStyle = @SheetCellStyle(fontStyleBold = true)
     )
     private String stadt;
 
-    /** The vip. */
+    /** The VIP Status. */
     @SheetColumn(columnName = "VIP")
     private boolean vip;
 
@@ -86,54 +85,54 @@ public class Supplier {
     }
 
     /**
-     * Gets the strasse.
+     * Gets the street.
      *
-     * @return the strasse
+     * @return the street
      */
     public String getStrasse() {
         return strasse;
     }
 
     /**
-     * Sets the strasse.
+     * Sets the street.
      *
-     * @param strasse the new strasse
+     * @param strasse the new street
      */
     public void setStrasse(String strasse) {
         this.strasse = strasse;
     }
 
     /**
-     * Gets the postleit zahl.
+     * Gets the zipcode.
      *
-     * @return the postleit zahl
+     * @return the zipcode
      */
     public String getPostleitZahl() {
         return postleitZahl;
     }
 
     /**
-     * Sets the postleit zahl.
+     * Sets the zipcode.
      *
-     * @param postleitZahl the new postleit zahl
+     * @param postleitZahl the new zipcode
      */
     public void setPostleitZahl(String postleitZahl) {
         this.postleitZahl = postleitZahl;
     }
 
     /**
-     * Gets the stadt.
+     * Gets the city.
      *
-     * @return the stadt
+     * @return the city
      */
     public String getStadt() {
         return stadt;
     }
 
     /**
-     * Sets the stadt.
+     * Sets the city.
      *
-     * @param stadt the new stadt
+     * @param stadt the new city
      */
     public void setStadt(String stadt) {
         this.stadt = stadt;
@@ -149,9 +148,9 @@ public class Supplier {
     }
 
     /**
-     * Sets the vip.
+     * Sets the VIP Status.
      *
-     * @param vip the new vip
+     * @param vip the new VIP Status
      */
     public void setVip(boolean vip) {
         this.vip = vip;

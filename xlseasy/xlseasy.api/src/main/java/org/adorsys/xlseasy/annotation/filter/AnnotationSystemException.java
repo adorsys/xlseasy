@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AnnotationSystemException.
  *

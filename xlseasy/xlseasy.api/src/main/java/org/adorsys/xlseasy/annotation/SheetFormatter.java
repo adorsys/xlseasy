@@ -1,6 +1,5 @@
 package org.adorsys.xlseasy.annotation;
 
-// TODO: Auto-generated Javadoc
 /**
  * HSSFSheet replaced with Object. Implementation will cast to HSSFSheet.
  * 

@@ -5,7 +5,6 @@ import java.beans.PropertyDescriptor;
 import org.adorsys.xlseasy.annotation.HorizontalRecordSheetObject;
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HorizontalRecordSheetDeclaration.
  */

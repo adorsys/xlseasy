@@ -2,14 +2,12 @@ package org.adorsys.xlseasy.impl.converter;
 
 import org.adorsys.xlseasy.annotation.ISheetSession;
 
-// TODO: Auto-generated Javadoc
 /**
  * The collection element converter is used to help display elements of 
  * a collection as a string and retrieve that same collection from the
  * string.
  * 
  * @author Francis Pouatcha <info@adorsys.de>
- *
  */
 public interface CollectionElementConverter {
 

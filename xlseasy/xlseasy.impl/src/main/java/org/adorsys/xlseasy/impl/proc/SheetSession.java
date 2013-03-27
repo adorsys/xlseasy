@@ -17,14 +17,12 @@ import org.adorsys.xlseasy.annotation.SheetSystemException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-// TODO: Auto-generated Javadoc
 /**
- * TODO set Javadoc for Class.
  *
  * @param <WT> the generic type
  * @param <RT> the generic type
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag
  */
 public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 

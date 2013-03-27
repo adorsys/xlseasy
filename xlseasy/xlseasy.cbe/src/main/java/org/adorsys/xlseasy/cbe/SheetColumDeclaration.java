@@ -4,7 +4,6 @@ import java.beans.PropertyDescriptor;
 
 import org.adorsys.xlseasy.annotation.SheetColumnObject;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SheetColumDeclaration.
  */
@@ -16,7 +15,7 @@ public class SheetColumDeclaration {
 	/** The sheet column. */
 	private SheetColumnObject sheetColumn;
 	
-	/** The field klass. */
+	/** The field class. */
 	private Class<?> fieldKlass;
 
 	/**
@@ -24,7 +23,7 @@ public class SheetColumDeclaration {
 	 *
 	 * @param propertyDescriptor the property descriptor
 	 * @param sheetColumn the sheet column
-	 * @param fieldKlass the field klass
+	 * @param fieldKlass the field class
 	 */
 	public SheetColumDeclaration(PropertyDescriptor propertyDescriptor,
 			SheetColumnObject sheetColumn, Class<?> fieldKlass) {
@@ -73,16 +72,16 @@ public class SheetColumDeclaration {
 	/**
 	 * Gets the field klass.
 	 *
-	 * @return the field klass
+	 * @return the field class
 	 */
 	public Class<?> getFieldKlass() {
 		return fieldKlass;
 	}
 
 	/**
-	 * Sets the field klass.
+	 * Sets the field class.
 	 *
-	 * @param fieldKlass the new field klass
+	 * @param fieldKlass the new field class
 	 */
 	public void setFieldKlass(Class<?> fieldKlass) {
 		this.fieldKlass = fieldKlass;

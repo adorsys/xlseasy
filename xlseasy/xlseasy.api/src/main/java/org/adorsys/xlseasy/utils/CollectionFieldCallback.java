@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldCallback;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class CollectionFieldCallback.
  */

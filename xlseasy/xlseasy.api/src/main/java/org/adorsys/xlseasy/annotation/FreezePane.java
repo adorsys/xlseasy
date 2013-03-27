@@ -5,7 +5,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-// TODO: Auto-generated Javadoc
 /**
  * Creates a split (freezepane).
  * 
@@ -18,7 +17,7 @@ import java.lang.annotation.Target;
 public @interface FreezePane {
 
     /**
-     * Horizonatal position of split.
+     * Horizontal position of split.
      *
      * @return the int
      */

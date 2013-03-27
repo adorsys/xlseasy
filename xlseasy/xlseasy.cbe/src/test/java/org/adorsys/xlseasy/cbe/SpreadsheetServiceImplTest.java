@@ -17,7 +17,6 @@ import org.adorsys.xlseasy.boot.SpreadSheetServiceBootStrap;
 import org.apache.commons.lang.BooleanUtils;
 import org.junit.Test;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SpreadsheetServiceImplTest.
  */
