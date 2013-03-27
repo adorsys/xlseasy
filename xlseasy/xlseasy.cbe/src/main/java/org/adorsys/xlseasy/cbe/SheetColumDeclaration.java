@@ -70,7 +70,7 @@ public class SheetColumDeclaration {
 	}
 
 	/**
-	 * Gets the field klass.
+	 * Gets the field class.
 	 *
 	 * @return the field class
 	 */
