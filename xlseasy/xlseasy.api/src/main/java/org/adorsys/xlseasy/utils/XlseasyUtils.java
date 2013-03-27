@@ -103,7 +103,7 @@ public abstract class XlseasyUtils {
 	 * Gets the constructor.
 	 *
 	 * @param <T> the generic type
-	 * @param klass the klass
+	 * @param klass the class
 	 * @param paramTypes the param types
 	 * @return the constructor
 	 */
@@ -143,7 +143,7 @@ public abstract class XlseasyUtils {
 	 * New instance.
 	 *
 	 * @param <T> the generic type
-	 * @param klass the klass
+	 * @param klass the class
 	 * @return the t
 	 */
 	public static <T> T newInstance(Class<T> klass){
