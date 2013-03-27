@@ -43,7 +43,7 @@ public class WorkbookCbe {
 	/**
 	 * Gets the work book sheet.
 	 *
-	 * @param sheetKlass the sheet klass
+	 * @param sheetKlass the sheet class
 	 * @return the work book sheet
 	 */
 	public WorkBookSheet getWorkBookSheet(Class<?> sheetKlass){
