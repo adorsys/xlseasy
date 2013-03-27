@@ -20,7 +20,7 @@ import java.lang.annotation.Annotation;
 
 
 /**
- * The filter interface enabales the filtering of annotations.
+ * The filter interface enables the filtering of annotations.
  * 
  * @author Sandro Sonntag <info@adorsys.de>
  */
