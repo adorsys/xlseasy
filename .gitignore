@@ -14,7 +14,5 @@
 # Directories #
 RemoteSystemsTempFiles/
 bin/
-<<<<<<< HEAD
-=======
 WEB-INF/
->>>>>>> 30c3d35d7ac6b2d1010e5d1dad682800dd2361fd
+META-INF/
