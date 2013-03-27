@@ -16,7 +16,7 @@ public class HorizontalRecordSheetDeclaration {
 	/** The horizontal record sheet. */
 	private final HorizontalRecordSheetObject horizontalRecordSheet;
 	
-	/** The work book sheet. */
+	/** The workbook sheet. */
 	private final WorkBookSheet workBookSheet;
 
 	/**
@@ -54,9 +54,9 @@ public class HorizontalRecordSheetDeclaration {
 	}
 
 	/**
-	 * Gets the work book sheet.
+	 * Gets the workbook sheet.
 	 *
-	 * @return the work book sheet
+	 * @return the workbook sheet
 	 */
 	public WorkBookSheet getWorkBookSheet() {
 		return workBookSheet;
