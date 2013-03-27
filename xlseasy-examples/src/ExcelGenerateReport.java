@@ -15,6 +15,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Sheet;
 
+/**
+ * Generates a multi-line report for any client and saves it into an Excel (.xls) file.
+ * 
+ *  @author Marius Guede <mariusguede@urframes.net>
+ */
 public class ExcelGenerateReport {
 
 	private HSSFCellStyle cs, csBold, csTop, csRight, csBottom, csLeft, csTopLeft, csTopRight, csBottomLeft, csBottomRight;

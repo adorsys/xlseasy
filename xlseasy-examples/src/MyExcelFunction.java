@@ -5,7 +5,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
 /**
- * Implements some of Excel functions to handle elements
+ * Implements some already existing Excel's functions to simplify the code writing.
+ * 
+ * @author Marius Guede <mariusguede@urframes.net>
  * */
 public class MyExcelFunction {
 

@@ -11,6 +11,11 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Sheet;
 
+/**
+ * Generates an Excel file with two sheets and implements some calculations function.
+ * 
+ *  @author Marius Guede <mariusguede@urframes.net>
+ */
 public class ExcelExample extends MyExcelFunction {
 
 	private int rowIndex = 0;
