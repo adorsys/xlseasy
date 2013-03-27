@@ -103,11 +103,8 @@ public class MyExcelFunction {
 		String result = new String();
 
 		for (int i = 0; i < cellName.length(); i++) {
-			if (isInAlphabet(cellName.charAt(i))) {
-				result += cellName.charAt(i);
-			} else {
-				break;
-			}
+			if (isInAlphabet(cellName.charAt(i))) result += cellName.charAt(i);
+			else break;
 		}
 		return result;
 	}
@@ -125,9 +122,7 @@ public class MyExcelFunction {
 		String result = new String();
 
 		for (int i = 0; i < cellName.length(); i++) {
-			if (!isInAlphabet(cellName.charAt(i))) {
-				result += cellName.charAt(i);
-			}
+			if (!isInAlphabet(cellName.charAt(i))) result += cellName.charAt(i);
 		}
 		return result;
 	}
