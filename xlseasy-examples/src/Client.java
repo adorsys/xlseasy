@@ -1,3 +1,4 @@
+// TODO: Auto-generated Javadoc
 /**
  * The Class Client.
  * 
@@ -21,7 +22,7 @@ public class Client {
 	private Integer zipcode;
 	
 	/** Client's city. */
-	private Integer city;
+	private String city;
 	
 	/** Client's country. */
 	private String country;
@@ -42,7 +43,7 @@ public class Client {
 	 * @param city the city
 	 * @param country the country
 	 */
-	public Client(String name, String street, Integer zipcode, Integer city, String country) {
+	public Client(String name, String street, Integer zipcode, String city, String country) {
 		super();
 		this.id = ++counter;
 		this.name = name;
@@ -129,7 +130,7 @@ public class Client {
 	 *
 	 * @return the client's city
 	 */
-	public Integer getCity() {
+	public String getCity() {
 		return city;
 	}
 
@@ -138,7 +139,7 @@ public class Client {
 	 *
 	 * @param city the new client's city
 	 */
-	public void setCity(Integer city) {
+	public void setCity(String city) {
 		this.city = city;
 	}
 
@@ -158,5 +159,14 @@ public class Client {
 	 */
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	
+	/**
+	 * Gets the client's address.
+	 *
+	 * @return the client's address
+	 */
+	public String getAddress() {
+		return street + ", " + zipcode + " " + city + ", " +  country;
 	}
 }
