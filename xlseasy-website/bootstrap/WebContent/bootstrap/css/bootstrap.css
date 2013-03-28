@@ -6734,6 +6734,13 @@ button.close {
 
 /**-- xlseasy code --*/
 
+h4.tech {
+	color: #0088cc;
+	margin-top: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #D3D3D3;
+}
+
 div.info {
 	text-align: justify;
 }

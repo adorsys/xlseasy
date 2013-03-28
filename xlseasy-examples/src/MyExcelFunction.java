@@ -5,7 +5,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
 /**
- * Implements some of Excel functions to handle elements
+ * Implements some already existing Excel's functions to simplify the code writing.
+ * 
+ * @author Marius Guede <mariusguede@urframes.net>
  * */
 public class MyExcelFunction {
 
@@ -101,11 +103,8 @@ public class MyExcelFunction {
 		String result = new String();
 
 		for (int i = 0; i < cellName.length(); i++) {
-			if (isInAlphabet(cellName.charAt(i))) {
-				result += cellName.charAt(i);
-			} else {
-				break;
-			}
+			if (isInAlphabet(cellName.charAt(i))) result += cellName.charAt(i);
+			else break;
 		}
 		return result;
 	}
@@ -123,9 +122,7 @@ public class MyExcelFunction {
 		String result = new String();
 
 		for (int i = 0; i < cellName.length(); i++) {
-			if (!isInAlphabet(cellName.charAt(i))) {
-				result += cellName.charAt(i);
-			}
+			if (!isInAlphabet(cellName.charAt(i))) result += cellName.charAt(i);
 		}
 		return result;
 	}

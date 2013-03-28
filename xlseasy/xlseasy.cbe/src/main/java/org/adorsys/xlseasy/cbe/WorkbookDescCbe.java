@@ -74,7 +74,7 @@ public class WorkbookDescCbe<T> implements WorkbookDescIF<T> {
 	/**
 	 * Checks if is sheet.
 	 *
-	 * @param klass the klass
+	 * @param klass the class
 	 * @return true, if is sheet
 	 */
 	public boolean isSheet(Class<?> klass){

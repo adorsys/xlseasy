@@ -30,13 +30,13 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 public class ColumnDescCbe implements ColumnDescIF {
 
 
-	/** The anno sheet column. */
+	/** The annotation sheet column. */
 	private final SheetColumnObject annoSheetColumn;
 	
-	/** The anno sheet column style. */
+	/** The annotation sheet column style. */
 	private final SheetCellStyleObject annoSheetColumnStyle;
 	
-	/** The anno sheet header style. */
+	/** The annotation sheet header style. */
 	private final SheetCellStyleObject annoSheetHeaderStyle;
 
 	/**
@@ -58,17 +58,17 @@ public class ColumnDescCbe implements ColumnDescIF {
 	/** The column index. */
 	private final int columnIndex;
 	
-	/** The work book sheet. */
+	/** The workbook sheet. */
 	private final WorkBookSheet workBookSheet;
 
 	/**
 	 * Instantiates a new column desc cbe.
 	 *
-	 * @param pd the pd
-	 * @param sc the sc
+	 * @param pd the property descriptor
+	 * @param sc the sheet column object
 	 * @param columnIndex the column index
 	 * @param field the field
-	 * @param workBookSheet the work book sheet
+	 * @param workBookSheet the workbook sheet
 	 */
 	@SuppressWarnings("unchecked")
 	public ColumnDescCbe(PropertyDescriptor pd, SheetColumnObject sc, 
