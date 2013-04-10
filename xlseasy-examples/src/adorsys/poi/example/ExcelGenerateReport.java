@@ -1,3 +1,5 @@
+package adorsys.poi.example;
+
 import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,3 +1,5 @@
+package adorsys.poi.example;
+
 /**
  * The Class Client.
  * 
@@ -6,7 +8,7 @@
 public class Client {
 	
 	/** Used to count the number of created client and set the client's ID. */
-	private Integer counter = 0;
+	private static Integer counter = 0;
 
 	/** Client's ID. */
 	private Integer id;

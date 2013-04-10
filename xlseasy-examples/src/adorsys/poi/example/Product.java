@@ -1,3 +1,5 @@
+package adorsys.poi.example;
+
 /**
  * The class Product.
  *
