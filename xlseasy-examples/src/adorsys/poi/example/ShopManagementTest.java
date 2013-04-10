@@ -40,7 +40,7 @@ public class ShopManagementTest extends MyExcelFunction {
 			HSSFWorkbook book = new HSSFWorkbook();
 
 			// creates the sheet for this book
-			HSSFSheet sheet = book.createSheet("1st Sheet");
+			HSSFSheet sheet = book.createSheet("Shop Manager");
 
 			// the following line allow to create a sheet and add sheet's name
 			// with special characters such as [], ? # + %$¤"
@@ -196,6 +196,12 @@ public class ShopManagementTest extends MyExcelFunction {
 				cell.setCellStyle(getMyDefaultStyle(book));
 			}
 
+			// used to save cell's reference for price pro article and quantity and compute the total price for this article
+			String cellPrice, cellQty;
+
+			// used to save the row of first, last product and the column reference with prices and compute the total price for all articles
+			String totalPriceFormular = new String();
+			
 			// other rows
 			for (int i = 0; i < managerList.size(); i++) {
 				rowIndex++;
@@ -225,24 +231,40 @@ public class ShopManagementTest extends MyExcelFunction {
 				cell = row.createCell(5);
 				cell.setCellValue(managerListArray[i].getProduct().getPrice());
 				setMyCellAlignment(book, cell, defaultAlignment);
+				
+				// gets the cell's reference for the price pro article
+				cellPrice = getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
 
 				cell = row.createCell(6);
 				cell.setCellValue(managerListArray[i].getProduct().getDesc());
 				setMyCellAlignment(book, cell, defaultAlignment);
 
-				// gets random index to compute total price
-				int rdm = getRandomIndex();
-
 				cell = row.createCell(7);
-				cell.setCellValue(rdm);
+				cell.setCellValue(getRandomIndex());
 				setMyCellAlignment(book, cell, defaultAlignment);
+				
+				// gets the cell's reference for the wished quantity
+				cellQty = getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
 
 				cell = row.createCell(8);
-				cell.setCellValue(rdm
-						* managerListArray[i].getProduct().getPrice());
+				cell.setCellFormula(cellPrice + "*" + cellQty);
 				setMyCellAlignment(book, cell, defaultAlignment);
+				
+				
+				// gets the cell's reference of the first product
+				if (i == 0) totalPriceFormular = "SUM(" + getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
+				
+				// gets the cell's reference of the last product
+				if (i == managerList.size() - 1) totalPriceFormular += ":" + getCellByReference(cell.getRowIndex(), cell.getColumnIndex()) + ")";
 			}
 			rowIndex++;
+			
+			// sets formula
+			row = sheet.createRow(rowIndex);
+			cell = row.createCell(8);
+			cell.setCellFormula(totalPriceFormular);
+			setMyCellAlignment(book, cell, defaultAlignment);
+			setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD, defaultFontHeightInPoints);
 
 			// setups column's width
 			for (int i = 0; i < headerTitle.length; i++) {
