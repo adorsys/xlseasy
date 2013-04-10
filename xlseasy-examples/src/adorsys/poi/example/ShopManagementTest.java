@@ -196,9 +196,6 @@ public class ShopManagementTest extends MyExcelFunction {
 				cell.setCellStyle(getMyDefaultStyle(book));
 			}
 
-			// used to save cell's reference for price pro article and quantity and compute the total price for this article
-			String cellPrice, cellQty;
-
 			// used to save the row of first, last product and the column reference with prices and compute the total price for all articles
 			String totalPriceFormular = new String();
 			
@@ -231,9 +228,6 @@ public class ShopManagementTest extends MyExcelFunction {
 				cell = row.createCell(5);
 				cell.setCellValue(managerListArray[i].getProduct().getPrice());
 				setMyCellAlignment(book, cell, defaultAlignment);
-				
-				// gets the cell's reference for the price pro article
-				cellPrice = getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
 
 				cell = row.createCell(6);
 				cell.setCellValue(managerListArray[i].getProduct().getDesc());
@@ -243,11 +237,9 @@ public class ShopManagementTest extends MyExcelFunction {
 				cell.setCellValue(getRandomIndex());
 				setMyCellAlignment(book, cell, defaultAlignment);
 				
-				// gets the cell's reference for the wished quantity
-				cellQty = getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
-
-				cell = row.createCell(8);
-				cell.setCellFormula(cellPrice + "*" + cellQty);
+				cell = row.createCell(8);			
+				// computes the total price using the article's price and quantity
+				cell.setCellFormula(getCellByReference(cell.getRowIndex(), 5) + "*" + getCellByReference(cell.getRowIndex(), 7));
 				setMyCellAlignment(book, cell, defaultAlignment);
 				
 				
