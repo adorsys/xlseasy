@@ -24,5 +24,4 @@ public class CompositeFieldFilter implements FieldFilter {
 		}
 		return true;
 	}
-
 }

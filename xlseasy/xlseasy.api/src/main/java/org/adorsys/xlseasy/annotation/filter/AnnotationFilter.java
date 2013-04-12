@@ -22,8 +22,8 @@ import java.lang.annotation.Annotation;
 
 /**
  * The filter interface enabales the filtering of annotations.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag
  */
 public interface AnnotationFilter {
 	/**

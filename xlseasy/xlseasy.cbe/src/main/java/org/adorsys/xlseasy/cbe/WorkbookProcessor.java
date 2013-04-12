@@ -37,8 +37,6 @@ public class WorkbookProcessor {
 					propertyDescriptor, horizontalRecordSheet, workBookSheet);
 			result.add(dekl);
 		}
-
 		return result;
 	}
-
 }

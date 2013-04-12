@@ -15,10 +15,8 @@ import java.util.List;
  * 
  * In any case, the Processing Interface allow the speci
  * 
- * TODO set Javadoc for Class
- * @version $Id: $
- * @author sso
- * @author francis
+ * @author Sandro Sonntag
+ * @author Francis Pouatcha
  */
 public class ShopManagement {
 	

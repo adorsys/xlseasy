@@ -6,8 +6,7 @@ import java.util.Map;
 import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 
 /**
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public class AnnotationSystemException extends RuntimeException {
 

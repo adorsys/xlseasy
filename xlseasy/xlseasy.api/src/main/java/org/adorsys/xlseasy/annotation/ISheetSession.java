@@ -4,7 +4,8 @@ import java.util.List;
 
 /**
  * Replacing HSSFWorkbook with object. Implementation will cast to correct value.
- * @author francis
+ * 
+ * @author Francis Pouatcha
  *
  * @param <WT>
  * @param <RT>

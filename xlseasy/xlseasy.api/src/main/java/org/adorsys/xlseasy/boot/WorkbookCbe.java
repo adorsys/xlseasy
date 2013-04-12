@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Contains the list of sheet decriptors.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public class WorkbookCbe {

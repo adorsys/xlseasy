@@ -5,9 +5,7 @@ import java.util.Map;
 
 
 /**
- * TODO set Javadoc for Class
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public class SpreadsheetConverterException extends Exception {
 

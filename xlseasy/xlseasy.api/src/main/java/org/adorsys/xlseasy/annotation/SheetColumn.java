@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 
 /**
  * 
- * @author sso
+ * @author Sandro Sonntag
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

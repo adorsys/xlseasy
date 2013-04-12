@@ -34,8 +34,8 @@ import org.adorsys.xlseasy.annotation.ErrorCodeSheet;
 
 /**
  * Common Annotation Util.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag
  */
 public class AnnotationUtil {
 	

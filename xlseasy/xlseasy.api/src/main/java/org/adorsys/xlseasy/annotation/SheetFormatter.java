@@ -3,8 +3,8 @@ package org.adorsys.xlseasy.annotation;
 /**
  * HSSFSheet replaced with Object. Implementation will cast to HSSFSheet.
  * 
- * @author sandro
- * @author francis
+ * @author Sandro Sonntag
+ * @author Francis Poutcha
  *
  */
 public interface SheetFormatter {

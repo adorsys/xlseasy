@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Object implementing the same interface like a sheet cell stype
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public class SheetCellStyleObject implements Serializable {

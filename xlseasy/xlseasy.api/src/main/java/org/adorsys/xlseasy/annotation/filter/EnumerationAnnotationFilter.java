@@ -23,8 +23,8 @@ import java.util.Set;
 
 /**
  * Filter checkes for the given annotations.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag
  */
 public class EnumerationAnnotationFilter implements AnnotationFilter {
 	

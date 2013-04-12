@@ -1,6 +1,6 @@
 package org.adorsys.xlseasy.annotation;
 
-import java.io.InputStream;
+import java.io.InputStream; 
 import java.io.OutputStream;
 import java.util.Collection;
 import java.util.List;

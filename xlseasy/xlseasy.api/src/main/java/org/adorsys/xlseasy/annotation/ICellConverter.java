@@ -1,10 +1,9 @@
 package org.adorsys.xlseasy.annotation;
 
 
-
 /**
  * Replacing HSSFCell with Object
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public interface ICellConverter {

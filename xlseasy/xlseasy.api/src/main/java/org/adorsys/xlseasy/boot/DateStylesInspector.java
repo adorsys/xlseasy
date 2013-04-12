@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Inspect date styles for fields of a given klass.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public interface DateStylesInspector {

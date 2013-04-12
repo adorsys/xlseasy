@@ -6,7 +6,6 @@ import java.util.HashSet;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
-
 public class ExcludeByFieldNameFilter implements FieldFilter {
 
 	private final Collection<String> discriminatedFieldNames;

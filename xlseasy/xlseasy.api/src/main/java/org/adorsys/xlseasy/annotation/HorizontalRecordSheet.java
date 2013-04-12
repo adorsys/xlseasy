@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * An annotation for the property which is mapped to the horizontal table records.
  * 
- * @author sso
+ * @author Sandro Sonntag
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

@@ -11,7 +11,7 @@ import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 /**
  * Match all fields that ar collection types.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public class CollectionFieldFilter implements FieldFilter {

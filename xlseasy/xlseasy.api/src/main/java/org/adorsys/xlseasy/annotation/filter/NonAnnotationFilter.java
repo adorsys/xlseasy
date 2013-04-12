@@ -20,8 +20,8 @@ import java.lang.annotation.Annotation;
 
 /**
  * Filters noting and return true.
- * @version $Id: $
- * @author sso
+ * 
+ * @author Sandro Sonntag
  */
 public class NonAnnotationFilter implements AnnotationFilter {
 	/**
