@@ -9,9 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 
 
 /**
- * TODO set Javadoc for Class
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public class StringCellConverter extends CellConverter {
 

@@ -8,7 +8,7 @@ import org.apache.commons.beanutils.ConvertUtils;
  * provides a toStringValue that returns the string representation and 
  * a sparator used to concatenate elements.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public class GenericCollectionElementConverter implements

@@ -8,9 +8,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 
 
 /**
- * TODO set Javadoc for Class
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public class DateCellConverter extends CellConverter {
 

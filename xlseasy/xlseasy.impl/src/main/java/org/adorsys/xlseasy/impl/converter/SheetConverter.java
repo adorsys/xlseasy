@@ -14,7 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  * not automatically discover key field using @Key annotation. This, there will
  * be no singleton, each sheet will carry proper converter.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public class SheetConverter implements ICellConverter, CollectionElementConverter {

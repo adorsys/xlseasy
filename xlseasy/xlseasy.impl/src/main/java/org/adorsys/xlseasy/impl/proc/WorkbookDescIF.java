@@ -7,10 +7,7 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
- * TODO set Javadoc for Class
- * 
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public interface WorkbookDescIF<T> extends Serializable {
 

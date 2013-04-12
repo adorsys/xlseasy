@@ -7,9 +7,7 @@ import org.adorsys.xlseasy.annotation.HorizontalRecordSheet;
 import org.adorsys.xlseasy.annotation.Workbook;
 
 /**
- * TODO set Javadoc for Class
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 @Workbook(sheetOrder={"products", "suppliers"})
 public class ShopManagement {

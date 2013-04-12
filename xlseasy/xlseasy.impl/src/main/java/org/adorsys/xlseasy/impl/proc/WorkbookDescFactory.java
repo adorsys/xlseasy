@@ -10,7 +10,7 @@ import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
  * opportunity to inject other way of parsing class. In particular
  * the default interpretation of resources.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public class WorkbookDescFactory {

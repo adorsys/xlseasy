@@ -7,7 +7,7 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
  * a collection as a string and retrieve that same collection from the
  * string.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public interface CollectionElementConverter {

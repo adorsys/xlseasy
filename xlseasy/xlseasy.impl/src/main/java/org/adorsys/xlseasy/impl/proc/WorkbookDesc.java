@@ -21,10 +21,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
- * TODO set Javadoc for Class
- * 
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 

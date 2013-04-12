@@ -7,10 +7,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 
 /**
- * TODO set Javadoc for Class
- * 
- * @version $Id: $
- * @author sso
+ * @author Sandro Sonntag
  */
 public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
 	public Object getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session)

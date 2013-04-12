@@ -22,7 +22,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  * A SheetConverter must always now the type of the key class. And shaa not always 
  * assume the presence of the @Key annotation.
  * 
- * @author francis
+ * @author Francis Pouatcha
  *
  */
 public abstract class CollectionTypeConverter implements ICellConverter {
