@@ -3,6 +3,7 @@ xlseasy
 
 We use Apache POI to generate Excel Spreadsheets with some Java implementations.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
@@ -67,3 +68,5 @@ The library is avalible as maven artifact. Put this dependencies in your maven P
 		</dependency>
 	</project>
 >>>>>>> 7e3715ce736e8c3959282cd2ae5ae3de761c480b
+=======
+>>>>>>> 279073f4b319b46b64e19fac4b5b030c7ee56f0b
