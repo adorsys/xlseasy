@@ -4,7 +4,6 @@ import org.adorsys.xlseasy.annotation.Workbook;
 import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
 
-
 /**
  * Will be used to create workbook descriptors. This will provide the 
  * opportunity to inject other way of parsing class. In particular
