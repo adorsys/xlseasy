@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.cbe;
+package test.java.org.adorsys.xlseasy.cbe;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

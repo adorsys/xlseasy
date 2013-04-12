@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.cbe;
+package test.java.org.adorsys.xlseasy.cbe;
 
 /**
  * The Class Supplier.

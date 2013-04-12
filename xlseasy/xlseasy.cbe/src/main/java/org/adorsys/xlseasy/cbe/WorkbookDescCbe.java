@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.cbe;
+package main.java.org.adorsys.xlseasy.cbe;
 
 import java.util.ArrayList;
 import java.util.Collection;
