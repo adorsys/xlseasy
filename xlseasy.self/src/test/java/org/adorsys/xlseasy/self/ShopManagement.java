@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * The class ShopManagement
- * 
+ *  
  * @author mariusguede
  */
 public class ShopManagement {

@@ -8,12 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Date;
 import java.util.List;
 
 import org.adorsys.xlseasy.annotation.SpreadsheetService;
 import org.adorsys.xlseasy.boot.SpreadSheetServiceBootStrap;
-import org.apache.commons.lang.BooleanUtils;
 import org.junit.Test;
 
 public class SpreadsheetServiceImplTest {
@@ -25,17 +23,20 @@ public class SpreadsheetServiceImplTest {
 		bootStrap.setWorkbookKlass(ShopManagement.class);
 		SpreadsheetService spreadService = bootStrap.createSpreadService();
 
+		// File to load
 		String managementFile = "management.xls";
 
+		// Finds the file to load in the resource
 		InputStream managementStream = SpreadsheetServiceImplTest.class
 				.getResourceAsStream(managementFile);
 
+		// Loads the spreadsheet 
 		ShopManagement shopManagement = spreadService.loadSpreadsheet(
 				managementStream, ShopManagement.class);
 		
-		// Verify if all spreadsheets have been read and objects created
-		assertEquals(3, shopManagement.getProducts().size());
+		// Verifies if all spreadsheets have been read and objects created
 		assertEquals(4, shopManagement.getClients().size());
+		assertEquals(3, shopManagement.getProducts().size());		
 		
 		// Read through supplier list and verify entries of supplier by
 		// iterating
@@ -122,16 +123,16 @@ public class SpreadsheetServiceImplTest {
 		// through the list and reading the attributes
 		List<Client> client = shopManagement.getClients();
 		supplier1 = client.get(0);
-		assertEquals("Amzon", supplier1.getName());
-		assertEquals("Friedriech", supplier1.getStreet());
-		assertEquals("44524", supplier1.getZipcode());
-		assertEquals("Hagen", supplier1.getCity());
+		assertEquals("Adorsys", supplier1.getName());
+		assertEquals("Hauptstrasse 1", supplier1.getStreet());
+		assertEquals(90489, supplier1.getZipcode());
+		assertEquals("Nuremberg", supplier1.getCity());
 		
 		supplier2 = client.get(1);
-		assertEquals("Bookstore", supplier2.getName());
-		assertEquals("Mallinkrot", supplier2.getStreet());
-		assertEquals("44415", supplier2.getZipcode());
-		assertEquals("Dortmund", supplier2.getCity());
+		assertEquals("Urframes", supplier2.getName());
+		assertEquals("Goethestrasse", supplier2.getStreet());
+		assertEquals(91056, supplier2.getZipcode());
+		assertEquals("Erlangen", supplier2.getCity());
 		
 		// Read through product list and verify entries of product by iterating
 		// through the list and reading the attributes
