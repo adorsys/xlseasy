@@ -48,10 +48,11 @@ public class ImplTest {
 		/**
 		 * Verifies if all spreadsheets have been read and objects created.
 		 * 
-		 * In this case, we're expected 3 object from the sheets clients 
-		 * and products. */
-		assertEquals(3, shopManagement.getProducts().size());		
+		 * In this case, we're expected 3 objects from the sheets clients 
+		 * and products and 5 objects from users. */
+		assertEquals(3, shopManagement.getProducts().size());
 		assertEquals(3, shopManagement.getClients().size());
+		assertEquals(5, shopManagement.getUsers().size());
 		
 		
 		/** Saves the content of the sheet clients in a List<Client>. */
@@ -86,7 +87,7 @@ public class ImplTest {
 		 * Verifies the data of the first object (line)
 		 * 
 		 * A line represents an object in this case. Each entries should exist
-		 * as a client's attribut (look file Product.java).
+		 * as a product's attribut (look file Product.java).
 		 * */
 		assertEquals("Samsung Galaxy", products.get(0).getName());
 		assertEquals("Tablet 10.1", products.get(0).getDescription());
@@ -98,6 +99,33 @@ public class ImplTest {
 			System.out.print(products.get(i).getName() + "\t");
 			System.out.print(products.get(i).getDescription() + "\t");
 			System.out.println(products.get(i).getPrice());
+		}
+		
+		
+		/** Saves the content of the sheet clients in a List<Product>. */
+		List<User> users = shopManagement.getUsers();
+
+		/**
+		 * Sheet: users
+		 * Verifies the data of the first object (line)
+		 * 
+		 * A line represents an object in this case. Each entries should exist
+		 * as a user's attribut (look file User.java).
+		 * */
+		assertEquals("1", String.valueOf(users.get(0).getId()));
+		assertEquals("flor90", users.get(0).getPseudo());
+		assertEquals("Flore", users.get(0).getName());
+		assertEquals("flore@email.com", users.get(0).getEmail());
+		assertEquals("passenger", users.get(0).getPassword());
+
+		/** Prints all objects from the product's list. */
+		System.out.println("\n### Users ###");
+		for (int i = 0; i < shopManagement.getUsers().size(); i++) {
+			System.out.print(users.get(i).getId() + "\t");
+			System.out.print(users.get(i).getPseudo() + "\t");
+			System.out.print(users.get(i).getName() + "\t");
+			System.out.print(users.get(i).getEmail() + "\t");
+			System.out.println(users.get(i).getEncodedPassword());
 		}
 	}
 
@@ -167,5 +195,4 @@ public class ImplTest {
 		assertEquals(expected.getDescription(), is.getDescription());
 		assertEquals(expected.getPrice() != null ? expected.getPrice() : Double.valueOf(0.0), is.getPrice());
 	}
-
 }

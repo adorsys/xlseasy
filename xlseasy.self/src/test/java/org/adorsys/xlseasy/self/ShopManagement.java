@@ -27,6 +27,9 @@ public class ShopManagement {
 	/** Sheet suppliers. */
 	private List<Client> clients = new ArrayList<Client>();
 	
+	/** Sheet users. */
+	private List<User> users = new ArrayList<User>();
+	
 	/**
 	 * Gets the sheet product.
 	 *
@@ -61,5 +64,23 @@ public class ShopManagement {
 	 */
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	/**
+	 * Gets the sheet users.
+	 *
+	 * @return the sheet users
+	 */
+	public List<User> getUsers() {
+		return users;
+	}
+
+	/**
+	 * Sets the sheet users.
+	 *
+	 * @param users the new sheet users
+	 */
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 }
