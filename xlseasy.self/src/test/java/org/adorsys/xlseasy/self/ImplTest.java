@@ -95,8 +95,18 @@ public class ImplTest {
 		 * A line represents an object in this case. Each entries should exist
 		 * as a user's attribut (look file User.java).
 		 * */
-		User userObject = new User("flor90", "Flore", "flore@email.com", "passenger");
+		User userObject = new User();
+		userObject.setPseudo("flor90");
+		userObject.setName("Flore");
+		userObject.setEmail("flore@email.com");
+		userObject.setPassword("passenger");
 		checkUser(userObject, users.get(0));
+		
+		// It would have been easier to create an user like this:
+		// user = User("flor90", "Flore", "flore@email.com", "passenger");
+		// but this constructor would increase the number of created users 
+		// to 1 and it would be wrong because this object is just a test 
+		// and we don't want to count it with the real users
 		
 		/**
 		 * Now the spreadsheet has been sheet by sheet read.
