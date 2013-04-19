@@ -13,6 +13,5 @@ public interface SpreadsheetService {
 	
 	public <ST> void saveSpreadsheetRecords(Class<ST> sheetType, Collection<ST> rows, OutputStream outputStream) ;
 	
-	public <WT> void saveSpreadsheet(Class<WT> workbookType, WT model, OutputStream outputStream);
-	
+	public <WT> void saveSpreadsheet(Class<WT> workbookType, WT model, OutputStream outputStream);	
 }
