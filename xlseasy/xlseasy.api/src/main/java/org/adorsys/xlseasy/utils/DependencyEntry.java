@@ -21,8 +21,7 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 	private int level;
 	private final Map<String, String> fieldDateStyles;
 	
-	List<Field> fieldOrder;
-	
+	List<Field> fieldOrder;	
 	
 	public DependencyEntry(final Field field,
 			final Class<?> klass, 
@@ -103,7 +102,6 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		return result;
 	}
 
-
 	@Override
 	public String toString() {
 		return "DependencyEntry [klass=" + klass + ", level=" + level + "]";
@@ -132,7 +130,5 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		} else if (!klass.equals(other.klass))
 			return false;
 		return true;
-	}
-	
-	
+	}	
 }

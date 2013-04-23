@@ -50,10 +50,10 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		
 		Collection<String> orderedProperties;		
 		if (so.sheetOrder().length > 0) {
-			//sort order
+			// sort order
 			orderedProperties = Arrays.asList(so.sheetOrder());
 		} else {
-			//apha label order
+			// apha label order
 			orderedProperties = new TreeSet<String>(propertyKey2PropertyDescriptor.keySet());
 		}
 		

@@ -1,6 +1,5 @@
 package org.adorsys.xlseasy.annotation;
 
-
 /**
  * @author Sandro Sonntag
  */

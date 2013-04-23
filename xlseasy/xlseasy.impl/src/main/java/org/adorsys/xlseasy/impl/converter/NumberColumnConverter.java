@@ -16,5 +16,4 @@ public abstract class NumberColumnConverter extends CellConverter {
 			cell.setCellValue(((Number)value).doubleValue());
 		}
 	}
-
 }

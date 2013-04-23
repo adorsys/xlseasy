@@ -149,5 +149,4 @@ public abstract class CollectionTypeConverter implements ICellConverter {
 	
 	private static Map<CollectionTypeConverterKey, CollectionTypeConverter> converterMap = 
 			new HashMap<CollectionTypeConverterKey, CollectionTypeConverter>();
-
 }

@@ -23,6 +23,7 @@ public class KeyGenerator {
 			field = null;
 		}
 	}
+	
 	public KeyGenerator(Class<?> rowClass, Field keyField) {
 		super();
 		this.rowClass = rowClass;
@@ -46,5 +47,4 @@ public class KeyGenerator {
 	public String getKeyColumnName() {
 		return  field != null ? field.getName() : null;
 	}
-
 }

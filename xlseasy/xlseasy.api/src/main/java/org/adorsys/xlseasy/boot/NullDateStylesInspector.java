@@ -8,5 +8,4 @@ public class NullDateStylesInspector implements DateStylesInspector {
 	public Map<String, String> inspectDateStyles(Class<?> sheetKlass) {
 		return Collections.emptyMap();
 	}
-
 }

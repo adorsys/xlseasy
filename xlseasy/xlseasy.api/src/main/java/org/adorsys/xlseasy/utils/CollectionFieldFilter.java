@@ -7,9 +7,8 @@ import java.util.Collection;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
-
 /**
- * Match all fields that ar collection types.
+ * Match all fields that are collection types.
  * 
  * @author Francis Pouatcha
  *
@@ -24,5 +23,4 @@ public class CollectionFieldFilter implements FieldFilter {
         }
 		return false;
 	}
-
 }

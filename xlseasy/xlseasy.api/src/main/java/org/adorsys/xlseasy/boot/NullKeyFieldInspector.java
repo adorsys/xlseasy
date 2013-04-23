@@ -7,5 +7,4 @@ public class NullKeyFieldInspector implements KeyFieldInspector {
 	public Field findKeyField(Class<?> sheetKlass) {
 		return null;
 	}
-
 }

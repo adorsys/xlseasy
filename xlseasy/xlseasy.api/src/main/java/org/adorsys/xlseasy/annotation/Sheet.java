@@ -20,5 +20,4 @@ public @interface Sheet {
     boolean autoSizeColumns() default false;
 
     Class<? extends SheetFormatter> formatter() default NoneSheetFormatter.class;
-
 }

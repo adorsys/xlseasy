@@ -26,21 +26,27 @@ import java.lang.annotation.Target;
  * 
  * @author Sandro Sonntag
  */
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface SheetColumn {
-	
+
 	String columnName() default "";
+
 	boolean merged() default false;
+
 	int headerMerged() default 0;
+
 	boolean optional() default false;
-	
+
 	Class<?> converter() default Object.class;
+
 	boolean hidden() default false;
+
 	String headerComment() default "";
-	
+
 	SheetCellStyle headerStyle() default @SheetCellStyle;
+
 	SheetCellStyle columnStyle() default @SheetCellStyle;
-	
+
 }

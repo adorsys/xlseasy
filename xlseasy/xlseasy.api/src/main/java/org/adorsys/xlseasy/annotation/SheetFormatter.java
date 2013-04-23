@@ -16,5 +16,4 @@ public interface SheetFormatter {
 	}
 	
 	void format(Object sheet);
-
 }

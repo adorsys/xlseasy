@@ -24,5 +24,4 @@ public class CalendarCellConverter extends CellConverter {
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] {Calendar.class}; 
 	}
-
 }

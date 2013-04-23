@@ -33,29 +33,34 @@ public class ColumnDesc implements ColumnDescIF {
 	private final SheetCellStyleObject annoSheetHeaderStyle;
 
 	/**
-	 * e.g (Product.)productName
+	 * The column's property name
+	 * 
+	 * e.g (Product.) productName
 	 */
 	private final String propertyName;
 
 	/**
+	 * The column's label
+	 * 
 	 * e.g. "Product Name"
 	 */
 	private final String xlsColumnLabel;
 
 	private final Class<?> type;
-
-	private final ICellConverter converter;
 	
+	private final ICellConverter converter;
+
+	/** The column's index. */
 	private final int columnIndex;
 
+	
 	/**
-	 * @param annoSheetColumn
-	 * @param annoSheetHeaderStyle
-	 * @param propertyName
-	 * @param xlsColumnLabel
-	 * @param columnIndex
-	 * @param type
-	 * @param converter
+	 * Instantiates a new column desc.
+	 *
+	 * @param pd the pd
+	 * @param sc the sc
+	 * @param columnIndex the column index
+	 * @param field the field
 	 */
 	@SuppressWarnings("unchecked")
 	public ColumnDesc(PropertyDescriptor pd, SheetColumn sc, int columnIndex, Field field) {
@@ -127,10 +132,20 @@ public class ColumnDesc implements ColumnDescIF {
 		}
 	}
 
+	/**
+	 * Gets the column's property name.
+	 * 
+	 * @return the column's property name
+	 * */
 	public String getPropertyName() {
 		return propertyName;
 	}
 
+	/**
+	 * Gets the column's label.
+	 * 
+	 * @return the column's label
+	 * */
 	public String getXlsColumnLabel() {
 		return xlsColumnLabel;
 	}
@@ -159,6 +174,11 @@ public class ColumnDesc implements ColumnDescIF {
 		return annoSheetHeaderStyle;
 	}
 
+	/**
+	 * Gets the column's index.
+	 * 
+	 * @return the column's index
+	 * */
 	public int getColumnIndex() {
 		return columnIndex;
 	}

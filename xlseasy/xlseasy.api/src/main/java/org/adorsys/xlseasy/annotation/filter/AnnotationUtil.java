@@ -48,10 +48,11 @@ public class AnnotationUtil {
 	
 	/**
 	 * Finds class annotations  with a custom filter.
-	 * @param clazz
-	 * @param inherited
-	 * @param filter
-	 * @return
+	 *
+	 * @param clazz the clazz
+	 * @param inherited the inherited
+	 * @param filter the filter
+	 * @return the collection
 	 */
 	public static Collection<Annotation> findClassAnnotations(Class<?> clazz, boolean inherited, final AnnotationFilter filter) {
 		final ArrayList<Annotation> annotations = new ArrayList<Annotation>();
@@ -254,7 +255,8 @@ public class AnnotationUtil {
 	
 	/**
 	 * Extracts all annotation types from a collection of annotations.
-	 * @param annotation
+	 *
+	 * @param annotation the annotation
 	 * @return extracted types.
 	 */
 	public static Set<Class<? extends Annotation>> extractAnnotationTypes(Collection<Annotation> annotation) {
@@ -266,9 +268,10 @@ public class AnnotationUtil {
 	}
 	
 	/**
-	 * extracts the propertyDrescriptor names for a easy access to findBeanPropertyDescriptorAnnotations;
-	 * @param pd
-	 * @return
+	 * Extracts the propertyDrescriptor names for a easy access to findBeanPropertyDescriptorAnnotations;.
+	 *
+	 * @param pd the pd
+	 * @return the map
 	 */
 	public static Map<String, PropertyDescriptor> extractPropertyKey2PropertyDescriptor(Collection<PropertyDescriptor> pd) {
 		Map<String, PropertyDescriptor> propertyKey2PropertyDescriptor = new HashMap<String, PropertyDescriptor>(pd.size());
@@ -280,16 +283,24 @@ public class AnnotationUtil {
 	
 	/**
 	 * Checks a class for the spezified annotation type.
-	 * @param classToExplore
-	 * @param a
-	 * @param inherit
-	 * @return
+	 *
+	 * @param classToExplore the class to explore
+	 * @param a the a
+	 * @param inherit the inherit
+	 * @return true, if successful
 	 */
 	public static boolean containsClassAnnotationType(Class<?> classToExplore, Class<? extends Annotation> a, boolean inherit){
 		Collection<Annotation> findClassAnnotations = findClassAnnotations(classToExplore, inherit, a);
 		return findClassAnnotations.size() > 0;
 	}
 
+	/**
+	 * Find field.
+	 *
+	 * @param clazz the clazz
+	 * @param name the name
+	 * @return the field
+	 */
 	public static Field findField(Class<?> clazz, String name) {
 		Class<?> searchType = clazz;
 		while (!Object.class.equals(searchType) && searchType != null) {

@@ -11,6 +11,7 @@ import java.util.Map;
  * @author Francis Pouatcha
  *
  */
+@SuppressWarnings("rawtypes")
 public class WorkbookCbe {
 
 	private final List<WorkBookSheet> workBookSheets = new ArrayList<WorkBookSheet>();

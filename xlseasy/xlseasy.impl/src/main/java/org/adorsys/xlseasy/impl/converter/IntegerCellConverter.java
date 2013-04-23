@@ -19,6 +19,5 @@ public class IntegerCellConverter extends NumberColumnConverter {
 	@Override
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] {Integer.class, int.class}; 
-	}
-	
+	}	
 }

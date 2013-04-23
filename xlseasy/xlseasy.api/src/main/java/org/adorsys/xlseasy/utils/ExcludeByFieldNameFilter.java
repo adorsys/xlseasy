@@ -23,5 +23,4 @@ public class ExcludeByFieldNameFilter implements FieldFilter {
 		if(discriminatedFieldNames.contains(field.getName())) return false;
 		return true;
 	}
-
 }

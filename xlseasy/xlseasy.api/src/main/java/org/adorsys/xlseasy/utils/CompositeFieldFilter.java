@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
-
 public class CompositeFieldFilter implements FieldFilter {
 	private final List<FieldFilter> filters;
 	

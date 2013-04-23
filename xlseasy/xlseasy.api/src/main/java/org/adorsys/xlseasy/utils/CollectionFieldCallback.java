@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldCallback;
 
-
 public class CollectionFieldCallback implements FieldCallback {
 	
 	private final List<Field> fields = new ArrayList<Field>();
@@ -18,6 +17,5 @@ public class CollectionFieldCallback implements FieldCallback {
 
 	public List<Field> getFields() {
 		return fields;
-	}
-	
+	}	
 }

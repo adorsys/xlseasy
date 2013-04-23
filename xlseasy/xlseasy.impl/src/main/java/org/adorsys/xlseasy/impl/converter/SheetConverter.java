@@ -21,6 +21,7 @@ public class SheetConverter implements ICellConverter, CollectionElementConverte
 
 	private final Field keyField;
 	private final Class<?> elementType;
+	public static final String KEY_SEPARATOR = ",";
 	
 	private SheetConverter(Class<?> elementType, Field keyField) {
 		this.keyField = keyField;
@@ -89,7 +90,6 @@ public class SheetConverter implements ICellConverter, CollectionElementConverte
 	/**
 	 * We assume there is no comma in key strings.
 	 */
-	public static final String KEY_SEPARATOR = ",";
 	public String getElementSeparator() {
 		return KEY_SEPARATOR;
 	}

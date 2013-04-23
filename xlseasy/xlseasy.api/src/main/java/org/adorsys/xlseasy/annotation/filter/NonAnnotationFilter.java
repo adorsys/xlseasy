@@ -28,16 +28,16 @@ public class NonAnnotationFilter implements AnnotationFilter {
 	 * Use this singelton.
 	 */
 	public static final AnnotationFilter INSTANCE = new NonAnnotationFilter();
-	
-	private NonAnnotationFilter(){
+
+	private NonAnnotationFilter() {
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.adorsys.xlseasy.annotation.filter.lang.annotation.AnnotationFilter#accept(java.lang.annotation.Annotation)
 	 */
 	public boolean accept(Annotation annotation) {
 		return true;
 	}
-
 }

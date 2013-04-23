@@ -4,7 +4,7 @@ import java.util.Map;
 
 
 /**
- * Inspect date styles for fields of a given klass.
+ * Inspect date styles for fields of a given class.
  * 
  * @author Francis Pouatcha
  *

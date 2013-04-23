@@ -5,7 +5,6 @@ import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-
 /**
  * @author Sandro Sonntag
  */
@@ -32,5 +31,4 @@ public class BooleanCellConverter extends CellConverter {
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] {Boolean.class, boolean.class}; 
 	}
-
 }

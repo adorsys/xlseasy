@@ -19,5 +19,4 @@ public interface ISheetSession<WT, RT> {
 	public <T> void setObjectByKey(Class<T> recordClass, Object key, T object);
 	
 	public <T> T getObjectByKey(Class<T> recordClass, Object key);
-
 }

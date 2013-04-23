@@ -30,9 +30,6 @@ public class EnumerationAnnotationFilter implements AnnotationFilter {
 	
 	private final Set<Class<?>> annotationTypes;
 	
-	
-	
-
 	/**
 	 * @param annotationTypes
 	 */
@@ -41,9 +38,6 @@ public class EnumerationAnnotationFilter implements AnnotationFilter {
 		this.annotationTypes = new HashSet<Class<?>>(Arrays.asList(annotationTypes));
 	}
 
-
-
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.adorsys.xlseasy.annotation.filter.lang.annotation.AnnotationFilter#accept(java.lang.annotation.Annotation)
@@ -51,5 +45,4 @@ public class EnumerationAnnotationFilter implements AnnotationFilter {
 	public boolean accept(Annotation annotation) {
 		return annotationTypes.contains(annotation.annotationType());
 	}
-
 }

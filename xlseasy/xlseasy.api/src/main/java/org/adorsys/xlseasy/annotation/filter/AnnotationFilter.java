@@ -18,8 +18,6 @@ package org.adorsys.xlseasy.annotation.filter;
 
 import java.lang.annotation.Annotation;
 
-
-
 /**
  * The filter interface enabales the filtering of annotations.
  * 

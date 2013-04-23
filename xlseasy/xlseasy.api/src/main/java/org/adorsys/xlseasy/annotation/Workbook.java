@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * @author Sandro Sonntag
  */
-@Target({ElementType.TYPE})
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Workbook {

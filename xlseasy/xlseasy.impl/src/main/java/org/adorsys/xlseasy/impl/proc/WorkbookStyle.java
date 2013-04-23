@@ -12,21 +12,33 @@ import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class WorkbookStyle {
+
+	/** The workbook style. */
 	private final HSSFCellStyle style;
 
 	/**
+	 * Instantiates a new workbook style.
+	 * 
+	 * @param workbook
+	 *            the workbook
+	 * @param column
+	 *            the column
 	 * @param style
-	 * @param format
-	 * @param font
+	 *            the style
 	 */
-	public WorkbookStyle(HSSFWorkbook workbook, SheetColumnObject column, SheetCellStyleObject style) {
+	public WorkbookStyle(HSSFWorkbook workbook, SheetColumnObject column,
+			SheetCellStyleObject style) {
 		super();
+
+		// Creates a cell's style for the workbook.
 		HSSFCellStyle cellStyle = workbook.createCellStyle();
 
+		// Gets the data format as String.
 		String dataFormat = style.dataFormat();
+
+		// If the data format wasn't setted, sets it.
 		if (StringUtils.isNotEmpty(dataFormat)) {
-			short format = workbook.createDataFormat()
-					.getFormat(dataFormat);
+			short format = workbook.createDataFormat().getFormat(dataFormat);
 			if (format == -1) {
 				throw new SheetSystemException(
 						ErrorCodeSheet.UNKNOWN_CELL_FORMAT).addValue(
@@ -35,16 +47,22 @@ public class WorkbookStyle {
 			cellStyle.setDataFormat(format);
 		}
 
+		// Gets the font's name as String
 		String fontName = style.fontName();
+
+		// Gets font's properties as corresponding data type
 		int fontSize = style.fontSize();
 		boolean fontStyleBold = style.fontStyleBold();
 		boolean fontStyleItalic = style.fontStyleItalic();
 		boolean fontStyleStrikeout = style.fontStyleStrikeout();
 		boolean fontStyleUnderline = style.fontStyleUnderline();
 		short fontColor = style.fontColor();
+
+		// If the cell's font (or one of the called properties) wasn't setted, sets it
+		// (them).
 		if (StringUtils.isNotEmpty(fontName) || fontStyleBold
-				|| fontStyleItalic || fontStyleStrikeout
-				|| fontStyleUnderline || fontSize != -1 || fontColor != -1) {
+				|| fontStyleItalic || fontStyleStrikeout || fontStyleUnderline
+				|| fontSize != -1 || fontColor != -1) {
 			HSSFFont font = workbook.createFont();
 			if (fontStyleBold)
 				font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
@@ -66,6 +84,7 @@ public class WorkbookStyle {
 			cellStyle.setFillBackgroundColor(style.backgroundColor());
 		}
 
+		// Sets the cell's alignment
 		if (CellAlign.LEFT.equals(style.align()))
 			cellStyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
 		else if (CellAlign.RIGHT.equals(style.align()))
@@ -81,13 +100,12 @@ public class WorkbookStyle {
 		if (column.hidden())
 			cellStyle.setHidden(true);
 
+		// Saves the setted properties to cell's style
 		this.style = cellStyle;
 	}
 
+	/** Applies the format to the Workbook. */
 	public void applyFormat(HSSFCell cell) {
 		cell.setCellStyle(style);
 	}
-	
-	
-
 }

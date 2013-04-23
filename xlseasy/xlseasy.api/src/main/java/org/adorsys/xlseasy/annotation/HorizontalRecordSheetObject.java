@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class HorizontalRecordSheetObject implements Serializable {
 
+	Class<?> recordClass;
+	
+	String label = "";
+	
 	private static final long serialVersionUID = -2320848865868612685L;
 
 	public HorizontalRecordSheetObject() {
@@ -15,19 +19,16 @@ public class HorizontalRecordSheetObject implements Serializable {
 		this.label = label;
 	}
 
-	Class<?> recordClass;
-	public Class<?> recordClass(){
+	public Class<?> recordClass() {
 		return recordClass;
 	}
-	
+
 	/**
 	 * Returns the mapped sheet name.
 	 * 
 	 * @return the sheet name
 	 */
-	String label = "";
 	public String label() {
 		return label;
 	}
-	
 }

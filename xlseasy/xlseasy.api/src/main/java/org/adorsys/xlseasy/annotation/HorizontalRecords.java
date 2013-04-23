@@ -23,14 +23,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An annotation for the property which is mapped to the horizontal table records.
+ * An annotation for the property which is mapped to the horizontal table
+ * records.
  * 
  * @author Naoki Takezoe
  */
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface HorizontalRecords {
 	String tableLabel() default "";
+
 	Class<?> recordClass();
 }

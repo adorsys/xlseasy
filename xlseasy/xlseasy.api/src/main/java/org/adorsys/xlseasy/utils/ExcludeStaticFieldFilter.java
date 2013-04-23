@@ -5,7 +5,6 @@ import java.lang.reflect.Modifier;
 
 import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 
-
 public class ExcludeStaticFieldFilter implements FieldFilter {
 
 	public boolean matches(Field field) {
@@ -14,5 +13,4 @@ public class ExcludeStaticFieldFilter implements FieldFilter {
 	    if (Modifier.isStatic(modifiers)) return false;
 	    return true;
 	}
-
 }

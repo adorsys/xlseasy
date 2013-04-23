@@ -40,5 +40,4 @@ public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] { Enum.class };
 	}
-
 }

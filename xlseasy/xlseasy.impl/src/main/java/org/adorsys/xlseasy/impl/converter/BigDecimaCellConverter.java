@@ -6,7 +6,6 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-
 /**
  * @author Sandro Sonntag
  */
@@ -21,6 +20,5 @@ public class BigDecimaCellConverter extends NumberColumnConverter {
 	@Override
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] {BigDecimal.class}; 
-	}
-	
+	}	
 }

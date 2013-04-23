@@ -16,10 +16,18 @@ public class SheetColumnObject implements Serializable {
 			this.columnStyle = columnStyle;
 	}
 	
+	/**
+	 * Instantiates a new sheet column object.
+	 */
 	public SheetColumnObject() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new sheet column object.
+	 *
+	 * @param sheetColumn the sheet column
+	 */
 	public SheetColumnObject(SheetColumn sheetColumn) {
 		columnName = sheetColumn.columnName();
 		merged = sheetColumn.merged();

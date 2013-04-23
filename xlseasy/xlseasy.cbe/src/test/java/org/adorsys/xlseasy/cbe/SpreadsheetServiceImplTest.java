@@ -150,7 +150,7 @@ public class SpreadsheetServiceImplTest {
 
 		
 		/**
-		 * The spreadsheet has been created and save into the file testmana.xls
+		 * The spreadsheet has been created and saved into the file testmana.xls
 		 * in the directory target. Now we want to check the content of the
 		 * created file. It's enough (for us) to check the first object. of each
 		 * sheet

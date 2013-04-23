@@ -4,7 +4,6 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
 import org.adorsys.xlseasy.annotation.SpreadsheetConverterException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
-
 /**
  * @author Sandro Sonntag
  */
