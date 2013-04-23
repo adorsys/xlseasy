@@ -181,7 +181,13 @@ public class SpreadsheetServiceImplTest {
 		checkProduct(product2, products.get(1));
 		checkProduct(product3, products.get(2));
 	}
-
+	
+	/**
+	 * Test a supplier.
+	 *
+	 * @param expected the expected object
+	 * @param is the real object
+	 */
 	private void checkSupplier(Supplier expected, Supplier is) {
 		assertEquals(expected.getName(), is.getName());
 		assertEquals(expected.getStreet(), is.getStreet());
@@ -189,6 +195,12 @@ public class SpreadsheetServiceImplTest {
 		assertEquals(expected.getCity(), is.getCity());
 	}
 	
+	/**
+	 * Test a product.
+	 *
+	 * @param expected the expected object
+	 * @param is the real object
+	 */
 	private void checkProduct(Product expected, Product is) {
 		assertEquals(expected.getName(), is.getName());
 		assertEquals(expected.getDescription(), is.getDescription());
