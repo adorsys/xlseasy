@@ -51,6 +51,10 @@ public class SpreadsheetServiceImplTest {
 		/**
 		 * Verifies if all spreadsheets have been read and objects created.
 		 * 
+		 * This verification is for the case the number of expected objects from
+		 * each sheet is known. The program breaks if this number isn't the same
+		 * as the number of objects contained in the sheet.
+		 * 
 		 * In this case, we're expected 3 objects from the sheets clients and
 		 * products and 5 objects from users.
 		 */
@@ -137,7 +141,7 @@ public class SpreadsheetServiceImplTest {
 		shopManagement.getProducts().add(product3);
 		shopManagement.getSuppliers().add(supplier1);
 		shopManagement.getSuppliers().add(supplier2);
-		
+
 		// The file to create.
 		String workbookFile = "target/testmana.xls";
 
@@ -148,7 +152,6 @@ public class SpreadsheetServiceImplTest {
 		spreadService.saveSpreadsheet(ShopManagement.class, shopManagement,
 				outputStream);
 
-		
 		/**
 		 * The spreadsheet has been created and saved into the file testmana.xls
 		 * in the directory target. Now we want to check the content of the
@@ -162,18 +165,18 @@ public class SpreadsheetServiceImplTest {
 		// Loads spreadsheet.
 		shopManagement = spreadService.loadSpreadsheet(managementStream,
 				ShopManagement.class);
-		
+
 		// Verifies if all spreadsheets have been read and checks the number of
 		// created objects. In our case, 2 suppliers and 3 products.
 		assertTrue(shopManagement.getSuppliers().size() == 2);
 		assertTrue(shopManagement.getProducts().size() == 3);
-		
+
 		// Reads through supplier list and verify entries of supplier by
 		// iterating through the list and reading the attributes
 		List<Supplier> suppliers = shopManagement.getSuppliers();
 		checkSupplier(supplier1, suppliers.get(0));
 		checkSupplier(supplier2, suppliers.get(1));
-		
+
 		// Reads through product list and verify entries of product by iterating
 		// through the list and reading the attributes
 		List<Product> products = shopManagement.getProducts();
@@ -181,12 +184,14 @@ public class SpreadsheetServiceImplTest {
 		checkProduct(product2, products.get(1));
 		checkProduct(product3, products.get(2));
 	}
-	
+
 	/**
 	 * Test a supplier.
-	 *
-	 * @param expected the expected object
-	 * @param is the real object
+	 * 
+	 * @param expected
+	 *            the expected object
+	 * @param is
+	 *            the real object
 	 */
 	private void checkSupplier(Supplier expected, Supplier is) {
 		assertEquals(expected.getName(), is.getName());
@@ -194,12 +199,14 @@ public class SpreadsheetServiceImplTest {
 		assertEquals(expected.getZipcode(), is.getZipcode());
 		assertEquals(expected.getCity(), is.getCity());
 	}
-	
+
 	/**
 	 * Test a product.
-	 *
-	 * @param expected the expected object
-	 * @param is the real object
+	 * 
+	 * @param expected
+	 *            the expected object
+	 * @param is
+	 *            the real object
 	 */
 	private void checkProduct(Product expected, Product is) {
 		assertEquals(expected.getName(), is.getName());

@@ -50,14 +50,13 @@ public class ColumnDescCbe implements ColumnDescIF {
 	private final WorkBookSheet workBookSheet;
 
 	/**
-	 * @param annoSheetColumn
-	 * @param annoSheetHeaderStyle
-	 * @param propertyName
-	 * @param xlsColumnLabel
-	 * @param columnIndex
-	 * @param keyFieldNameMap 
-	 * @param type
-	 * @param converter
+	 * Instantiates a new column desc cbe.
+	 *
+	 * @param pd the pd
+	 * @param sc the sc
+	 * @param columnIndex the column index
+	 * @param field the field
+	 * @param workBookSheet the work book sheet
 	 */
 	@SuppressWarnings("unchecked")
 	public ColumnDescCbe(PropertyDescriptor pd, SheetColumnObject sc, 
