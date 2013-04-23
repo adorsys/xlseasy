@@ -8,14 +8,15 @@ import org.adorsys.xlseasy.boot.WorkBookSheet;
 public class HorizontalRecordSheetDeclaration {
 
 	private final PropertyDescriptor propertyDescriptor;
-	
+
 	private final HorizontalRecordSheetObject horizontalRecordSheet;
-	
+
 	private final WorkBookSheet workBookSheet;
 
 	public HorizontalRecordSheetDeclaration(
 			PropertyDescriptor propertyDescriptor,
-			HorizontalRecordSheetObject horizontalRecordSheet, WorkBookSheet workBookSheet) {
+			HorizontalRecordSheetObject horizontalRecordSheet,
+			WorkBookSheet workBookSheet) {
 		super();
 		this.propertyDescriptor = propertyDescriptor;
 		this.horizontalRecordSheet = horizontalRecordSheet;

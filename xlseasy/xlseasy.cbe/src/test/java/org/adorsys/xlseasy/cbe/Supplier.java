@@ -1,77 +1,148 @@
 package org.adorsys.xlseasy.cbe;
 
-
+/**
+ * The Class Supplier.
+ */
 public class Supplier {
 
-    public Supplier() {
-        super();
-    }
+	/** Supplier's name. */
+	private String name;
 
-    /**
-     * @param name
-     * @param strasse
-     * @param postleitZahl
-     * @param stadt
-     * @param vip
-     */
-    public Supplier(String name, String strasse, String postleitZahl,
-                    String stadt, boolean vip) {
-        super();
-        this.name = name;
-        this.strasse = strasse;
-        this.postleitZahl = postleitZahl;
-        this.stadt = stadt;
-        this.vip = vip;
-    }
+	/** Supplier's street. */
+	private String street;
 
-    private String name;
+	/** Supplier's zipcode. */
+	private String zipcode;
 
-    private String strasse;
+	/** Supplier's city. */
+	private String city;
 
-    private String postleitZahl;
+	/** Supplier's VIP status. */
+	private boolean vip;
 
-    private String stadt;
+	/**
+	 * Instantiates a new supplier.
+	 */
+	public Supplier() {
+		super();
+	}
 
-    private boolean vip;
+	/**
+	 * Instantiates a new supplier.
+	 * 
+	 * @param name
+	 *            the name
+	 * @param street
+	 *            the street
+	 * @param zipcode
+	 *            the zipcode
+	 * @param city
+	 *            the city
+	 * @param vip
+	 *            the vip
+	 */
+	public Supplier(String name, String street, String zipcode, String city,
+			boolean vip) {
+		super();
+		this.name = name;
+		this.street = street;
+		this.zipcode = zipcode;
+		this.city = city;
+		this.vip = vip;
+	}
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the supplier's name.
+	 * 
+	 * @return the supplier's name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * Sets the supplier's name.
+	 * 
+	 * @param name
+	 *            the new supplier's name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getStrasse() {
-        return strasse;
-    }
+	/**
+	 * Gets the supplier's street.
+	 * 
+	 * @return the supplier's street
+	 */
+	public String getStreet() {
+		return street;
+	}
 
-    public void setStrasse(String strasse) {
-        this.strasse = strasse;
-    }
+	/**
+	 * Sets the supplier's street.
+	 * 
+	 * @param street
+	 *            the new supplier's street
+	 */
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
-    public String getPostleitZahl() {
-        return postleitZahl;
-    }
+	/**
+	 * Gets the supplier's zipcode.
+	 * 
+	 * @return the supplier's zipcode
+	 */
+	public String getZipcode() {
+		return zipcode;
+	}
 
-    public void setPostleitZahl(String postleitZahl) {
-        this.postleitZahl = postleitZahl;
-    }
+	/**
+	 * Sets the supplier's zipcode.
+	 * 
+	 * @param zipcode
+	 *            the new supplier's zipcode
+	 */
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 
-    public String getStadt() {
-        return stadt;
-    }
+	/**
+	 * Gets the supplier's city.
+	 * 
+	 * @return the supplier's city
+	 */
+	public String getCity() {
+		return city;
+	}
 
-    public void setStadt(String stadt) {
-        this.stadt = stadt;
-    }
+	/**
+	 * Sets the supplier's city.
+	 * 
+	 * @param city
+	 *            the new supplier's city
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public boolean isVip() {
-        return vip;
-    }
+	/**
+	 * Checks if is supplier's VIP status.
+	 * 
+	 * @return the supplier's VIP status
+	 */
+	public boolean isVip() {
+		return vip;
+	}
 
-    public void setVip(boolean vip) {
-        this.vip = vip;
-    }
-
+	/**
+	 * Sets the supplier's VIP status.
+	 * 
+	 * @param vip
+	 *            the new supplier's VIP status
+	 */
+	public void setVip(boolean vip) {
+		this.vip = vip;
+	}
 }

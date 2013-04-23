@@ -13,23 +13,22 @@ import org.adorsys.xlseasy.boot.WorkbookCbe;
 public class WorkbookProcessor {
 
 	public static List<HorizontalRecordSheetDeclaration> processWorkbook(
-			Class<?> clazz, WorkbookCbe workbookCbe) 
-	{
+			Class<?> clazz, WorkbookCbe workbookCbe) {
 
-		List<WorkBookSheet> workBookSheets = workbookCbe.getWorkBookSheets();			
-		List<HorizontalRecordSheetDeclaration> result = new ArrayList<HorizontalRecordSheetDeclaration>(workBookSheets.size());
+		List<WorkBookSheet> workBookSheets = workbookCbe.getWorkBookSheets();
+		List<HorizontalRecordSheetDeclaration> result = new ArrayList<HorizontalRecordSheetDeclaration>(
+				workBookSheets.size());
 
 		for (WorkBookSheet workBookSheet : workBookSheets) {
 			Field field = workBookSheet.getField();
 			Class<?> sheetKlass = workBookSheet.getSheetKlass();
 
 			String propertyName = field.getName();
-			HorizontalRecordSheetObject horizontalRecordSheet = 
-					new HorizontalRecordSheetObject(sheetKlass, propertyName);
+			HorizontalRecordSheetObject horizontalRecordSheet = new HorizontalRecordSheetObject(
+					sheetKlass, propertyName);
 			PropertyDescriptor propertyDescriptor;
 			try {
-				propertyDescriptor = new PropertyDescriptor(propertyName,
-						clazz);
+				propertyDescriptor = new PropertyDescriptor(propertyName, clazz);
 			} catch (IntrospectionException e) {
 				throw new IllegalStateException(e);
 			}
