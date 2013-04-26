@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Contains the list of sheet decriptors.
+ * Contains the list of sheet descriptors.
  * 
  * @author Francis Pouatcha
  *
