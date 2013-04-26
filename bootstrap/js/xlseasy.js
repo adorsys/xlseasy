@@ -3,6 +3,8 @@
  * http://adorsys.github.com/xlseasy/
  * ===================================================
  * Copyright 2013 adorsys GmbH & Co. KG.
+ * 
+ * Author: Marius Guede <http://marius.urframes.net>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +42,6 @@ $(document).ready(function() {
 			var loopID = 'exp-' + i;
 			if (loopID != id) $('div.example-details[id="' + loopID + '"]').css('display', 'none');
 		}
-		return false;
+		return true;
 	});
 });
