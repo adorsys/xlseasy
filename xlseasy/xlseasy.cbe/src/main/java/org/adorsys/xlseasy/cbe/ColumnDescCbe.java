@@ -32,7 +32,7 @@ public class ColumnDescCbe implements ColumnDescIF {
 	private final SheetCellStyleObject annoSheetHeaderStyle;
 
 	/**
-	 * e.g (Product.)productName
+	 * e.g (Product.) productName
 	 */
 	private final String propertyName;
 
@@ -52,11 +52,11 @@ public class ColumnDescCbe implements ColumnDescIF {
 	/**
 	 * Instantiates a new column desc cbe.
 	 *
-	 * @param pd the pd
-	 * @param sc the sc
+	 * @param pd the property descriptor
+	 * @param sc the sheet column object
 	 * @param columnIndex the column index
 	 * @param field the field
-	 * @param workBookSheet the work book sheet
+	 * @param workBookSheet the workbook sheet
 	 */
 	@SuppressWarnings("unchecked")
 	public ColumnDescCbe(PropertyDescriptor pd, SheetColumnObject sc, 
@@ -114,10 +114,16 @@ public class ColumnDescCbe implements ColumnDescIF {
 		}
 	}
 	
+	/**
+	 * Gets the property's name
+	*/
 	public String getPropertyName() {
 		return propertyName;
 	}
 
+	/**
+	 * Gets the column's label
+	*/
 	public String getXlsColumnLabel() {
 		return xlsColumnLabel;
 	}
@@ -126,6 +132,9 @@ public class ColumnDescCbe implements ColumnDescIF {
 		return converter;
 	}
 
+	/**
+	 * Gets the annotation sheet column
+	*/
 	public SheetColumnObject getAnnoSheetColumn() {
 		return annoSheetColumn;
 	}
@@ -138,6 +147,9 @@ public class ColumnDescCbe implements ColumnDescIF {
 		return annoSheetHeaderStyle;
 	}
 
+	/**
+	 * Gets the column index
+	*/
 	public int getColumnIndex() {
 		return columnIndex;
 	}
@@ -146,6 +158,9 @@ public class ColumnDescCbe implements ColumnDescIF {
 		return type;
 	}
 	
+	/**
+	 * Copies the cell's value to Bean
+	*/
 	public void copyCellValueToBean(Object bean, HSSFCell cell, ISheetSession<?, ?> session) {
 		try {
 			PropertyUtils.setProperty(bean, propertyName, converter.getDataCell(cell, type, session));
@@ -164,6 +179,9 @@ public class ColumnDescCbe implements ColumnDescIF {
 		}
 	}
 	
+	/**
+	 * Copies Bean property's value to cell
+	*/
 	public void copyBeanPropertyValueToCell(Object bean, HSSFCell cell, ISheetSession<?, ?> session) {
 		try {
 			converter.setHSSFCell(cell, PropertyUtils.getProperty(bean, propertyName), type, session);
