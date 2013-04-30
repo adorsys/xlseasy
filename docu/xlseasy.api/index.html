@@ -119,8 +119,11 @@ body {
 								</p>
 								<p>
 									<strong>annotation</strong> consists essentially of rewrited
-									Apache POI classes (such as <code>Workbook</code>, <code>Sheet</code>, ...) using to
-									create and manipulate spreadsheets.
+									Apache POI classes (such as
+									<code>Workbook</code>
+									,
+									<code>Sheet</code>
+									, ...) using to create and manipulate spreadsheets.
 								</p>
 							</div>
 							<div class="tab-pane" id="boot">
@@ -131,26 +134,37 @@ body {
 								</p>
 								<p>
 									It also contains workbook's configurator (
-									<code>WorkBookSheet.java</code>
+									<code>WorkBookSheet</code>
 									,
-									<code>WorkbookCbe.java</code>
-									) and a spreadsheet service starter named <i>SpreadSheetServiceBootStrap.java</i>.<br />
+									<code>WorkbookCbe</code>
+									) and a spreadsheet service starter named <code>SpreadSheetServiceBootStrap</code>.
+								</p>
+								<p>
 									The class
 									<code>WorkbookCbe</code>
 									contains the list of sheet descriptions and should be used to
-									build the workbook and its fields.<br /> The class <i>SpreadSheetServiceBootStrap</i>
-									is called first during the test execution to create the basis
-									of the application programming interface (api).
+									build the workbook and its fields.
+								</p>
+								<p>
+									The class <code>SpreadSheetServiceBootStrap</code> is called first
+									during the test execution to create the basis of the
+									application programming interface (api).
 								</p>
 							</div>
 							<div class="tab-pane" id="utils">
 								<p>It contains among others the following classes:</p>
 								<ul>
-									<li><code>Assert</code>: arguments validator using to identify programming <abbr title="From the real author" class="initialism">errors early and clearly at runtime</abbr>.</li>
-									<li><code>CollectionFieldFilter</code>: matches all fields that are collection types.</li>
-									<li><code>FieldHelper</code>: helps to build setter and getter Methods from a given name.</li>
-									<li><code>ReflectionUtils</code>: works with the reflection API and handling reflection exceptions.</li>
-									<li><code>XlseasyUtils</code>: handles errors and system exceptions from sheet.</li>
+									<li><code>Assert</code>: arguments validator using to
+										identify programming <abbr title="From the real author"
+										class="initialism">errors early and clearly at runtime</abbr>.</li>
+									<li><code>CollectionFieldFilter</code>: matches all fields
+										that are collection types.</li>
+									<li><code>FieldHelper</code>: helps to build setter and
+										getter Methods from a given name.</li>
+									<li><code>ReflectionUtils</code>: works with the
+										reflection API and handling reflection exceptions.</li>
+									<li><code>XlseasyUtils</code>: handles errors and system
+										exceptions from sheet.</li>
 								</ul>
 							</div>
 						</div>
