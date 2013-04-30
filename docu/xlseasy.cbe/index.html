@@ -28,7 +28,8 @@ body {
 	}
 }
 </style>
-<link href="../../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../../bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -59,8 +60,9 @@ body {
 				<a class="brand" href="../../index.html">xlseasy</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
-						The annotation based XLS to Java Bean Mapper
-						<img class="adorsys-logo" alt="adorsys-logo" src="../../bootstrap/img/adorsys.jpeg">
+						The annotation based XLS to Java Bean Mapper <img
+							class="adorsys-logo" alt="adorsys-logo"
+							src="../../bootstrap/img/adorsys.jpeg">
 					</p>
 					<ul class="nav">
 						<li class="active"><a href="../../index.html">Home</a></li>
@@ -84,7 +86,7 @@ body {
 						<li><a href="../xlseasy.impl/">xlseasy impl</a></li>
 
 						<li class="nav-header">Examples</li>
-              			<li><a href="../../example.html">Examples</a></li>
+						<li><a href="../../example.html">Examples</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -93,11 +95,63 @@ body {
 			<div class="span9">
 				<h3>Configuration By Exception</h3>
 				<div class="row-fluid">
-				
-					<strong>xlseasy.cbe</strong> implements the necessary exceptions configurations used by xlseasy.
-				
+
+					<strong>xlseasy.cbe</strong> implements the necessary exceptions
+					configurations.
+
+					<h4 class="tech">Packages</h4>
+
+					<div class="tabbable tabs-left">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#main" data-toggle="tab">main</a></li>
+							<li><a href="#test" data-toggle="tab">test</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="main">
+								It configures the way <strong>xlseasy</strong> handles.
+							</div>
+							
+							<div class="tab-pane" id="test">
+								This package is used to test the implementation of the modules <abbr
+									title="xlseasy.api" class="initialism">api</abbr>, <abbr
+									title="xlseasy.impl" class="initialism">impl</abbr> and <abbr
+									title="xlseasy.cbe" class="initialism">cbe</abbr> itself.
+
+								<p>It contains following classes:</p>
+								<ul>
+									<li><code>Product</code>: it represents an object with
+										properties name, description, amount, top-seller's status and
+										validation date.</li>
+									<li><code>Supplier</code>: it represents an object with
+										properties name, address (street, zipcode, city) and vip
+										status.</li>
+									<li><code>ShopManagement</code>: it modelizes objects of
+										type Product and Supplier in <code>ArrayList</code> and
+										prepares the access to these on using getter and setter
+										Methods.</li>
+									<li><code>SpreadsheetServiceImplTest</code>: it's the
+										heart of the test. It enables the connection to the modules
+										and uses their implemented classes. It contains among other
+										methods the following one:
+										<ul>
+											<li><code>testLoadSpreadsheet()</code>: loads a
+												spreadsheet and validates the content using the
+												assert-functions.</li>
+											<li><code>testSaveSpreadsheet()</code>: saves given data
+												in a spreadsheet, then loads the created spreadsheet and
+												validates the content to make sure the data have been
+												correctly saved.</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
 					<h4 class="tech">Generated Javadoc files</h4>
-					<p><a class="btn" href="javadoc.html">View &raquo;</a></p>
+					<p>
+						<a class="btn" href="javadoc.html">View &raquo;</a>
+					</p>
 				</div>
 				<!--/row-->
 			</div>
