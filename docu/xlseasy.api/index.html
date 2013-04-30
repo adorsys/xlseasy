@@ -85,7 +85,7 @@ body {
 						<li><a href="../xlseasy.cbe/">xlseasy cbe</a></li>
 						<li><a href="../xlseasy.impl/">xlseasy impl</a></li>
 
-						<li class="nav-header">Documentation</li>
+						<li class="nav-header">Examples</li>
 						<li><a href="../../example.html">Examples</a></li>
 					</ul>
 				</div>
@@ -119,7 +119,7 @@ body {
 								</p>
 								<p>
 									<strong>annotation</strong> consists essentially of rewrited
-									Apache POI classes (such as Workbook, sheet, ...) necessary to
+									Apache POI classes (such as <code>Workbook</code>, <code>Sheet</code>, ...) using to
 									create and manipulate spreadsheets.
 								</p>
 							</div>
@@ -130,19 +130,28 @@ body {
 									elements or values.
 								</p>
 								<p>
-									It also contains workbook's configurator <i>(WorkBookSheet.java,
-										WorkbookCbe.java)</i> and a spreadsheet service starter named <i>SpreadSheetServiceBootStrap.java</i>.<br />
-									The class <i>WorkbookCbe</i> contains the list of sheet
-									descriptions and should be used to build the workbook and its
-									fields.<br /> The class <i>SpreadSheetServiceBootStrap</i> is
-									called first during the test execution to create the basis of
-									the application programming interface (api).
+									It also contains workbook's configurator (
+									<code>WorkBookSheet.java</code>
+									,
+									<code>WorkbookCbe.java</code>
+									) and a spreadsheet service starter named <i>SpreadSheetServiceBootStrap.java</i>.<br />
+									The class
+									<code>WorkbookCbe</code>
+									contains the list of sheet descriptions and should be used to
+									build the workbook and its fields.<br /> The class <i>SpreadSheetServiceBootStrap</i>
+									is called first during the test execution to create the basis
+									of the application programming interface (api).
 								</p>
 							</div>
 							<div class="tab-pane" id="utils">
-								<p>
-									It contains arguments validator (Assert.java).
-								</p>
+								<p>It contains among others the following classes:</p>
+								<ul>
+									<li><code>Assert</code>: arguments validator using to identify programming <abbr title="From the real author" class="initialism">errors early and clearly at runtime</abbr>.</li>
+									<li><code>CollectionFieldFilter</code>: matches all fields that are collection types.</li>
+									<li><code>FieldHelper</code>: helps to build setter and getter Methods from a given name.</li>
+									<li><code>ReflectionUtils</code>: works with the reflection API and handling reflection exceptions.</li>
+									<li><code>XlseasyUtils</code>: handles errors and system exceptions from sheet.</li>
+								</ul>
 							</div>
 						</div>
 					</div>
