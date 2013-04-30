@@ -3,7 +3,7 @@ package org.adorsys.xlseasy.self;
 /**
  * The Class Client.
  *
- * @author mariusguede
+ * @author Marius Guede
  */
 public class Client {
 
