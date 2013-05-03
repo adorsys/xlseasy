@@ -28,7 +28,8 @@ body {
 	}
 }
 </style>
-<link href="../../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../../bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -59,8 +60,9 @@ body {
 				<a class="brand" href="../../index.html">xlseasy</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
-						The annotation based XLS to Java Bean Mapper
-						<img class="adorsys-logo" alt="adorsys-logo" src="../../bootstrap/img/adorsys.jpeg">
+						The annotation based XLS to Java Bean Mapper <img
+							class="adorsys-logo" alt="adorsys-logo"
+							src="../../bootstrap/img/adorsys.jpeg">
 					</p>
 					<ul class="nav">
 						<li class="active"><a href="../../index.html">Home</a></li>
@@ -85,7 +87,7 @@ body {
 								impl</a></li>
 
 						<li class="nav-header">Examples</li>
-              			<li><a href="../../example.html">Examples</a></li>
+						<li><a href="../../example.html">Examples</a></li>
 					</ul>
 				</div>
 				<!--/.well -->
@@ -94,11 +96,41 @@ body {
 			<div class="span9">
 				<h3>Implementation</h3>
 				<div class="row-fluid">
-				
-					<strong>xlseasy.impl</strong> uses the components xlseasy.api and xlseasy.cbe to run xlseasy.
-				
+
+					<strong>xlseasy.impl</strong> uses the components xlseasy.api and
+					xlseasy.cbe to run xlseasy.
+
+					<h4 class="tech">Packages</h4>
+
+					<div class="tabbable tabs-left">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#conv" data-toggle="tab">converter</a></li>
+							<li><a href="#proc" data-toggle="tab">proc</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="conv">
+								Converter takes care to make the necessary conversions for :
+								<ul>
+									<li>cell's data (<code>BigDecimalCellConverter</code>,
+										<code>BooleanCellConverter</code>, ...).
+									</li>
+									<li>collection's element and type (<code>CollectionElementConverter</code>,
+										<code>CollectionTypeConverter</code>, <code>GenericCollectionElementConverter</code>, ...)
+									</li>
+									<li>and sheets (<code>SheetConverter</code>, <code>SheetConverterKey</code>)</li>
+								</ul>
+							</div>
+
+							<div class="tab-pane" id="proc">
+							</div>
+						</div>
+					</div>
+
+
 					<h4 class="tech">Generated Javadoc files</h4>
-					<p><a class="btn" href="javadoc.html">View &raquo;</a></p>
+					<p>
+						<a class="btn" href="javadoc.html">View &raquo;</a>
+					</p>
 				</div>
 				<!--/row-->
 			</div>
