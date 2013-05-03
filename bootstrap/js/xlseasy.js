@@ -4,7 +4,7 @@
  * ===================================================
  * Copyright 2013 adorsys GmbH & Co. KG.
  * 
- * Author: Marius Guede <http://marius.urframes.net>
+ * Author: Marius Guede - info@adorsys.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
