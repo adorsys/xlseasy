@@ -109,20 +109,34 @@ body {
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="conv">
-								<strong>converter</strong> takes care to make the necessary conversions for :
+								<strong>converter</strong> takes care to make the necessary
+								conversions for :
 								<ul>
-									<li>cell's data (<code>BigDecimalCellConverter</code>,
-										<code>BooleanCellConverter</code>, ...).
+									<li>cell's data (<code>BigDecimalCellConverter</code>, <code>BooleanCellConverter</code>,
+										...).
 									</li>
 									<li>collection's element and type (<code>CollectionElementConverter</code>,
-										<code>CollectionTypeConverter</code>, <code>GenericCollectionElementConverter</code>, ...)
+										<code>CollectionTypeConverter</code>, <code>GenericCollectionElementConverter</code>,
+										...)
 									</li>
-									<li>and sheets (<code>SheetConverter</code>, <code>SheetConverterKey</code>)</li>
+									<li>and sheets (<code>SheetConverter</code>, <code>SheetConverterKey</code>)
+									</li>
 								</ul>
 							</div>
 
 							<div class="tab-pane" id="proc">
-								<strong>proc</strong>.
+								<strong>proc</strong> handles the spreadsheet element's
+								descriptor, session and style such as:
+								<ul>
+									<li><code>ColumnDesc implements ColumnDescIF</code>
+										(Descriptor): used to manages column properties (annotation,
+										style, property's name, ...).</li>
+									<li><code>
+											SheetDesc
+											<T,WT> implements SheetDescIF<T,WT>
+										</code> (Descriptor): creates, gets and formats the sheet.</li>
+									<li><code>WorkbookStyle</code>: used to set and get the workbook's style.</li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -166,5 +180,6 @@ body {
 	<script src="../../bootstrap/js/bootstrap-collapse.js"></script>
 	<script src="../../bootstrap/js/bootstrap-carousel.js"></script>
 	<script src="../../bootstrap/js/bootstrap-typeahead.js"></script>
+
 </body>
 </html>
