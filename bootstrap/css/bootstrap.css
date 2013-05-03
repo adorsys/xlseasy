@@ -3543,6 +3543,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini {
 	overflow: auto;
 }
 
+/** added to creates some space between lines. */
 .tab-content li {
 	padding: 3px 0px 3px 0px;
 }
