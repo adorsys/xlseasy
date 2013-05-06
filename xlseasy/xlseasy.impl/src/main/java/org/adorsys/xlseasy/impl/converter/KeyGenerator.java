@@ -31,6 +31,9 @@ public class KeyGenerator {
 		field.setAccessible(true);
 	}
 	
+	/**
+	 * Gets the key from object.
+	 */
 	public String getKey(Object object) {
 		if (field == null) {
 			return null;
@@ -44,6 +47,9 @@ public class KeyGenerator {
 		} 
 	}
 	
+	/**
+	 * Gets the key column name.
+	 */
 	public String getKeyColumnName() {
 		return  field != null ? field.getName() : null;
 	}

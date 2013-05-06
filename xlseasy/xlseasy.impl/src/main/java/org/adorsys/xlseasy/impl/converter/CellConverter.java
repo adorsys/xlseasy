@@ -13,6 +13,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
 /**
+ * The Class CellConverter.
+ *
  * @author Sandro Sonntag
  */
 public abstract class CellConverter implements ICellConverter {
@@ -84,6 +86,9 @@ public abstract class CellConverter implements ICellConverter {
 		return converter;
 	}
 
+	/**
+	 * Get's the cell's value as String.
+	 * */
 	protected String getStringCellValue(HSSFCell cell) {
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
 			// converting numbers top string results typicly in a decimal format
@@ -96,6 +101,9 @@ public abstract class CellConverter implements ICellConverter {
 		}
 	}
 
+	/**
+	 * Get's the cell's value as Double.
+	 * */
 	protected Double getDoubleCellValue(HSSFCell cell) {
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
 			return cell.getNumericCellValue();
