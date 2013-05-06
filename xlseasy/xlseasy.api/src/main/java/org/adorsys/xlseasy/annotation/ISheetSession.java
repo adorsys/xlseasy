@@ -3,7 +3,7 @@ package org.adorsys.xlseasy.annotation;
 import java.util.List;
 
 /**
- * Replacing HSSFWorkbook with object. Implementation will cast to correct value.
+ * Replacing HSSFWorkbook with Object. Implementation will cast to correct value.
  * 
  * @author Francis Pouatcha
  *

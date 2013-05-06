@@ -5,17 +5,18 @@ import java.io.Serializable;
 public class SheetColumnObject implements Serializable {
 
 	private static final long serialVersionUID = 6933652382850421643L;
-	
-	public SheetColumnObject(String columnName, Class<?> converter, SheetCellStyleObject headerStyle, SheetCellStyleObject columnStyle){
+
+	public SheetColumnObject(String columnName, Class<?> converter,
+			SheetCellStyleObject headerStyle, SheetCellStyleObject columnStyle) {
 		this.columnName = columnName;
-		if(converter!=null)
+		if (converter != null)
 			this.converter = converter;
-		if(headerStyle!=null)
+		if (headerStyle != null)
 			this.headerStyle = headerStyle;
-		if(columnStyle!=null)
+		if (columnStyle != null)
 			this.columnStyle = columnStyle;
 	}
-	
+
 	/**
 	 * Instantiates a new sheet column object.
 	 */
@@ -25,8 +26,9 @@ public class SheetColumnObject implements Serializable {
 
 	/**
 	 * Instantiates a new sheet column object.
-	 *
-	 * @param sheetColumn the sheet column
+	 * 
+	 * @param sheetColumn
+	 *            the sheet column
 	 */
 	public SheetColumnObject(SheetColumn sheetColumn) {
 		columnName = sheetColumn.columnName();
@@ -36,34 +38,70 @@ public class SheetColumnObject implements Serializable {
 		converter = sheetColumn.converter();
 		hidden = sheetColumn.hidden();
 		headerComment = sheetColumn.headerComment();
-		headerStyle = SheetCellStyleObject.newInstance(sheetColumn.headerStyle());
-		columnStyle = SheetCellStyleObject.newInstance(sheetColumn.columnStyle());
-	}	
-	
+		headerStyle = SheetCellStyleObject.newInstance(sheetColumn
+				.headerStyle());
+		columnStyle = SheetCellStyleObject.newInstance(sheetColumn
+				.columnStyle());
+	}
+
+	// column name
 	String columnName = "";
-	public String columnName() { return columnName;}
 
+	public String columnName() {
+		return columnName;
+	}
+
+	// margin enability
 	boolean merged = false;
-	public boolean merged() { return merged;}
 
+	public boolean merged() {
+		return merged;
+	}
+
+	// header margin
 	int headerMerged = 0;
-	public int headerMerged() { return headerMerged;}
+
+	public int headerMerged() {
+		return headerMerged;
+	}
 
 	boolean optional = false;
-	public boolean optional() { return optional;}
-	
+
+	public boolean optional() {
+		return optional;
+	}
+
 	Class<?> converter = Object.class;
-	public Class<?> converter() { return converter;}
 
+	public Class<?> converter() {
+		return converter;
+	}
+
+	// visibility status
 	boolean hidden = false;
-	public boolean hidden() { return hidden;}
 
+	public boolean hidden() {
+		return hidden;
+	}
+
+	// header comment
 	String headerComment = "";
-	public String headerComment() { return headerComment;}
-	
-	SheetCellStyleObject headerStyle = SheetCellStyleObject.newInstance(null);
-	public SheetCellStyleObject headerStyle() { return headerStyle; }
 
+	public String headerComment() {
+		return headerComment;
+	}
+
+	// header style
+	SheetCellStyleObject headerStyle = SheetCellStyleObject.newInstance(null);
+
+	public SheetCellStyleObject headerStyle() {
+		return headerStyle;
+	}
+
+	// column style
 	SheetCellStyleObject columnStyle = SheetCellStyleObject.newInstance(null);
-	public SheetCellStyleObject columnStyle() { return columnStyle; }
+
+	public SheetCellStyleObject columnStyle() {
+		return columnStyle;
+	}
 }

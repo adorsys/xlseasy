@@ -19,7 +19,7 @@ package org.adorsys.xlseasy.annotation.filter;
 import java.lang.annotation.Annotation;
 
 /**
- * The filter interface enabales the filtering of annotations.
+ * The filter interface enables the filtering of annotations.
  * 
  * @author Sandro Sonntag
  */
@@ -27,7 +27,7 @@ public interface AnnotationFilter {
 	/**
 	 * 
 	 * @param annotation
-	 * @return true if the annotaion shold included.
+	 * @return true if the annotation should included.
 	 */
 	public boolean accept(Annotation annotation);
 }

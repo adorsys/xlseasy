@@ -17,7 +17,7 @@ public class FreezePaneObject implements Serializable {
 	}
 
 	/**
-	 * Horizonatal position of split.
+	 * Horizontal position of split.
 	 */
 	int colSplit = 0;
 

@@ -15,15 +15,18 @@ public class AnnotationSystemException extends RuntimeException {
 	private ErrorCodeSheet errorCode;
 
 	private Throwable cause;
-	
+
 	private Map<String, Object> values;
-	
+
 	/**
-	 * @param code
-	 * @param cause
-	 * @param values
+	 * Instantiates a new annotation system exception.
+	 *
+	 * @param code the error code
+	 * @param cause the cause
+	 * @param values the values
 	 */
-	public AnnotationSystemException(ErrorCodeSheet code, Throwable cause, Map<String, Object> values) {
+	public AnnotationSystemException(ErrorCodeSheet code, Throwable cause,
+			Map<String, Object> values) {
 		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
 		this.cause = cause;
 		this.values = values == null ? new HashMap<String, Object>() : values;
@@ -49,10 +52,16 @@ public class AnnotationSystemException extends RuntimeException {
 		return this;
 	}
 
+	/**
+	 * @return errorCode the cause of the exception.
+	 * */
 	public ErrorCodeSheet getErrorCode() {
 		return errorCode;
 	}
 
+	/**
+	 * @return cause the cause of the exception.
+	 * */
 	@Override
 	public Throwable getCause() {
 		return this.cause;
@@ -61,5 +70,4 @@ public class AnnotationSystemException extends RuntimeException {
 	public String dump() {
 		return values.toString();
 	}
-
 }

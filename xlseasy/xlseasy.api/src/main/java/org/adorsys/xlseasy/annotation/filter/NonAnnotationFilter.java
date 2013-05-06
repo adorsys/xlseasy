@@ -19,17 +19,19 @@ package org.adorsys.xlseasy.annotation.filter;
 import java.lang.annotation.Annotation;
 
 /**
- * Filters noting and return true.
+ * Filters nothing and return true.
  * 
  * @author Sandro Sonntag
  */
 public class NonAnnotationFilter implements AnnotationFilter {
+	
 	/**
-	 * Use this singelton.
+	 * Use this singleton.
 	 */
 	public static final AnnotationFilter INSTANCE = new NonAnnotationFilter();
 
 	private NonAnnotationFilter() {
+		// TODO: what shoulds the method do?
 	}
 
 	/**

@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 public @interface FreezePane {
 
     /**
-     * Horizonatal position of split.
+     * Horizontal position of split.
      */
     int colSplit() default 0;
 
