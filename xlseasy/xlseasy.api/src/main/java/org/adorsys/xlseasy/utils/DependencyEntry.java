@@ -11,7 +11,7 @@ import java.util.Set;
 
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 
-public 	class DependencyEntry implements Comparable<DependencyEntry> {
+public class DependencyEntry implements Comparable<DependencyEntry> {
 	private final Class<?> klass;
 	private final Field keyField;
 	private final Set<DependencyEntry> dependents = new HashSet<DependencyEntry>();
@@ -20,13 +20,13 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 	private final Collection<String> excludedFields = new ArrayList<String>();
 	private int level;
 	private final Map<String, String> fieldDateStyles;
-	
-	List<Field> fieldOrder;	
-	
-	public DependencyEntry(final Field field,
-			final Class<?> klass, 
+
+	List<Field> fieldOrder;
+
+	public DependencyEntry(final Field field, final Class<?> klass,
 			final Map<Class<?>, DependencyEntry> extent,
-			Collection<String> excludedFields, Field keyField, Map<String, String> fieldDateStyles) {
+			Collection<String> excludedFields, Field keyField,
+			Map<String, String> fieldDateStyles) {
 		this.klass = klass;
 		this.extent = extent;
 		this.keyField = keyField;
@@ -36,47 +36,53 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		this.fieldDateStyles = fieldDateStyles;
 		fieldOrder = XlseasyUtils.readSheetFields(klass, excludedFields);
 	}
-	
-	public void addField(Field field){
+
+	public void addField(Field field) {
 		fields.add(field);
 	}
-	
-	public List<Field> getFields(){
+
+	public List<Field> getFields() {
 		return Collections.unmodifiableList(fields);
 	}
 
-	public boolean isDependent(DependencyEntry e){
-		if (dependents.contains(e)) return true;
+	public boolean isDependent(DependencyEntry e) {
+		if (dependents.contains(e))
+			return true;
 		for (DependencyEntry dependencyEntry : dependents) {
-			if(dependencyEntry.isDependent(e)) return true;
+			if (dependencyEntry.isDependent(e))
+				return true;
 		}
 		return false;
 	}
+
 	private void addDependent(DependencyEntry d, String fieldName) {
-		if(d.isDependent(this))// exclude circular relationship
+		// exclude circular relationship
+		if (d.isDependent(this))
 			excludedFields.add(fieldName);
-			fieldOrder.remove(fieldName);
+		
+		fieldOrder.remove(fieldName);
 		d.increaseLevel();
 		dependents.add(d);
 	}
-	
-	public void increaseLevel(){
-		level+=1;
+
+	public void increaseLevel() {
+		level += 1;
 		for (DependencyEntry dependencyEntry : dependents) {
 			dependencyEntry.increaseLevel();
 		}
 	}
-	
-	public void processDependencies(){
+
+	public void processDependencies() {
 		for (Field field : fieldOrder) {
 			DependencyEntry dependencyEntry = extent.get(field.getType());
-			if(dependencyEntry!=null){
+			if (dependencyEntry != null) {
 				addDependent(dependencyEntry, field.getName());
 			} else {
-				if (XlseasyUtils.isCollectionType(field)){
-					Class<?> elementType = XlseasyUtils.extractElementType(field);
+				if (XlseasyUtils.isCollectionType(field)) {
+					Class<?> elementType = XlseasyUtils
+							.extractElementType(field);
 					DependencyEntry dependencyEntry2 = extent.get(elementType);
-					if(dependencyEntry2!=null){
+					if (dependencyEntry2 != null) {
 						addDependent(dependencyEntry2, field.getName());
 					}
 				}
@@ -87,17 +93,19 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 	public int compareTo(DependencyEntry other) {
 		return new Integer(level).compareTo(new Integer(other.level));
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<WorkBookSheet> getWorkBookSheets(){
+	public List<WorkBookSheet> getWorkBookSheets() {
 		List<WorkBookSheet> result = new ArrayList<WorkBookSheet>(fields.size());
 		List<Field> fieldsToRemove = new ArrayList<Field>();
 		for (Field field : fieldOrder) {
-			if(excludedFields.contains(field.getName())) fieldsToRemove.add(field);
+			if (excludedFields.contains(field.getName()))
+				fieldsToRemove.add(field);
 		}
 		fieldOrder.removeAll(fieldsToRemove);
 		for (Field field : fields) {
-			result.add(new WorkBookSheet(field, fieldOrder, excludedFields, klass, keyField, fieldDateStyles));
+			result.add(new WorkBookSheet(field, fieldOrder, excludedFields,
+					klass, keyField, fieldDateStyles));
 		}
 		return result;
 	}
@@ -130,5 +138,5 @@ public 	class DependencyEntry implements Comparable<DependencyEntry> {
 		} else if (!klass.equals(other.klass))
 			return false;
 		return true;
-	}	
+	}
 }

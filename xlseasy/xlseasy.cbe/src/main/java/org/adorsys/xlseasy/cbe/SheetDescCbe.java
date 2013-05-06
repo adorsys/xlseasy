@@ -76,16 +76,16 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 	}
 
 	private void initColumnDescs() {
-		List<SheetColumDeclaration> sheetColumDeclarations = SheetProcessor
+		List<SheetColumnDeclaration> sheetColumDeclarations = SheetProcessor
 				.processSheet(workBookSheet, workbook);
 		int columnIndex = 0;
-		for (SheetColumDeclaration sheetColumDeclaration : sheetColumDeclarations) {
+		for (SheetColumnDeclaration sheetColumDeclaration : sheetColumDeclarations) {
 			addColumn(sheetColumDeclaration, columnIndex, workBookSheet);
 			columnIndex++;
 		}
 	}
 
-	private void addColumn(SheetColumDeclaration sheetColumDeclaration,
+	private void addColumn(SheetColumnDeclaration sheetColumDeclaration,
 			int columnIndex, WorkBookSheet<T> workBookSheet) {
 		PropertyDescriptor pd = sheetColumDeclaration.getPropertyDescriptor();
 		SheetColumnObject sheetColumn = sheetColumDeclaration.getSheetColumn();
@@ -175,10 +175,7 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 	}
 
 	/**
-	 * load the headers found in the sheet.
-	 * 
-	 * @param sheet
-	 * @return
+	 * Loads the headers found in the sheet.
 	 */
 	private List<ColumnDescCbe> loadXlsHeader(HSSFSheet sheet) {
 		List<ColumnDescCbe> columnDescs = new ArrayList<ColumnDescCbe>();
@@ -206,8 +203,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 		List<ColumnDescCbe> loadXlsHeader = loadXlsHeader(sheet);
 		int loadXlsHeaderSize = loadXlsHeader.size();
 		Iterator<?> rowIterator = sheet.rowIterator();
+		
 		if (rowIterator.hasNext())
-			// skipp header
+			// skip header
 			rowIterator.next();
 
 		while (rowIterator.hasNext()) {
@@ -219,8 +217,8 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 				HSSFCell cell = (HSSFCell) cellIterator.next();
 				int index = cell.getColumnIndex();
 				if (loadXlsHeaderSize <= index) {
-					break;// No additional column descriptor, so no need to
-							// continue.
+					break;
+					// No additional column descriptor, so no need to continue.
 				}
 				ColumnDescCbe columnDesc = loadXlsHeader.get(index);
 				if (columnDesc != null) {
@@ -239,10 +237,16 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 		return XlseasyUtils.newInstance(workBookSheet.getSheetKlass());
 	}
 
+	/**
+	 * Gets the sheet
+	 * */
 	public SheetObject getSheet() {
 		return sheet;
 	}
 
+	/**
+	 * Creates a sheet in the session's workbook
+	 * */
 	public void createSheet(Collection<?> sheetData, SheetSession<?, ?> session) {
 		HSSFSheet sheet = session.getWorkbook().createSheet(getLabel());
 		createData(session, sheet, sheetData);
@@ -268,6 +272,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 
 	}
 
+	/**
+	 * Creates header in the sheet
+	 * */
 	protected void createHeader(SheetSession<?, ?> session, HSSFSheet sheet) {
 		HSSFRow row = sheet.createRow(0);
 		List<ColumnDescCbe> columnDescs = getColumnDescs();
@@ -285,6 +292,10 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 				freezePane.leftmostColumn(), freezePane.topRow());
 	}
 
+	/**
+	 * Creates rows in the sheet and use the method fillRow(...) to fill data
+	 * into each row
+	 * */
 	protected void createData(SheetSession<?, ?> session, HSSFSheet sheet,
 			Collection<?> sheetData) {
 		if (sheetData != null) {
@@ -301,6 +312,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 		return workBookSheet.getSheetKlass();
 	}
 
+	/**
+	 * Adds some constraints to sheet
+	 * */
 	protected void addConstraints(HSSFSheet sheet) {
 		int index = 0;
 		for (ColumnDescCbe c : columnOrder) {
@@ -339,6 +353,9 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 		}
 	}
 
+	/**
+	 * Creates cells in the row and sets some properties to them.
+	 */
 	private void fillRow(SheetSession<?, ?> session, HSSFRow row, Object bean) {
 		for (int i = 0; i < columnOrder.size(); i++) {
 			ColumnDescCbe columnDesc = columnOrder.get(i);

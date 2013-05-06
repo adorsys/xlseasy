@@ -2,6 +2,9 @@ package org.adorsys.xlseasy.impl.converter;
 
 import java.io.Serializable;
 
+/**
+ * The Class SheetConverterKey.
+ */
 public class SheetConverterKey implements Serializable {
 
 	private static final long serialVersionUID = -2478435572819302130L;

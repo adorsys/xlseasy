@@ -38,11 +38,20 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 	private WorkbookDescFactory workbookDescFactory;
 	
 	/**
-	 * @param workbook
+	 * Instantiates a new sheet session.
+	 *
+	 * @param beanType the bean type
 	 */
 	public SheetSession(Class<?> beanType) {
 		this(beanType, new WorkbookDescFactory());
 	}
+	
+	/**
+	 * Instantiates a new sheet session.
+	 *
+	 * @param beanType the bean type
+	 * @param workbookDescFactory the workbook desc factory
+	 */
 	public SheetSession(Class<?> beanType, WorkbookDescFactory workbookDescFactory) {
 		this.workbookDescFactory = workbookDescFactory;
 		this.beanType = beanType;
@@ -52,12 +61,17 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		reset();
 	}
 
-	
+	/**
+	 * Resets the workbook.
+	 * */
 	public void reset() {
 		this.workbook = new HSSFWorkbook();
 		cellStyleCache.clear();
 	}
 
+	/**
+	 * Loads the input stream.
+	 * */
 	public void load(InputStream is) {
 		try {
 			this.workbook = new HSSFWorkbook(is);
@@ -122,6 +136,9 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		return workbookDesc;
 	}
 
+	/**
+	 *  Writes the output stream to the workbook
+	 */
 	public void save(OutputStream os) {
 		try {
 			workbook.write(os);
@@ -152,9 +169,6 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		throw new SheetSystemException(ErrorCodeSheet.NOT_A_WORKBOOK_SESSION);
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.adorsys.xlseasy.impl.proc.ISheetSession#getSheetRecords(java.lang.String)
-	 */
 	public List<?> getSheetRecords(String name) {
 		if (workbookType) {
 			List<?> loadSheet = workbookDesc.loadSheet(workbook, workbookBean, name, this);
@@ -163,8 +177,8 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.adorsys.xlseasy.impl.proc.ISheetSession#getWorkbook()
+	/**
+	 * Gets the workbook
 	 */
 	public HSSFWorkbook getWorkbook() {
 		return workbook;

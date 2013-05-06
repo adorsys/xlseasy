@@ -11,6 +11,9 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+/**
+ * The Class WorkbookStyle.
+ */
 public class WorkbookStyle {
 
 	/** The workbook style. */
@@ -47,10 +50,10 @@ public class WorkbookStyle {
 			cellStyle.setDataFormat(format);
 		}
 
-		// Gets the font's name as String
+		// Saves the font's name as String
 		String fontName = style.fontName();
 
-		// Gets font's properties as corresponding data type
+		// Gets font's properties
 		int fontSize = style.fontSize();
 		boolean fontStyleBold = style.fontStyleBold();
 		boolean fontStyleItalic = style.fontStyleItalic();
@@ -104,7 +107,7 @@ public class WorkbookStyle {
 		this.style = cellStyle;
 	}
 
-	/** Applies the format to the Workbook. */
+	/** Applies the format to the cell. */
 	public void applyFormat(HSSFCell cell) {
 		cell.setCellStyle(style);
 	}

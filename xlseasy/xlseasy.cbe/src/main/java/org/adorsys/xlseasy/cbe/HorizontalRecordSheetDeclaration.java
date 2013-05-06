@@ -5,6 +5,7 @@ import java.beans.PropertyDescriptor;
 import org.adorsys.xlseasy.annotation.HorizontalRecordSheetObject;
 import org.adorsys.xlseasy.boot.WorkBookSheet;
 
+@SuppressWarnings("rawtypes")
 public class HorizontalRecordSheetDeclaration {
 
 	private final PropertyDescriptor propertyDescriptor;

@@ -12,7 +12,7 @@ public interface SheetFormatter {
 	public class NoneSheetFormatter implements SheetFormatter {
 
 		public void format(Object sheet) {
-			// TODO: what shoulds the method do?
+			// TODO: what should the method do?
 		}
 	}
 	

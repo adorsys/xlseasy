@@ -25,15 +25,17 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  */
 public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private final Map<String, SheetDesc<?, T>> label2sheetDesc = new HashMap<String, SheetDesc<?, T>>();
 	private final List<SheetDesc<?, T>> orderedSheets = new ArrayList<SheetDesc<?, T>>();
 	private Class<T> workbookClass;
 
+	/**
+	 * Instantiates a new workbook desc.
+	 *
+	 * @param workbookClass the workbook class
+	 */
 	public WorkbookDesc(Class<T> workbookClass) {
 		this.workbookClass = workbookClass;
 		Map<PropertyDescriptor, Map<Class<?>, Annotation>> findBeanPropertyDescriptorAnnotations = AnnotationUtil
@@ -66,6 +68,9 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		}
 	}
 	
+	/**
+	 * Instantiates a new workbook desc.
+	 */
 	public WorkbookDesc() {
 	}
 

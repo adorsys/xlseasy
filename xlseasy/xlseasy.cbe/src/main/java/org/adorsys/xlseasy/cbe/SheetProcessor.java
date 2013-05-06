@@ -14,11 +14,11 @@ import org.adorsys.xlseasy.impl.converter.SheetConverter;
 
 public class SheetProcessor {
 
-	public static <T> List<SheetColumDeclaration> processSheet(
+	public static <T> List<SheetColumnDeclaration> processSheet(
 			WorkBookSheet<T> workBookSheet, WorkbookDescCbe<?> workbookDescJpa) {
 
 		List<Field> fields = workBookSheet.getFieldOrder();
-		List<SheetColumDeclaration> result = new ArrayList<SheetColumDeclaration>();
+		List<SheetColumnDeclaration> result = new ArrayList<SheetColumnDeclaration>();
 		Map<String, String> fieldDateStyles = workBookSheet
 				.getFieldDateStyles();
 
@@ -52,7 +52,7 @@ public class SheetProcessor {
 			} catch (IntrospectionException e) {
 				throw new IllegalStateException(e);
 			}
-			SheetColumDeclaration sheetColumDeclaration = new SheetColumDeclaration(
+			SheetColumnDeclaration sheetColumDeclaration = new SheetColumnDeclaration(
 					propertyDescriptor, sheetColumn, field.getType());
 			result.add(sheetColumDeclaration);
 		}

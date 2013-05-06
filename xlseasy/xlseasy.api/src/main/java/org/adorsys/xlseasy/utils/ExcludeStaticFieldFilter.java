@@ -8,9 +8,11 @@ import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 public class ExcludeStaticFieldFilter implements FieldFilter {
 
 	public boolean matches(Field field) {
-		if(ReflectionUtils.isPublicStaticFinal(field)) return false;
+		if (ReflectionUtils.isPublicStaticFinal(field))
+			return false;
 		int modifiers = field.getModifiers();
-	    if (Modifier.isStatic(modifiers)) return false;
-	    return true;
+		if (Modifier.isStatic(modifiers))
+			return false;
+		return true;
 	}
 }

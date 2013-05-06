@@ -7,9 +7,16 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 
 /**
+ * The Class EnumCellConverter.
+ *
+ * @param <E> the element type
  * @author Sandro Sonntag
  */
 public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
+		
+	/**
+	 * Gets the cell's value as Enum.
+	 * */
 	public Object getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session)
 			throws SpreadsheetConverterException {
 		HSSFCell cell = (HSSFCell) cellObject;
@@ -27,6 +34,9 @@ public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
 		}
 	}
 
+	/**
+	 * Sets the cell's value as String.
+	 * */
 	public void setHSSFCell(Object cellObject, Object value, Class<?> objectType, ISheetSession<?, ?> session) {
 		HSSFCell cell = (HSSFCell) cellObject;
 		cell.setCellType(HSSFCell.CELL_TYPE_STRING);
@@ -36,6 +46,9 @@ public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
 		cell.setCellValue(stringValue);
 	}
 
+	/**
+	 * Gets the converter type. In this case, Enum.
+	 * */
 	@Override
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] { Enum.class };

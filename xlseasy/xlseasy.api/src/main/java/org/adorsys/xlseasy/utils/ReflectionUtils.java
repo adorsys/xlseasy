@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * Simple utility class for working with the reflection API and handling
  * reflection exceptions.
  *
- * <p>Only intended for internal use.
+ * <p>Only intended for internal use</p>.
  *
  * @author Juergen Hoeller
  * @author Rob Harrop

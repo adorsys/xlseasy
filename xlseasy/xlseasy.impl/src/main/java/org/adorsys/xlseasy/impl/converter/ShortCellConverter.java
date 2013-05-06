@@ -9,12 +9,18 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  */
 public class ShortCellConverter extends NumberColumnConverter {
 
+	/**
+	 * Gets the cell value as short.
+	 * */
 	public Short getDataCell(Object cellObject, Class<?> objectType, ISheetSession<?, ?> session) throws SpreadsheetConverterException {
 		HSSFCell cell = (HSSFCell) cellObject;
 		Double value = getDoubleCellValue(cell);
 		return value != null ? value.shortValue() : null;
 	}
 
+	/**
+	 * Gets the converter type. In this case, Short.
+	 * */
 	@Override
 	public Class<?>[] getConveterTypes() {
 		return new Class<?>[] {Short.class, short.class}; 

@@ -19,7 +19,7 @@ package org.adorsys.xlseasy.annotation.filter;
 import java.lang.annotation.Annotation;
 
 /**
- * Filters nothing and return true.
+ * Filters nothing and returns true.
  * 
  * @author Sandro Sonntag
  */
@@ -31,7 +31,7 @@ public class NonAnnotationFilter implements AnnotationFilter {
 	public static final AnnotationFilter INSTANCE = new NonAnnotationFilter();
 
 	private NonAnnotationFilter() {
-		// TODO: what shoulds the method do?
+		// TODO: what should the method do?
 	}
 
 	/**
