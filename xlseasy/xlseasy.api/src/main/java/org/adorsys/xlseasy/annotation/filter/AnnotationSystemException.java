@@ -80,7 +80,7 @@ public class AnnotationSystemException extends RuntimeException {
 	/**
 	 * Gets the error code.
 	 * 
-	 * @return errorCode the cause of the exception.
+	 * @return errorCode the error code.
 	 */
 	public ErrorCodeSheet getErrorCode() {
 		return errorCode;
