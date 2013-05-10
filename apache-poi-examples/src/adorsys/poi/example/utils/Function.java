@@ -11,7 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
 /**
- * Implements some already existing Excel's functions to simplify the code writing.
+ * The Class Function
  * 
  * @author Marius Guede
  **/
@@ -24,9 +24,9 @@ public class Function {
 	public static final String[] name = { "Abbey", "Abigail", "Agnes",
 			"Allyson", "Alisa", "Audrey", "Avril", "Bailey", "Barbara",
 			"Belinda", "Benita", "Bernard", "Bertha", "Cadence", "Cathy",
-			"Clara", " Ciel", "Claudia", "Corra", "Cindy", "Daniela", "Daphne",
+			"Clara", " Ciel", "Claudia", "Corra", "Cindy", "Diana", "Daphne",
 			"Desiree", "Gerald", "Emile", "Bernd", "Thomas", "James",
-			"Sanchez", "Anthony", "Stefan", "Martina", "Jana", "Sarah",
+			"Sanchez", "Anthony", "Stefan", "Martina", "Jana", "Sandra",
 			"Nicole" };
 
 	/**
