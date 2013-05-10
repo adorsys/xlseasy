@@ -50,7 +50,7 @@ public class WorkbookStyle {
 			cellStyle.setDataFormat(format);
 		}
 
-		// Saves the font's name as String
+		// Gets the font's name
 		String fontName = style.fontName();
 
 		// Gets font's properties
@@ -60,6 +60,7 @@ public class WorkbookStyle {
 		boolean fontStyleStrikeout = style.fontStyleStrikeout();
 		boolean fontStyleUnderline = style.fontStyleUnderline();
 		short fontColor = style.fontColor();
+		
 
 		// If the cell's font (or one of the called properties) wasn't setted, sets it
 		// (them).
@@ -103,7 +104,7 @@ public class WorkbookStyle {
 		if (column.hidden())
 			cellStyle.setHidden(true);
 
-		// Saves the setted properties to cell's style
+		// Saves the properties to cell's style
 		this.style = cellStyle;
 	}
 

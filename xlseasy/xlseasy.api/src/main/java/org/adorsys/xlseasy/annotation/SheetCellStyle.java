@@ -35,7 +35,7 @@ public @interface SheetCellStyle {
 	
 	/**
 	 * @author Marius Guede
-	 * adds border annotation
+	 * border annotation
 	 */
 	short fontStyleBorder() default 1;
 	short fontStyleBorderTop() default 1;

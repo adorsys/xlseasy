@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Object implementing the same interface like a sheet cell stype
+ * Object implementing the same interface like a sheet cell's type
  * 
  * @author Francis Pouatcha
  *
@@ -32,7 +32,7 @@ public class SheetCellStyleObject implements Serializable {
 		sheetCellStyleObject.fontStyleBold = fontStyleBold;
 		if(dataFormat!=null) sheetCellStyleObject.dataFormat=dataFormat;
 		return resolveSingleton(sheetCellStyleObject);
-	}	
+	}
 	
 	private static SheetCellStyleObject resolveSingleton(SheetCellStyleObject trans){
 		if(singletons.containsKey(trans)) {
@@ -122,7 +122,7 @@ public class SheetCellStyleObject implements Serializable {
 	
 	/**
 	 * @author Marius Guede
-	 * adds border annotation
+	 * border annotation
 	 */
 	short border = 1;
 	public short fontStyleBorder() {
@@ -208,6 +208,21 @@ public class SheetCellStyleObject implements Serializable {
 		if (fontStyleUnderline != other.fontStyleUnderline)
 			return false;
 		if (wrapText != other.wrapText)
+			return false;
+		
+		/**
+		 * @author Marius Guede
+		 * checks border properties
+		 * */
+		if (border != other.border)
+			return false;
+		if (borderTop != other.borderTop)
+			return false;
+		if (borderBottom != other.borderBottom)
+			return false;
+		if (borderLeft != other.borderLeft)
+			return false;
+		if (borderRight != other.borderRight)
 			return false;
 		return true;
 	}
