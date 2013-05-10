@@ -13,5 +13,9 @@ public interface SpreadsheetService {
 	
 	public <ST> void saveSpreadsheetRecords(Class<ST> sheetType, Collection<ST> rows, OutputStream outputStream);
 	
+	/**
+	 * Which class implements this interface?
+	 * I'll like to see the way the sheet is saved in the workbook and the way it should work.
+	 * */
 	public <WT> void saveSpreadsheet(Class<WT> workbookType, WT model, OutputStream outputStream);
 }
