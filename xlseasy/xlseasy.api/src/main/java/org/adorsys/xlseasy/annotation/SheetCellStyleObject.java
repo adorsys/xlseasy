@@ -59,6 +59,11 @@ public class SheetCellStyleObject implements Serializable {
 		backgroundColor = sheetCellStyle.backgroundColor();
 		align = sheetCellStyle.align();
 		wrapText = sheetCellStyle.wrapText();
+		border = sheetCellStyle.fontStyleBorder();
+		borderTop = sheetCellStyle.fontStyleBorderTop();
+		borderBottom = sheetCellStyle.fontStyleBorderBottom();
+		borderLeft = sheetCellStyle.fontStyleBorderLeft();
+		borderRight = sheetCellStyle.fontStyleBorderRight();		
 	}
 
 	private String dataFormat = "";
@@ -124,18 +129,22 @@ public class SheetCellStyleObject implements Serializable {
 		return border;
 	}
 	
+	short borderTop = 1;
 	public short fontStyleBorderTop() {
 		return border;		
 	}
 	
+	short borderBottom = 1;
 	public short fontStyleBorderBottom() {
 		return border;
 	}
 	
+	short borderLeft = 1;
 	public short fontStyleBorderLeft() {
 		return border;
 	}
 
+	short borderRight = 1;
 	public short fontStyleBorderRight() {
 		return border;
 	}
