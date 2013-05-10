@@ -13,12 +13,15 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Sheet;
 
+import adorsys.poi.example.utils.*;
+
 /**
- * Generates an Excel file with two sheets and implements some calculations function.
+ * Generates an Excel file with two sheets and implements some calculations
+ * function.
  * 
- *  @author Marius Guede <mariusguede@urframes.net>
+ * @author Marius Guede <mariusguede@urframes.net>
  */
-public class ExcelExample extends MyExcelFunction {
+public class ExcelExample {
 
 	private int rowIndex = 0;
 	private int cellIndex = 1;
@@ -47,69 +50,72 @@ public class ExcelExample extends MyExcelFunction {
 			// We create rows and cells and set their values.
 			HSSFRow row;
 			HSSFCell cell;
+			
+			// We create a new Function Object.
+			Function function = new Function();
 
 			// 1st row
 			rowIndex++;
 			row = sheet1.createRow(rowIndex);
 			cell = row.createCell(1);
 			cell.setCellValue("Client's name");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 
 			cell = row.createCell(2);
 			cell.setCellValue(new HSSFRichTextString("Price / article"));
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 
 			cell = row.createCell(3);
 			cell.setCellValue("Qty");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 
 			cell = row.createCell(5);
 			cell.setCellValue("Total");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 
 			// other rows
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				rowIndex++;
 				row = sheet1.createRow(rowIndex);
 				cell = row.createCell(0);
 				cell.setCellValue((i + 1) + ".");
-				setMyCellAlignment(book, cell, defaultAlignment);
-				setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD,
+				function.setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD,
 						defaultFontHeightInPoints);
 
 				cell = row.createCell(1);
-				cell.setCellValue(name[i]);
-				setMyCellAlignment(book, cell, defaultAlignment);
+				cell.setCellValue(Function.name[i]);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(2);
 				cell.setCellValue("2.5 EUR");
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				// get random index to compute total price
-				int rdm = getRandomIndex();
+				int rdm = function.getRandomIndex();
 
 				cell = row.createCell(3);
 				cell.setCellValue(rdm);
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(5);
 				cell.setCellValue(rdm * 2.5);
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 			}
 			rowIndex++;
 			row = sheet1.createRow(rowIndex);
 			cell = row.createCell(5);
 
 			// get column reference
-			String ref = getCellByName(cell.getRowIndex(),
+			String ref = function.getCellByName(cell.getRowIndex(),
 					cell.getColumnIndex());
 
 			// get row's index of the last inserted value
-			int indexLastInsertedValue = getArrayLength() + 2;
+			int indexLastInsertedValue = function.getArrayLength() + 2;
 
 			cell.setCellFormula("SUM(" + ref + "3:" + ref + ""
 					+ indexLastInsertedValue + ")");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 
 			// setup column's width
 			sheet1.setColumnWidth(0, 1500);
@@ -140,7 +146,7 @@ public class ExcelExample extends MyExcelFunction {
 			cellIndex++;
 			row = sheet2.createRow(1);
 			cell = row.createCell(cellIndex);
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue((i + 1) + ".");
 				cellIndex++;
@@ -151,12 +157,12 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(2);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Client's name");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(name[i]);
+				cell.setCellValue(Function.name[i]);
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -165,10 +171,10 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(3);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue(new HSSFRichTextString("Price / article"));
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue("2.5 EUR");
 				cellIndex++;
@@ -179,13 +185,13 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(4);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Qty");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 			cellIndex++;
 
 			// get random index to compute total price
 			int rdm;
-			for (int i = 0; i < getArrayLength(); i++) {
-				rdm = getRandomIndex();
+			for (int i = 0; i < function.getArrayLength(); i++) {
+				rdm = function.getRandomIndex();
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(rdm);
 				style.setAlignment((short) 0x2);
@@ -198,13 +204,13 @@ public class ExcelExample extends MyExcelFunction {
 			row = sheet2.createRow(5);
 			cell = row.createCell(cellIndex);
 			cell.setCellValue("Total");
-			cell.setCellStyle(getMyDefaultStyle(book));
+			cell.setCellStyle(function.getMyDefaultStyle(book));
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellFormula(""
-						+ getCellByReference(
+						+ function.getCellByReference(
 								sheet2.getRow(cell.getRowIndex() - 1)
 										.getRowNum(),
 								sheet2.getRow(cell.getRowIndex() - 1)
@@ -222,11 +228,11 @@ public class ExcelExample extends MyExcelFunction {
 			cell.setCellValue("getCellByName()");
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(getCellByName(cell.getRowIndex(),
+				cell.setCellValue(function.getCellByName(cell.getRowIndex(),
 						cell.getColumnIndex()));
-				cell.setCellStyle(getMyDefaultStyle(book));
+				cell.setCellStyle(function.getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -237,11 +243,11 @@ public class ExcelExample extends MyExcelFunction {
 			cell.setCellValue("getCellByNumber()");
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(getCellByNumber(cell.getRowIndex(),
+				cell.setCellValue(function.getCellByNumber(cell.getRowIndex(),
 						cell.getColumnIndex()));
-				cell.setCellStyle(getMyDefaultStyle(book));
+				cell.setCellStyle(function.getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -252,11 +258,11 @@ public class ExcelExample extends MyExcelFunction {
 			cell.setCellValue("getCellByReference()");
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(getCellByReference(cell.getRowIndex(),
+				cell.setCellValue(function.getCellByReference(cell.getRowIndex(),
 						cell.getColumnIndex()));
-				cell.setCellStyle(getMyDefaultStyle(book));
+				cell.setCellStyle(function.getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -267,11 +273,11 @@ public class ExcelExample extends MyExcelFunction {
 			cell.setCellValue("getPreviousCellValue()");
 			cellIndex++;
 
-			for (int i = 0; i < getArrayLength(); i++) {
+			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
 				cell.setCellValue(sheet2.getRow(cell.getRowIndex() - 1)
 						.getCell(cellIndex).getRichStringCellValue());
-				cell.setCellStyle(getMyDefaultStyle(book));
+				cell.setCellStyle(function.getMyDefaultStyle(book));
 				cellIndex++;
 			}
 			cellIndex = 1;
@@ -280,7 +286,7 @@ public class ExcelExample extends MyExcelFunction {
 			sheet2.setColumnWidth(1, 5000);
 
 			// setup other column's width iteratively
-			for (int i = 2; i < getArrayLength() + 2; i++) {
+			for (int i = 2; i < function.getArrayLength() + 2; i++) {
 				sheet2.setColumnWidth(i, 3000);
 			}
 

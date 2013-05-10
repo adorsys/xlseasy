@@ -250,14 +250,6 @@ public class ExcelGenerateReport {
 
 		return rowIndex;
 	}
-	
-	// returns current time
-	public String getDate() {
-		// get current time
-		Date date = new Date(System.currentTimeMillis());
-		DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
-		return df.format(date);
-	}
 
 	public int insertDetailInfo(HSSFSheet sheet, int index) {
 		int rowIndex = 0;

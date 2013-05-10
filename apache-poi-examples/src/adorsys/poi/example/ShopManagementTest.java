@@ -10,13 +10,15 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Sheet;
 
+import adorsys.poi.example.utils.*;
+
 /**
  * Simulates the management of a shop using our implemented classes (Client,
  * Product, ShopManagement, MyExcelFunction).
  * 
  * @author Marius Guede <mariusguede@urframes.net>
  */
-public class ShopManagementTest extends MyExcelFunction {
+public class ShopManagementTest {
 
 	/** The current row index. */
 	private int rowIndex = 0;
@@ -41,6 +43,9 @@ public class ShopManagementTest extends MyExcelFunction {
 
 			// creates the sheet for this book
 			HSSFSheet sheet = book.createSheet("Shop Manager");
+			
+			// We create a new Function Object.
+			Function function = new Function();
 
 			// the following line allow to create a sheet and add sheet's name
 			// with special characters such as [], ? # + %$¤"
@@ -91,59 +96,62 @@ public class ShopManagementTest extends MyExcelFunction {
 
 			// writes in clients sheet
 			rowClient = sheetClients.createRow(1);
+			
+			
 			cellClient = rowClient.createCell(1);
 			cellClient.setCellValue("ID");
-			cellClient.setCellStyle(getMyDefaultStyle(book));
+			cellClient.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellClient = rowClient.createCell(2);
 			cellClient.setCellValue("Name");
-			cellClient.setCellStyle(getMyDefaultStyle(book));
+			cellClient.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellClient = rowClient.createCell(3);
 			cellClient.setCellValue("Street");
-			cellClient.setCellStyle(getMyDefaultStyle(book));
+			cellClient.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellClient = rowClient.createCell(4);
 			cellClient.setCellValue("Zipcode");
-			cellClient.setCellStyle(getMyDefaultStyle(book));
+			cellClient.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellClient = rowClient.createCell(5);
 			cellClient.setCellValue("City");
-			cellClient.setCellStyle(getMyDefaultStyle(book));
+			cellClient.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellClient = rowClient.createCell(6);
 			cellClient.setCellValue("Country");
-			cellClient.setCellStyle(getMyDefaultStyle(book));
+			cellClient.setCellStyle(function.getMyDefaultStyle(book));
 
 			for (int i = 2; i < managerListArray.length + 2; i++) {
 				rowClient = sheetClients.createRow(i);
+				
 				cellClient = rowClient.createCell(1);
-				setMyCellAlignment(book, cellClient, defaultAlignment);
+				function.setMyCellAlignment(book, cellClient, defaultAlignment);
 				cellClient.setCellValue(managerListArray[i - 2].getClient()
 						.getId());
 
 				cellClient = rowClient.createCell(2);
-				setMyCellAlignment(book, cellClient, defaultAlignment);
+				function.setMyCellAlignment(book, cellClient, defaultAlignment);
 				cellClient.setCellValue(managerListArray[i - 2].getClient()
 						.getName());
 
 				cellClient = rowClient.createCell(3);
-				setMyCellAlignment(book, cellClient, defaultAlignment);
+				function.setMyCellAlignment(book, cellClient, defaultAlignment);
 				cellClient.setCellValue(managerListArray[i - 2].getClient()
 						.getStreet());
 
 				cellClient = rowClient.createCell(4);
-				setMyCellAlignment(book, cellClient, defaultAlignment);
+				function.setMyCellAlignment(book, cellClient, defaultAlignment);
 				cellClient.setCellValue(managerListArray[i - 2].getClient()
 						.getZipcode());
 
 				cellClient = rowClient.createCell(5);
-				setMyCellAlignment(book, cellClient, defaultAlignment);
+				function.setMyCellAlignment(book, cellClient, defaultAlignment);
 				cellClient.setCellValue(managerListArray[i - 2].getClient()
 						.getCity());
 
 				cellClient = rowClient.createCell(6);
-				setMyCellAlignment(book, cellClient, defaultAlignment);
+				function.setMyCellAlignment(book, cellClient, defaultAlignment);
 				cellClient.setCellValue(managerListArray[i - 2].getClient()
 						.getCountry());
 			}
@@ -152,30 +160,30 @@ public class ShopManagementTest extends MyExcelFunction {
 			rowProduct = sheetProducts.createRow(1);
 			cellProduct = rowProduct.createCell(1);
 			cellProduct.setCellValue("Name");
-			cellProduct.setCellStyle(getMyDefaultStyle(book));
+			cellProduct.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellProduct = rowProduct.createCell(2);
 			cellProduct.setCellValue("Description");
-			cellProduct.setCellStyle(getMyDefaultStyle(book));
+			cellProduct.setCellStyle(function.getMyDefaultStyle(book));
 
 			cellProduct = rowProduct.createCell(3);
 			cellProduct.setCellValue("Price");
-			cellProduct.setCellStyle(getMyDefaultStyle(book));
+			cellProduct.setCellStyle(function.getMyDefaultStyle(book));
 
 			for (int i = 2; i < managerListArray.length + 2; i++) {
 				rowProduct = sheetProducts.createRow(i);
 				cellProduct = rowProduct.createCell(1);
-				setMyCellAlignment(book, cellProduct, defaultAlignment);
+				function.setMyCellAlignment(book, cellProduct, defaultAlignment);
 				cellProduct.setCellValue(managerListArray[i - 2].getProduct()
 						.getName());
 
 				cellProduct = rowProduct.createCell(2);
-				setMyCellAlignment(book, cellProduct, defaultAlignment);
+				function.setMyCellAlignment(book, cellProduct, defaultAlignment);
 				cellProduct.setCellValue(managerListArray[i - 2].getProduct()
 						.getDesc());
 
 				cellProduct = rowProduct.createCell(3);
-				setMyCellAlignment(book, cellProduct, defaultAlignment);
+				function.setMyCellAlignment(book, cellProduct, defaultAlignment);
 				cellProduct.setCellValue(managerListArray[i - 2].getProduct()
 						.getPrice());
 			}
@@ -193,7 +201,7 @@ public class ShopManagementTest extends MyExcelFunction {
 			for (int i = 0; i < headerTitle.length; i++) {
 				cell = row.createCell(i + 1);
 				cell.setCellValue(headerTitle[i]);
-				cell.setCellStyle(getMyDefaultStyle(book));
+				cell.setCellStyle(function.getMyDefaultStyle(book));
 			}
 
 			// used to save the row of first, last product and the column reference with prices and compute the total price for all articles
@@ -205,49 +213,49 @@ public class ShopManagementTest extends MyExcelFunction {
 				row = sheet.createRow(rowIndex);
 				cell = row.createCell(0);
 				cell.setCellValue((i + 1) + ".");
-				setMyCellAlignment(book, cell, defaultAlignment);
-				setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD,
+				function.setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD,
 						defaultFontHeightInPoints);
 
 				cell = row.createCell(1);
 				cell.setCellValue(managerListArray[i].getClient().getId());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(2);
 				cell.setCellValue(managerListArray[i].getClient().getName());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(3);
 				cell.setCellValue(managerListArray[i].getClient().getAddress());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(4);
 				cell.setCellValue(managerListArray[i].getProduct().getName());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(5);
 				cell.setCellValue(managerListArray[i].getProduct().getPrice());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(6);
 				cell.setCellValue(managerListArray[i].getProduct().getDesc());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 
 				cell = row.createCell(7);
-				cell.setCellValue(getRandomIndex());
-				setMyCellAlignment(book, cell, defaultAlignment);
+				cell.setCellValue(function.getRandomIndex());
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 				
 				cell = row.createCell(8);			
 				// computes the total price using the article's price and quantity
-				cell.setCellFormula(getCellByReference(cell.getRowIndex(), 5) + "*" + getCellByReference(cell.getRowIndex(), 7));
-				setMyCellAlignment(book, cell, defaultAlignment);
+				cell.setCellFormula(function.getCellByReference(cell.getRowIndex(), 5) + "*" + function.getCellByReference(cell.getRowIndex(), 7));
+				function.setMyCellAlignment(book, cell, defaultAlignment);
 				
 				
 				// gets the cell's reference of the first product
-				if (i == 0) totalPriceFormular = "SUM(" + getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
+				if (i == 0) totalPriceFormular = "SUM(" + function.getCellByReference(cell.getRowIndex(), cell.getColumnIndex());
 				
 				// gets the cell's reference of the last product
-				if (i == managerList.size() - 1) totalPriceFormular += ":" + getCellByReference(cell.getRowIndex(), cell.getColumnIndex()) + ")";
+				if (i == managerList.size() - 1) totalPriceFormular += ":" + function.getCellByReference(cell.getRowIndex(), cell.getColumnIndex()) + ")";
 			}
 			rowIndex++;
 			
@@ -255,8 +263,8 @@ public class ShopManagementTest extends MyExcelFunction {
 			row = sheet.createRow(rowIndex);
 			cell = row.createCell(8);
 			cell.setCellFormula(totalPriceFormular);
-			setMyCellAlignment(book, cell, defaultAlignment);
-			setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD, defaultFontHeightInPoints);
+			function.setMyCellAlignment(book, cell, defaultAlignment);
+			function.setMyCellFont(book, cell, HSSFFont.BOLDWEIGHT_BOLD, defaultFontHeightInPoints);
 
 			// setups column's width
 			for (int i = 0; i < headerTitle.length; i++) {
