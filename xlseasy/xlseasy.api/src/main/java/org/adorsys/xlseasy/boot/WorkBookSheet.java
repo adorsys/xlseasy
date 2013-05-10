@@ -8,20 +8,6 @@ import java.util.Map;
 
 public class WorkBookSheet<T> {
 
-	private final Field keyField;
-	
-	private final Map<String, String> fieldDateStyles;
-	
-	private final List<Field> fieldOrder = new ArrayList<Field>();
-	
-	private final Collection<String> excludedFields = new ArrayList<String>();
-	
-	private final Class<T> sheetKlass;
-	
-	private final Field field;
-	
-	private WorkbookCbe workbookCbe;
-
 	public WorkBookSheet(Field field, List<Field> fieldOrder, 
 			Collection<String> excludedFields, Class<T> sheeKlass, 
 			Field keyField, Map<String, String> fieldDateStyles) {
@@ -34,30 +20,37 @@ public class WorkBookSheet<T> {
 		this.fieldDateStyles = fieldDateStyles;
 	}
 
+	private final Class<T> sheetKlass;
 	public Class<T> getSheetKlass() {
 		return sheetKlass;
 	}
 
+	private final Field field;
 	public Field getField() {
 		return field;
 	}
-
+	
+	private final List<Field> fieldOrder = new ArrayList<Field>();
 	public List<Field> getFieldOrder() {
 		return fieldOrder;
 	}
 
+	private final Collection<String> excludedFields = new ArrayList<String>();
 	public Collection<String> getExcludedFields() {
 		return excludedFields;
 	}
-
+	
+	private final Field keyField;
 	public Field getKeyField() {
 		return keyField;
 	}
 
+	private final Map<String, String> fieldDateStyles;
 	public Map<String, String> getFieldDateStyles() {
 		return fieldDateStyles;
 	}
 
+	private WorkbookCbe workbookCbe;
 	public WorkbookCbe getWorkbookCbe() {
 		return workbookCbe;
 	}

@@ -2,7 +2,6 @@ package org.adorsys.xlseasy.boot;
 
 import java.util.Map;
 
-
 /**
  * Inspect date styles for fields of a given class.
  * 

@@ -9,41 +9,22 @@ import java.util.Map;
 public class SpreadsheetConverterException extends Exception {
 
 	private static final long serialVersionUID = 1L;
-
-	private ErrorCodeSheet errorCode;
-
-	private Throwable cause;
 	
 	private Map<String, Object> values;
 	
-	/**
-	 * Instantiates a new spreadsheet converter exception.
-	 *
-	 * @param code the code
-	 * @param cause the cause
-	 * @param values the values
-	 */
+	/** Instantiates a new spreadsheet converter exception. */
 	public SpreadsheetConverterException(ErrorCodeSheet code, Throwable cause, Map<String, Object> values) {
 		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
 		this.cause = cause;
 		this.values = values == null ? new HashMap<String, Object>() : values;
 	}
 
-	/**
-	 * Instantiates a new spreadsheet converter exception.
-	 *
-	 * @param code the code
-	 * @param cause the cause
-	 */
+	/** Instantiates a new spreadsheet converter exception. */
 	public SpreadsheetConverterException(ErrorCodeSheet code, Throwable cause) {
 		this(code, cause, null);
 	}
 
-	/**
-	 * Instantiates a new spreadsheet converter exception.
-	 *
-	 * @param code the code
-	 */
+	/** Instantiates a new spreadsheet converter exception. */
 	public SpreadsheetConverterException(ErrorCodeSheet code) {
 		this(code, null, null);
 	}
@@ -60,20 +41,14 @@ public class SpreadsheetConverterException extends Exception {
 		return this;
 	}
 
-	/**
-	 * Gets the error code.
-	 *
-	 * @return the error code
-	 */
+	/** The error code. */
+	private ErrorCodeSheet errorCode;
 	public ErrorCodeSheet getErrorCode() {
 		return errorCode;
 	}
 
-	/**
-	 * Gets the exception's cause.
-	 * 
-	 * @return the exception's cause
-	 * */
+	/** The exception's cause. */
+	private Throwable cause;
 	@Override
 	public Throwable getCause() {
 		return this.cause;

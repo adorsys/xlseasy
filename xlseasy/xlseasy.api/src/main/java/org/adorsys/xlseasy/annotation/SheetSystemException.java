@@ -3,48 +3,28 @@ package org.adorsys.xlseasy.annotation;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * @author Sandro Sonntag
  */
 public class SheetSystemException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
-
-	private ErrorCodeSheet errorCode;
-
-	private Throwable cause;
 	
 	private Map<String, Object> values;
 	
-	/**
-	 * Instantiates a new sheet system exception.
-	 *
-	 * @param code the code
-	 * @param cause the cause
-	 * @param values the values
-	 */
+	/** Instantiates a new sheet system exception. */
 	public SheetSystemException(ErrorCodeSheet code, Throwable cause, Map<String, Object> values) {
 		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
 		this.cause = cause;
 		this.values = values == null ? new HashMap<String, Object>() : values;
 	}
 
-	/**
-	 * Instantiates a new sheet system exception.
-	 *
-	 * @param code the code
-	 * @param cause the cause
-	 */
+	/** Instantiates a new sheet system exception. */
 	public SheetSystemException(ErrorCodeSheet code, Throwable cause) {
 		this(code, cause, null);
 	}
 
-	/**
-	 * Instantiates a new sheet system exception.
-	 *
-	 * @param code the code
-	 */
+	/** Instantiates a new sheet system exception. */
 	public SheetSystemException(ErrorCodeSheet code) {
 		this(code, null, null);
 	}
@@ -61,15 +41,13 @@ public class SheetSystemException extends RuntimeException {
 		return this;
 	}
 
-	/**
-	 * Gets the error code.
-	 *
-	 * @return the error code
-	 */
+	/** Gets the error code. */
+	private ErrorCodeSheet errorCode;
 	public ErrorCodeSheet getErrorCode() {
 		return errorCode;
 	}
 
+	private Throwable cause;
 	@Override
 	public Throwable getCause() {
 		return this.cause;
