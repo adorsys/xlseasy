@@ -3,7 +3,7 @@ package adorsys.poi.example;
 /**
  * The Class Client.
  * 
- * @author Marius Guede <mariusguede@urframes.net>
+ * @author Marius Guede
  */
 public class Client {
 	
