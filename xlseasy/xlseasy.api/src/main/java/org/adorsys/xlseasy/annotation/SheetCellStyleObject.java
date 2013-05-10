@@ -219,7 +219,7 @@ public class SheetCellStyleObject implements Serializable {
 		
 		/**
 		 * @author Marius Guede
-		 * checks border properties
+		 * checkes border properties
 		 * */
 		if (border != other.border)
 			return false;
