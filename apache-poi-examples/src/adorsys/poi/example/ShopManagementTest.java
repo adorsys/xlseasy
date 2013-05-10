@@ -16,7 +16,7 @@ import adorsys.poi.example.utils.*;
  * Simulates the management of a shop using our implemented classes (Client,
  * Product, ShopManagement, MyExcelFunction).
  * 
- * @author Marius Guede <mariusguede@urframes.net>
+ * @author Marius Guede
  */
 public class ShopManagementTest {
 
@@ -48,7 +48,7 @@ public class ShopManagementTest {
 			Function function = new Function();
 
 			// the following line allow to create a sheet and add sheet's name
-			// with special characters such as [], ? # + %$¤"
+			// with special characters such as [], ? # + %$ï¿½"
 			// book.createSheet(WorkbookUtil.createSafeSheetName("?789.[]uyfa^!$#*%"));
 
 			// creates row and cell
