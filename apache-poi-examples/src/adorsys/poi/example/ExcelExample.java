@@ -19,7 +19,7 @@ import adorsys.poi.example.utils.*;
  * Generates an Excel file with two sheets and implements some calculations
  * function.
  * 
- * @author Marius Guede <mariusguede@urframes.net>
+ * @author Marius Guede
  */
 public class ExcelExample {
 
