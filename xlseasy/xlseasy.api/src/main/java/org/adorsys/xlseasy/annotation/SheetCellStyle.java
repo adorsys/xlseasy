@@ -32,4 +32,14 @@ public @interface SheetCellStyle {
 	CellAlign align() default CellAlign.GENERAL;
 
 	boolean wrapText() default false;
+	
+	/**
+	 * @author Marius Guede
+	 * adds border annotation
+	 */
+	short fontStyleBorder() default 1;
+	short fontStyleBorderTop() default 1;
+	short fontStyleBorderBottom() default 1;
+	short fontStyleBorderLeft() default 1;
+	short fontStyleBorderRight() default 1;
 }

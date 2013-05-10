@@ -114,6 +114,34 @@ public class SheetCellStyleObject implements Serializable {
 	public boolean wrapText() {
 		return wrapText;
 	}
+	
+	/**
+	 * @author Marius Guede
+	 * adds border annotation
+	 */
+	short border = 1;
+	public short fontStyleBorder() {
+		return border;
+	}
+	
+	public short fontStyleBorderTop() {
+		return border;		
+	}
+	
+	public short fontStyleBorderBottom() {
+		return border;
+	}
+	
+	public short fontStyleBorderLeft() {
+		return border;
+	}
+
+	public short fontStyleBorderRight() {
+		return border;
+	}
+	/**
+	 * border annotation: END
+	 */
 
 	@Override
 	public int hashCode() {
