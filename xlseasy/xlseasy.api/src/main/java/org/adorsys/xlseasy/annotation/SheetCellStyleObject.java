@@ -51,6 +51,7 @@ public class SheetCellStyleObject implements Serializable {
 		dataFormat = sheetCellStyle.dataFormat();
 		fontName = sheetCellStyle.fontName();
 		fontSize = sheetCellStyle.fontSize();
+		fontHeightInPoints = sheetCellStyle.fontHeightInPoints();
 		fontStyleBold = sheetCellStyle.fontStyleBold();
 		fontStyleItalic = sheetCellStyle.fontStyleItalic();
 		fontStyleStrikeout = sheetCellStyle.fontStyleStrikeout();
@@ -75,9 +76,15 @@ public class SheetCellStyleObject implements Serializable {
 	public String fontName() {
 		return fontName;
 	}
+	
 	int fontSize = -1;
 	public int fontSize() {
 		return fontSize;
+	}
+	
+	short fontHeightInPoints = (short) 12;
+	public short fontHeightInPoints() {
+		return fontHeightInPoints;
 	}
 	
 	boolean fontStyleBold = false;

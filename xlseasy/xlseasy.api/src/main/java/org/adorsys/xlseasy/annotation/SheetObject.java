@@ -6,16 +6,6 @@ import org.adorsys.xlseasy.annotation.SheetFormatter.NoneSheetFormatter;
 
 public class SheetObject implements Serializable {
 
-	String name = "";
-
-	String[] columnOrder = {};
-
-	FreezePaneObject freezePane = new FreezePaneObject();
-
-	boolean autoSizeColumns = false;
-
-	Class<? extends SheetFormatter> formatter = NoneSheetFormatter.class;
-
 	private static final long serialVersionUID = -3638106240583873540L;
 
 	public SheetObject() {
@@ -33,22 +23,36 @@ public class SheetObject implements Serializable {
 		this.name = label;
 	}
 
+	String name = "";
 	public String name() {
 		return name;
 	}
 
+	String[] columnOrder = {};
 	public String[] columnOrder() {
 		return columnOrder;
 	}
 
+	FreezePaneObject freezePane = new FreezePaneObject();
 	public FreezePaneObject freezePane() {
 		return freezePane;
 	}
 
+	boolean autoSizeColumns = false;
 	public boolean autoSizeColumns() {
 		return autoSizeColumns;
 	}
+	
+    /**
+     * @author mariusguede
+     * sheet's margin
+     * */
+	double margin = 0.25;
+	public double margin() {
+		return margin;
+	}
 
+	Class<? extends SheetFormatter> formatter = NoneSheetFormatter.class;
 	public Class<? extends SheetFormatter> formatter() {
 		return formatter;
 	}

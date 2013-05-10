@@ -18,6 +18,12 @@ public @interface Sheet {
     FreezePane freezePane() default @FreezePane;
 
     boolean autoSizeColumns() default false;
+    
+    /**
+     * @author mariusguede
+     * sheet's margin
+     * */
+    double margin() default 0.25;
 
     Class<? extends SheetFormatter> formatter() default NoneSheetFormatter.class;
 }

@@ -17,6 +17,8 @@ public @interface SheetCellStyle {
 
 	int fontSize() default -1;
 
+	short fontHeightInPoints() default (short) 12;
+	
 	boolean fontStyleBold() default false;
 
 	boolean fontStyleItalic() default false;
