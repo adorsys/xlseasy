@@ -8,7 +8,6 @@ import org.adorsys.xlseasy.annotation.ISheetSession;
  * string.
  * 
  * @author Francis Pouatcha
- *
  */
 public interface CollectionElementConverter {
 
