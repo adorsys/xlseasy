@@ -8,7 +8,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.formula.Formula;
 
 /**
- * The Class ErrorCellConverter.
+ * The Class FormulaCellConverter.
  *
  * @author Marius Guede
  */
@@ -34,9 +34,11 @@ public class FormulaCellConverter extends CellConverter {
 		
 		// sets the cell's type to Formula
 		cell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
-				
-		// sets cell's value
-		cell.setCellFormula("");
+		
+		if (cell.getCellType() == HSSFCell.CELL_TYPE_FORMULA) {			
+			// sets cell's value
+			cell.setCellFormula(cell.getCellFormula());
+		}		
 	}
 
 	/**

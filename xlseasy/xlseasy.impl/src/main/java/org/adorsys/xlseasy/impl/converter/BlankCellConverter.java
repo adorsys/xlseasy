@@ -9,7 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 
 /**
  * The Class BlankCellConverter.
- *
+ * 
  * @author Marius Guede
  */
 public class BlankCellConverter extends CellConverter {
@@ -28,15 +28,17 @@ public class BlankCellConverter extends CellConverter {
 	 * */
 	public void setHSSFCell(Object cellObject, Object value,
 			Class<?> objectType, ISheetSession<?, ?> session) {
-		
+
 		// gets the cellObject
 		HSSFCell cell = (HSSFCell) cellObject;
-		
+
 		// sets the cell's type to Blank
 		cell.setCellType(HSSFCell.CELL_TYPE_BLANK);
-				
-		// sets cell's value
-		cell.setCellValue("");
+
+		if (cell.getCellType() == HSSFCell.CELL_TYPE_BLANK) {
+			// sets cell's value
+			cell.setCellValue("");
+		}
 	}
 
 	/**
