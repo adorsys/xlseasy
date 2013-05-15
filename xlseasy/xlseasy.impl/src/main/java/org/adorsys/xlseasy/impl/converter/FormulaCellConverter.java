@@ -15,7 +15,7 @@ import org.apache.poi.ss.formula.Formula;
 public class FormulaCellConverter extends CellConverter {
 
 	/**
-	 * Gets the cell value as Error.
+	 * Gets the cell value.
 	 * */
 	public Object getDataCell(Object cellObject, Class<?> objectType,
 			ISheetSession<?, ?> session) throws SpreadsheetConverterException {
@@ -42,7 +42,7 @@ public class FormulaCellConverter extends CellConverter {
 	}
 
 	/**
-	 * Gets the converter type. In this case, String.
+	 * Gets the converter type. In this case, Formula.
 	 * */
 	@Override
 	public Class<?>[] getConveterTypes() {
