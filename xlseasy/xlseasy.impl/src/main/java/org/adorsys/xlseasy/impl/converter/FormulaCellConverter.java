@@ -37,7 +37,7 @@ public class FormulaCellConverter extends CellConverter {
 		
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_FORMULA) {			
 			// sets cell's value
-			cell.setCellFormula(cell.getCellFormula());
+			cell.setCellFormula(String.valueOf(value));
 		}		
 	}
 

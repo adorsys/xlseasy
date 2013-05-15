@@ -37,7 +37,7 @@ public class BlankCellConverter extends CellConverter {
 
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_BLANK) {
 			// sets cell's value
-			cell.setCellValue("");
+			cell.setCellValue(String.valueOf(value));
 		}
 	}
 

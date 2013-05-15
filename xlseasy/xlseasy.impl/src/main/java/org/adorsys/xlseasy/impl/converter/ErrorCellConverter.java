@@ -35,7 +35,8 @@ public class ErrorCellConverter extends CellConverter {
 		cell.setCellType(HSSFCell.CELL_TYPE_ERROR);
 				
 		// sets cell's value
-		cell.setCellValue(cell.getErrorCellValue());
+		cell.setCellErrorValue(new Byte(value.toString()));
+//		cell.setCellValue(value.toString());
 	}
 
 	/**
