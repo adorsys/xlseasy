@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.adorsys.xlseasy.annotation.SpreadsheetService;
+import org.adorsys.xlseasy.impl.converter.ErrorCellConverter;
 import org.adorsys.xlseasy.impl.proc.SpreadsheetServiceImpl;
 import org.apache.commons.lang.BooleanUtils;
 import org.junit.Test;
