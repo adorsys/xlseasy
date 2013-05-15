@@ -36,7 +36,6 @@ public class ErrorCellConverter extends CellConverter {
 				
 		// sets cell's value
 		cell.setCellErrorValue(new Byte(value.toString()));
-//		cell.setCellValue(value.toString());
 	}
 
 	/**

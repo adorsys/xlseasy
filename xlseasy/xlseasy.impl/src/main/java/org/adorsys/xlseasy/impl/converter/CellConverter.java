@@ -96,7 +96,7 @@ public abstract class CellConverter implements ICellConverter {
 	 * */
 	protected String getStringCellValue(HSSFCell cell) {
 		if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
-			// converting numbers top string results typicly in a decimal format
+			// converting numbers to string results typically in a decimal format
 			// so special handling for non floating numbers
 			DecimalFormat format = new DecimalFormat("0.##");
 			String formated = format.format(cell.getNumericCellValue());
