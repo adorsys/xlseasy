@@ -16,6 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
  * The Class CellConverter.
  *
  * @author Sandro Sonntag
+ * @author Marius Guede
  */
 public abstract class CellConverter implements ICellConverter {
 
@@ -24,17 +25,21 @@ public abstract class CellConverter implements ICellConverter {
 	private static final Map<Class<?>, ICellConverter> TYPE2CONVERTER = new HashMap<Class<?>, ICellConverter>();
 
 	static {
-		registerDefaultType(DateCellConverter.class);
-		registerDefaultType(CalendarCellConverter.class);
-		registerDefaultType(BooleanCellConverter.class);
-		registerDefaultType(ShortCellConverter.class);
-		registerDefaultType(IntegerCellConverter.class);
-		registerDefaultType(LongCellConverter.class);
-		registerDefaultType(FloatCellConverter.class);
-		registerDefaultType(DoubleCellConverter.class);
-		registerDefaultType(StringCellConverter.class);
-		registerDefaultType(EnumCellConverter.class);
 		registerDefaultType(BigDecimaCellConverter.class);
+		registerDefaultType(BlankCellConverter.class);
+		registerDefaultType(BooleanCellConverter.class);
+		registerDefaultType(CalendarCellConverter.class);
+		registerDefaultType(DateCellConverter.class);
+		registerDefaultType(DoubleCellConverter.class);
+		registerDefaultType(EnumCellConverter.class);
+		registerDefaultType(ErrorCellConverter.class);
+		registerDefaultType(FloatCellConverter.class);
+		registerDefaultType(FormulaCellConverter.class);
+		registerDefaultType(HyperlinkCellConverter.class);
+		registerDefaultType(IntegerCellConverter.class);
+		registerDefaultType(LongCellConverter.class);		
+		registerDefaultType(ShortCellConverter.class);
+		registerDefaultType(StringCellConverter.class);
 	}
 
 	/**

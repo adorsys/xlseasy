@@ -40,7 +40,7 @@ public class HyperlinkCellConverter extends CellConverter {
 		HSSFHyperlink link = new HSSFHyperlink(HSSFHyperlink.LINK_URL);
 		link.setAddress(String.valueOf(value));
 		
-		if (cell.getCellType() == HSSFCell.CELL_TYPE_STRING) {			
+		if (cell.getCellType() == HSSFCell.CELL_TYPE_STRING) {
 			// sets cell's value
 			cell.setHyperlink(link);
 		}
