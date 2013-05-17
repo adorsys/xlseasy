@@ -50,7 +50,7 @@ public class HyperlinkCellConverter extends CellConverter {
 	 * Gets the converter type. In this case, Hyperlink.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { Hyperlink.class, Serializable.class };
 	}
 }

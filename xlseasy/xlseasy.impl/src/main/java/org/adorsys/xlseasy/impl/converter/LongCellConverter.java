@@ -24,7 +24,7 @@ public class LongCellConverter extends NumberColumnConverter {
 	 * Gets the converter type. In this case, Long.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Long.class, long.class}; 
 	}
 	

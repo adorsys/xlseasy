@@ -22,7 +22,7 @@ public class ShortCellConverter extends NumberColumnConverter {
 	 * Gets the converter type. In this case, Short.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Short.class, short.class}; 
 	}	
 }

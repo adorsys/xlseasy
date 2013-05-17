@@ -26,7 +26,7 @@ public class BigDecimaCellConverter extends NumberColumnConverter {
 	 * Gets the converter's type. In this case, BigDecimal.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {BigDecimal.class}; 
 	}	
 }

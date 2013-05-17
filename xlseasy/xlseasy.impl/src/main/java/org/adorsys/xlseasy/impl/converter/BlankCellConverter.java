@@ -45,7 +45,7 @@ public class BlankCellConverter extends CellConverter {
 	 * Gets the converter type. In this case, BlankEval.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { BlankEval.class, Serializable.class };
 	}
 }

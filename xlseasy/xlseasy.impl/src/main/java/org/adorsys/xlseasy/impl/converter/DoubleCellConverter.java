@@ -22,7 +22,7 @@ public class DoubleCellConverter extends NumberColumnConverter {
 	 * Gets the converter's type. In this case, Double.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Double.class, double.class}; 
 	}	
 }

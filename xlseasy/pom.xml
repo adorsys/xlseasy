@@ -18,7 +18,6 @@
 		<module>xlseasy.api</module>
 		<module>xlseasy.impl</module>
 		<module>xlseasy.cbe</module>
-    <module>my-app</module>
   </modules>
 	<organization>
 		<name>adorsys GmbH Co. KG</name>

@@ -42,7 +42,7 @@ public class ErrorCellConverter extends CellConverter {
 	 * Gets the converter type. In this case, Error.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { Error.class, Serializable.class };
 	}
 }

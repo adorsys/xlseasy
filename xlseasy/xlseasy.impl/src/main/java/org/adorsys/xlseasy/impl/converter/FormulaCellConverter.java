@@ -45,7 +45,7 @@ public class FormulaCellConverter extends CellConverter {
 	 * Gets the converter type. In this case, Formula.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { Formula.class, Serializable.class };
 	}
 }

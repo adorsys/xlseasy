@@ -57,12 +57,12 @@ public abstract class CellConverter implements ICellConverter {
 	/**
 	 * Gets the converter's type. Must be implemented by extended classes.
 	 * */
-	public abstract Class<?>[] getConveterTypes();
+	public abstract Class<?>[] getConverterTypes();
 
 	private static void registerDefaultType(
 			Class<? extends ICellConverter> converterClazz) {
 		ICellConverter converter = getConverter(converterClazz);
-		Class<?>[] conveterTypes = converter.getConveterTypes();
+		Class<?>[] conveterTypes = converter.getConverterTypes();
 		for (int i = 0; i < conveterTypes.length; i++) {
 			TYPE2CONVERTER.put(conveterTypes[i], converter);
 		}

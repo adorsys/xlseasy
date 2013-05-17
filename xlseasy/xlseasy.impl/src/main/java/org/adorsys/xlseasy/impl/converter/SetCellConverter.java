@@ -20,7 +20,7 @@ public class SetCellConverter extends CollectionTypeConverter {
 	/**
 	 * Gets the converter's type. In this case, Set.
 	 * */
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { Set.class };
 	}
 

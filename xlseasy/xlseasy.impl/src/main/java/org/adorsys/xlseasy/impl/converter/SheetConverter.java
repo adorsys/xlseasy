@@ -30,7 +30,7 @@ public class SheetConverter implements ICellConverter,
 		this.elementType = elementType;
 	}
 
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {};
 	}
 

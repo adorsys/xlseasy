@@ -35,7 +35,7 @@ public class DateCellConverter extends CellConverter {
 	 * Gets the converter's type. In this case, Date.
 	 * */	
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Date.class}; 
 	}	
 }

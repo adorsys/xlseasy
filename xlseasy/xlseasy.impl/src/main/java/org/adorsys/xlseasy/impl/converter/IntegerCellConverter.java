@@ -24,7 +24,7 @@ public class IntegerCellConverter extends NumberColumnConverter {
 	 * Gets the converter type. In this case, Integer.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Integer.class, int.class}; 
 	}	
 }

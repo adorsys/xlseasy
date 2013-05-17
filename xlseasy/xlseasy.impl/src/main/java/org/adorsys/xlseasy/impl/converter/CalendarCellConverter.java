@@ -33,7 +33,7 @@ public class CalendarCellConverter extends CellConverter {
 	 * Gets the converter's type. In this case, Calendar.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Calendar.class}; 
 	}
 }

@@ -47,7 +47,7 @@ public class StringCellConverter extends CellConverter {
 	 * Gets the converter type. In this case, String.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { String.class, Serializable.class };
 	}
 }

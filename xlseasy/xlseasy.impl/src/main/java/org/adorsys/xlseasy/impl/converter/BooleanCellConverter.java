@@ -39,7 +39,7 @@ public class BooleanCellConverter extends CellConverter {
 	 * Gets the converter's type. In this case, Boolean.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Boolean.class, boolean.class}; 
 	}
 }

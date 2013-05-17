@@ -24,7 +24,7 @@ public class FloatCellConverter extends NumberColumnConverter {
 	 * Gets the converter type. In this case, Float.
 	 * */	
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {Float.class, float.class}; 
 	}	
 }

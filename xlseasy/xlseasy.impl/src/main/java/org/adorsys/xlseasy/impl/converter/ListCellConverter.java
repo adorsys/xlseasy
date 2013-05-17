@@ -22,7 +22,7 @@ public class ListCellConverter extends CollectionTypeConverter {
 	/**
 	 * Gets the converter type. In this case, List.
 	 * */
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] {List.class} ;
 	}
 

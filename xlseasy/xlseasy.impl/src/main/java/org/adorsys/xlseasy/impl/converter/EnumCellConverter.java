@@ -50,7 +50,7 @@ public class EnumCellConverter<E extends Enum<E>> extends CellConverter {
 	 * Gets the converter type. In this case, Enum.
 	 * */
 	@Override
-	public Class<?>[] getConveterTypes() {
+	public Class<?>[] getConverterTypes() {
 		return new Class<?>[] { Enum.class };
 	}
 }
