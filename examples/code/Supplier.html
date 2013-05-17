@@ -1,0 +1,150 @@
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#800000; font-weight:bold; '>package</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>adorsys</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>xlseasy</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>cbe</span><span style='color:#800080; '>;</span>
+
+<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> The Class Supplier.</span>
+<span style='color:#3f5fbf; '>&#xa0;*/</span>
+<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>class</span> Supplier <span style='color:#800080; '>{</span>
+
+	<span style='color:#3f5fbf; '>/** Supplier's name. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>String</span> name<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Supplier's street. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>String</span> street<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Supplier's zipcode. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>String</span> zipcode<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Supplier's city. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>String</span> city<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Supplier's VIP status. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; '>boolean</span> vip<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Instantiates a new supplier.</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> Supplier<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>super</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Instantiates a new supplier.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> name</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the name</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> street</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the street</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> zipcode</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the zipcode</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> city</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the city</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> vip</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the vip</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> Supplier<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> name<span style='color:#808030; '>,</span> <span style='color:#bb7977; font-weight:bold; '>String</span> street<span style='color:#808030; '>,</span> <span style='color:#bb7977; font-weight:bold; '>String</span> zipcode<span style='color:#808030; '>,</span> <span style='color:#bb7977; font-weight:bold; '>String</span> city<span style='color:#808030; '>,</span>
+			<span style='color:#bb7977; '>boolean</span> vip<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>super</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>name <span style='color:#808030; '>=</span> name<span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>street <span style='color:#808030; '>=</span> street<span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>zipcode <span style='color:#808030; '>=</span> zipcode<span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>city <span style='color:#808030; '>=</span> city<span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>vip <span style='color:#808030; '>=</span> vip<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the supplier's name.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the supplier's name</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>String</span> getName<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> name<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the supplier's name.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> name</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the new supplier's name</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setName<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> name<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>name <span style='color:#808030; '>=</span> name<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the supplier's street.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the supplier's street</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>String</span> getStreet<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> street<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the supplier's street.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> street</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the new supplier's street</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setStreet<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> street<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>street <span style='color:#808030; '>=</span> street<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the supplier's zipcode.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the supplier's zipcode</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>String</span> getZipcode<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> zipcode<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the supplier's zipcode.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> zipcode</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the new supplier's zipcode</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setZipcode<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> zipcode<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>zipcode <span style='color:#808030; '>=</span> zipcode<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the supplier's city.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the supplier's city</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>String</span> getCity<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> city<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the supplier's city.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> city</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the new supplier's city</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setCity<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> city<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>city <span style='color:#808030; '>=</span> city<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Checks if is supplier's VIP status.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the supplier's VIP status</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>boolean</span> isVip<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> vip<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the supplier's VIP status.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> vip</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            the new supplier's VIP status</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setVip<span style='color:#808030; '>(</span><span style='color:#bb7977; '>boolean</span> vip<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>vip <span style='color:#808030; '>=</span> vip<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span>
+</pre>

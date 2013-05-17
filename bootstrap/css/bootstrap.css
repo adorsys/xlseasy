@@ -6739,10 +6739,13 @@ button.close {
 
 /**-- xlseasy code --*/
 
-h4.tech {
+h4.tech, h4.tech-mod {
 	color: #0088cc;
 	margin-top: 20px;
 	padding-bottom: 5px;
+}
+
+h4.tech {
 	border-bottom: 1px solid #D3D3D3;
 }
 

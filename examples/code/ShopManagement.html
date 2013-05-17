@@ -1,0 +1,66 @@
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#800000; font-weight:bold; '>package</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>adorsys</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>xlseasy</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>cbe</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>util</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>ArrayList</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>util</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>List</span><span style='color:#800080; '>;</span>
+
+<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> This is the mapping of an excel file. Each collection field is an</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> excel</span><span style='color:#7f9fbf; font-weight:bold; '>-</span><span style='color:#3f5fbf; '>sheet. Non collection fields are ignored.</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Getters and setters are required. Sheet can be lists or sets.</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sheet are processed in the order of the fields. If this class extends another</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> one</span><span style='color:#7f9fbf; font-weight:bold; '>,</span><span style='color:#3f5fbf; '> sheets of this class are process first</span><span style='color:#7f9fbf; font-weight:bold; '>,</span><span style='color:#3f5fbf; '> then sheet from other classes</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> are processed.</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> In any case</span><span style='color:#7f9fbf; font-weight:bold; '>,</span><span style='color:#3f5fbf; '> the Processing Interface allow the specifications.</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@author</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>Sandro Sonntag</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@author</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>Francis Pouatcha</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;*/</span>
+<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>class</span> ShopManagement <span style='color:#800080; '>{</span>
+
+	<span style='color:#3f5fbf; '>/** Sheet products. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>Product<span style='color:#808030; '>></span> products <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ArrayList<span style='color:#808030; '>&lt;</span>Product<span style='color:#808030; '>></span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Sheet suppliers. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>Supplier<span style='color:#808030; '>></span> suppliers <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ArrayList<span style='color:#808030; '>&lt;</span>Supplier<span style='color:#808030; '>></span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the sheet products.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the sheet products</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>Product<span style='color:#808030; '>></span> getProducts<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> products<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the sheet suppliers.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> suppliers the new sheet suppliers</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setSuppliers<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>Supplier<span style='color:#808030; '>></span> suppliers<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>suppliers <span style='color:#808030; '>=</span> suppliers<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the sheet suppliers.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the sheet suppliers</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>Supplier<span style='color:#808030; '>></span> getSuppliers<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> suppliers<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the sheet products.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> products the new sheet products</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setProducts<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>Product<span style='color:#808030; '>></span> products<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>products <span style='color:#808030; '>=</span> products<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span>
+</pre>

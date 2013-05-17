@@ -1,0 +1,142 @@
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#800000; font-weight:bold; '>package</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>adorsys</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>xlseasy</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>cbe</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>util</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>Date</span><span style='color:#800080; '>;</span>
+
+<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> The Class Product.</span>
+<span style='color:#3f5fbf; '>&#xa0;*/</span>
+<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>class</span> Product <span style='color:#800080; '>{</span>
+
+	<span style='color:#3f5fbf; '>/** Product's name. */</span>
+    <span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>String</span> name<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Product's description. */</span>
+    <span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>String</span> description<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Product's amount. */</span>
+    <span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>Double</span> amount<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Product's topSeller status. */</span>
+    <span style='color:#800000; font-weight:bold; '>private</span> Boolean topSeller<span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** Product's validation date. */</span>
+    <span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; font-weight:bold; '>Date</span> validFrom<span style='color:#800080; '>;</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Instantiates a new product.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> Product<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>super</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Instantiates a new product.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> name the name</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> description the description</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> amount the amount</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> topSeller the top seller</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> validFrom the valid from</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> Product<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> name<span style='color:#808030; '>,</span> <span style='color:#bb7977; font-weight:bold; '>String</span> description<span style='color:#808030; '>,</span> <span style='color:#bb7977; font-weight:bold; '>Double</span> amount<span style='color:#808030; '>,</span>
+                   Boolean topSeller<span style='color:#808030; '>,</span> <span style='color:#bb7977; font-weight:bold; '>Date</span> validFrom<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>super</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>name <span style='color:#808030; '>=</span> name<span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>description <span style='color:#808030; '>=</span> description<span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>amount <span style='color:#808030; '>=</span> amount<span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>topSeller <span style='color:#808030; '>=</span> topSeller<span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>validFrom <span style='color:#808030; '>=</span> validFrom<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the product's name.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the product's name</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>String</span> getName<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> name<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the product's name.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> name the new product's name</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setName<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> name<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>name <span style='color:#808030; '>=</span> name<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the product's description.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the product's description</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>String</span> getDescription<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> description<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the product's description.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> description the new product's description</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setDescription<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> description<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>description <span style='color:#808030; '>=</span> description<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the product's amount.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the product's amount</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>Double</span> getAmount<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> amount<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the product's amount.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> amount the new product's amount</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setAmount<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>Double</span> amount<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>amount <span style='color:#808030; '>=</span> amount<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the product's topSeller status.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the product's topSeller status</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> Boolean getTopSeller<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> topSeller<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the product's topSeller status.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> topSeller the new product's topSeller status</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setTopSeller<span style='color:#808030; '>(</span>Boolean topSeller<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>topSeller <span style='color:#808030; '>=</span> topSeller<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Gets the product's validation date.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@return</span><span style='color:#3f5fbf; '> the product's validation date</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; font-weight:bold; '>Date</span> getValidFrom<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> validFrom<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+
+    <span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Sets the product's validation date.</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> validFrom the new product's validation date</span>
+<span style='color:#3f5fbf; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;*/</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setValidFrom<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>Date</span> validFrom<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>validFrom <span style='color:#808030; '>=</span> validFrom<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span>
+</pre>
