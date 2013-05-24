@@ -87,9 +87,10 @@ body {
 						<li class="nav-header">Examples</li>
 						<li><a href="../example.html">Examples</a>
 							<ul class="nav nav-list">
-								<li class="active"><a href="with-xlseasy.html">&raquo; with
+								<li class="active"><a href="with-xlseasy.html">&raquo;
+										with xlseasy</a></li>
+								<li><a href="without-xlseasy.html">&raquo; without
 										xlseasy</a></li>
-								<li><a href="without-xlseasy.html">&raquo; without xlseasy</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -158,6 +159,31 @@ body {
 							<div id="collapseFour" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<iframe src="code/Product.html"></iframe>
+								</div>
+							</div>
+						</div>
+						<!--/div.accordion-group  -->
+
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-parent="#accordion2" href="#collapseFive">Attached
+									Files</a>
+							</div>
+							<div id="collapseFive" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<p>
+										<a
+											href="http://github.com/adorsys/xlseasy/raw/master/xlseasy/xlseasy.cbe/src/test/resources/org/adorsys/xlseasy/cbe/management.xls">
+											management.xls </a>: the file is loaded in the method
+										<code>SpreadsheetServiceImplTest.testLoadSpreadsheet</code>
+										and the content is checked using Assert functions.
+									</p>
+									<p>
+										<a
+											href="https://github.com/adorsys/xlseasy/raw/master/xlseasy/xlseasy.cbe/target/testmana.xls">
+											tesmana.xls </a>: the file is generated in the method <code>SpreadsheetServiceImplTest.testSaveSpreadsheet</code> and contains two not-empty sheets (supplier. product).
+									</p>
 								</div>
 							</div>
 						</div>
