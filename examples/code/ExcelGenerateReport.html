@@ -1,0 +1,287 @@
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#800000; font-weight:bold; '>package</span><span style='color:#004a43; '> adorsys</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>example</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>io</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>FileOutputStream</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>text</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>DateFormat</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>text</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>SimpleDateFormat</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>util</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>Date</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFCell</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFCellStyle</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFFont</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFFooter</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFHeader</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFRow</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HeaderFooter</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFSheet</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFWorkbook</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>ss</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>IndexedColors</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>ss</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>Sheet</span><span style='color:#800080; '>;</span>
+
+<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Generates a multi</span><span style='color:#7f9fbf; font-weight:bold; '>-</span><span style='color:#3f5fbf; '>line report for any client and saves it into an Excel (.xls) file.</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>&#xa0;*/</span>
+<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>class</span> ExcelGenerateReport <span style='color:#800080; '>{</span>
+
+	<span style='color:#800000; font-weight:bold; '>private</span> HSSFCellStyle cs<span style='color:#808030; '>,</span> csBold<span style='color:#808030; '>,</span> csTop<span style='color:#808030; '>,</span> csRight<span style='color:#808030; '>,</span> csBottom<span style='color:#808030; '>,</span> csLeft<span style='color:#808030; '>,</span> csTopLeft<span style='color:#808030; '>,</span> csTopRight<span style='color:#808030; '>,</span> csBottomLeft<span style='color:#808030; '>,</span> csBottomRight<span style='color:#800080; '>;</span>
+
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> createExcel<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>try</span> <span style='color:#800080; '>{</span>
+			HSSFWorkbook wb <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> HSSFWorkbook<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			HSSFSheet sheet <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createSheet<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Excel Report"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// setup some style that we need for the cells</span>
+			setCellStyles<span style='color:#808030; '>(</span>wb<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// get current date and time</span>
+			<span style='color:#bb7977; font-weight:bold; '>Date</span> date <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#bb7977; font-weight:bold; '>Date</span><span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>System</span><span style='color:#808030; '>.</span>currentTimeMillis<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#bb7977; font-weight:bold; '>DateFormat</span> df <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#bb7977; font-weight:bold; '>SimpleDateFormat</span><span style='color:#808030; '>(</span><span style='color:#0000e6; '>"MM/dd/yy HH:mm:ss"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// set column widths</span>
+			sheet<span style='color:#808030; '>.</span>setColumnWidth<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>2500</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setColumnWidth<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>2500</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setColumnWidth<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>6000</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setColumnWidth<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>10000</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setColumnWidth<span style='color:#808030; '>(</span><span style='color:#008c00; '>4</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>3000</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// setup the page margins (top, right, bottom, left)</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>TopMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.75</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>RightMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>BottomMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.75</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>LeftMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// setup header and footer margins</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>HeaderMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>FooterMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// If you are using HSSFWorkbook() instead of XSSFWorkbook()</span>
+			<span style='color:#696969; '>// HSSFPrintSetup ps = (HSSFPrintSetup) sheet.getPrintSetup();</span>
+			<span style='color:#696969; '>// ps.setHeaderMargin((double) .25);</span>
+			<span style='color:#696969; '>// ps.setFooterMargin((double) .25);</span>
+
+			<span style='color:#696969; '>// Set Header Information</span>
+			HSSFHeader header <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>getHeader<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			header<span style='color:#808030; '>.</span>setLeft<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"*** ORIGINAL COPY ***"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			header<span style='color:#808030; '>.</span>setCenter<span style='color:#808030; '>(</span>HSSFHeader<span style='color:#808030; '>.</span>font<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Arial"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Bold"</span><span style='color:#808030; '>)</span>
+					<span style='color:#808030; '>+</span> HSSFHeader<span style='color:#808030; '>.</span>fontSize<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span><span style='color:#bb7977; '>short</span><span style='color:#808030; '>)</span> <span style='color:#008c00; '>14</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#0000e6; '>"SAMPLE ORDER"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			header<span style='color:#808030; '>.</span>setRight<span style='color:#808030; '>(</span>df<span style='color:#808030; '>.</span>format<span style='color:#808030; '>(</span>date<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// Set Footer Information with Page Numbers</span>
+			HSSFFooter footer <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>getFooter<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			footer<span style='color:#808030; '>.</span>setRight<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Page "</span> <span style='color:#808030; '>+</span> HeaderFooter<span style='color:#808030; '>.</span>page<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#0000e6; '>" of "</span>
+					<span style='color:#808030; '>+</span> HeaderFooter<span style='color:#808030; '>.</span>numPages<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#bb7977; '>int</span> rowIndex <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+			rowIndex <span style='color:#808030; '>=</span> insertHeaderInfo<span style='color:#808030; '>(</span>sheet<span style='color:#808030; '>,</span> rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			rowIndex <span style='color:#808030; '>=</span> insertDetailInfo<span style='color:#808030; '>(</span>sheet<span style='color:#808030; '>,</span> rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// Write the Excel file</span>
+			<span style='color:#bb7977; font-weight:bold; '>FileOutputStream</span> fileOut <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#bb7977; font-weight:bold; '>FileOutputStream</span><span style='color:#808030; '>(</span><span style='color:#0000e6; '>"myExcelReport.xls"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			wb<span style='color:#808030; '>.</span>write<span style='color:#808030; '>(</span>fileOut<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			fileOut<span style='color:#808030; '>.</span>close<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#800080; '>}</span> <span style='color:#800000; font-weight:bold; '>catch</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>Exception</span> e<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+			<span style='color:#bb7977; font-weight:bold; '>System</span><span style='color:#808030; '>.</span>err<span style='color:#808030; '>.</span>println<span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>getMessage<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		<span style='color:#800080; '>}</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> setCellStyles<span style='color:#808030; '>(</span>HSSFWorkbook wb<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#696969; '>// font size 12</span>
+		HSSFFont f <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createFont<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		f<span style='color:#808030; '>.</span>setFontHeightInPoints<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span><span style='color:#bb7977; '>short</span><span style='color:#808030; '>)</span> <span style='color:#008c00; '>12</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Simple style</span>
+		cs <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		cs<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Bold Fond</span>
+		HSSFFont bold <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createFont<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		bold<span style='color:#808030; '>.</span>setBoldweight<span style='color:#808030; '>(</span>HSSFFont<span style='color:#808030; '>.</span>BOLDWEIGHT_BOLD<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		bold<span style='color:#808030; '>.</span>setFontHeightInPoints<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span><span style='color:#bb7977; '>short</span><span style='color:#808030; '>)</span> <span style='color:#008c00; '>12</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Bold style</span>
+		csBold <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBold<span style='color:#808030; '>.</span>setBorderBottom<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBold<span style='color:#808030; '>.</span>setBottomBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBold<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>bold<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Top Border Line</span>
+		csTop <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTop<span style='color:#808030; '>.</span>setBorderTop<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTop<span style='color:#808030; '>.</span>setTopBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTop<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Right Border Line</span>
+		csRight <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csRight<span style='color:#808030; '>.</span>setBorderRight<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csRight<span style='color:#808030; '>.</span>setRightBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csRight<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Bottom Border Line</span>
+		csBottom <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottom<span style='color:#808030; '>.</span>setBorderBottom<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottom<span style='color:#808030; '>.</span>setBottomBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottom<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Left Border Line</span>
+		csLeft <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csLeft<span style='color:#808030; '>.</span>setBorderLeft<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csLeft<span style='color:#808030; '>.</span>setLeftBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csLeft<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Top/Left corner cell Border Lines</span>
+		csTopLeft <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopLeft<span style='color:#808030; '>.</span>setBorderTop<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopLeft<span style='color:#808030; '>.</span>setTopBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopLeft<span style='color:#808030; '>.</span>setBorderLeft<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopLeft<span style='color:#808030; '>.</span>setLeftBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopLeft<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Top/Right corner cell Border Lines</span>
+		csTopRight <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopRight<span style='color:#808030; '>.</span>setBorderTop<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopRight<span style='color:#808030; '>.</span>setTopBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopRight<span style='color:#808030; '>.</span>setBorderRight<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopRight<span style='color:#808030; '>.</span>setRightBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csTopRight<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Bottom/Left corner cell Border Lines</span>
+		csBottomLeft <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomLeft<span style='color:#808030; '>.</span>setBorderBottom<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomLeft<span style='color:#808030; '>.</span>setBottomBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomLeft<span style='color:#808030; '>.</span>setBorderLeft<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomLeft<span style='color:#808030; '>.</span>setLeftBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomLeft<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#696969; '>// Setup style for Bottom/Right corner cell Border Lines</span>
+		csBottomRight <span style='color:#808030; '>=</span> wb<span style='color:#808030; '>.</span>createCellStyle<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomRight<span style='color:#808030; '>.</span>setBorderBottom<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomRight<span style='color:#808030; '>.</span>setBottomBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomRight<span style='color:#808030; '>.</span>setBorderRight<span style='color:#808030; '>(</span>HSSFCellStyle<span style='color:#808030; '>.</span>BORDER_THIN<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomRight<span style='color:#808030; '>.</span>setRightBorderColor<span style='color:#808030; '>(</span>IndexedColors<span style='color:#808030; '>.</span>BLACK<span style='color:#808030; '>.</span>getIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		csBottomRight<span style='color:#808030; '>.</span>setFont<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+	
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>int</span> insertHeaderInfo<span style='color:#808030; '>(</span>HSSFSheet sheet<span style='color:#808030; '>,</span> <span style='color:#bb7977; '>int</span> index<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#bb7977; '>int</span> rowIndex <span style='color:#808030; '>=</span> index<span style='color:#800080; '>;</span>
+		HSSFRow row <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>null</span><span style='color:#800080; '>;</span>
+		HSSFCell c <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>null</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Customer No:"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csTopLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csTop<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"ABC"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csTopRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Order No:"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"123456"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Name:"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"ABC Customer"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Address:"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"123 Street No."</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"City, State ZIPCODE"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBottomLeft<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBottom<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"U.S.A."</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBottomRight<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		
+		rowIndex <span style='color:#808030; '>=</span> rowIndex <span style='color:#808030; '>+</span> <span style='color:#008c00; '>3</span><span style='color:#800080; '>;</span>
+		row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Line No"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBold<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Quantity"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBold<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Item No"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBold<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Description"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBold<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>4</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Price"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>csBold<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#800000; font-weight:bold; '>return</span> rowIndex<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>int</span> insertDetailInfo<span style='color:#808030; '>(</span>HSSFSheet sheet<span style='color:#808030; '>,</span> <span style='color:#bb7977; '>int</span> index<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		<span style='color:#bb7977; '>int</span> rowIndex <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+		HSSFRow row <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>null</span><span style='color:#800080; '>;</span>
+		HSSFCell c <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>null</span><span style='color:#800080; '>;</span>
+
+		<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> <span style='color:#008c00; '>35</span><span style='color:#800080; '>;</span> i<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+			rowIndex <span style='color:#808030; '>=</span> index <span style='color:#808030; '>+</span> i<span style='color:#800080; '>;</span>
+			row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>cs<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#008c00; '>10</span> <span style='color:#808030; '>+</span> i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>cs<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"ITEM"</span> <span style='color:#808030; '>+</span> i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>cs<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"My ITEM"</span> <span style='color:#808030; '>+</span> i <span style='color:#808030; '>+</span> <span style='color:#0000e6; '>" Description"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>cs<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>4</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#008000; '>1.11</span> <span style='color:#808030; '>*</span> i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			c<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>cs<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		<span style='color:#800080; '>}</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> rowIndex<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>static</span> <span style='color:#bb7977; '>void</span> main<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span><span style='color:#808030; '>[</span><span style='color:#808030; '>]</span> args<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		ExcelGenerateReport report <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ExcelGenerateReport<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		report<span style='color:#808030; '>.</span>createExcel<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span>
+</pre>

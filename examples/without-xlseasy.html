@@ -85,83 +85,90 @@ body {
 						<li><a href="../docu/xlseasy.impl/">xlseasy impl</a></li>
 
 						<li class="nav-header">Examples</li>
-						<li>
-							<a href="../example.html">Examples</a>
+						<li><a href="../example.html">Examples</a>
 							<ul class="nav nav-list">
 								<li><a href="with-xlseasy.html">&raquo; with xlseasy</a></li>
-								<li class="active"><a href="without-xlseasy.html">&raquo; without xlseasy</a></li>
-							</ul>
-						</li>							
+								<li class="active"><a href="without-xlseasy.html">&raquo;
+										without xlseasy</a></li>
+							</ul></li>
 					</ul>
 				</div>
 				<!--/.well -->
 			</div>
 			<!--/span-->
-			
+
 			<div class="span9">
 				<h3>Examples without xlseasy</h3>
 
 				<div class="alert alert-info">
-					Take a look to our <a href="http://github.com/adorsys/xlseasy/" target="_blank">GitHub
-						repository</a>.
+					Take a look to our <a href="http://github.com/adorsys/xlseasy/"
+						target="_blank">GitHub repository</a>.
 				</div>
 
 				<div class="row-fluid">
-					<div class="span4">
-						<h4>Report Generator</h4>
-						<p>Generates a multi-line report for any client and records the data into a spreadsheet.</p>
-						<p><a class="btn" href="#example-details" id="exp-1">View more &raquo;</a></p>
-					</div>
-					<!--/span-->
-					<div class="span4">
-						<h4>ShopManagementTest</h4>
-						<p>Simulates and manages purchases from a <em>virtual</em> shop and records the generated ...</p>
-						<p><a class="btn" href="#example-details" id="exp-2">View more &raquo;</a></p>
-					</div>
-					<!--/span-->
-				</div>
-				<!--/row-->
-
-
-				<a name="example-details"></a>
-				<div class="example-details" id="exp-0">
-					<h4>SpreadsheetServiceImplTest</h4>
-					<p>Loads a spreadsheet and reads the content before overriding
-						this, then records the spreadsheet.</p>
 					<p>
-						Get the code <a
-							href="http://github.com/adorsys/xlseasy/blob/master/xlseasy/xlseasy.cbe/src/test/java/org/adorsys/xlseasy/cbe/SpreadsheetServiceImplTest.java"
-							target="_blank">from GitHub</a>
+						Another way to manage your spreadsheets is to implement your
+						classes directly with <a href="http://poi.apache.org/">Apache
+							POI</a> packages. It contains between much other subcomponents:
+					<ul>
+						<li><abbr title="Horrible SpreadSheet Format">HSSF</abbr>:
+							reads and writes Microsoft Excel (XLS) format files. It can read
+							files written by Excel 97 onwards; this file format is known as
+							the BIFF 8 format.</li>
+						<li><abbr title="XML SpreadSheet Format">XSSF</abbr>: reads
+							and writes Office Open XML (XLSX) format files. Similar feature
+							set to HSSF, but for Office Open XML files.</li>
+					</ul>
+					We're particularly focused on both (POI-HSSF and POI-XSSF) because
+					they're, under the Apache POI Project, the only subcomponents (Java
+					API) to access Microsoft Excel Format Files.<br> There are
+					some testcases.
 					</p>
-				</div>
-				<!--/ example-details-->
+					<hr>
 
-				<div class="example-details" id="exp-1">
 					<h4>Report Generator</h4>
 					<p>Generates a multi-line report for any client and records the
 						data into a spreadsheet.</p>
-					<p>
-						Get the code <a
-							href="http://github.com/adorsys/xlseasy/blob/master/xlseasy-examples/src/ExcelGenerateReport.java"
-							target="_blank">from GitHub</a>
-					</p>
-				</div>
-				<!--/ example-details-->
 
-				<div class="example-details" id="exp-2">
+					<div class="accordion" id="accordion2">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-parent="#accordion2" href="#collapseOne">ExcelGenerateReport.java</a>
+							</div>
+							<div id="collapseOne" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<iframe src="code/ExcelGenerateReport.html"></iframe>
+								</div>
+							</div>
+						</div>
+						<!--/div.accordion-group  -->
+					</div>
+					<!--/div.accordion  -->
+					<hr>
+
 					<h4>ShopManagementTest</h4>
 					<p>
 						Simulates and manages purchases from a <em>virtual</em> shop and
-						records the generated data into a spreadsheet.
+						records the generated.
 					</p>
-					<p>
-						Get the code <a
-							href="http://github.com/adorsys/xlseasy/blob/master/xlseasy-examples/src/ShopManagementTest.java"
-							target="_blank">from GitHub</a>
-					</p>
+					<div class="accordion" id="accordion2">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-parent="#accordion2" href="#collapseTwo">ShopManagementTest.java</a>
+							</div>
+							<div id="collapseTwo" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<iframe src="code/ShopManagementTest.html"></iframe>
+								</div>
+							</div>
+						</div>
+						<!--/div.accordion-group  -->
+					</div>
+					<!--/div.accordion  -->
 				</div>
-				<!--/ example-details-->
-
+				<!--/row-->
 			</div>
 			<!--/span-->
 		</div>

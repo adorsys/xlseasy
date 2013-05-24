@@ -1,0 +1,327 @@
+<pre style='color:#000000;background:#ffffff;'><html><body style='color:#000000; background:#ffffff; '><pre>
+<span style='color:#800000; font-weight:bold; '>package</span><span style='color:#004a43; '> adorsys</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>example</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>io</span><span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>*</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> java</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>util</span><span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>*</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFCell</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFFont</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFRow</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFSheet</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>hssf</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>HSSFWorkbook</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> org</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>apache</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>ss</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>usermodel</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>Sheet</span><span style='color:#800080; '>;</span>
+
+<span style='color:#800000; font-weight:bold; '>import</span><span style='color:#004a43; '> adorsys</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>poi</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>example</span><span style='color:#808030; '>.</span><span style='color:#004a43; '>utils</span><span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>*</span><span style='color:#800080; '>;</span>
+
+<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Simulates the management of a shop using our implemented classes (Client</span><span style='color:#7f9fbf; font-weight:bold; '>,</span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Product</span><span style='color:#7f9fbf; font-weight:bold; '>,</span><span style='color:#3f5fbf; '> ShopManagement</span><span style='color:#7f9fbf; font-weight:bold; '>,</span><span style='color:#3f5fbf; '> MyExcelFunction).</span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>&#xa0;</span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@author</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>Marius Guede &lt;mariusguede@urframes.net></span><span style='color:#3f5fbf; '></span>
+<span style='color:#3f5fbf; '>&#xa0;*/</span>
+<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>class</span> ShopManagementTest <span style='color:#800080; '>{</span>
+
+	<span style='color:#3f5fbf; '>/** The current row index. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; '>int</span> rowIndex <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** The default alignment. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; '>short</span> defaultAlignment <span style='color:#808030; '>=</span> <span style='color:#008000; '>0x2</span><span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** The default font height in points. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#bb7977; '>short</span> defaultFontHeightInPoints <span style='color:#808030; '>=</span> <span style='color:#008c00; '>12</span><span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/** The standard name of the file to generate. */</span>
+	<span style='color:#800000; font-weight:bold; '>private</span> <span style='color:#800000; font-weight:bold; '>static</span> <span style='color:#800000; font-weight:bold; '>final</span> <span style='color:#bb7977; font-weight:bold; '>String</span> FILE_NAME <span style='color:#808030; '>=</span> <span style='color:#0000e6; '>"shopManager.xls"</span><span style='color:#800080; '>;</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> creates a spreadsheet and records data into it.</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#bb7977; '>void</span> createExcel<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+
+		<span style='color:#800000; font-weight:bold; '>try</span> <span style='color:#800080; '>{</span>
+			<span style='color:#696969; '>// creates the workbook</span>
+			HSSFWorkbook book <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> HSSFWorkbook<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates the sheet for this book</span>
+			HSSFSheet sheet <span style='color:#808030; '>=</span> book<span style='color:#808030; '>.</span>createSheet<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Shop Manager"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			
+			<span style='color:#696969; '>// We create a new Function Object.</span>
+			Function function <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Function<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// the following line allow to create a sheet and add sheet's name</span>
+			<span style='color:#696969; '>// with special characters such as [], ? # + %$¤"</span>
+			<span style='color:#696969; '>// book.createSheet(WorkbookUtil.createSafeSheetName("?789.[]uyfa^!$#*%"));</span>
+
+			<span style='color:#696969; '>// creates row and cell</span>
+			HSSFRow row<span style='color:#800080; '>;</span>
+			HSSFCell cell<span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates 3 clients</span>
+			Client client1 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Client<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Siegfried Mueller"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Bahnhofplatz 1"</span><span style='color:#808030; '>,</span>
+					<span style='color:#008c00; '>90489</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Nuremberg"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Germany"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			Client client2 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Client<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Antoine David"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Rue des Joffres 34"</span><span style='color:#808030; '>,</span>
+					<span style='color:#008c00; '>20489</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Marseille"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"France"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			Client client3 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Client<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"James Houston"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"New-Town Way 10"</span><span style='color:#808030; '>,</span>
+					<span style='color:#008c00; '>10489</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Los Angeles"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"USA"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates 3 products</span>
+			Product product1 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Product<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"ASUS 8.0"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Notebook"</span><span style='color:#808030; '>,</span> <span style='color:#008000; '>1200.0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			Product product2 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Product<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Samsung Galaxy Tab 2 10.1"</span><span style='color:#808030; '>,</span>
+					<span style='color:#0000e6; '>"Tablet"</span><span style='color:#808030; '>,</span> <span style='color:#008000; '>340.0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			Product product3 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> Product<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Seagate USB"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"USB Stick - 8GB"</span><span style='color:#808030; '>,</span>
+					<span style='color:#008000; '>6.0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates the 3 shop managers for 3 purchases</span>
+			ShopManagement manager1 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ShopManagement<span style='color:#808030; '>(</span>client1<span style='color:#808030; '>,</span> product2<span style='color:#808030; '>,</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			ShopManagement manager2 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ShopManagement<span style='color:#808030; '>(</span>client2<span style='color:#808030; '>,</span> product1<span style='color:#808030; '>,</span> <span style='color:#008c00; '>7</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			ShopManagement manager3 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ShopManagement<span style='color:#808030; '>(</span>client3<span style='color:#808030; '>,</span> product3<span style='color:#808030; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates an ArrayList of ShopManagement and saves our manager into</span>
+			<span style='color:#696969; '>// it</span>
+			<span style='color:#bb7977; font-weight:bold; '>List</span><span style='color:#808030; '>&lt;</span>ShopManagement<span style='color:#808030; '>></span> managerList <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ArrayList<span style='color:#808030; '>&lt;</span>ShopManagement<span style='color:#808030; '>></span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			managerList<span style='color:#808030; '>.</span>add<span style='color:#808030; '>(</span>manager1<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			managerList<span style='color:#808030; '>.</span>add<span style='color:#808030; '>(</span>manager2<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			managerList<span style='color:#808030; '>.</span>add<span style='color:#808030; '>(</span>manager3<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates an array to save the arrayList</span>
+			ShopManagement<span style='color:#808030; '>[</span><span style='color:#808030; '>]</span> managerListArray <span style='color:#808030; '>=</span> ShopManagement
+					<span style='color:#808030; '>.</span>ArrayList<span style='color:#808030; '>(</span>managerList<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates 2 new sheets for clients and products</span>
+			HSSFSheet sheetClients <span style='color:#808030; '>=</span> book<span style='color:#808030; '>.</span>createSheet<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Clients"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			HSSFSheet sheetProducts <span style='color:#808030; '>=</span> book<span style='color:#808030; '>.</span>createSheet<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Products"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// creates rows and cells for our new sheets</span>
+			HSSFRow rowClient<span style='color:#808030; '>,</span> rowProduct<span style='color:#800080; '>;</span>
+			HSSFCell cellClient<span style='color:#808030; '>,</span> cellProduct<span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// writes in clients sheet</span>
+			rowClient <span style='color:#808030; '>=</span> sheetClients<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			
+			
+			cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"ID"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Name"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Street"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>4</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Zipcode"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>5</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"City"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>6</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Country"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellClient<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>2</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> managerListArray<span style='color:#808030; '>.</span>length <span style='color:#808030; '>+</span> <span style='color:#008c00; '>2</span><span style='color:#800080; '>;</span> i<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				rowClient <span style='color:#808030; '>=</span> sheetClients<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				
+				cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellClient<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getId<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellClient<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getName<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellClient<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getStreet<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>4</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellClient<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getZipcode<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>5</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellClient<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getCity<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellClient <span style='color:#808030; '>=</span> rowClient<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>6</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellClient<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellClient<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getCountry<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+
+			<span style='color:#696969; '>// writes in products sheet</span>
+			rowProduct <span style='color:#808030; '>=</span> sheetProducts<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct <span style='color:#808030; '>=</span> rowProduct<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Name"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellProduct <span style='color:#808030; '>=</span> rowProduct<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Description"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			cellProduct <span style='color:#808030; '>=</span> rowProduct<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"Price"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cellProduct<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>2</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> managerListArray<span style='color:#808030; '>.</span>length <span style='color:#808030; '>+</span> <span style='color:#008c00; '>2</span><span style='color:#800080; '>;</span> i<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				rowProduct <span style='color:#808030; '>=</span> sheetProducts<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellProduct <span style='color:#808030; '>=</span> rowProduct<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellProduct<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellProduct<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getProduct<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getName<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellProduct <span style='color:#808030; '>=</span> rowProduct<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellProduct<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellProduct<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getProduct<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getDesc<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cellProduct <span style='color:#808030; '>=</span> rowProduct<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cellProduct<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cellProduct<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getProduct<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+						<span style='color:#808030; '>.</span>getPrice<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+
+			<span style='color:#696969; '>// 1st row</span>
+			rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+			row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// saves the header's title</span>
+			<span style='color:#bb7977; font-weight:bold; '>String</span><span style='color:#808030; '>[</span><span style='color:#808030; '>]</span> headerTitle <span style='color:#808030; '>=</span> <span style='color:#800080; '>{</span> <span style='color:#0000e6; '>"Client's ID"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Client"</span><span style='color:#808030; '>,</span>
+					<span style='color:#0000e6; '>"Delivery address"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Article"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Price / article"</span><span style='color:#808030; '>,</span>
+					<span style='color:#0000e6; '>"Description"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Qty"</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>"Total"</span> <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// writes header's title into the row</span>
+			<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> headerTitle<span style='color:#808030; '>.</span>length<span style='color:#800080; '>;</span> i<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span>i <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>headerTitle<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellStyle<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getMyDefaultStyle<span style='color:#808030; '>(</span>book<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+
+			<span style='color:#696969; '>// used to save the row of first, last product and the column reference with prices and compute the total price for all articles</span>
+			<span style='color:#bb7977; font-weight:bold; '>String</span> totalPriceFormular <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#bb7977; font-weight:bold; '>String</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			
+			<span style='color:#696969; '>// other rows</span>
+			<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> managerList<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span> i<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+				row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span>i <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#0000e6; '>"."</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellFont<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> HSSFFont<span style='color:#808030; '>.</span>BOLDWEIGHT_BOLD<span style='color:#808030; '>,</span>
+						defaultFontHeightInPoints<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>getId<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>getName<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getClient<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>getAddress<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>4</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getProduct<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>getName<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>5</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getProduct<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>getPrice<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>6</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>managerListArray<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>getProduct<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>getDesc<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>7</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				cell<span style='color:#808030; '>.</span>setCellValue<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getRandomIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				
+				cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>8</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>			
+				<span style='color:#696969; '>// computes the total price using the article's price and quantity</span>
+				cell<span style='color:#808030; '>.</span>setCellFormula<span style='color:#808030; '>(</span>function<span style='color:#808030; '>.</span>getCellByReference<span style='color:#808030; '>(</span>cell<span style='color:#808030; '>.</span>getRowIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>5</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#0000e6; '>"*"</span> <span style='color:#808030; '>+</span> function<span style='color:#808030; '>.</span>getCellByReference<span style='color:#808030; '>(</span>cell<span style='color:#808030; '>.</span>getRowIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>7</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				
+				
+				<span style='color:#696969; '>// gets the cell's reference of the first product</span>
+				<span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>i <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span> totalPriceFormular <span style='color:#808030; '>=</span> <span style='color:#0000e6; '>"SUM("</span> <span style='color:#808030; '>+</span> function<span style='color:#808030; '>.</span>getCellByReference<span style='color:#808030; '>(</span>cell<span style='color:#808030; '>.</span>getRowIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> cell<span style='color:#808030; '>.</span>getColumnIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				
+				<span style='color:#696969; '>// gets the cell's reference of the last product</span>
+				<span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>i <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> managerList<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span> totalPriceFormular <span style='color:#808030; '>+</span><span style='color:#808030; '>=</span> <span style='color:#0000e6; '>":"</span> <span style='color:#808030; '>+</span> function<span style='color:#808030; '>.</span>getCellByReference<span style='color:#808030; '>(</span>cell<span style='color:#808030; '>.</span>getRowIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> cell<span style='color:#808030; '>.</span>getColumnIndex<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#0000e6; '>")"</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+			rowIndex<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#800080; '>;</span>
+			
+			<span style='color:#696969; '>// sets formula</span>
+			row <span style='color:#808030; '>=</span> sheet<span style='color:#808030; '>.</span>createRow<span style='color:#808030; '>(</span>rowIndex<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cell <span style='color:#808030; '>=</span> row<span style='color:#808030; '>.</span>createCell<span style='color:#808030; '>(</span><span style='color:#008c00; '>8</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			cell<span style='color:#808030; '>.</span>setCellFormula<span style='color:#808030; '>(</span>totalPriceFormular<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			function<span style='color:#808030; '>.</span>setMyCellAlignment<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> defaultAlignment<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			function<span style='color:#808030; '>.</span>setMyCellFont<span style='color:#808030; '>(</span>book<span style='color:#808030; '>,</span> cell<span style='color:#808030; '>,</span> HSSFFont<span style='color:#808030; '>.</span>BOLDWEIGHT_BOLD<span style='color:#808030; '>,</span> defaultFontHeightInPoints<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// setups column's width</span>
+			<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> headerTitle<span style='color:#808030; '>.</span>length<span style='color:#800080; '>;</span> i<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				sheet<span style='color:#808030; '>.</span>autoSizeColumn<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				sheetClients<span style='color:#808030; '>.</span>autoSizeColumn<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+				sheetProducts<span style='color:#808030; '>.</span>autoSizeColumn<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+
+			<span style='color:#696969; '>// setups page's margin (top, right, bottom, left)</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>TopMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.75</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>RightMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>BottomMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.75</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>LeftMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// setups header and footer margins</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>HeaderMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			sheet<span style='color:#808030; '>.</span>setMargin<span style='color:#808030; '>(</span>Sheet<span style='color:#808030; '>.</span>FooterMargin<span style='color:#808030; '>,</span> <span style='color:#008000; '>0.25</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#696969; '>// records the data in a file, then making sure to close the file</span>
+			<span style='color:#bb7977; font-weight:bold; '>FileOutputStream</span> output <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>null</span><span style='color:#800080; '>;</span>
+			<span style='color:#800000; font-weight:bold; '>try</span> <span style='color:#800080; '>{</span>
+				output <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#bb7977; font-weight:bold; '>FileOutputStream</span><span style='color:#808030; '>(</span>FILE_NAME<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				<span style='color:#696969; '>// writes the workbook into the FileOutputStream</span>
+				book<span style='color:#808030; '>.</span>write<span style='color:#808030; '>(</span>output<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				<span style='color:#696969; '>// closes the FileOutputStream to avoid any other modifications</span>
+				output<span style='color:#808030; '>.</span>close<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+				<span style='color:#696969; '>// confirms the creation of the sheet through the console</span>
+				<span style='color:#bb7977; font-weight:bold; '>System</span><span style='color:#808030; '>.</span>out<span style='color:#808030; '>.</span>println<span style='color:#808030; '>(</span><span style='color:#0000e6; '>"The spreadsheet &lt;"</span> <span style='color:#808030; '>+</span> FILE_NAME
+						<span style='color:#808030; '>+</span> <span style='color:#0000e6; '>"> has been successfull created."</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+			<span style='color:#800080; '>}</span> <span style='color:#800000; font-weight:bold; '>catch</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>FileNotFoundException</span> e<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				e<span style='color:#808030; '>.</span>printStackTrace<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span> <span style='color:#800000; font-weight:bold; '>catch</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>IOException</span> e<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+				e<span style='color:#808030; '>.</span>printStackTrace<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span> <span style='color:#800000; font-weight:bold; '>finally</span> <span style='color:#800080; '>{</span>
+				<span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>output <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>null</span><span style='color:#808030; '>)</span>
+					output<span style='color:#808030; '>.</span>close<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+		<span style='color:#800080; '>}</span> <span style='color:#800000; font-weight:bold; '>catch</span> <span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>Exception</span> e<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+			e<span style='color:#808030; '>.</span>printStackTrace<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		<span style='color:#800080; '>}</span>
+	<span style='color:#800080; '>}</span>
+
+	<span style='color:#3f5fbf; '>/**</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> Create an instance of ExcelExample object and call the createExcel</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> procedure.</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '> </span><span style='color:#7f9fbf; font-weight:bold; '>@param</span><span style='color:#3f5fbf; '> args</span>
+<span style='color:#3f5fbf; '>	 </span><span style='color:#7f9fbf; font-weight:bold; '>*</span><span style='color:#3f5fbf; '>            Command line parameters. Not required in this example</span>
+<span style='color:#3f5fbf; '>	 */</span>
+	<span style='color:#800000; font-weight:bold; '>public</span> <span style='color:#800000; font-weight:bold; '>static</span> <span style='color:#bb7977; '>void</span> main<span style='color:#808030; '>(</span><span style='color:#bb7977; font-weight:bold; '>String</span> args<span style='color:#808030; '>[</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+		ShopManagementTest excel <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> ShopManagementTest<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		excel<span style='color:#808030; '>.</span>createExcel<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span>
+</pre>
