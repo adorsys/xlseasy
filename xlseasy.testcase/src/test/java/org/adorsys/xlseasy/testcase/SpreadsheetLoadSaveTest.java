@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.self;
+package org.adorsys.xlseasy.testcase;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -12,19 +12,22 @@ import java.util.List;
 
 import org.adorsys.xlseasy.annotation.SpreadsheetService;
 import org.adorsys.xlseasy.boot.SpreadSheetServiceBootStrap;
+import org.adorsys.xlseasy.testcase.model.Client;
+import org.adorsys.xlseasy.testcase.model.Product;
+import org.adorsys.xlseasy.testcase.model.User;
 import org.junit.Test;
+
+import org.adorsys.xlseasy.testcase.model.*;
 
 /**
  * The class ImpTest.
- *
- * @author Francis Pouatcha
- * @author Sandro Sonntag
+ * 
  * @author Marius Guede
  */
-public class ImplTest {
+public class SpreadsheetLoadSaveTest {
 
 	/**
-	 * Test load spreadsheet.
+	 * Loads a spreadsheet.
 	 */
 	@Test
 	public void testLoadSpreadsheet() {
@@ -42,7 +45,7 @@ public class ImplTest {
 		String managementFile = "management.xls";
 
 		// Finds the file to load in the resource.
-		InputStream managementStream = ImplTest.class
+		InputStream managementStream = SpreadsheetLoadSaveTest.class
 				.getResourceAsStream(managementFile);
 
 		// Creates a new ShopManagement and save the loaded spreadsheet into.
@@ -59,45 +62,40 @@ public class ImplTest {
 		assertEquals(3, shopManagement.getClients().size());
 		assertEquals(5, shopManagement.getUsers().size());
 
-		
 		// Saves the content of the sheet clients in a List<Client>.
 		List<Client> clients = shopManagement.getClients();
 
 		/**
-		 * Sheet: clients
-		 * Verifies the data of the first object (line)
+		 * Sheet: clients Verifies the data of the first object (line)
 		 * 
-		 * A line represents an object in this case. Each entry should exist
-		 * as a client's attribute (look file Client.java).
+		 * A line represents an object in this case. Each entry should exist as
+		 * a client's attribute (look file Client.java).
 		 * */
-		Client clientObject = new Client("Mueller", "Goethestr.", "90559", "Nuremberg", "Germany");
-		checkClient(clientObject, clients.get(0));		
+		Client clientObject = new Client("Mueller", "Goethestr.", "90559",
+				"Nuremberg", "Germany");
+		checkClient(clientObject, clients.get(0));
 
-		
 		// Saves the content of the sheet clients in a List<Product>.
 		List<Product> products = shopManagement.getProducts();
 
 		/**
-		 * Sheet: products
-		 * Verifies the data of the first object (line)
+		 * Sheet: products Verifies the data of the first object (line)
 		 * 
-		 * A line represents an object in this case. Each entry should exist
-		 * as a product's attribute (look file Product.java).
+		 * A line represents an object. Each entry should exist as a product's
+		 * attribute (look file Product.java).
 		 * */
-		Product productObject = new Product("Samsung Galaxy", "Tablet 10.1", 349.95);
+		Product productObject = new Product("Samsung Galaxy", "Tablet 10.1",
+				349.95);
 		checkProduct(productObject, products.get(0));
 
-		
 		// Saves the content of the sheet clients in a List<User>.
 		List<User> users = shopManagement.getUsers();
 
 		/**
-		 * Sheet: users
-		 * Verifies the data of the first object (line)
+		 * Sheet: users Verifies the data of the first object (line)
 		 * 
-		 * A line represents an object in this case. Each entry should exist
-		 * as attribute in the targeted class  (look file User.java).
-		 * For example
+		 * A line represents an object. Each entry should exist as attribute in
+		 * the targeted class (look file User.java). For example
 		 * */
 		User userObject = new User();
 		userObject.setPseudo("flor90");
@@ -105,57 +103,31 @@ public class ImplTest {
 		userObject.setEmail("flore@email.com");
 		userObject.setPassword("passenger");
 		checkUser(userObject, users.get(0));
-		
+
 		// It's easier to create an user like using the second constructor:
 		// user = User("flor90", "Flore", "flore@email.com", "passenger");
 		// but this constructor would increase the number of created users
-		// to 1. This would be wrong because this object is just a test 
+		// to 1. This would be wrong because this object is just a test
 		// and we won't count it with the real users
-		
+
 		/**
-		 * Now the spreadsheet has been read sheet by sheet.
-		 * You can print the content of each sheet in the console 
-		 * to make sure it matches with the content of your excel file.
+		 * Now the spreadsheet has been read sheet by sheet. You can print the
+		 * content of each sheet in the console to make sure it matches with the
+		 * content of your excel file.
 		 * 
 		 * For this, just delete the lines 123 and 148.
 		 * */
 
-		/**
-		// Prints all objects from the client's list.
-		System.out.println("### Clients ###");
-		for (int i = 0; i < shopManagement.getClients().size(); i++) {
-			System.out.print(clients.get(i).getName() + "\t");
-			System.out.println(clients.get(i).getAddress());
-		}
-
-		// Prints all objects from the product's list.
-		System.out.println("\n### Products ###");
-		for (int i = 0; i < shopManagement.getProducts().size(); i++) {
-			System.out.print(products.get(i).getName() + "\t");
-			System.out.print(products.get(i).getDescription() + "\t");
-			System.out.println(products.get(i).getPrice());
-		}
-
-		// Prints all objects from the user's list.
-		System.out.println("\n### Users ###");
-		for (int i = 0; i < shopManagement.getUsers().size(); i++) {
-			System.out.print(users.get(i).getId() + "\t");
-			System.out.print(users.get(i).getPseudo() + "\t");
-			System.out.print(users.get(i).getName() + "\t");
-			System.out.print(users.get(i).getEmail() + "\t");
-			System.out.println(users.get(i).getEncodedPassword());
-		}
-		*/
-		
 		// These lines will be printed if all tests returned true
 		System.out.println("testLoadSpreadsheet: OK");
 		System.out.println("The file has been successful loaded.\n");
 	}
 
 	/**
-	 * Test save spreadsheet.
-	 *
-	 * @throws FileNotFoundException the file not found exception
+	 * Saves a spreadsheet and then loads it.
+	 * 
+	 * @throws FileNotFoundException
+	 *             the exception
 	 */
 	@Test
 	public void testSaveSpreadsheet() throws FileNotFoundException {
@@ -172,13 +144,13 @@ public class ImplTest {
 		// Creates a new ShopManagement to load the spreadsheet.
 		ShopManagement shopManagement = new ShopManagement();
 
-		// Creates 2 clients for our test.
+		// Creates 2 clients for the test.
 		Client client1 = new Client("Adorsys", "Bartolomausstrasse", "90489",
 				"Nuremberg", "Germany");
 		Client client2 = new Client("Urframes", "Hauptstrasse", "91056",
 				"Erlangen", "Germany");
 
-		// Creates 3 products for our test.
+		// Creates 3 products for the test.
 		Product product1 = new Product("Processor", "Core Processor", 305.0);
 		Product product2 = new Product("CMS Manager", "Templates Licence", 7.5);
 		/** now we create a product without description and price */
@@ -208,7 +180,7 @@ public class ImplTest {
 		 * sheet
 		 */
 
-		// Creates a file stream to open to our file.
+		// Creates a file stream to open our file.
 		InputStream managementStream = new FileInputStream(workbookFile);
 
 		// Loads spreadsheet.
@@ -219,27 +191,30 @@ public class ImplTest {
 		// created objects. In our case, 2 clients and 3 products.
 		assertTrue(shopManagement.getClients().size() == 2);
 		assertTrue(shopManagement.getProducts().size() == 3);
-				
+
 		// Saves the content of the sheet clients in a List<Client> and tests
 		// the content of the first object.
-		List<Client> clients = shopManagement.getClients();		
+		List<Client> clients = shopManagement.getClients();
 		checkClient(client1, clients.get(0));
 
 		// Saves the content of the sheet products in a List<Product> and tests
 		// the content of the first object.
 		List<Product> products = shopManagement.getProducts();
 		checkProduct(product1, products.get(0));
-		
+
 		// These lines will be printed if all tests returned true
 		System.out.println("testSaveSpreadsheet: OK");
-		System.out.println("The file has been successful created and the content loaded (and checked).");
+		System.out
+				.println("The file has been successful created and the content loaded (and checked).");
 	}
-	
+
 	/**
 	 * Test a client.
 	 * 
-	 * @param expected the expected object
-	 * @param is the real object
+	 * @param expected
+	 *            the expected object
+	 * @param is
+	 *            the real object
 	 */
 	private void checkClient(Client expected, Client is) {
 		assertEquals(expected.getName(), is.getName());
@@ -251,9 +226,11 @@ public class ImplTest {
 
 	/**
 	 * Test a product.
-	 *
-	 * @param expected the expected object
-	 * @param is the real object
+	 * 
+	 * @param expected
+	 *            the expected object
+	 * @param is
+	 *            the real object
 	 */
 	private void checkProduct(Product expected, Product is) {
 		assertEquals(expected.getName(), is.getName());
@@ -265,9 +242,11 @@ public class ImplTest {
 
 	/**
 	 * Test an user.
-	 *
-	 * @param expected the expected object
-	 * @param is the real object
+	 * 
+	 * @param expected
+	 *            the expected object
+	 * @param is
+	 *            the real object
 	 */
 	private void checkUser(User expected, User is) {
 		assertEquals(expected.getPseudo(), is.getPseudo());

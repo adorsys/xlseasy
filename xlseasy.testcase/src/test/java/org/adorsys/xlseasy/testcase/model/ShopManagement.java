@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.self;
+package org.adorsys.xlseasy.testcase.model;
 
 import java.util.ArrayList;
 import java.util.List;

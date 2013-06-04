@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.self;
+package org.adorsys.xlseasy.testcase.model;
 
 /**
  * The Class Client.

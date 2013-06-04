@@ -1,4 +1,4 @@
-package org.adorsys.xlseasy.self;
+package org.adorsys.xlseasy.testcase.model;
 
 /**
  * The class User.
@@ -140,11 +140,11 @@ public class User {
 	}
 
 	/**
-	 * Gets encoded the user's password.
+	 * Encodes the user's password.
 	 *
 	 * @return the encoded password
 	 */
-	public String getEncodedPassword() {
+	public String encodedPassword() {
 		String tmp = new String();
 		for (int i = 0; i < password.length(); i++) {
 			tmp += "*";
