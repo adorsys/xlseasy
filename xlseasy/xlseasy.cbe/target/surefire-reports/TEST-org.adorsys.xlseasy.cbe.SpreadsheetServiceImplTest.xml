@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.463" errors="0" skipped="0" tests="2" name="org.adorsys.xlseasy.cbe.SpreadsheetServiceImplTest">
+<testsuite failures="1" time="0.629" errors="0" skipped="0" tests="2" name="org.adorsys.xlseasy.cbe.SpreadsheetServiceImplTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries"/>
@@ -22,7 +22,7 @@
     <property name="basedir" value="/Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe"/>
     <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefirebooter2678729557226350036.jar"/>
+    <property name="surefire.real.class.path" value="/Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefirebooter1553688659897348355.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/zg/zdzp7cnn25jbf4s1ds3clfqh0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -46,7 +46,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"/>
-    <property name="sun.java.command" value="/Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefirebooter2678729557226350036.jar /Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefire7003229232371708884tmp /Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefire3903531712317882308tmp"/>
+    <property name="sun.java.command" value="/Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefirebooter1553688659897348355.jar /Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefire3250465156672599125tmp /Users/mariusguede/xlseasy/xlseasy/xlseasy.cbe/target/surefire/surefire4261128235621322913tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="apple.awt.CToolkit"/>
@@ -65,7 +65,7 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.391" classname="org.adorsys.xlseasy.cbe.SpreadsheetServiceImplTest" name="testLoadSpreadsheet">
+  <testcase time="0.555" classname="org.adorsys.xlseasy.cbe.SpreadsheetServiceImplTest" name="testLoadSpreadsheet">
     <failure message="expected:&lt;flater&gt; but was:&lt;null&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;flater&gt; but was:&lt;null&gt;
 	at org.junit.Assert.fail(Assert.java:74)
 	at org.junit.Assert.failNotEquals(Assert.java:448)
@@ -111,5 +111,5 @@
 log4j:WARN Please initialize the log4j system properly.
 </system-err>
   </testcase>
-  <testcase time="0.036" classname="org.adorsys.xlseasy.cbe.SpreadsheetServiceImplTest" name="testSaveSpreadsheet"/>
+  <testcase time="0.041" classname="org.adorsys.xlseasy.cbe.SpreadsheetServiceImplTest" name="testSaveSpreadsheet"/>
 </testsuite>

@@ -50,7 +50,7 @@ public abstract class XlseasyUtils {
 		
 		// just gather all fields that are collections.
 		CollectionFieldCallback collectingFieldCallback = new CollectionFieldCallback();
-		ReflectionUtils.doWithFields(clazz, collectingFieldCallback,compositeFieldFilter);
+		ReflectionUtils.doWithFields(clazz, collectingFieldCallback, compositeFieldFilter);
 
 		return collectingFieldCallback.getFields();
 	}	
