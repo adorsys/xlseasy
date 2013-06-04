@@ -36,7 +36,7 @@ public class LoadSpreadsheetWithErrorTest {
 		// The file to load.
 		String managementFile = "loadWithErrorTest.xls";
 
-		// Finds the file to load in the resource.
+		// Gets the file to load in the resource.
 		InputStream managementStream = LoadSpreadsheetWithErrorTest.class
 				.getResourceAsStream(managementFile);
 
@@ -72,24 +72,25 @@ public class LoadSpreadsheetWithErrorTest {
 		while (clientIter.hasNext()) {
 			Client current = clientIter.next();
 			System.out.println(current.getName() + ":  " + current.getAddress());
+			if (!clientIter.hasNext()) System.out.println();
 		}
-		System.out.println();
 		
 		// prints products
 		while (productIter.hasNext()) {
 			Product current = productIter.next();
 			System.out.println(current.getName() + ": " + current.getDescription() + " : " + current.getPrice());
+			if (!productIter.hasNext()) System.out.println();
 		}
-		System.out.println();
 		
 		// prints users
 		while (userIter.hasNext()) {
 			User current = userIter.next();
-			System.out.println(current.getId() + ": " + current.getName() + "<" + current.getEmail() + ">, " + current.getPseudo() + ", " + current.getPassword());
+			System.out.println(current.getId() + ": " + current.getName() + "<" + current.getEmail() + ">, " + current.getPseudo() + ", " + current.encodedPassword());
+			if (!userIter.hasNext()) System.out.println();
 		}
 
 		// These lines will be printed if all tests returned true
-//		System.out.println("testLoadSpreadsheet: OK");
-//		System.out.println("The file has been successful loaded.\n");
+		System.out.println("testLoadSpreadsheet: OK");
+		System.out.println("The file has been successful loaded.\n");
 	}
 }

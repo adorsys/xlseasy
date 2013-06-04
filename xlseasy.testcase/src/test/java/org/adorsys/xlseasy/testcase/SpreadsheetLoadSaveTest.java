@@ -16,7 +16,7 @@ import org.adorsys.xlseasy.testcase.model.*;
 import org.junit.Test;
 
 /**
- * The class ImpTest.
+ * The class SpreadsheetLoadSaveTest.
  * 
  * @author Marius Guede
  */
