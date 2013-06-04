@@ -12,12 +12,8 @@ import java.util.List;
 
 import org.adorsys.xlseasy.annotation.SpreadsheetService;
 import org.adorsys.xlseasy.boot.SpreadSheetServiceBootStrap;
-import org.adorsys.xlseasy.testcase.model.Client;
-import org.adorsys.xlseasy.testcase.model.Product;
-import org.adorsys.xlseasy.testcase.model.User;
-import org.junit.Test;
-
 import org.adorsys.xlseasy.testcase.model.*;
+import org.junit.Test;
 
 /**
  * The class ImpTest.
@@ -103,12 +99,6 @@ public class SpreadsheetLoadSaveTest {
 		userObject.setEmail("flore@email.com");
 		userObject.setPassword("passenger");
 		checkUser(userObject, users.get(0));
-
-		// It's easier to create an user like using the second constructor:
-		// user = User("flor90", "Flore", "flore@email.com", "passenger");
-		// but this constructor would increase the number of created users
-		// to 1. This would be wrong because this object is just a test
-		// and we won't count it with the real users
 
 		/**
 		 * Now the spreadsheet has been read sheet by sheet. You can print the
