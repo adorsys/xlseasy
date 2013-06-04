@@ -69,30 +69,16 @@ public class WorkBookSheet<T> {
 	/**
 	 * TODO Marius Guede
 	 * 
-	 * Makes the method getField(...) case insensitive. It should look for a
-	 * field
+	 * Makes the method getField(...) case insensitive. Must be helpful to
+	 * compare case insensitive the fields from class and workbook sheet.
 	 */
 	public Field getField(String fieldName) {
 		List<Field> fieldOrder2 = fieldOrder;
 		for (Field field : fieldOrder2) {
 			// if (fieldName.equals(field.getName()))
-			if (toLowerCase(fieldName).equals(toLowerCase(field.getName())))
+			if (fieldName.toLowerCase().equals(field.getName().toLowerCase()))
 				return field;
 		}
 		return null;
-	}
-
-	/**
-	 * Converts a String to lower case. Must be helpful to compare case
-	 * insensitive the fields from class and workbook sheet.
-	 * 
-	 * @author Marius Guede
-	 */
-	public String toLowerCase(String fieldName) {
-		String convertedFieldName = new String();
-		for (int i = 0; i < fieldName.length(); i++) {
-			convertedFieldName += Character.toLowerCase(fieldName.charAt(i));
-		}
-		return convertedFieldName;
 	}
 }
