@@ -306,15 +306,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             int i = 0;
             for (Object object : sheetData) {
                 HSSFRow row = sheet.createRow(i + 1);
-                fillRow(session, row, object);
-                
-                // creates margin to row
-                if (getSheet().marged()) {
-                	sheet.setMargin(HSSFSheet.TopMargin, getSheet().margin());
-                	sheet.setMargin(HSSFSheet.LeftMargin, getSheet().margin());
-                	sheet.setMargin(HSSFSheet.RightMargin, getSheet().margin());
-                	sheet.setMargin(HSSFSheet.BottomMargin, getSheet().margin());
-                }
+                fillRow(session, row, object);                
                 i++;
             }
         }
@@ -358,6 +350,14 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             HSSFCell cell = row.createCell(i);
             columnDesc.copyBeanPropertyValueToCell(bean, cell, session);
             columnDesc.formatDataCell(session, cell);
+            
+            // creates margin for not blank cells
+            if (row.getCell(i).getCellType() != HSSFCell.CELL_TYPE_BLANK) {
+                row.getSheet().setMargin(HSSFSheet.TopMargin, getSheet().margin());
+                row.getSheet().setMargin(HSSFSheet.LeftMargin, getSheet().margin());
+                row.getSheet().setMargin(HSSFSheet.RightMargin, getSheet().margin());
+                row.getSheet().setMargin(HSSFSheet.BottomMargin, getSheet().margin());            	
+            }            
         }
     }
 

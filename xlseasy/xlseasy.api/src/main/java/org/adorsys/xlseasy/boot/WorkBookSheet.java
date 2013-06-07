@@ -67,10 +67,10 @@ public class WorkBookSheet<T> {
 	}
 
 	/**
-	 * TODO Marius Guede
-	 * 
 	 * Makes the method getField(...) case insensitive. Must be helpful to
 	 * compare case insensitive the fields from class and workbook sheet.
+	 * 
+	 * @author Marius Guede
 	 */
 	public Field getField(String fieldName) {
 		List<Field> fieldOrder2 = fieldOrder;
