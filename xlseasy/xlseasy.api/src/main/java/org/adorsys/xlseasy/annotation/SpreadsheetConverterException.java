@@ -14,9 +14,9 @@ public class SpreadsheetConverterException extends Exception {
 	
 	/** Instantiates a new spreadsheet converter exception. */
 	public SpreadsheetConverterException(ErrorCodeSheet code, Throwable cause, Map<String, Object> values) {
-		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
+		this.errorCode = (code == null) ? ErrorCodeSheet.UNKNOWN : code;
 		this.cause = cause;
-		this.values = values == null ? new HashMap<String, Object>() : values;
+		this.values = (values == null) ? new HashMap<String, Object>() : values;
 	}
 
 	/** Instantiates a new spreadsheet converter exception. */

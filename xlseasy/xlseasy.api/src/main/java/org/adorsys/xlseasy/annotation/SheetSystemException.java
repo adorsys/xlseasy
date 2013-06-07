@@ -14,9 +14,9 @@ public class SheetSystemException extends RuntimeException {
 	
 	/** Instantiates a new sheet system exception. */
 	public SheetSystemException(ErrorCodeSheet code, Throwable cause, Map<String, Object> values) {
-		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
+		this.errorCode = (code == null) ? ErrorCodeSheet.UNKNOWN : code;
 		this.cause = cause;
-		this.values = values == null ? new HashMap<String, Object>() : values;
+		this.values = (values == null) ? new HashMap<String, Object>() : values;
 	}
 
 	/** Instantiates a new sheet system exception. */

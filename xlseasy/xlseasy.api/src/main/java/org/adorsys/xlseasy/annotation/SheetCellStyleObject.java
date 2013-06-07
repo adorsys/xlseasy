@@ -8,41 +8,45 @@ import java.util.Map;
  * Object implementing the same interface like a sheet cell's type
  * 
  * @author Francis Pouatcha
- *
+ * 
  */
 public class SheetCellStyleObject implements Serializable {
-	
+
 	private static final long serialVersionUID = 2771798134138583609L;
 
 	private static SheetCellStyleObject defaultInstance = new SheetCellStyleObject();
 	private static Map<SheetCellStyleObject, SheetCellStyleObject> singletons = new HashMap<SheetCellStyleObject, SheetCellStyleObject>();
-	
-	static{
+
+	static {
 		singletons.put(defaultInstance, defaultInstance);
 	}
-	
-	public static SheetCellStyleObject newInstance(SheetCellStyle sheetCellStyle){
-		if(sheetCellStyle==null) return defaultInstance;
+
+	public static SheetCellStyleObject newInstance(SheetCellStyle sheetCellStyle) {
+		if (sheetCellStyle == null)
+			return defaultInstance;
 		SheetCellStyleObject trans = new SheetCellStyleObject(sheetCellStyle);
 		return resolveSingleton(trans);
 	}
-	
-	public static SheetCellStyleObject newInstance(String dataFormat, boolean fontStyleBold){
+
+	public static SheetCellStyleObject newInstance(String dataFormat,
+			boolean fontStyleBold) {
 		SheetCellStyleObject sheetCellStyleObject = new SheetCellStyleObject();
 		sheetCellStyleObject.fontStyleBold = fontStyleBold;
-		if(dataFormat!=null) sheetCellStyleObject.dataFormat=dataFormat;
+		if (dataFormat != null)
+			sheetCellStyleObject.dataFormat = dataFormat;
 		return resolveSingleton(sheetCellStyleObject);
 	}
-	
-	private static SheetCellStyleObject resolveSingleton(SheetCellStyleObject trans){
-		if(singletons.containsKey(trans)) {
+
+	private static SheetCellStyleObject resolveSingleton(
+			SheetCellStyleObject trans) {
+		if (singletons.containsKey(trans)) {
 			return singletons.get(trans);
 		} else {
 			singletons.put(trans, trans);
 			return trans;
 		}
 	}
-	
+
 	private SheetCellStyleObject() {
 		super();
 	}
@@ -64,97 +68,114 @@ public class SheetCellStyleObject implements Serializable {
 		borderTop = sheetCellStyle.fontStyleBorderTop();
 		borderBottom = sheetCellStyle.fontStyleBorderBottom();
 		borderLeft = sheetCellStyle.fontStyleBorderLeft();
-		borderRight = sheetCellStyle.fontStyleBorderRight();		
+		borderRight = sheetCellStyle.fontStyleBorderRight();
 	}
 
 	private String dataFormat = "";
-	public String dataFormat(){
+
+	public String dataFormat() {
 		return dataFormat;
 	}
 
 	String fontName = "";
+
 	public String fontName() {
 		return fontName;
 	}
-	
+
 	int fontSize = -1;
+
 	public int fontSize() {
 		return fontSize;
 	}
-	
+
 	short fontHeightInPoints = (short) 12;
+
 	public short fontHeightInPoints() {
 		return fontHeightInPoints;
 	}
-	
+
 	boolean fontStyleBold = false;
-	public boolean fontStyleBold(){
+
+	public boolean fontStyleBold() {
 		return fontStyleBold;
 	}
-	
+
 	boolean fontStyleItalic = false;
-	public boolean fontStyleItalic(){
+
+	public boolean fontStyleItalic() {
 		return fontStyleItalic;
 	}
-	
+
 	boolean fontStyleStrikeout = false;
+
 	public boolean fontStyleStrikeout() {
 		return fontStyleStrikeout;
 	}
-	
+
 	boolean fontStyleUnderline = false;
+
 	public boolean fontStyleUnderline() {
 		return fontStyleUnderline;
 	}
-	
+
 	short fontColor = -1;
+
 	public short fontColor() {
 		return fontColor;
 	}
-	
+
 	short backgroundColor = -1;
-	public short backgroundColor(){
+
+	public short backgroundColor() {
 		return backgroundColor;
 	}
-	
+
 	CellAlign align = CellAlign.GENERAL;
+
 	public CellAlign align() {
 		return align;
 	}
-	
+
 	boolean wrapText = false;
+
 	public boolean wrapText() {
 		return wrapText;
 	}
-	
+
 	/**
-	 * @author Marius Guede
-	 * border annotation
+	 * @author Marius Guede border annotation
 	 */
 	short border = 1;
+
 	public short fontStyleBorder() {
 		return border;
 	}
-	
+
 	short borderTop = 1;
+
 	public short fontStyleBorderTop() {
-		return border;		
+		return border;
 	}
-	
+
 	short borderBottom = 1;
+
 	public short fontStyleBorderBottom() {
 		return border;
 	}
-	
+
 	short borderLeft = 1;
+
 	public short fontStyleBorderLeft() {
 		return border;
 	}
 
 	short borderRight = 1;
+
 	public short fontStyleBorderRight() {
 		return border;
 	}
+
 	/**
 	 * border annotation: END
 	 */
@@ -216,10 +237,11 @@ public class SheetCellStyleObject implements Serializable {
 			return false;
 		if (wrapText != other.wrapText)
 			return false;
-		
+
 		/**
+		 * checks border properties
+		 * 
 		 * @author Marius Guede
-		 * checkes border properties
 		 * */
 		if (border != other.border)
 			return false;

@@ -71,7 +71,9 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
         } else {
             throw new SheetSystemException(ErrorCodeSheet.CLASS_HAS_NO_SHEET_ANNOTATION).addValue("class", recordClass);
         }
+        
         this.workbookProperty = workbookProperty;
+        
         if (label != null) {
             this.label = label;
         } else if (workbookProperty != null) {
@@ -79,6 +81,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
         } else {
             this.label = recordClass.getCanonicalName();
         }
+        
         this.keyGenerator = new KeyGenerator(recordClass);
         initColumnDescs();
     }
@@ -168,9 +171,6 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     /**
      * Loads the headers found in the sheet.
-     *
-     * @param sheet
-     * @return
      */
     private List<ColumnDesc> loadXlsHeader(HSSFSheet sheet) {
         List<ColumnDesc> columnDescs = new ArrayList<ColumnDesc>();
@@ -217,12 +217,15 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             while (cellIterator.hasNext()) {
                 HSSFCell cell = (HSSFCell) cellIterator.next();
                 int index = cell.getColumnIndex();
+                
                 if (loadXlsHeaderSize <= index) {
                     break;// No additional column descriptor, so no need to continue.
                 }
+                
                 ColumnDesc columnDesc = loadXlsHeader.get(index);
+                
                 if (columnDesc != null) {
-                    //if no columndesc for index then skip this column
+                    // if no column desc for index then skip this column
                     columnDesc.copyCellValueToBean(record, cell, session);
                 }
             }
@@ -325,9 +328,11 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
         int index = 0;
         for (ColumnDesc c : columnOrder) {
             Sheet sheetAnnotation = c.getType().getAnnotation(Sheet.class);
+            
             if (sheetAnnotation != null) {
                 SheetDesc<?, WT> sheetDesc = (SheetDesc<?, WT>) workbook.getSheet(c.getType());
                 String keyColumnName = sheetDesc.keyGenerator.getKeyColumnName();
+                
                 if (keyColumnName != null) {
                     ColumnDesc refrerencedKeyColumn = sheetDesc.getColumnDescForPropertyName(keyColumnName);
                     String from = new CellReference(sheetDesc.getLabel(), 1, refrerencedKeyColumn.getColumnIndex(), true, true).formatAsString();

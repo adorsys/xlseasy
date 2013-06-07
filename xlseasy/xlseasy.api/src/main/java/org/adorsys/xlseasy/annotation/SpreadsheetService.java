@@ -7,12 +7,6 @@ import java.util.List;
 
 public interface SpreadsheetService {
 	
-	/**
-	 * TODO
-	 * 
-	 * Where is the implementation of this method?
-	 * I'll like to see the way the fields from file and class are compared.
-	 * */
 	public <WT> WT loadSpreadsheet(InputStream xlsStream, Class<WT> clazz);
 	
 	public <RT> List<RT> loadSpreadsheetRecords(InputStream xlsStream, Class<RT> clazz);

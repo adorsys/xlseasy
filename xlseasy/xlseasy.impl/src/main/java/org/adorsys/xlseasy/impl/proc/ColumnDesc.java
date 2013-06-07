@@ -71,7 +71,7 @@ public class ColumnDesc implements ColumnDescIF {
 		this.annoSheetHeaderStyle = (annoSheetColumn != null) ? annoSheetColumn.headerStyle() : null;
 		this.propertyName = pd.getName();
 		
-		String columnName = annoSheetColumn != null ? annoSheetColumn
+		String columnName = (annoSheetColumn != null) ? annoSheetColumn
 				.columnName()
 				: "";
 		if (!"".equals(columnName)) {
@@ -85,6 +85,7 @@ public class ColumnDesc implements ColumnDescIF {
 			 */
 			this.xlsColumnLabel = convertPropertyNameToColumnName(propertyName);
 		}
+		
 		this.type = pd.getPropertyType();
 		if (annoSheetColumn.converter() != null && annoSheetColumn.converter() != Object.class) {
 			if (CellConverter.class.isAssignableFrom(annoSheetColumn.converter())) {
