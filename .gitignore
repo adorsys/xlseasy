@@ -11,6 +11,9 @@
 .project
 .settings
 
+# Test File #
+test.html
+
 # Directories #
 RemoteSystemsTempFiles/
 bin/
