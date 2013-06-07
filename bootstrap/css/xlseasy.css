@@ -1,0 +1,91 @@
+/*!
+ * xlseasy.css
+ * Copyright Adorsys GmbH & Co. KG 2013
+ */
+h4.tech, h4.tech-mod {
+	color: #0088cc;
+	margin-top: 20px;
+	padding-bottom: 5px;
+}
+
+h4.tech {
+	border-bottom: 1px solid #D3D3D3;
+}
+
+div.info {
+	text-align: justify;
+}
+
+div.info h3 {
+	padding-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #D3D3D3;
+}
+
+div.info h4 {
+	padding-bottom: 10px;
+}
+
+div.info pre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 20px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	max-height: 700px;
+	min-height: 450px;
+	border : 1px solid #e3e3e3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	border: 1px solid #e3e3e3;
+}
+
+img.adorsys-logo {
+	width: 100px;
+	height: 40px;
+	border: none;
+	cursor: pointer;
+	padding-left: 10px;
+}
+
+div.example-details {
+	display: none;
+	margin: 20px 0px 20px 0px;
+	
+	padding: 20px;
+	/*
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	*/
+	color: inherit;
+	background-color: #eeeeee;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+div.example-details h4 {
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e3e3e3;
+}

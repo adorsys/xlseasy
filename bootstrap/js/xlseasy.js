@@ -45,4 +45,7 @@ $(document).ready(function() {
 		}
 		return true;
 	});
+	
+	// completes <footer> tag with copyright
+	$('footer').html('<p>&copy; adorsys GmbH & Co. KG 2013</p>');
 });
