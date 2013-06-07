@@ -280,10 +280,15 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             ColumnDesc columnDesc = columnDescs.get(i);
             columnDesc.setHeaderLabel(cell, session);
             columnDesc.formatHeaderCell(session, cell);
-            if (getSheet() != null && getSheet().autoSizeColumns()) {
-                sheet.autoSizeColumn((short) i);
-                // sets header margin
-                sheet.setMargin(HSSFSheet.HeaderMargin, 0.25);
+            
+            if (getSheet() != null && (getSheet().autoSizeColumns() || getSheet().marged())) {
+            	if (getSheet().autoSizeColumns()) {
+                    // sets autoSizeColumn
+                    sheet.autoSizeColumn((short) i);            		
+            	} else {
+            		// sets header margin
+            		sheet.setMargin(HSSFSheet.HeaderMargin, getSheet().margin());
+            	}
             }
         }
         FreezePaneObject freezePane = getSheet().freezePane();
@@ -299,6 +304,14 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             for (Object object : sheetData) {
                 HSSFRow row = sheet.createRow(i + 1);
                 fillRow(session, row, object);
+                
+                // creates margin to row
+                if (getSheet().marged()) {
+                	sheet.setMargin(HSSFSheet.TopMargin, getSheet().margin());
+                	sheet.setMargin(HSSFSheet.LeftMargin, getSheet().margin());
+                	sheet.setMargin(HSSFSheet.RightMargin, getSheet().margin());
+                	sheet.setMargin(HSSFSheet.BottomMargin, getSheet().margin());
+                }
                 i++;
             }
         }

@@ -39,16 +39,17 @@ public class SheetObject implements Serializable {
 		return freezePane;
 	}
 
-	boolean autoSizeColumns = false;
+	boolean autoSizeColumns = true;
 	public boolean autoSizeColumns() {
 		return autoSizeColumns;
 	}
 	
     /**
-     * @author mariusguede
-     * sheet's margin
+     * Sheet's margin
+     * 
+     * @author Marius Guede
      * */
-	boolean marged = false;
+	boolean marged = true;
 	public boolean marged() {
 		return marged;
 	}

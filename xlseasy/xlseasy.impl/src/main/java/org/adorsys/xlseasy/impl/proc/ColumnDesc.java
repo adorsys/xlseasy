@@ -241,7 +241,7 @@ public class ColumnDesc implements ColumnDescIF {
 			WorkbookStyle cachedStyle = session.getWorkbookStyle(annoSheetColumn, annoSheetColumn.headerStyle());
 			cachedStyle.applyFormat(cell);
 			if (StringUtils.isNotEmpty(annoSheetColumn.headerComment())) {
-				// TODO set comment
+				// TODO sets comment
 			}
 		}
 	}

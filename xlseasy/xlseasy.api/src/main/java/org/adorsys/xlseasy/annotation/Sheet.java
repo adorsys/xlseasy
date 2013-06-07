@@ -17,16 +17,20 @@ public @interface Sheet {
 
     FreezePane freezePane() default @FreezePane;
 
-    boolean autoSizeColumns() default false;
-    
-    Class<? extends SheetFormatter> formatter() default NoneSheetFormatter.class;
+    /**
+     * I changed the default value from FALSE to TRUE.
+     * 
+     * @author Marius Guede
+     * */
+    boolean autoSizeColumns() default true;
     
     /**
      * Sets sheet's margin
      * 
      * @author Marius Guede
-     * */    
-    boolean marged() default false;
-    
+     * */
+    boolean marged() default true;
     double margin() default 0.25;
+    
+    Class<? extends SheetFormatter> formatter() default NoneSheetFormatter.class;
 }
