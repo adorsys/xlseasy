@@ -18,45 +18,39 @@ import adorsys.poi.example.utils.*;
 /**
  * Generates an Excel file with two sheets and implements some calculations
  * function.
- * 
- * @author Marius Guede
  */
 public class ExcelExample {
 
-	private int rowIndex = 0;
-	private int cellIndex = 1;
-	private short defaultAlignment = 0x2;
-	private short defaultFontHeightInPoints = 12;
-	private static final String FILE_NAME = "excelExample.xls";
-
 	/**
-	 * 
-	 * Creates a workbook, 2 sheets, rows and cells in this order. Then it
-	 * records the data into the FILE_NAME.
-	 * 
+	 * Creates a workbook, 2 sheets, rows and cells in this order. Then records
+	 * the data into the file.
 	 */
 	public void createExcel() {
 
 		try {
-			// creates the workbook.
-			// If we'd like to load a book from a file we
-			// should write something like this: new HSSFWorkbook(new
-			// FileInputStream(file))
+			// creates a workbook.
+			// To load a workbook we should write something like this:
+			// HSSFWorkbook book = new HSSFWorkbook(new FileInputStream(<filename>))
 			HSSFWorkbook book = new HSSFWorkbook();
 
-			// creates the sheet for this book
-			HSSFSheet sheet1 = book.createSheet("1st Sheet");
-			HSSFSheet sheet2 = book.createSheet("2nd Sheet");
+			// creates 2 sheets for this workbook
+			HSSFSheet sheet1 = book.createSheet("Sheet 1");
+			HSSFSheet sheet2 = book.createSheet("Sheet 2");
 
-			// creates rows and cells and set their values.
-			HSSFRow row;
-			HSSFCell cell;
+			// creates one row and one cell
+			HSSFRow row = null;
+			HSSFCell cell = null;
 
-			// creates a new Function Object.
+			// sets default values
+			int rowIndex = 0;
+			int cellIndex = 1;
+			short defaultAlignment = 0x2;
+			short defaultFontHeightInPoints = 12;
+
+			// creates a new object of type Function.
 			Function function = new Function();
 
 			// 1st row
-			rowIndex++;
 			row = sheet1.createRow(rowIndex);
 			cell = row.createCell(1);
 			cell.setCellValue("Client's name");
@@ -305,7 +299,7 @@ public class ExcelExample {
 			// the file
 			FileOutputStream output = null;
 			try {
-				output = new FileOutputStream(FILE_NAME);
+				output = new FileOutputStream("excelExample.xls");
 				book.write(output);
 				output.close();
 

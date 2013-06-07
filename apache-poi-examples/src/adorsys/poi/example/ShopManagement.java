@@ -3,11 +3,7 @@ package adorsys.poi.example;
 import java.util.List;
 import java.util.Iterator;
 
-/**
- * The Class ShopManagement.
- *
- * @author Marius Guede <mariusguede@urframes.net>
- */
+/** The Class ShopManagement. */
 public class ShopManagement {
 	
 	/** The product. */
@@ -28,10 +24,6 @@ public class ShopManagement {
 	
 	/**
 	 * Instantiates a new ShopManagement object.
-	 *
-	 * @param client the client
-	 * @param product the product
-	 * @param numberOfProducts the number of products
 	 */
 	public ShopManagement(Client client, Product product, Integer numberOfProducts) {
 		super();
@@ -42,8 +34,6 @@ public class ShopManagement {
 	
 	/**
 	 * Gets the price for this number of products.
-	 *
-	 * @return the price for number of products
 	 */
 	public Double getPriceForNumberOfProducts() {
 		return product.getPrice() * numberOfProducts;
@@ -51,8 +41,6 @@ public class ShopManagement {
 
 	/**
 	 * Gets the product.
-	 *
-	 * @return the product
 	 */
 	public Product getProduct() {
 		return product;
@@ -60,8 +48,6 @@ public class ShopManagement {
 
 	/**
 	 * Sets the product.
-	 *
-	 * @param product the new product
 	 */
 	public void setProduct(Product product) {
 		this.product = product;
@@ -69,8 +55,6 @@ public class ShopManagement {
 
 	/**
 	 * Gets the client.
-	 *
-	 * @return the client
 	 */
 	public Client getClient() {
 		return client;
@@ -78,18 +62,13 @@ public class ShopManagement {
 
 	/**
 	 * Sets the client.
-	 *
-	 * @param client the new client
 	 */
 	public void setClient(Client client) {
 		this.client = client;
 	}
 	
 	/**
-	 * Returns an array ShopManagement[] from an ArrayList List<ShopManagement>.
-	 *
-	 * @param manager the manager ArrayList
-	 * @return the array list
+	 * Returns an array of type ShopManagement from an ArrayList List<ShopManagement>.
 	 */
 	public static ShopManagement[] ArrayList(List<ShopManagement> managerList) {
 		ShopManagement[] arrayFromList = new ShopManagement[managerList.size()];

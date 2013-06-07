@@ -32,7 +32,7 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 	private Class<T> workbookClass;
 
 	/**
-	 * Instantiates a new workbook desc.
+	 * Instantiates a new workbook descriptor.
 	 *
 	 * @param workbookClass the workbook class
 	 */

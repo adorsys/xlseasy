@@ -311,13 +311,6 @@ public class ShopManagementTest {
 		}
 	}
 
-	/**
-	 * Create an instance of ExcelExample object and call the createExcel
-	 * procedure.
-	 * 
-	 * @param args
-	 *            Command line parameters. Not required in this example
-	 */
 	public static void main(String args[]) {
 		ShopManagementTest excel = new ShopManagementTest();
 		excel.createExcel();
