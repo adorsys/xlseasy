@@ -20,6 +20,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 /**
  * @author Sandro Sonntag
  */
+@SuppressWarnings({"unchecked", "unused"})
 public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 
 	private HSSFWorkbook workbook;
@@ -112,7 +113,6 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 		sheetDesc.createSheet(sheetData, this);
 	}
 
-	@SuppressWarnings("unchecked")
 	private WorkbookDescIF<WT> getOrCreateWorkbookDesc(Class<?> clazz) {
 		WorkbookDescIF<WT> workbookDesc = (WorkbookDescIF<WT>) WORKBOOKDESC_CACHE.get(clazz);
 		if (workbookDesc == null) {
@@ -149,7 +149,6 @@ public class SheetSession<WT, RT> implements ISheetSession<WT, RT> {
 	
 	public List<RT> toRecordList() {
 		if (!workbookType) {
-			@SuppressWarnings("unchecked")
 			SheetDesc<RT, WT> sheetDesc = (SheetDesc<RT, WT>) workbookDesc.getOrderedSheets().get(0);
 			
 			HSSFSheet sheet = workbook.getSheet(sheetDesc.getLabel());

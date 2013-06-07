@@ -33,6 +33,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
+@SuppressWarnings({"unused", "unchecked"})
 public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     private static final long serialVersionUID = 1L;
@@ -60,7 +61,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
         Collection<Annotation> sheet = AnnotationUtil.findClassAnnotations(recordClass, true, Sheet.class);
 
-        //Ordered columns
+        // Ordered columns
         if (sheet.size() > 0) {
             this.sheet = new SheetObject((Sheet) sheet.iterator().next());
 
@@ -91,7 +92,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
                 .findBeanPropertyDescriptorAnnotations(recordClass, true, SheetColumn.class);
         Map<String, PropertyDescriptor> key2PropertyDescriptor = AnnotationUtil.extractPropertyKey2PropertyDescriptor(propertyDescriptorAnnotations.keySet());
 
-        //Ordered columns
+        // Ordered columns
         if (sheet.columnOrder().length > 0) {
             String[] value = sheet.columnOrder();
             for (int i = 0; i < value.length; i++) {
@@ -104,7 +105,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
                         key2PropertyDescriptor, prop, i);
             }
         } else {
-            //alpha sort
+            // alphabetical sort
             TreeSet<String> sortedProps = new TreeSet<String>(key2PropertyDescriptor.keySet());
             int columnIndex = 0;
             for (String prop : sortedProps) {
@@ -141,7 +142,6 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
         return label;
     }
 
-    @SuppressWarnings("unchecked")
     public List<T> getSheetData(Object workbookObj) {
         try {
             return (List<T>) PropertyUtils.getProperty(workbookObj, workbookProperty);
@@ -167,7 +167,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
     }
 
     /**
-     * load the headers found in the sheet.
+     * Loads the headers found in the sheet.
      *
      * @param sheet
      * @return
@@ -186,7 +186,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
     }
 
     public List<T> loadAndSetBeanRecords(HSSFSheet sheet, Object workbook, ISheetSession<?, ?> session) {
-        //if not loaded, load it!
+        // if not loaded, loads it!
         List<T> sheetData = loadBeanRecords(sheet, session);
         setSheetData(workbook, sheetData);
         return sheetData;
@@ -198,7 +198,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
         int loadXlsHeaderSize = loadXlsHeader.size();
         Iterator<?> rowIterator = sheet.rowIterator();
         if (rowIterator.hasNext())
-            //skipp header
+            // skips header
             rowIterator.next();
 
         while (rowIterator.hasNext()) {
@@ -271,6 +271,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
 
     }
 
+    // Creates a header into the sheet
     protected void createHeader(SheetSession<?, ?> session, HSSFSheet sheet) {
         HSSFRow row = sheet.createRow(0);
         List<ColumnDesc> columnDescs = getColumnDescs();
@@ -281,6 +282,8 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
             columnDesc.formatHeaderCell(session, cell);
             if (getSheet() != null && getSheet().autoSizeColumns()) {
                 sheet.autoSizeColumn((short) i);
+                // sets header margin
+                sheet.setMargin(HSSFSheet.HeaderMargin, 0.25);
             }
         }
         FreezePaneObject freezePane = getSheet().freezePane();
@@ -288,6 +291,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
                 freezePane.topRow());
     }
 
+    // Saves data into the sheet
     protected void createData(SheetSession<?, ?> session, HSSFSheet sheet,
                               Collection<?> sheetData) {
         if (sheetData != null) {
@@ -329,6 +333,7 @@ public class SheetDesc<T, WT> implements SheetDescIF<T, WT>{
         }
     }
 
+    // Fills data into sheet's rows with Bean properties and format
     private void fillRow(SheetSession<?, ?> session, HSSFRow row, Object bean) {
         for (int i = 0; i < columnOrder.size(); i++) {
             ColumnDesc columnDesc = columnOrder.get(i);

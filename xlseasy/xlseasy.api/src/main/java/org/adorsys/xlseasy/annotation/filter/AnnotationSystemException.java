@@ -36,9 +36,9 @@ public class AnnotationSystemException extends RuntimeException {
 	 */
 	public AnnotationSystemException(ErrorCodeSheet code, Throwable cause,
 			Map<String, Object> values) {
-		this.errorCode = code == null ? ErrorCodeSheet.UNKNOWN : code;
+		this.errorCode = (code == null) ? ErrorCodeSheet.UNKNOWN : code;
 		this.cause = cause;
-		this.values = values == null ? new HashMap<String, Object>() : values;
+		this.values = (values == null) ? new HashMap<String, Object>() : values;
 	}
 
 	/**

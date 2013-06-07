@@ -21,7 +21,7 @@ import org.apache.poi.ss.usermodel.Sheet;
  * Generates a multi-line report for any client and saves it into an Excel (.xls) file.
  * 
  */
-public class ExcelGenerateReport {
+public class ExcelReportGenerator {
 
 	private HSSFCellStyle cs, csBold, csTop, csRight, csBottom, csLeft, csTopLeft, csTopRight, csBottomLeft, csBottomRight;
 
@@ -30,27 +30,27 @@ public class ExcelGenerateReport {
 			HSSFWorkbook wb = new HSSFWorkbook();
 			HSSFSheet sheet = wb.createSheet("Excel Report");
 
-			// setup some style that we need for the cells
+			// setups some style that we need for the cells
 			setCellStyles(wb);
 
-			// get current date and time
+			// gets current date and time
 			Date date = new Date(System.currentTimeMillis());
 			DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
 
-			// set column widths
+			// sets column widths
 			sheet.setColumnWidth(0, 2500);
 			sheet.setColumnWidth(1, 2500);
 			sheet.setColumnWidth(2, 6000);
 			sheet.setColumnWidth(3, 10000);
 			sheet.setColumnWidth(4, 3000);
 
-			// setup the page margins (top, right, bottom, left)
+			// setups the page margins (top, right, bottom, left)
 			sheet.setMargin(Sheet.TopMargin, 0.75);
 			sheet.setMargin(Sheet.RightMargin, 0.25);
 			sheet.setMargin(Sheet.BottomMargin, 0.75);
 			sheet.setMargin(Sheet.LeftMargin, 0.25);
 
-			// setup header and footer margins
+			// setups header and footer margins
 			sheet.setMargin(Sheet.HeaderMargin, 0.25);
 			sheet.setMargin(Sheet.FooterMargin, 0.25);
 
@@ -59,14 +59,14 @@ public class ExcelGenerateReport {
 			// ps.setHeaderMargin((double) .25);
 			// ps.setFooterMargin((double) .25);
 
-			// Set Header Information
+			// Sets Header Information
 			HSSFHeader header = sheet.getHeader();
 			header.setLeft("*** ORIGINAL COPY ***");
 			header.setCenter(HSSFHeader.font("Arial", "Bold")
 					+ HSSFHeader.fontSize((short) 14) + "SAMPLE ORDER");
 			header.setRight(df.format(date));
 
-			// Set Footer Information with Page Numbers
+			// Sets Footer Information with Page Numbers
 			HSSFFooter footer = sheet.getFooter();
 			footer.setRight("Page " + HeaderFooter.page() + " of "
 					+ HeaderFooter.numPages());
@@ -75,7 +75,7 @@ public class ExcelGenerateReport {
 			rowIndex = insertHeaderInfo(sheet, rowIndex);
 			rowIndex = insertDetailInfo(sheet, rowIndex);
 
-			// Write the Excel file
+			// Writes the Excel file
 			FileOutputStream fileOut = new FileOutputStream("myExcelReport.xls");
 			wb.write(fileOut);
 			fileOut.close();
@@ -85,6 +85,12 @@ public class ExcelGenerateReport {
 		}
 	}
 
+	
+	/**
+	 * Sets a style to the cell.
+	 *
+	 * @param wb the workbook
+	 */
 	public void setCellStyles(HSSFWorkbook wb) {
 		// font size 12
 		HSSFFont f = wb.createFont();
@@ -94,7 +100,7 @@ public class ExcelGenerateReport {
 		cs = wb.createCellStyle();
 		cs.setFont(f);
 
-		// Bold Fond
+		// Bold Font
 		HSSFFont bold = wb.createFont();
 		bold.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
 		bold.setFontHeightInPoints((short) 12);
@@ -162,6 +168,13 @@ public class ExcelGenerateReport {
 		csBottomRight.setFont(f);
 	}
 	
+	/**
+	 * Inserts header info.
+	 *
+	 * @param sheet the sheet
+	 * @param index the current row's index
+	 * @return the current row's index
+	 */
 	public int insertHeaderInfo(HSSFSheet sheet, int index) {
 		int rowIndex = index;
 		HSSFRow row = null;
@@ -251,6 +264,14 @@ public class ExcelGenerateReport {
 		return rowIndex;
 	}
 
+	
+	/**
+	 * Inserts detail info.
+	 *
+	 * @param sheet the sheet
+	 * @param index the current row's index
+	 * @return the current row's index
+	 */
 	public int insertDetailInfo(HSSFSheet sheet, int index) {
 		int rowIndex = 0;
 		HSSFRow row = null;
@@ -279,7 +300,7 @@ public class ExcelGenerateReport {
 	}
 
 	public static void main(String[] args) {
-		ExcelGenerateReport report = new ExcelGenerateReport();
+		ExcelReportGenerator report = new ExcelReportGenerator();
 		report.createExcel();
 	}
 }

@@ -31,27 +31,28 @@ public class ExcelExample {
 
 	/**
 	 * 
-	 * This procedure create a book, sheet, row and cell in this order. Also it
+	 * Creates a workbook, 2 sheets, rows and cells in this order. Then it
 	 * records the data into the FILE_NAME.
 	 * 
 	 */
 	public void createExcel() {
 
 		try {
-			// We create the book. If we'd like to load a book from a file we
+			// creates the workbook.
+			// If we'd like to load a book from a file we
 			// should write something like this: new HSSFWorkbook(new
 			// FileInputStream(file))
 			HSSFWorkbook book = new HSSFWorkbook();
 
-			// We create the sheet for this book
+			// creates the sheet for this book
 			HSSFSheet sheet1 = book.createSheet("1st Sheet");
 			HSSFSheet sheet2 = book.createSheet("2nd Sheet");
 
-			// We create rows and cells and set their values.
+			// creates rows and cells and set their values.
 			HSSFRow row;
 			HSSFCell cell;
-			
-			// We create a new Function Object.
+
+			// creates a new Function Object.
 			Function function = new Function();
 
 			// 1st row
@@ -106,18 +107,18 @@ public class ExcelExample {
 			row = sheet1.createRow(rowIndex);
 			cell = row.createCell(5);
 
-			// get column reference
+			// gets column reference
 			String ref = function.getCellByName(cell.getRowIndex(),
 					cell.getColumnIndex());
 
-			// get row's index of the last inserted value
+			// gets row's index of the last inserted value
 			int indexLastInsertedValue = function.getArrayLength() + 2;
 
 			cell.setCellFormula("SUM(" + ref + "3:" + ref + ""
 					+ indexLastInsertedValue + ")");
 			cell.setCellStyle(function.getMyDefaultStyle(book));
 
-			// setup column's width
+			// setups column's width
 			sheet1.setColumnWidth(0, 1500);
 			sheet1.setColumnWidth(1, 4000);
 			sheet1.setColumnWidth(2, 4000);
@@ -125,21 +126,21 @@ public class ExcelExample {
 			sheet1.setColumnWidth(4, 700);
 			sheet1.setColumnWidth(5, 2000);
 
-			// setup page's margin (top, right, bottom, left)
+			// setups page's margin (top, right, bottom, left)
 			sheet1.setMargin(Sheet.TopMargin, 0.75);
 			sheet1.setMargin(Sheet.RightMargin, 0.25);
 			sheet1.setMargin(Sheet.BottomMargin, 0.75);
 			sheet1.setMargin(Sheet.LeftMargin, 0.25);
 
-			// setup header and footer margins
+			// setups header and footer margins
 			sheet1.setMargin(Sheet.HeaderMargin, 0.25);
 			sheet1.setMargin(Sheet.FooterMargin, 0.25);
 
 			/**
-			 * Write now on Sheet 2
+			 * Writes now on Sheet 2
 			 * */
 
-			// We create a style to apply on some cell
+			// creates a style to apply on some cell
 			HSSFCellStyle style = book.createCellStyle();
 
 			// 2nd row
@@ -188,7 +189,7 @@ public class ExcelExample {
 			cell.setCellStyle(function.getMyDefaultStyle(book));
 			cellIndex++;
 
-			// get random index to compute total price
+			// gets random index to compute total price
 			int rdm;
 			for (int i = 0; i < function.getArrayLength(); i++) {
 				rdm = function.getRandomIndex();
@@ -260,8 +261,8 @@ public class ExcelExample {
 
 			for (int i = 0; i < function.getArrayLength(); i++) {
 				cell = row.createCell(cellIndex);
-				cell.setCellValue(function.getCellByReference(cell.getRowIndex(),
-						cell.getColumnIndex()));
+				cell.setCellValue(function.getCellByReference(
+						cell.getRowIndex(), cell.getColumnIndex()));
 				cell.setCellStyle(function.getMyDefaultStyle(book));
 				cellIndex++;
 			}
@@ -325,7 +326,7 @@ public class ExcelExample {
 
 	/**
 	 * 
-	 * Create an instance of ExcelExample object and call the createExcel
+	 * Creates an instance of ExcelExample object and calls the createExcel
 	 * procedure
 	 * 
 	 * @param args
@@ -336,5 +337,4 @@ public class ExcelExample {
 		ExcelExample excel = new ExcelExample();
 		excel.createExcel();
 	}
-
 }

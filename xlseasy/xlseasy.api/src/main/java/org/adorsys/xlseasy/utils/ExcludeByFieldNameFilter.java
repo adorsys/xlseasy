@@ -9,10 +9,9 @@ import org.adorsys.xlseasy.utils.ReflectionUtils.FieldFilter;
 public class ExcludeByFieldNameFilter implements FieldFilter {
 
 	private final Collection<String> discriminatedFieldNames;
-	
-	public ExcludeByFieldNameFilter(
-			Collection<String> discriminatedFieldNames) {
-		if(discriminatedFieldNames==null){
+
+	public ExcludeByFieldNameFilter(Collection<String> discriminatedFieldNames) {
+		if (discriminatedFieldNames == null) {
 			this.discriminatedFieldNames = new HashSet<String>();
 		} else {
 			this.discriminatedFieldNames = discriminatedFieldNames;
@@ -20,7 +19,8 @@ public class ExcludeByFieldNameFilter implements FieldFilter {
 	}
 
 	public boolean matches(Field field) {
-		if(discriminatedFieldNames.contains(field.getName())) return false;
+		if (discriminatedFieldNames.contains(field.getName()))
+			return false;
 		return true;
 	}
 }

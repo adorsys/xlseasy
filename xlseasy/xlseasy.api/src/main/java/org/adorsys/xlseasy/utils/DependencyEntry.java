@@ -59,7 +59,7 @@ public class DependencyEntry implements Comparable<DependencyEntry> {
 		// exclude circular relationship
 		if (d.isDependent(this))
 			excludedFields.add(fieldName);
-		
+
 		fieldOrder.remove(fieldName);
 		d.increaseLevel();
 		dependents.add(d);
@@ -132,11 +132,11 @@ public class DependencyEntry implements Comparable<DependencyEntry> {
 		if (getClass() != obj.getClass())
 			return false;
 		DependencyEntry other = (DependencyEntry) obj;
-		if (klass == null) {
-			if (other.klass != null)
-				return false;
+		if (klass == null && other.klass != null) {
+			return false;
 		} else if (!klass.equals(other.klass))
 			return false;
-		return true;
+		else
+			return true;
 	}
 }

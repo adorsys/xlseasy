@@ -66,7 +66,7 @@ public class AnnotationUtil {
 	}
 	
 	/**
-	 * Find class anotations by list of annotation types.
+	 * Find class annotations by list of annotation types.
 	 * @param clazz
 	 * @param inherited
 	 * @param annotationsToFind
@@ -88,7 +88,7 @@ public class AnnotationUtil {
 	}
 	
 	/**
-	 * Finds java bean property releated annotations. It considers the getters, setters and field annotations. 
+	 * Finds java bean property related annotations. It considers the getters, setters and field annotations. 
 	 * @param clazz
 	 * @param inherited
 	 * @param annotationsToFind

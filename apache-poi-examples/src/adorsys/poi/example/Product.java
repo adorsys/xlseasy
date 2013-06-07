@@ -3,7 +3,7 @@ package adorsys.poi.example;
 /**
  * The class Product.
  *
- * @author Marius Guede
+ * @author Marius Guede <mariusguede@urframes.net>
  */
 public class Product {
 	

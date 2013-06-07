@@ -8,9 +8,11 @@ import org.adorsys.xlseasy.annotation.filter.AnnotationUtil;
 
 public abstract class KeyAnnotationUtils {
 
-	public static Field extractKeyField(Class<?> clazz){
-		Collection<Field> keys = AnnotationUtil.findFieldsByAnnotation(clazz, true, Key.class);
-		if(keys.isEmpty()) return null;
+	public static Field extractKeyField(Class<?> clazz) {
+		Collection<Field> keys = AnnotationUtil.findFieldsByAnnotation(clazz,
+				true, Key.class);
+		if (keys.isEmpty())
+			return null;
 		return keys.iterator().next();
 	}
 }

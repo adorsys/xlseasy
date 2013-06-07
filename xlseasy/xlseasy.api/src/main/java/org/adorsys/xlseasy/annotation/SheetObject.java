@@ -16,6 +16,7 @@ public class SheetObject implements Serializable {
 		columnOrder = sheet.columnOrder();
 		freezePane = new FreezePaneObject(sheet.freezePane());
 		autoSizeColumns = sheet.autoSizeColumns();
+		marged = sheet.marged();
 		formatter = sheet.formatter();
 	}
 
@@ -47,6 +48,11 @@ public class SheetObject implements Serializable {
      * @author mariusguede
      * sheet's margin
      * */
+	boolean marged = false;
+	public boolean marged() {
+		return marged;
+	}
+	
 	double margin = 0.25;
 	public double margin() {
 		return margin;

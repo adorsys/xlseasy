@@ -19,7 +19,7 @@ public class CompositeFieldFilter implements FieldFilter {
 	
 	public boolean matches(Field field) {
 		for (FieldFilter fieldFilter : filters) {
-			if(!fieldFilter.matches(field)) return false;
+			if (!fieldFilter.matches(field)) return false;
 		}
 		return true;
 	}

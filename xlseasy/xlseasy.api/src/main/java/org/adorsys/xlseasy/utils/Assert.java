@@ -31,6 +31,7 @@ package org.adorsys.xlseasy.utils;
  * @author Rob Harrop
  * @since 1.1.2
  */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class Assert {
 
 	/**

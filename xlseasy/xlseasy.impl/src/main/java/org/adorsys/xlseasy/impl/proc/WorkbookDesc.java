@@ -55,7 +55,7 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 			// sort order
 			orderedProperties = Arrays.asList(so.sheetOrder());
 		} else {
-			// apha label order
+			// alphabetical label order
 			orderedProperties = new TreeSet<String>(propertyKey2PropertyDescriptor.keySet());
 		}
 		

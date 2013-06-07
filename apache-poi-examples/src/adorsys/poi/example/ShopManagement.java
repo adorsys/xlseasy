@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * The Class ShopManagement.
  *
- * @author Marius Guede
+ * @author Marius Guede <mariusguede@urframes.net>
  */
 public class ShopManagement {
 	

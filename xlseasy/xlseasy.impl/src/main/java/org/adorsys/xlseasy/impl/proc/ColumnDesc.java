@@ -26,6 +26,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 
+@SuppressWarnings("unchecked")
 public class ColumnDesc implements ColumnDescIF { 
 
 	private final SheetColumnObject annoSheetColumn;
@@ -57,18 +58,17 @@ public class ColumnDesc implements ColumnDescIF {
 	/**
 	 * Instantiates a new column desc.
 	 *
-	 * @param pd the pd
-	 * @param sc the sc
-	 * @param columnIndex the column index
+	 * @param pd the property's descriptor
+	 * @param sc the sheet's column
+	 * @param columnIndex the column's index
 	 * @param field the field
 	 */
-	@SuppressWarnings("unchecked")
 	public ColumnDesc(PropertyDescriptor pd, SheetColumn sc, int columnIndex, Field field) {
 		super();
 		this.columnIndex = columnIndex;
 		this.annoSheetColumn = new SheetColumnObject(sc);
-		this.annoSheetColumnStyle = annoSheetColumn != null ? annoSheetColumn.columnStyle() : null;
-		this.annoSheetHeaderStyle = annoSheetColumn != null ? annoSheetColumn.headerStyle() : null;
+		this.annoSheetColumnStyle = (annoSheetColumn != null) ? annoSheetColumn.columnStyle() : null;
+		this.annoSheetHeaderStyle = (annoSheetColumn != null) ? annoSheetColumn.headerStyle() : null;
 		this.propertyName = pd.getName();
 		
 		String columnName = annoSheetColumn != null ? annoSheetColumn

@@ -19,11 +19,14 @@ public @interface Sheet {
 
     boolean autoSizeColumns() default false;
     
-    /**
-     * @author mariusguede
-     * sheet's margin
-     * */
-    double margin() default 0.25;
-
     Class<? extends SheetFormatter> formatter() default NoneSheetFormatter.class;
+    
+    /**
+     * Sets sheet's margin
+     * 
+     * @author Marius Guede
+     * */    
+    boolean marged() default false;
+    
+    double margin() default 0.25;
 }

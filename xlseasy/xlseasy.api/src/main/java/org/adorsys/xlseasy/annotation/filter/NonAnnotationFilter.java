@@ -25,20 +25,11 @@ import java.lang.annotation.Annotation;
  */
 public class NonAnnotationFilter implements AnnotationFilter {
 	
-	/**
-	 * Use this singleton.
-	 */
 	public static final AnnotationFilter INSTANCE = new NonAnnotationFilter();
 
 	private NonAnnotationFilter() {
-		// TODO: what should the method do?
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.adorsys.xlseasy.annotation.filter.lang.annotation.AnnotationFilter#accept(java.lang.annotation.Annotation)
-	 */
 	public boolean accept(Annotation annotation) {
 		return true;
 	}
