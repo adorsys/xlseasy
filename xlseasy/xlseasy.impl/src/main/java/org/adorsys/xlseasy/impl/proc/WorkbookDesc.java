@@ -23,6 +23,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 /**
  * @author Sandro Sonntag
  */
+@SuppressWarnings("unchecked")
 public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 
 	private static final long serialVersionUID = 1L;
@@ -50,7 +51,7 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 			throw new SheetSystemException(ErrorCodeSheet.CLASS_HAS_NO_WORKBOOK_ANNOTATION).addValue("class", workbookClass);
 		}
 		
-		Collection<String> orderedProperties;		
+		Collection<String> orderedProperties;
 		if (so.sheetOrder().length > 0) {
 			// sort order
 			orderedProperties = Arrays.asList(so.sheetOrder());
@@ -69,7 +70,7 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 	}
 	
 	/**
-	 * Instantiates a new workbook desc.
+	 * Instantiates a new workbook descriptor.
 	 */
 	public WorkbookDesc() {
 	}
@@ -78,12 +79,15 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 			Map<PropertyDescriptor, Map<Class<?>, Annotation>> findBeanPropertyDescriptorAnnotations,
 			Map<String, PropertyDescriptor> propertyKey2PropertyDescriptor,
 			String propertyKey, int sheetIndex) {
+		
 		PropertyDescriptor propertyDescriptor = propertyKey2PropertyDescriptor.get(propertyKey);
+		
 		if (propertyDescriptor != null) {
 			Map<Class<?>, Annotation> map = findBeanPropertyDescriptorAnnotations.get(propertyDescriptor);
 			HorizontalRecordSheet hrs = (HorizontalRecordSheet) map.get(HorizontalRecordSheet.class);
 			
 			Class<?> recordClass = hrs.recordClass();
+			
 			if (Object.class == recordClass) {
 				recordClass = propertyDescriptor.getPropertyType();
 			}
@@ -102,7 +106,6 @@ public class WorkbookDesc<T> implements WorkbookDescIF<T> {
 		return label2sheetDesc.get(sheetLabel);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public <R> SheetDescIF<R, T> getSheet(Class<R> rowType){
 		Collection<SheetDesc<?,T>> values = label2sheetDesc.values();
 		for (SheetDesc<?, T> sheetDesc : values) {

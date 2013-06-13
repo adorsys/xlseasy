@@ -7,13 +7,11 @@ import java.util.List;
 
 import org.adorsys.xlseasy.annotation.SpreadsheetService;
 
-
 public class SpreadsheetServiceImpl implements SpreadsheetService {
 	
 	private WorkbookDescFactory workbookDescFactory;
 	
-
-	public SpreadsheetServiceImpl() {
+	public SpreadsheetServiceImpl() {		
 		this.workbookDescFactory = new WorkbookDescFactory();
 	}
 	
@@ -38,12 +36,10 @@ public class SpreadsheetServiceImpl implements SpreadsheetService {
 		sheetSession.load(rows);
 		sheetSession.save(outputStream);
 	}
-
 	
 	public <WT> void saveSpreadsheet(Class<WT> workbookType, WT model, OutputStream outputStream) {
 		SheetSession<WT, Object> sheetSession = new SheetSession<WT, Object>(workbookType, workbookDescFactory);
 		sheetSession.load(model);
 		sheetSession.save(outputStream);
 	}
-
 }
