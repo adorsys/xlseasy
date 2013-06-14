@@ -3,9 +3,8 @@
  * http://adorsys.github.com/xlseasy/
  * ===================================================
  * Copyright 2013 adorsys GmbH & Co. KG.
- * info@adorsys.de
  * 
- * Author: Marius Guede
+ * Author: Marius Guede <info@adorsys.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +35,7 @@ $(document).ready(function() {
 		var targetedId = $('div.example-details[id="' + id + '"]');
 
 		// toggle the targeted div
-		$(targetedId).slideToggle("slow");
+		targetedId.slideToggle("slow");
 		
 		// loop to hide all div.example-details except the targeted one
 		for (var i = 0; i < 3; i++) {

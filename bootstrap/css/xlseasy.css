@@ -2,6 +2,7 @@
  * xlseasy.css
  * Copyright Adorsys GmbH & Co. KG 2013
  */
+ 
 h4.tech, h4.tech-mod {
 	color: #0088cc;
 	margin-top: 20px;
@@ -70,7 +71,6 @@ img.adorsys-logo {
 div.example-details {
 	display: none;
 	margin: 20px 0px 20px 0px;
-	
 	padding: 20px;
 	/*
 	font-size: 18px;
