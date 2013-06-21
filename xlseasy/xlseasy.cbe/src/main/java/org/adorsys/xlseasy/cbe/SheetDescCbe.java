@@ -35,7 +35,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
-@SuppressWarnings({"unchecked", "rawtypes"})
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 
 	private static final long serialVersionUID = 6166184265312522317L;
@@ -90,14 +90,19 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 			int columnIndex, WorkBookSheet<T> workBookSheet) {
 		PropertyDescriptor pd = sheetColumDeclaration.getPropertyDescriptor();
 		SheetColumnObject sheetColumn = sheetColumDeclaration.getSheetColumn();
-		
-		// TODO: should use the case insensitive description from org.adorsys.xlseasy.boot.WorkBookSheet
 		Field field = workBookSheet.getField(pd.getName());
-		
-		if (field == null)
+
+		// checks the value of field and returns an SheetSystemException if
+		// sheet column's name doesn't match with a class attribute
+		if (field == null) {
 			throw new SheetSystemException(
 					ErrorCodeSheet.FIELD_WITH_NAME_NOT_FOUND).addValue(
 					"fieldName", pd.getName());
+		} else {
+			// TODO: should use the case insensitive implementation from
+			// org.adorsys.xlseasy.boot.WorkBookSheet.getField(...)
+		}
+
 		ColumnDescCbe columnDesc = new ColumnDescCbe(pd, sheetColumn,
 				columnIndex, field, workBookSheet);
 		columnOrder.add(columnDesc);
@@ -206,7 +211,7 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 		List<ColumnDescCbe> loadXlsHeader = loadXlsHeader(sheet);
 		int loadXlsHeaderSize = loadXlsHeader.size();
 		Iterator<?> rowIterator = sheet.rowIterator();
-		
+
 		if (rowIterator.hasNext())
 			// skip header
 			rowIterator.next();

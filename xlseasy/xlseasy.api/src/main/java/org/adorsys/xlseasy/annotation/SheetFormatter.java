@@ -5,15 +5,15 @@ package org.adorsys.xlseasy.annotation;
  * 
  * @author Sandro Sonntag
  * @author Francis Poutcha
- *
+ * 
  */
 public interface SheetFormatter {
-	
+
 	public class NoneSheetFormatter implements SheetFormatter {
 
 		public void format(Object sheet) {
 		}
 	}
-	
+
 	void format(Object sheet);
 }

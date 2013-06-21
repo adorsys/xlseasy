@@ -51,7 +51,7 @@ public class SheetColumnObject implements Serializable {
 		return columnName;
 	}
 
-	// margin enability
+	// margin status
 	boolean merged = false;
 
 	public boolean merged() {

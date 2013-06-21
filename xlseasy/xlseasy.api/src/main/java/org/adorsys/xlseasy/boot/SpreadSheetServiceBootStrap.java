@@ -15,6 +15,7 @@ import org.adorsys.xlseasy.annotation.SpreadsheetService;
 import org.adorsys.xlseasy.utils.DependencyEntry;
 import org.adorsys.xlseasy.utils.XlseasyUtils;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class SpreadSheetServiceBootStrap {
 
 	private KeyFieldInspector keyFieldInspector = new NullKeyFieldInspector();
@@ -55,7 +56,6 @@ public class SpreadSheetServiceBootStrap {
 		this.workbookKlass = workbookKlass;
 	}
 
-	@SuppressWarnings("unchecked")
 	public SpreadsheetService createSpreadService() {
 		WorkbookCbe workbookCbe = buildWorkbookCbe();
 		Class<? extends SpreadsheetService> loadedClass;
@@ -74,7 +74,6 @@ public class SpreadSheetServiceBootStrap {
 		return XlseasyUtils.newInstance(constructor, workbookCbe);
 	}
 
-	@SuppressWarnings("rawtypes")
 	private WorkbookCbe buildWorkbookCbe() {
 		List<WorkBookSheet> workBookSheets = new ArrayList<WorkBookSheet>();
 		Map<String, DependencyEntry> sheetClasses = new HashMap<String, DependencyEntry>();
