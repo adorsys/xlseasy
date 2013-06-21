@@ -80,10 +80,12 @@ public class WorkBookSheet<T> {
 	 */
 	public Field getField(String fieldName) {
 		List<Field> fieldOrder2 = fieldOrder;
-		for (Field field : fieldOrder2) {
-			// if (fieldName.equals(field.getName()))
-			if (fieldName.toLowerCase().equals(field.getName().toLowerCase()))
-				return field;
+		if (fieldName != null) {
+			for (Field field : fieldOrder2) {
+				// if (fieldName.equals(field.getName()))
+				if (fieldName.equalsIgnoreCase(field.getName()))
+					return field;
+			}
 		}
 		return null;
 	}
