@@ -6,6 +6,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The Class WorkBookSheet.
+ * 
+ * @param <T>
+ *            the generic type
+ * 
+ * @author Sandro Sonntag, Francis Pouatcha, Marius Guede
+ */
 public class WorkBookSheet<T> {
 
 	public WorkBookSheet(Field field, List<Field> fieldOrder,
@@ -67,10 +75,8 @@ public class WorkBookSheet<T> {
 	}
 
 	/**
-	 * Makes the method getField(...) case insensitive. Must be helpful to
-	 * compare case insensitive the fields from class and workbook sheet.
-	 * 
-	 * @author Marius Guede
+	 * We make the method case insensitive. Must be helpful to compare case
+	 * classes fields and them from workbook sheet.
 	 */
 	public Field getField(String fieldName) {
 		List<Field> fieldOrder2 = fieldOrder;

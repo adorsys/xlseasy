@@ -35,6 +35,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 
 	private static final long serialVersionUID = 6166184265312522317L;
@@ -89,7 +90,10 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 			int columnIndex, WorkBookSheet<T> workBookSheet) {
 		PropertyDescriptor pd = sheetColumDeclaration.getPropertyDescriptor();
 		SheetColumnObject sheetColumn = sheetColumDeclaration.getSheetColumn();
+		
+		// TODO: should use the case insensitive description from org.adorsys.xlseasy.boot.WorkBookSheet
 		Field field = workBookSheet.getField(pd.getName());
+		
 		if (field == null)
 			throw new SheetSystemException(
 					ErrorCodeSheet.FIELD_WITH_NAME_NOT_FOUND).addValue(
@@ -113,7 +117,6 @@ public class SheetDescCbe<T, WT> implements SheetDescIF<T, WT> {
 		return workBookSheet.getField().getName();
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<T> getSheetData(Object workbookObj) {
 		try {
 			return new ArrayList<T>((Collection<T>) PropertyUtils.getProperty(
