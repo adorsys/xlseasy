@@ -90,7 +90,7 @@ public class SpreadSheetServiceBootStrap {
 				Map<String, String> fieldDateStyles = dateStylesInspector
 						.inspectDateStyles(sheetKlass);
 				dependencyEntry = new DependencyEntry(field, sheetKlass,
-						extent, excludedFieldNames, keyField, fieldDateStyles);
+						extent, excludedFieldNames, keyField, fieldDateStyles);				
 			} else {
 				dependencyEntry.addField(field);
 			}
